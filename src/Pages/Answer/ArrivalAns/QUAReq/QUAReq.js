@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Accessor } from '@IZOArc/STATIC';
-import PropsType from 'prop-types';
 
-class ${1} extends Component {
+class QUAReq extends Component {
 
   static propTypes = {
 
@@ -22,7 +21,7 @@ class ${1} extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(${1}.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(QUAReq.defaultProps))){
       this._setAllStates();
     }
   }
@@ -49,4 +48,4 @@ class ${1} extends Component {
 
 }
 
-export default ${1};
+export default QUAReq;

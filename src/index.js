@@ -31,6 +31,19 @@ import {
 //pages
 import Dashboard from "Pages/Dashboard/Dashboard";
 import System from "Pages/System/System"
+import Answer from "./Pages/Answer/Answer";
+import ArrivalAns from "Pages/Answer/ArrivalAns/ArrivalAns";
+import APProc from "Pages/Answer/ArrivalAns/APProc/APProc";
+import BNEReq from "Pages/Answer/ArrivalAns/BNEReq/BNEReq";
+import QUAReq from "Pages/Answer/ArrivalAns/QUAReq/QUAReq";
+import DepartAns from "Pages/Answer/DepartAns/DepartAns";
+import TransitAns from "Pages/Answer/TransitAns/TransitAns";
+import Questionnaire from "./Pages/Questionnaire/Questionnaire";
+import Question from "Pages/Questionnaire/Question/Question";
+import Scenario from "Pages/Questionnaire/Scenario/Scenario";
+import Severity from "./Pages/Severity/Severity";
+import Location from "Pages/Severity/Location/Location";
+import SevGroup from "Pages/Severity/SevGroup/SevGroup";
 
 //store
 import {Env, store} from '@IZOArc/STATIC';
@@ -43,7 +56,20 @@ if (process.env.NODE_ENV === "production") {
 function renderPages() {
   return [
     <Route key={0} path='/Dashboard' exact component={Dashboard}/>,
-    <Route key={1} path='/System' exact component={System}/>
+    <Route key={1} path='/System' exact component={System}/>,
+    <Route key={2} path='/Answer' exact component={Answer}/>,
+    <Route key={3} path='/Questionnaire' exact component={Questionnaire}/>,
+    <Route key={4} path='/Severity' exact component={Severity}/>,
+    <Route key={5} path='/Answer/ArrivalAns' exact component={ArrivalAns}/>,
+    <Route key={6} path='/Answer/ArrivalAns/APProc' exact component={APProc}/>,
+    <Route key={7} path='/Answer/ArrivalAns/BNEReq' exact component={BNEReq}/>,
+    <Route key={8} path='/Answer/ArrivalAns/QUAReq' exact component={QUAReq}/>,
+    <Route key={9} path='/Answer/DepartAns' exact component={DepartAns}/>,
+    <Route key={10} path='/Answer/TransitAns' exact component={TransitAns}/>,
+    <Route key={11} path='/Questionnaire/Question' exact component={Question}/>,
+    <Route key={12} path='/Questionnaire/Scenario' exact component={Scenario}/>,
+    <Route key={13} path='/Severity/Location' exact component={Location}/>,
+    <Route key={14} path='/Severity/SevGroup' exact component={SevGroup}/>
   ];
 }
 

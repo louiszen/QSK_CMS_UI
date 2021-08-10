@@ -1,5 +1,5 @@
 const _base = require('../../../__ZBase');
-const _remote = require('../../../__ZBase/remoteConfig');
+const _remote = require('../../../remoteConfig');
 
 const path = require('path');
 const catName = path.basename(__dirname);

@@ -1,10 +1,13 @@
 class BrowserX {
+  
+  static browser = "";
 
   static getUserAgent = () => {
     return navigator.userAgent.toLowerCase();
   }
 
   static getBrowser = () => {
+    if(this.browser) return this.browser;
     let browser = "";
     let isAndroid = navigator.userAgent.toLowerCase().indexOf('android') !== -1;
     let isGoogleBot = navigator.userAgent.toLowerCase().indexOf('googlebot') !== -1;
@@ -49,6 +52,7 @@ class BrowserX {
   
     browser = (isAndroid? "android " : "") + browser;
     browser = (isGoogleBot? "googlebot " : "") + browser;
+    this.browser = browser;
   
     console.log('[-] Browser Detected: ' + browser);
     return browser;

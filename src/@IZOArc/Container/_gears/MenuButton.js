@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import PropsType from 'prop-types';
 import _ from 'lodash';
@@ -72,6 +72,10 @@ class MenuButton extends Component {
     }), callback);
   }
 
+  _onClick = (path) => {
+    this.props.history.push(path);
+  }
+
   openNestedMenu = () => {
     this.setState({
       openNested: true
@@ -118,7 +122,7 @@ class MenuButton extends Component {
     return (
       <StyledButton theme={inPage? inPageTheme : theme}>
         <HStack padding={1} width="140px">
-          <Typography style={{fontSize: 14}}>
+          <Typography style={{fontSize: 14, opacity: store.mini? 0: 1}}>
             {caption}
           </Typography>
           <Spacer/>
@@ -138,7 +142,6 @@ class MenuButton extends Component {
         </HStack>
       </StyledButton>
     );
-    
   }
 
   renderNested(){
@@ -153,20 +156,9 @@ class MenuButton extends Component {
 
   renderInner(){
     let {path, disabled} = this.props;
-    if(!disabled && path){
-      return (
-        <Link to={path} style={{width: "100%", position: "relative"}} 
-          draggable={false} 
-          onMouseEnter={() => {this.openNestedMenu()}}
-          onMouseLeave={() => {this.closeNestedMenu()}}
-          >
-          {this.renderButton()}
-          {this.renderNested()}
-        </Link>
-      );
-    }else{
       return (
         <HStack style={{width: "100%", position: "relative"}}
+          onClick={(e) => {e.stopPropagation(); if(!disabled){this._onClick(path)}}}
           onMouseEnter={() => {this.openNestedMenu()}}
           onMouseLeave={() => {this.closeNestedMenu()}}
           >
@@ -174,7 +166,7 @@ class MenuButton extends Component {
           {this.renderNested()}
         </HStack>
       );
-    }
+    //}
   }
 
   render(){

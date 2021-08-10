@@ -1,4 +1,4 @@
-import { Dashboard } from '@material-ui/icons';
+import { ContactSupport, Dashboard, Public, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';
 
 export const Project = "QSK";
@@ -23,6 +23,92 @@ export const MenuConfig = [
     link: "/Dashboard",
     faIcon: <Dashboard />,
     auth: "Dashboard",
+  },
+  {
+    caption: "Severity",
+    link: "/Severity",
+    faIcon: "fas fa-map-marked-alt fa-lg",
+    auth: "Severity",
+    submenu: [
+      {
+        caption: "Severity Group",
+        link: "/Severity/SevGroup",
+        faIcon: "fas fa-th-large fa-lg",
+        auth: "Severity.SevGroup"
+      },
+      {
+        caption: "Location",
+        link: "/Severity/Location",
+        faIcon: <Public/>,
+        auth: "Severity.Location"
+      },
+    ]
+  },
+  {
+    caption: "Answer",
+    link: "/Answer",
+    faIcon: <ReplyAll/>,
+    auth: "Answer",
+    submenu: [
+      {
+        caption: "Arrival",
+        link: "/Answer/ArrivalAns",
+        faIcon: "fas fa-plane-arrival fa-lg",
+        auth: "Answer.ArrivalAns",
+        submenu: [
+          {
+            caption: "Quarantine",
+            link: "/Answer/ArrivalAns/QUAReq",
+            faIcon: "fas fa-syringe fa-lg",
+            auth: "Answer.ArrivalAns.QUAReq",
+          },
+          {
+            caption: "Board/Entry",
+            link: "/Answer/ArrivalAns/BNEReq",
+            faIcon: "fas fa-door-open fa-lg",
+            auth: "Answer.ArrivalAns.BNEReq",
+          },
+          {
+            caption: "Airport Proc",
+            link: "/Answer/ArrivalAns/APProc",
+            faIcon: "fas fa-plane fa-lg",
+            auth: "Answer.ArrivalAns.APProc",
+          }
+        ]
+      },
+      {
+        caption: "Departure",
+        link: "/Answer/DepartAns",
+        faIcon: "fas fa-plane-departure fa-lg",
+        auth: "Answer.DepartAns"
+      },
+      {
+        caption: "Transition",
+        link: "/Answer/TransitAns",
+        faIcon: "fas fa-project-diagram fa-lg",
+        auth: "Answer.TransitAns"
+      }
+    ]
+  },
+  {
+    caption: "Questionnaire",
+    link: "/Questionnaire",
+    faIcon: "fas fa-file-alt fa-lg",
+    auth: "Questionnaire",
+    submenu: [
+      {
+        caption: "Questions",
+        link: "/Questionnaire/Question",
+        faIcon: <ContactSupport/>,
+        auth: "Questionnaire.Question"
+      },
+      {
+        caption: "Scenarios",
+        link: "/Questionnaire/Scenario",
+        faIcon: "fas fa-sitemap fa-lg",
+        auth: "Questionnaire.Scenario"
+      }
+    ]
   },
   {
     caption: "System",
