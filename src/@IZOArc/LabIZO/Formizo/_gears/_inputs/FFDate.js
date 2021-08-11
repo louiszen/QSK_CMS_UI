@@ -104,17 +104,22 @@ class FFDate extends Component {
     if(!ischema) return null;
     let ivalue = Accessor.Get(formValue, iname);
     let idateformat = ischema.dateFormat || "DD/MM/YYYY HH:mm";
-    let mvalue = ivalue ? moment(ivalue, idateformat) : "";
+    let mvalue;
+    if(idateformat === "UTC"){
+      mvalue = moment(ivalue);
+    }else{
+      mvalue = ivalue ? moment(ivalue, idateformat) : "";
+    }
     
     let ireadOnly = ischema.readOnly || readOnly;
     return (
       <TimePicker
-        value={mvalue}
+        value={moment.isMoment(mvalue)? mvalue : null}
         picker={itype}
         showTime={itype === "datetime"}
         onChange={(moment) =>
           _onValueChange(iname, 
-            moment.format(idateformat), ischema.validate)
+            moment && moment.format(idateformat), ischema.validate)
         }
         onFocus={(e) => {
           _onFieldFocus();
@@ -135,17 +140,22 @@ class FFDate extends Component {
     if(!ischema) return null;
     let ivalue = Accessor.Get(formValue, iname);
     let idateformat = ischema.dateFormat || "DD/MM/YYYY HH:mm";
-    let mvalue = ivalue ? moment(ivalue, idateformat) : "";
+    let mvalue;
+    if(idateformat === "UTC"){
+      mvalue = moment(ivalue);
+    }else{
+      mvalue = ivalue ? moment(ivalue, idateformat) : "";
+    }
     
     let ireadOnly = ischema.readOnly || readOnly;
     return (
       <DatePicker
-        value={mvalue}
+        value={moment.isMoment(mvalue)? mvalue : null}
         picker={itype}
         showTime={itype === "datetime"}
         onChange={(moment) =>
           _onValueChange(iname, 
-            moment.format(idateformat), ischema.validate)
+            moment && moment.format(idateformat), ischema.validate)
         }
         onFocus={(e) => {
           _onFieldFocus();

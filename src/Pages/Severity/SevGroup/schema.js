@@ -36,9 +36,58 @@ const Table = [
   }
 ];
 
-const Add = [];
+const Tail = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text"
+  },
+  {
+    label: "Display Name",
+    name: "display",
+    format: "text"
+  },
+  {
+    label: "Severity",
+    name: "severity",
+    format: "number"
+  },
+  {
+    label: "Relevant Periods (Days)",
+    name: "period",
+    format: "number",
+    min: 0
+  },
+  {
+    label: "Effective Start Date",
+    name: "effective.Start",
+    format: "date",
+    dateType: "date",
+    dateFormat: "UTC"
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    format: "date",
+    dateType: "date",
+    dateFormat: "UTC"
+  }
+]
 
-const Info = [];
+const Add = [
+  ...Tail
+];
+
+const Info = [
+  ...Tail,
+  {
+    label: "Last Update",
+    name: "lastUpdate",
+    format: "date",
+    readOnly: true,
+    dateFormat: "UTC"
+  }
+];
 
 const Edit = [
   ...Info
