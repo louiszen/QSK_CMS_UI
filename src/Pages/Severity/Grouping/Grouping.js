@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 import { Box, Typography } from '@material-ui/core';
 
-import schema from './schema';
-import datalink from './datalink';
+import schema from '../Grouping/schema';
+import datalink from '../Grouping/datalink';
 
 import Datumizo from '@IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from '@IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from '@IZOArc/STATIC';
 
-class Location extends Component {
+class Grouping extends Component {
 
   static propTypes = {
 
@@ -22,13 +22,13 @@ class Location extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Locations",
+      title: "Location Severity",
       serverSidePagination: false, 
       base: {
-        title: "Location",
-        exportDoc: "locations",
+        title: "Location Severity",
+        exportDoc: "location_severity",
         schema: schema,
-        reqAuth: "Severity.Location",
+        reqAuth: "Severity.Grouping",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -45,45 +45,45 @@ class Location extends Component {
         },
 
         Add: {
-          title: "Add Location",
+          title: "Add Location Severity",
           url: datalink.Request.Add,
-          success: "Location Added Successfully",
-          fail: "Location Add Failed: ",
+          success: "Location Severity Added Successfully",
+          fail: "Location Severity Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add"
         },
         Delete: {
-          title: "Delete this Location?",
+          title: "Delete this Location Severity?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Location Deleted Successfully.",
-          fail: "Location Delete Failed: ",
+          success: "Location Severity Deleted Successfully.",
+          fail: "Location Severity Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Location ",
+          title: "Edit Location Severity ",
           url: datalink.Request.Edit,
-          success: "Location Edited Successfully",
-          fail: "Location Edit Failed: ",
+          success: "Location Severity Edited Successfully",
+          fail: "Location Severity Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit"
         },
         Info: {
-          title: "Locations ",
+          title: "Location Severity ",
           url: datalink.Request.Info,
-          success: "Locations Load Successfully",
-          fail: "Locations Load Failed: ",
+          success: "Location Severity Load Successfully",
+          fail: "Location Severity Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "Location Import",
+          title: "Location Severity Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Location Imported Successfully.",
-          fail: "Location Import Failed: ",
+          success: "Location Severity Imported Successfully.",
+          fail: "Location Severity Import Failed: ",
           schema: schema.ImportFormat,
           replace: true
         },
@@ -92,11 +92,11 @@ class Location extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Location?",
+          title: (n) => "Delete these " + n + " Location Severity?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Location Deleted Successfully.",
-          fail: "Location Delete Failed: ",
+          success: "Location Severity Deleted Successfully.",
+          fail: "Location Severity Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -106,7 +106,7 @@ class Location extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Location", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Location Severity", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -123,7 +123,7 @@ class Location extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Location.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Grouping.defaultProps))){
       this._setAllStates();
     }
   }
@@ -167,4 +167,4 @@ class Location extends Component {
 
 }
 
-export default Location;
+export default Grouping;

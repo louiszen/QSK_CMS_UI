@@ -25,6 +25,7 @@ let addOns = {
 }
 
 let defaultV = {
+  /*
   display: "DISPLAY",
   simpletext: "55555",
   simplemaskedtext: "12345",
@@ -110,6 +111,7 @@ let defaultV = {
       ]
     }
   ]
+  */
 }
 
 let test = {

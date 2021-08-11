@@ -13,7 +13,7 @@
     | "textarea"    //textarea
     | "bool"        //boolean checkbox
     | "number"      //number
-    | ("slider")     //slider
+    | "slider"     //slider
     | ("rate")        //rate
     | "password"    //password
     | "select"      //dropdown/checkbox/radio list

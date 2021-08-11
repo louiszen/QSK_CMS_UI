@@ -8,7 +8,7 @@ import { Accessor } from '@IZOArc/STATIC';
 class CellExpand extends Component {
 
   static propTypes = {
-    value: PropsType.oneOfType([PropsType.string, PropsType.number])
+    value: PropsType.oneOfType([PropsType.string, PropsType.number, PropsType.bool])
   }
 
   static defaultProps = {

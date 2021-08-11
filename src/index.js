@@ -43,6 +43,7 @@ import Question from "Pages/Questionnaire/Question/Question";
 import Scenario from "Pages/Questionnaire/Scenario/Scenario";
 import Severity from "./Pages/Severity/Severity";
 import Location from "Pages/Severity/Location/Location";
+import Grouping from "Pages/Severity/Grouping/Grouping";
 import SevGroup from "Pages/Severity/SevGroup/SevGroup";
 
 //store
@@ -69,7 +70,8 @@ function renderPages() {
     <Route key={11} path='/Questionnaire/Question' exact component={Question}/>,
     <Route key={12} path='/Questionnaire/Scenario' exact component={Scenario}/>,
     <Route key={13} path='/Severity/Location' exact component={Location}/>,
-    <Route key={14} path='/Severity/SevGroup' exact component={SevGroup}/>
+    <Route key={14} path='/Severity/SevGroup' exact component={SevGroup}/>,
+    <Route key={15} path='/Severity/Grouping' exact component={Grouping}/>
   ];
 }
 

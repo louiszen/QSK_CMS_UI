@@ -101,7 +101,7 @@ class FFSlider extends Component {
     let { ischema, iname, formValue, _onValueChange, readOnly } = this.state;
     if(!ischema){ return null; }
     let ivalue = Accessor.Get(formValue, iname);
-    if(ivalue === undefined || ivalue === null) ivalue = "";
+    if(ivalue === undefined || ivalue === null) ivalue = null;
     let ireadOnly = ischema.readOnly || readOnly;
     return (
       <Slider

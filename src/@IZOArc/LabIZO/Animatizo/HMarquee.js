@@ -16,12 +16,14 @@ class HMarquee extends Component {
 
   static propTypes = {
     width: PropsType.any,
-    speed: PropsType.number
+    speed: PropsType.number,
+    pause: PropsType.number,
   }
 
   static defaultProps = {
     width: "100%",
-    speed: 1
+    speed: 1.5,
+    pause: 2
   }
 
   constructor(){
@@ -36,6 +38,7 @@ class HMarquee extends Component {
   componentDidUpdate(prevProps, prevState){
     if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(HMarquee.defaultProps))){
       this._setAllStates();
+      return;
     }
 
     if(!this.state.element || 
@@ -43,6 +46,7 @@ class HMarquee extends Component {
           && prevState 
           && prevState.sWidth !== this.element.scrollWidth)){
       this._setAllStates();
+      return;
     }
   }
 
@@ -82,12 +86,12 @@ class HMarquee extends Component {
   }
 
   renderChildren(children){
-    let {speed, overflowed} = this.state;
+    let {speed, overflowed, pause} = this.state;
     let style = {};
     
     if(overflowed){
       style = {
-        animation: "scroll " + speed + "s linear 1s infinite"
+        animation: "scroll " + speed + "s linear " + pause + "s infinite"
       };
     }
 

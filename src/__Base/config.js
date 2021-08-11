@@ -53,6 +53,12 @@ export const MenuConfig = [
         faIcon: <Public/>,
         auth: "Severity.Location"
       },
+      {
+        caption: "Location Severity",
+        link: "/Severity/Grouping",
+        faIcon: "far fa-bookmark fa-lg",
+        auth: "Severity.Grouping"
+      },
     ]
   },
   {

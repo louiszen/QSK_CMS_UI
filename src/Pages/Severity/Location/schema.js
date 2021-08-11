@@ -1,19 +1,31 @@
+import { HStack } from "@IZOArc/LabIZO/Stackizo";
+import { Check, Close } from "@material-ui/icons";
+
 const Table = [
   {
     label: "Ref. ID",
     name: "refID"
   },
   {
-    label: "Display Name",
-    name: "display"
+    label: "in China",
+    name: "inChina",
+    Cell: (row, field, addOns) => <HStack>{field? <Check/> : <Close/>}</HStack>
   },
   {
-    label: "Severity",
-    name: "severity"
+    label: "Display Sequence",
+    name: "priority"
   },
   {
-    label: "Relevant Periods (Days)",
-    name: "period"
+    label: "Display (EN)",
+    name: "display.EN"
+  },
+  {
+    label: "Display (TC)",
+    name: "display.TC"
+  },
+  {
+    label: "Display (SC)",
+    name: "display.SC"
   },
   {
     label: "Effective Start Date",
@@ -43,20 +55,30 @@ const Tail = [
     format: "text"
   },
   {
-    label: "Display Name",
-    name: "display",
-    format: "text"
+    label: "in China?",
+    name: "inChina",
+    format: "bool",
+    boolStyle: "switch"
   },
   {
-    label: "Severity",
-    name: "severity",
+    label: "Display Sequence",
+    name: "priority",
     format: "number"
   },
   {
-    label: "Relevant Periods (Days)",
-    name: "period",
-    format: "number",
-    min: 0
+    label: "Display Name (EN)",
+    name: "display.EN",
+    format: "text"
+  },
+  {
+    label: "Display Name (TC)",
+    name: "display.TC",
+    format: "text"
+  },
+  {
+    label: "Display Name (SC)",
+    name: "display.SC",
+    format: "text"
   },
   {
     label: "Effective Start Date",
@@ -97,18 +119,26 @@ const Export = [
     name: "refID"
   },
   {
-    label: "Display Name",
-    name: "display"
+    label: "in China?",
+    name: "inChina",
+    format: "bool"
   },
   {
-    label: "Severity",
-    name: "severity",
+    label: "Display Sequence",
+    name: "priority",
     format: "number"
   },
   {
-    label: "Relevant Period (Days)",
-    name: "period",
-    format: "number"
+    label: "Display Name (EN)",
+    name: "display.EN"
+  },
+  {
+    label: "Display Name (TC)",
+    name: "display.TC"
+  },
+  {
+    label: "Display Name (SC)",
+    name: "display.SC"
   },
   {
     label: "Effective Start Date",

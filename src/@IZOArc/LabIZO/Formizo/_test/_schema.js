@@ -670,8 +670,9 @@ let datetime = [
     name: "date",
     format: "date",
     dateType: "date",
-    readOnly: true
+    dateFormat: "YYYY-MM-DD"
   },
+  /*
   {
     label: "Datetime",
     name: "datetime",
@@ -702,12 +703,14 @@ let datetime = [
     format: "date",
     dateType: "year"
   },
+  */
   {
     label: "Date Range",
     name: "daterange",
     format: "daterange",
-    dateType: "date"
+    dateType: "date",
   },
+  /*
   {
     label: "Date Range 2",
     name: "daterange2",
@@ -727,6 +730,7 @@ let datetime = [
     format: "daterange",
     dateType: "year"
   },
+  */
 ]
 
 let columns = [

@@ -12,6 +12,7 @@ import Accessizo from '@IZOArc/LabIZO/Accessizo';
 import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
 import { Accessor, store, ColorX } from '@IZOArc/STATIC';
 import { StyledButton } from '@IZOArc/LabIZO/Stylizo';
+import { HMarquee } from '@IZOArc/LabIZO/Animatizo';
 
 class MenuButton extends Component {
 
@@ -122,9 +123,11 @@ class MenuButton extends Component {
     return (
       <StyledButton theme={inPage? inPageTheme : theme}>
         <HStack padding={1} width="140px">
-          <Typography style={{fontSize: 14, opacity: store.mini? 0: 1}}>
-            {caption}
-          </Typography>
+          <HMarquee width="90px">
+            <Typography style={{fontSize: 14, opacity: store.mini? 0: 1, whiteSpace: "nowrap"}}>
+              {caption}
+            </Typography>
+          </HMarquee>
           <Spacer/>
           <VStack>
             <Spacer/>

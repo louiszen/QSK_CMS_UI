@@ -99,13 +99,23 @@ class FFDateRange extends Component {
     });
   }
 
+  _handleReturn = (value, dateFormat) => {
+    console.log(value, dateFormat);
+    if(_.isNull(value) || _.isUndefined(value)) return value;
+    if(dateFormat === "moment"){
+      if(moment.isMoment(value)) return value;
+      return moment(value, "DD/MM/YYYY HH:mm");
+    }
+    if(moment.isMoment(value)) return value.format(dateFormat);
+  }
+
   renderDatePicker(){
     let {ischema, iname, itype, formValue,  
       _onValueChange, _onBlurInlineSubmit, 
       _onFieldFocus, _onFieldBlur, readOnly} = this.state;
     if(!ischema) return null;
     let ivalue = Accessor.Get(formValue, iname);
-    let idateformat = ischema.dateFormat || "DD/MM/YYYY HH:mm";
+    let idateformat = ischema.dateFormat || "moment";
     let mvalue = ivalue ? _.map(ivalue, (o, i) => moment(o, idateformat)) : ["", ""];
     
     let ireadOnly = ischema.readOnly || readOnly;
@@ -121,7 +131,7 @@ class FFDateRange extends Component {
         showTime={itype === "datetime"}
         onChange={(moments) => {
           _onValueChange(iname, 
-            _.map(moments, (o, i) => o.format(idateformat)), ischema.validate)
+            _.map(moments, (o, i) => this._handleReturn(o, idateformat)), ischema.validate)
         }}
         onFocus={(e) => {
           _onFieldFocus();
