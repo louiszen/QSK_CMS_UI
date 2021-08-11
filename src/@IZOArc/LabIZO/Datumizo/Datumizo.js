@@ -27,6 +27,13 @@ class Datumizo extends Component {
    *  rowIdAccessor?: String,
    *  reqAuth?: String,
    *  showSelector?: Boolean,
+   * 
+   *  columnsToolbar?: Boolean,
+   *  filterToolbar?: Boolean,
+   *  densityToolbar?: Boolean,
+   *  exportToolbar?: Boolean,
+   *  density?: "standard" | "compact" | "comfortable",
+   *  defaultPageSize?: Number,
    *
    *  Connect: {
    *    DBInfo: String,
@@ -88,10 +95,6 @@ class Datumizo extends Component {
    *    right: []
    *  },
    *
-   *  columnsToolbar?: Boolean,
-   *  filterToolbar?: Boolean,
-   *  densityToolbar?: Boolean,
-   *  exportToolbar?: Boolean,
    * }
    *
    * // Button Object
@@ -159,6 +162,12 @@ class Datumizo extends Component {
       this._setInlineButtons();
       this._setInlineButtonsOpposite();
       this._fetchData();
+      
+      let {base} = this.props;
+      if(base.defaultPageSize){
+        this._onPageSizeChange(base.defaultPageSize);
+      }
+
     });
   }
 
@@ -1017,7 +1026,9 @@ class Datumizo extends Component {
         store.Alert("Import Not Implemented.", "warn");
         return;
       }
-      store.Form(base.Import.title, base.Import.content || "(File size cannot exceed 10MB, only accept .xlsx and .xls)", this._importForm, this.Import.onSubmit);
+      store.Form(base.Import.title, base.Import.content 
+        || (base.Import.replace? "CAUTION!! It will DELETE and REPLACE all the content in database. <br/>": "") + "(File size cannot exceed 10MB, only accept .xlsx and .xls)", 
+        this._importForm, this.Import.onSubmit);
     },
 
     onSubmit: async (name, value, callback) => {
@@ -1032,6 +1043,7 @@ class Datumizo extends Component {
           [name]: value,
         },
         schema: base.Import.schema || [],
+        replace: base.Import.replace || false,
         JWT: store.user.JWT,
         addOns: addOns,
       };
@@ -1040,6 +1052,7 @@ class Datumizo extends Component {
       upload.append("data", JSON.stringify(payloadOut.data || {}));
       upload.append("schema", JSON.stringify(payloadOut.schema || {}));
       upload.append("addOns", JSON.stringify(payloadOut.addOns || {}));
+      upload.append("replace", JSON.stringify(payloadOut.replace || {}));
       upload.append("JWT", store.user.JWT);
       if (payloadOut.data.upload) {
         upload.append("upload", payloadOut.data.upload, payloadOut.data.upload.name);
@@ -1322,6 +1335,7 @@ class Datumizo extends Component {
             densityToolbar={base.densityToolbar !== false}
             exportToolbar={base.exportToolbar || false}
             showSelector={base.showSelector || false}
+            density={base.density || "standard"}
           />
         </VStack>
         <Slide direction='up' in={inEdit} mountOnEnter unmountOnExit>

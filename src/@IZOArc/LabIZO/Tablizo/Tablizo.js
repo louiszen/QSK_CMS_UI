@@ -278,9 +278,15 @@ class Tablizo extends Component {
 
         let renderCell;
 
-        if(!o.Cell && o.transform === "dateTime"){
+        if(!o.Cell && o.transform === "datetime"){
           o.transform = undefined;
-          o.Cell = (row, field, addOns) => moment(field).format(o.dateFormat || "DD MMM YYYY, HH:mm:ss");
+          o.Cell = (row, field, addOns) => {
+            if(field){
+              return moment(field).format(o.dateFormat || "DD MMM YYYY, HH:mm:ss");
+            }else{
+              return o.fallback || "N/A"
+            }
+          }
         }
 
         if(o.Cell){

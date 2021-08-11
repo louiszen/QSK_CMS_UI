@@ -14,7 +14,9 @@
   filterable?: Boolean | false,
   menu?: Boolean | true,
   hide?: Boolean | false,
-  transform?: "date" | "dateTime" | "time" | null,
+  transform?: "datetime" | null,
+  dateFormat?: String | "DD MMM YYYY, HH:mm:ss",
+  fallback? String | "N/A",
   type?: "number" | "date" | "dateTime" | "time" | null,
   Cell?: (row, field, addOns) => Void,
   reqAuth?: String,
@@ -41,6 +43,8 @@
 | menu | `Boolean` || `true` | Display default menu of MUI Datagrid |
 | hide | `Boolean` || `false` | default hide column |
 | transform | `String` ||| Transform data to certain preset format `datetime, number` |
+| dateFormat | `String` ||| Format of the date transform string |
+| fallback | `String` ||| Fallback string in case of null / errors |
 | type | `String` ||| Type that determine filter / sorting variants |
 | dateFormat | `String` || `"DD MMM YYYY, HH:mm:ss"` | Date format |
 | Cell | `function (row, field, addOns) => Void` || `() => {}` | Override rendering of cell |

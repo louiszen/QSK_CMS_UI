@@ -78,8 +78,8 @@ class NavBar extends Component {
               {Project}
             </Typography>
           </Box>
-          <Box position="absolute" style={NavbarDis.style}>
-            <img src={NavbarDis.src} alt="elain" draggable={false}/>
+          <Box position="absolute" style={NavbarDis && NavbarDis.style}>
+            <img src={NavbarDis && NavbarDis.src} alt="elain" draggable={false}/>
           </Box>
           <Tooltip title="Logout" arrow={true} placement="bottom">
             <IconButton style={{color: "rgba(242, 132, 62, 1)"}} size="small" onClick={() => this._Logout()}>
