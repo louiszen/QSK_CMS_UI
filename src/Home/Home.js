@@ -458,7 +458,7 @@ class Home extends Component {
   render(){
     return (
       <VStack style={{
-          background: ColorX.GetColorCSS("bgDark"), 
+          background: ColorX.GetColorCSS("aliceblue"), 
           color: ColorX.GetColorCSS("elainOrange"),
           width: "100%"
         }}>

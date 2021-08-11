@@ -4,6 +4,7 @@ class ColorX {
 
   static __staticColor = {
     transparent: {r: 0, g: 0, b: 0, a: 0},
+    aliceblue: {r: 240, g: 248, b: 255, a: 1},
     pureWhite: {r: 255, g: 255, b: 255, a: 1},
     pureDark: {r: 0, g: 0, b: 0, a: 1},
     bgDark: {r: 29, g: 25, b: 25, a: 1},

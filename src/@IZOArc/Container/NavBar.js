@@ -12,7 +12,7 @@ import Version from '__Base/version';
 import { Accessor, ColorX, store } from '@IZOArc/STATIC';
 import { HStack, Spacer } from '@IZOArc/LabIZO/Stackizo';
 import Accessizo from '@IZOArc/LabIZO/Accessizo';
-import { Project } from '__Base/config';
+import { NavbarDis, Project } from '__Base/config';
 
 class NavBar extends Component {
 
@@ -73,13 +73,13 @@ class NavBar extends Component {
               {"v" + Version}
             </Typography>
           </Accessizo>
-          <Box width="70px" marginX={3}>
+          <Box width="fit-content" marginX={3}>
             <Typography style={{color: ColorX.GetColorCSS("elainOrange", 0.3)}}>
               {Project}
             </Typography>
           </Box>
-          <Box width="50px" marginX={3} position="absolute" right="150px" top="-20px" style={{opacity: 0.2}}>
-            <img src="/Images/QSK.png" alt="elain" draggable={false}/>
+          <Box position="absolute" style={NavbarDis.style}>
+            <img src={NavbarDis.src} alt="elain" draggable={false}/>
           </Box>
           <Tooltip title="Logout" arrow={true} placement="bottom">
             <IconButton style={{color: "rgba(242, 132, 62, 1)"}} size="small" onClick={() => this._Logout()}>

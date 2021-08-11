@@ -1,10 +1,21 @@
 import { ContactSupport, Dashboard, Public, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';
 
-export const Project = "QSK";
+export const Project = "COVID19 MiniSite";
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
+
+export const NavbarDis = {
+  src: "/Images/QSK.png",
+  style: {
+    width: 100,
+    marginX: 3,
+    right: 160,
+    top: 0,
+    opacity: 0.2
+  }
+};
 
 export const StartDate = process.env.REACT_APP_STARTDATE || "2021-02";
 
