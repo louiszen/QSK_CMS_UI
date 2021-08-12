@@ -34,6 +34,7 @@ class Datumizo extends Component {
    *  exportToolbar?: Boolean,
    *  density?: "standard" | "compact" | "comfortable",
    *  defaultPageSize?: Number,
+   *  noDefaultTable?: false,
    *
    *  Connect: {
    *    DBInfo: String,
@@ -108,6 +109,7 @@ class Datumizo extends Component {
   static propTypes = {
     //config
     base: PropsType.object,
+    inject: PropsType.oneOfType([PropsType.func, PropsType.object]),
     addOns: PropsType.object,
     onMounted: PropsType.func,
     onQuitInner: PropsType.func,
@@ -121,6 +123,7 @@ class Datumizo extends Component {
 
   static defaultProps = {
     base: {},
+    inject: null,
     addOns: {},
     onMounted: undefined,
     onQuitInner: undefined,
@@ -202,6 +205,13 @@ class Datumizo extends Component {
             QuitInner: this._QuitInner,
             SoftReload: this._SoftReload,
             GetSelectedRows: this._GetSelectedRows,
+            Add: this.Add.onClick,
+            Delete: this.Delete.onClick, //inline
+            Edit: this.Edit.onClick, //inline
+            Info: this.Info.onClick, //inline
+            DeleteBulk: this.DeleteBulk.onClick,
+            Import: this.Import.onClick,
+            Export: this.Export.onClick,
           });
         }
         if (callback) callback();
@@ -1302,58 +1312,92 @@ class Datumizo extends Component {
     );
   }
 
+  renderSlide(){
+    let { inEdit } = this.state;
+    return (
+      <Slide direction='up' in={inEdit} mountOnEnter unmountOnExit>
+        <VStack
+          width='100%'
+          paddingTop='30px'
+          paddingLeft='40px'
+          style={{
+            background: "#f9ffff",
+            zIndex: 1,
+            top: 0,
+            left: 0,
+            position: "absolute",
+          }}
+        >
+          {this.renderInner()}
+        </VStack>
+      </Slide>
+    );
+  }
+
+  renderTable(){
+    let { base, addOns, serverSidePagination } = this.props;
+    let { table, loading, inlineButtons, inlineButtonsOpposite, nav } = this.state;
+    return (
+      <Tablizo
+        width='100%'
+        height='100%'
+        onMounted={this.onMountTablizo}
+        schema={base.Connect.schema}
+        data={table.data}
+        loading={loading}
+        inlineButtons={inlineButtons}
+        inlineButtonsAlign={"left"}
+        inlineButtonsOpposite={inlineButtonsOpposite}
+        onRowSelected={this._onRowSelected}
+        rowIdAccessor={base.rowIdAccessor || "_id"}
+        pagination={true}
+        serverSidePagination={serverSidePagination}
+        rowCount={serverSidePagination ? nav.totalEntries : undefined}
+        onPageChange={this._onPageChange}
+        onPageSizeChange={this._onPageSizeChange}
+        defaultPageSize={nav.pageSize}
+        auth={store.user.authority}
+        level={store.user.level}
+        addOns={addOns}
+        columnsToolbar={base.columnsToolbar !== false}
+        filterToolbar={base.filterToolbar || false}
+        densityToolbar={base.densityToolbar !== false}
+        exportToolbar={base.exportToolbar || false}
+        showSelector={base.showSelector || false}
+        density={base.density || "standard"}
+      />
+    );
+  }
+
+  renderGridView(){
+    let {base} = this.props;
+    if(!base.noDefaultTable){
+      return (
+        <VStack width='100%'>
+          {this.renderButtons()}
+          {this.renderTable()}
+        </VStack>
+      );
+    }
+  }
+
+  renderInject(){
+    let {inject} = this.props;
+    if (inject){
+
+    }
+  }
+
   render() {
-    let { table, loading, inlineButtons, inlineButtonsOpposite, nav, base, addOns, serverSidePagination, inEdit } = this.state;
+    let { base } = this.props;
     if (!base) return <div />;
     return (
       <Box style={{ width: "100%" }} flexGrow={1}>
         <VStack width='100%' padding={1}>
-          {this.renderButtons()}
-          <Tablizo
-            width='100%'
-            height='100%'
-            onMounted={this.onMountTablizo}
-            schema={base.Connect.schema}
-            data={table.data}
-            loading={loading}
-            inlineButtons={inlineButtons}
-            inlineButtonsAlign={"left"}
-            inlineButtonsOpposite={inlineButtonsOpposite}
-            onRowSelected={this._onRowSelected}
-            rowIdAccessor={base.rowIdAccessor || "_id"}
-            pagination={true}
-            serverSidePagination={serverSidePagination}
-            rowCount={serverSidePagination ? nav.totalEntries : undefined}
-            onPageChange={this._onPageChange}
-            onPageSizeChange={this._onPageSizeChange}
-            defaultPageSize={nav.pageSize}
-            auth={store.user.authority}
-            level={store.user.level}
-            addOns={addOns}
-            columnsToolbar={base.columnsToolbar !== false}
-            filterToolbar={base.filterToolbar || false}
-            densityToolbar={base.densityToolbar !== false}
-            exportToolbar={base.exportToolbar || false}
-            showSelector={base.showSelector || false}
-            density={base.density || "standard"}
-          />
+          {this.renderInject()}
+          {this.renderGridView()}
         </VStack>
-        <Slide direction='up' in={inEdit} mountOnEnter unmountOnExit>
-          <VStack
-            width='100%'
-            paddingTop='30px'
-            paddingLeft='40px'
-            style={{
-              background: "#f9ffff",
-              zIndex: 1,
-              top: 0,
-              left: 0,
-              position: "absolute",
-            }}
-          >
-            {this.renderInner()}
-          </VStack>
-        </Slide>
+        {this.renderSlide()}
       </Box>
     );
   }

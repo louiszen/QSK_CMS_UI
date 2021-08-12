@@ -30,12 +30,12 @@ class Grouping extends Component {
         schema: schema,
         reqAuth: "Severity.Grouping",
 
-        columnsToolbar: true,
+        columnsToolbar: false,
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "standard",
-        defaultPageSize: 25,
+        density: "compact",
+        defaultPageSize: 50,
         showSelector: true,
 
         Connect: {

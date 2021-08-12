@@ -337,7 +337,7 @@ class Tablizo extends Component {
           flex: o.width? undefined : (o.flex || 1),
           valueGetter: valueGetter,
           sortable: o.sortable !== false,
-          filterable: o.filterable || false,
+          filterable: o.filterable !== false,
           disableColumnMenu: !(o.menu || false),
           type: o.type,
           renderCell: renderCell,

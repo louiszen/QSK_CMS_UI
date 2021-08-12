@@ -11,7 +11,7 @@
   width?: Number,
   flex?: Number,
   sortable?: Boolean | true,
-  filterable?: Boolean | false,
+  filterable?: Boolean | true,
   menu?: Boolean | true,
   hide?: Boolean | false,
   transform?: "datetime" | null,

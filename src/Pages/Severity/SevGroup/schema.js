@@ -19,20 +19,23 @@ const Table = [
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD"
+    dateFormat: "YYYY/MM/DD",
+    filterable: false
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     transform: "datetime",
     dateFormat: "YYYY/MM/DD",
-    fallback: " "
+    fallback: " ",
+    filterable: false
   },
   {
     label: "Last Update",
     name: "lastUpdate",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD HH:mm:ss"
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
+    filterable: false
   }
 ];
 

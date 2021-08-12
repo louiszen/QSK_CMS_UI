@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Accessor } from '@IZOArc/STATIC';
+
+import { Box, Typography } from '@material-ui/core';
+
+import schema from './schema';
+import datalink from './datalink';
+
+import Datumizo from '@IZOArc/LabIZO/Datumizo/Datumizo';
+import { VStack } from '@IZOArc/LabIZO/Stackizo';
+import { Accessor, ColorX, Authority } from '@IZOArc/STATIC';
 
 class Question extends Component {
 
@@ -13,10 +21,104 @@ class Question extends Component {
 
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      title: "Questions",
+      serverSidePagination: false, 
+      base: {
+        title: "Question",
+        exportDoc: "question",
+        schema: schema,
+        reqAuth: "Questionnaire.Question",
+
+        columnsToolbar: true,
+        filterToolbar: true,
+        densityToolbar: true,
+        exportToolbar: false,
+        density: "standard",
+        defaultPageSize: 25,
+        showSelector: true,
+        noDefaultTable: true,
+
+        Connect: {
+          DBInfo: datalink.Request.DBInfo,
+          List: datalink.Request.List,
+          schema: schema.Table
+        },
+
+        Add: {
+          title: "Add Question",
+          url: datalink.Request.Add,
+          success: "Question Added Successfully",
+          fail: "Question Add Failed: ",
+          schema: schema.Add,
+          buttons: ["Clear", "Submit"],
+          onSubmit: "Add"
+        },
+        Delete: {
+          title: "Delete this Question?",
+          content: "Caution: This is irrevertable.",
+          url: datalink.Request.Delete,
+          success: "Question Deleted Successfully.",
+          fail: "Question Delete Failed: ",
+          onSubmit: "Delete"
+        },
+        Edit: {
+          title: "Edit Question ",
+          url: datalink.Request.Edit,
+          success: "Question Edited Successfully",
+          fail: "Question Edit Failed: ",
+          schema: schema.Edit,
+          buttons: ["Revert", "Submit"],
+          onSubmit: "Edit"
+        },
+        Info: {
+          title: "Questions ",
+          url: datalink.Request.Info,
+          success: "Questions Load Successfully",
+          fail: "Questions Load Failed: ",
+          schema: schema.Info,
+          readOnly: true
+        },
+        Import: {
+          title: "Question Import",
+          content: "",
+          url: datalink.Request.Import,
+          success: "Question Imported Successfully.",
+          fail: "Question Import Failed: ",
+          schema: schema.ImportFormat
+        },
+        Export: {
+          url: datalink.Request.Export,
+          schema: schema.Export,
+        },
+        DeleteBulk: {
+          title: (n) => "Delete these " + n + " Question?",
+          content: "Caution: This is irrevertable.",
+          url: datalink.Request.DeleteBulk,
+          success: "Question Deleted Successfully.",
+          fail: "Question Delete Failed: ",
+          onSubmit: "DeleteBulk",
+        },
+
+        buttons: {
+          inline: [
+            { icon: "edit", func: "Edit", caption: "Edit", reqFunc: "Edit" },
+            { icon: "info", func: "Info", caption: "Details" },
+            { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
+          ],
+          left: [{ icon: "add", func: "Add", caption: "Add Question", reqFunc: "Add" }],
+          right: [
+            { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
+            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+          ],
+        },
+      }
+    };
   }
 
   componentDidMount(){
+    Authority.Require("Questionnaire.Question");
     this._setAllStates();
   }
 
@@ -28,7 +130,7 @@ class Question extends Component {
 
   componentWillUnmount() {
     this.setState = (state, callback) => {
-        return;
+      return;
     };
   }
 
@@ -38,11 +140,28 @@ class Question extends Component {
     }), callback);
   }
 
-  render(){
-    return (
-      <div>
+  onMountDatumizo = (callbacks) => {
+    this.MountDatumizo = callbacks;
+  }
 
-      </div>
+  render(){
+    let {base, serverSidePagination, title} = this.state;
+    return (
+      <VStack>
+        <Box padding={1} width="100%">
+          <Typography style={{
+            textAlign: "left", 
+            width: "100%",
+            fontSize: 25,
+            color: ColorX.GetColorCSS("elainOrange")
+            }}>
+            {title}
+          </Typography>
+        </Box>
+        <Datumizo
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          />
+      </VStack>
     );
   }
 
