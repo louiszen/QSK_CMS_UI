@@ -29,6 +29,7 @@ class ColorX {
     bgGreen: {r: 198, g: 239, b: 206, a: 1},
     bgRed: {r: 255, g: 199, b: 206, a: 1},
     bgYellow: {r: 255, g: 235, b: 156, a: 1},
+    bgLightYellow: {r: 255, g: 245, b: 206, a: 1},
     bgBlue: {r: 155, g: 194, b: 230, a: 1},
     bgPurple: {r: 250, g: 198, b: 255, a: 1},
     bgGrey: {r: 197, g: 197, b: 197, a: 1},

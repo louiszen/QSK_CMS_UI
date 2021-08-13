@@ -38,7 +38,14 @@ class FGFold extends Component {
 
     let {ischema, formValue, open} = this.state;
     if(!ischema) return;
-    let controlV = Accessor.Get(formValue, ischema.control);
+
+    let controlV;
+    if(ischema.controlFunc && _.isFunction(ischema.controlFunc)){
+      let v = Accessor.Get(formValue, ischema.control);
+      controlV = ischema.controlFunc(formValue, v);
+    }else{
+      controlV = Accessor.Get(formValue, ischema.control);
+    }
 
     if(ischema.inverse) { controlV = !controlV; }
     if(controlV !== open){

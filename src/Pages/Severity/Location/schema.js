@@ -9,6 +9,7 @@ const Table = [
   {
     label: "in China",
     name: "inChina",
+    width: 100,
     Cell: (row, field, addOns) => <HStack>{field? <Check/> : <Close/>}</HStack>
   },
   {

@@ -97,13 +97,26 @@ class FFRadio extends Component {
     let {ischema, addOns} = this.state;
     let options = Accessor.Get(addOns, ischema.selectRef);
     return _.map(options, (o, i) => {
+      let val; 
+      let cap; 
+      if(_.isEmpty(ischema.selectVal)){
+        val = o;
+      }else{
+        val = Accessor.Get(o, ischema.selectVal);
+      }
+      if(_.isEmpty(ischema.selectCap)){
+        cap = o;
+      }else{
+        cap = Accessor.Get(o, ischema.selectCap);
+      }
+      let disabled = ischema.selectDisable && Accessor.Get(o, ischema.selectDisable);
       return (        
         <FormControlLabel 
-          key={o[ischema.selectVal]} 
-          value={o[ischema.selectVal]} 
-          disabled={ischema.selectDisable && o[ischema.selectDisable]}
+          key={val} 
+          value={val} 
+          disabled={disabled}
           control={<Radio color="primary"/>}
-          label={o[ischema.selectCap]}
+          label={cap}
         />
       );
     });
@@ -115,6 +128,7 @@ class FFRadio extends Component {
     if(ivalue === undefined || ivalue === null) ivalue = "";
     return (
       <RadioGroup
+        key={iname}
         name={iname}
         value={ivalue}
         onChange={(e) => 

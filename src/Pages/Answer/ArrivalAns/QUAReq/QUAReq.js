@@ -34,8 +34,8 @@ class QUAReq extends Component {
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "standard",
-        defaultPageSize: 25,
+        density: "compact",
+        defaultPageSize: 50,
         showSelector: true,
         noDefaultTable: false,
 
@@ -85,7 +85,8 @@ class QUAReq extends Component {
           url: datalink.Request.Import,
           success: "Quarantine Req Imported Successfully.",
           fail: "Quarantine Req Import Failed: ",
-          schema: schema.ImportFormat
+          schema: schema.ImportFormat,
+          replace: true
         },
         Export: {
           url: datalink.Request.Export,
@@ -109,10 +110,13 @@ class QUAReq extends Component {
           left: [{ icon: "add", func: "Add", caption: "Add Quarantine Req", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
+      },
+      addOns: {
+        ansFormat: ["number", "select", "array"]
       }
     };
   }
@@ -145,7 +149,8 @@ class QUAReq extends Component {
   }
 
   render(){
-    let {base, serverSidePagination, title} = this.state;
+    let {base, serverSidePagination, title, addOns} = this.state;
+    console.log(addOns);
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -159,7 +164,7 @@ class QUAReq extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
     );

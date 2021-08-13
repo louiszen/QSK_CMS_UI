@@ -81,6 +81,7 @@ Fields can be folded and controlled by value in the form
 {
   label?: String,
   control?: String,           //accessor value should be boolean,
+  controlFunc?: (doc, field) => Boolean,
   inverse?: Boolean | false,  //inverse the fold control value
   foldStyle?: String | "outlined",
   fold: [
@@ -93,6 +94,7 @@ Fields can be folded and controlled by value in the form
 | label | `String` | ✔ || The label that describes the array field |
 | control | `String` | ✔ || The accessor that used for this array, cannot be '' at the uppermost nest |
 | inverse | `Boolean` || `false` | Inverse the control |
+| controlFunc | `(doc, field) => Boolean` ||| The function for determine fold if the control field is not boolean or straight forward |
 | foldStyle | `String` || `outlined` | The style of the container `outlined, none`|
 | fold | <code>[simple &#124; group]</code> |✔||The items array in the group |
 <br/>

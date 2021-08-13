@@ -1,8 +1,7 @@
 const Table = [
   {
-    label: "Order",
-    name: "order",
-    width: 70
+    label: "Ref. ID",
+    name: "refID"
   },
   {
     label: "Description",
@@ -10,15 +9,15 @@ const Table = [
   },
   {
     label: "Content (EN)",
-    name: "component.content.EN"
+    name: "content.EN"
   },
   {
     label: "Content (TC)",
-    name: "component.content.TC"
+    name: "content.TC"
   },
   {
     label: "Content (SC)",
-    name: "component.content.SC"
+    name: "content.SC"
   },
   {
     label: "Last Update",
@@ -31,23 +30,28 @@ const Table = [
 
 const Tail = [
   {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text"
+  },
+  {
     label: "Description",
     name: "description",
     format: "textarea"
   },
   {
     label: "Content (EN)",
-    name: "component.content.EN",
+    name: "content.EN",
     format: "textarea"
   },
   {
     label: "Content (TC)",
-    name: "component.content.TC",
+    name: "content.TC",
     format: "textarea"
   },
   {
     label: "Content (SC)",
-    name: "component.content.SC",
+    name: "content.SC",
     format: "textarea"
   },
   {
@@ -64,12 +68,6 @@ const Add = [
 ];
 
 const Info = [
-  {
-    label: "Order",
-    name: "order",
-    format: "text",
-    readOnly: true
-  },
   ...Tail
 ];
 
@@ -79,9 +77,8 @@ const Edit = [
 
 const Export = [
   {
-    label: "Order",
-    name: "order",
-    format: "number"
+    label: "Ref. ID",
+    name: "refID"
   },
   {
     label: "Description",
@@ -89,15 +86,15 @@ const Export = [
   },
   {
     label: "Content (EN)",
-    name: "component.content.EN"
+    name: "content.EN"
   },
   {
     label: "Content (TC)",
-    name: "component.content.TC"
+    name: "content.TC"
   },
   {
     label: "Content (SC)",
-    name: "component.content.SC"
+    name: "content.SC"
   },
   {
     label: "Last Update",

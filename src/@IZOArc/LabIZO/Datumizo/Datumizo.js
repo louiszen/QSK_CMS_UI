@@ -34,6 +34,7 @@ class Datumizo extends Component {
    *  exportToolbar?: Boolean,
    *  density?: "standard" | "compact" | "comfortable",
    *  defaultPageSize?: Number,
+   *  noDefaultButtons?: false,
    *  noDefaultTable?: false,
    *
    *  Connect: {
@@ -422,6 +423,7 @@ class Datumizo extends Component {
   };
 
   _getIcons = (name, size = "default") => {
+    if(!_.isString(name)) { return name; }
     let xname = name.toLowerCase();
     switch (xname) {
       case "edit":
@@ -1284,13 +1286,15 @@ class Datumizo extends Component {
 
   renderButtons() {
     let { base } = this.props;
-    return (
-      <HStack marginBottom={1}>
-        {this.renderTableButtons(base.buttons.left, true)}
-        <Spacer />
-        {this.renderTableButtons(base.buttons.right, false)}
-      </HStack>
-    );
+    if(!base.noDefaultButtons){
+      return (
+        <HStack marginBottom={1}>
+          {this.renderTableButtons(base.buttons.left, true)}
+          <Spacer />
+          {this.renderTableButtons(base.buttons.right, false)}
+        </HStack>
+      );
+    }
   }
 
   renderInner() {
@@ -1337,54 +1341,58 @@ class Datumizo extends Component {
   renderTable(){
     let { base, addOns, serverSidePagination } = this.props;
     let { table, loading, inlineButtons, inlineButtonsOpposite, nav } = this.state;
-    return (
-      <Tablizo
-        width='100%'
-        height='100%'
-        onMounted={this.onMountTablizo}
-        schema={base.Connect.schema}
-        data={table.data}
-        loading={loading}
-        inlineButtons={inlineButtons}
-        inlineButtonsAlign={"left"}
-        inlineButtonsOpposite={inlineButtonsOpposite}
-        onRowSelected={this._onRowSelected}
-        rowIdAccessor={base.rowIdAccessor || "_id"}
-        pagination={true}
-        serverSidePagination={serverSidePagination}
-        rowCount={serverSidePagination ? nav.totalEntries : undefined}
-        onPageChange={this._onPageChange}
-        onPageSizeChange={this._onPageSizeChange}
-        defaultPageSize={nav.pageSize}
-        auth={store.user.authority}
-        level={store.user.level}
-        addOns={addOns}
-        columnsToolbar={base.columnsToolbar !== false}
-        filterToolbar={base.filterToolbar || false}
-        densityToolbar={base.densityToolbar !== false}
-        exportToolbar={base.exportToolbar || false}
-        showSelector={base.showSelector || false}
-        density={base.density || "standard"}
-      />
-    );
-  }
 
-  renderGridView(){
-    let {base} = this.props;
     if(!base.noDefaultTable){
       return (
-        <VStack width='100%'>
-          {this.renderButtons()}
-          {this.renderTable()}
-        </VStack>
+        <Tablizo
+          width='100%'
+          height='100%'
+          onMounted={this.onMountTablizo}
+          schema={base.Connect.schema}
+          data={table.data}
+          loading={loading}
+          inlineButtons={inlineButtons}
+          inlineButtonsAlign={"left"}
+          inlineButtonsOpposite={inlineButtonsOpposite}
+          onRowSelected={this._onRowSelected}
+          rowIdAccessor={base.rowIdAccessor || "_id"}
+          pagination={true}
+          serverSidePagination={serverSidePagination}
+          rowCount={serverSidePagination ? nav.totalEntries : undefined}
+          onPageChange={this._onPageChange}
+          onPageSizeChange={this._onPageSizeChange}
+          defaultPageSize={nav.pageSize}
+          auth={store.user.authority}
+          level={store.user.level}
+          addOns={addOns}
+          columnsToolbar={base.columnsToolbar !== false}
+          filterToolbar={base.filterToolbar || false}
+          densityToolbar={base.densityToolbar !== false}
+          exportToolbar={base.exportToolbar || false}
+          showSelector={base.showSelector || false}
+          density={base.density || "standard"}
+        />
       );
     }
   }
 
+  renderGridView(){
+    return (
+      <VStack width='100%'>
+        {this.renderButtons()}
+        {this.renderTable()}
+      </VStack>
+    );
+  }
+
   renderInject(){
     let {inject} = this.props;
+    let {table, loading} = this.state;
     if (inject){
-
+      if(_.isFunction(inject)){
+        return inject(table, loading);
+      }
+      return inject;
     }
   }
 
@@ -1392,8 +1400,8 @@ class Datumizo extends Component {
     let { base } = this.props;
     if (!base) return <div />;
     return (
-      <Box style={{ width: "100%" }} flexGrow={1}>
-        <VStack width='100%' padding={1}>
+      <Box style={{ width: "100%"}} flexGrow={base.noDefaultTable? undefined: 1}>
+        <VStack width='100%' padding={1} alignItems="flex-start"> 
           {this.renderInject()}
           {this.renderGridView()}
         </VStack>

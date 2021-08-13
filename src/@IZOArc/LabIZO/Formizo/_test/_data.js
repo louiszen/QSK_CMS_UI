@@ -21,6 +21,11 @@ let addOns = {
       cap: "Option 5",
       val: "opt5"
     }
+  ],
+  check: [
+    "A",
+    "B",
+    "C"
   ]
 }
 

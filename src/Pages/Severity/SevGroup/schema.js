@@ -9,7 +9,8 @@ const Table = [
   },
   {
     label: "Severity",
-    name: "severity"
+    name: "severity",
+    width: 150
   },
   {
     label: "Relevant Periods (Days)",

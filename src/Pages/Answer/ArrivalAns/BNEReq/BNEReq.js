@@ -34,8 +34,8 @@ class BNEReq extends Component {
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "standard",
-        defaultPageSize: 25,
+        density: "compact",
+        defaultPageSize: 50,
         showSelector: true,
         noDefaultTable: false,
 
@@ -85,7 +85,8 @@ class BNEReq extends Component {
           url: datalink.Request.Import,
           success: "Boarding & Entry Req Imported Successfully.",
           fail: "Boarding & Entry Req Import Failed: ",
-          schema: schema.ImportFormat
+          schema: schema.ImportFormat,
+          replace: true
         },
         Export: {
           url: datalink.Request.Export,
@@ -109,8 +110,8 @@ class BNEReq extends Component {
           left: [{ icon: "add", func: "Add", caption: "Add Boarding & Entry Req", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
       }

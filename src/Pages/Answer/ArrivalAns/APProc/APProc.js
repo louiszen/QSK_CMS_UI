@@ -34,8 +34,8 @@ class APProc extends Component {
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "standard",
-        defaultPageSize: 25,
+        density: "compact",
+        defaultPageSize: 50,
         showSelector: true,
         noDefaultTable: false,
 
@@ -85,7 +85,8 @@ class APProc extends Component {
           url: datalink.Request.Import,
           success: "Airport Proc Imported Successfully.",
           fail: "Airport Proc Import Failed: ",
-          schema: schema.ImportFormat
+          schema: schema.ImportFormat,
+          replace: true
         },
         Export: {
           url: datalink.Request.Export,

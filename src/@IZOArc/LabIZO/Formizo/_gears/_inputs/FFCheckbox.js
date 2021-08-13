@@ -99,13 +99,27 @@ class FFCheckbox extends Component {
     let options = Accessor.Get(addOns, ischema.selectRef);
 
     return _.map(options, (o, i) => {
-      let ovalue = Accessor.Get(ivalue, o[ischema.selectVal]) || false;
-      let oname = iname + "." + o[ischema.selectVal];
+      let val; 
+      let cap; 
+      if(_.isEmpty(ischema.selectVal)){
+        val = o;
+      }else{
+        val = Accessor.Get(o, ischema.selectVal);
+      }
+      if(_.isEmpty(ischema.selectCap)){
+        cap = o;
+      }else{
+        cap = Accessor.Get(o, ischema.selectCap);
+      }
+      let disabled = ischema.selectDisable && Accessor.Get(o, ischema.selectDisable);
+
+      let ovalue = Accessor.Get(ivalue, val) || false;
+      let oname = iname + "." + val;
       return (        
         <FormControlLabel 
           key={oname} 
           value={ovalue} 
-          disabled={ischema.selectDisable && o[ischema.selectDisable]}
+          disabled={disabled}
           control={
             <Checkbox 
               color="primary" 
@@ -115,7 +129,7 @@ class FFCheckbox extends Component {
                   e.target.checked, ischema.validate)
               } 
               name="" />}
-          label={o[ischema.selectCap]}
+          label={cap}
         />
       );
     });

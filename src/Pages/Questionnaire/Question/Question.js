@@ -6,8 +6,11 @@ import schema from './schema';
 import datalink from './datalink';
 
 import Datumizo from '@IZOArc/LabIZO/Datumizo/Datumizo';
-import { VStack } from '@IZOArc/LabIZO/Stackizo';
+import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from '@IZOArc/STATIC';
+import QuestionBlock from './QuestionBlock/QuestionBlock';
+import _ from 'lodash';
+import { Launch } from '@material-ui/icons';
 
 class Question extends Component {
 
@@ -37,6 +40,7 @@ class Question extends Component {
         density: "standard",
         defaultPageSize: 25,
         showSelector: true,
+        noDefaultButtons: false,
         noDefaultTable: true,
 
         Connect: {
@@ -108,13 +112,20 @@ class Question extends Component {
           ],
           left: [{ icon: "add", func: "Add", caption: "Add Question", reqFunc: "Add" }],
           right: [
-            { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            //{ icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
+            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            { icon: <Launch/>, func: this.GenerateScenario, caption: "Generate Scenarios", reqFunc: "Generate", theme: "caution"}
           ],
         },
       }
     };
+  }
+
+  GenerateScenario = {
+    onClick: () => {
+      console.log("HELLO");
+    }
   }
 
   componentDidMount(){
@@ -140,14 +151,59 @@ class Question extends Component {
     }), callback);
   }
 
+  _onDataChange = (data) => {
+    this.setState({
+      data: data
+    });
+  }
+
+  _toEdit = (id, doc) => {
+    if(this.MountDatumizo){
+      this.MountDatumizo.Edit(id, doc);
+    }
+  }
+
+  _toInfo = (id, doc) => {
+    if(this.MountDatumizo){
+      this.MountDatumizo.Info(id, doc);
+    }
+  }
+
+  _toDelete = (id, doc) => {
+    if(this.MountDatumizo){
+      this.MountDatumizo.Delete(id, doc);
+    }
+  }
+  
+  onWheel = (e) => {
+    let container = document.getElementById("hccontainer");
+    let containerScrollPosition = container.scrollLeft;
+    container.scrollTo({
+        top: 0,
+        left: containerScrollPosition + e.deltaY,
+        behaviour: 'smooth' //if you want smooth scrolling
+    })
+}
+
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;
+  }
+
+  renderQuestionBlocks(){
+    let {data} = this.state;
+    return (
+      <VStack id="hccontainer" flexGrow={1} width="100%" alignItems="flex-start" style={{overflow: "auto", paddingBottom: 10}} onWheel={this.onWheel}>
+        <HStack width="fit-content" style={{padding: 5}} flexGrow={1}>
+        {_.map(data, (o, i) => <QuestionBlock key={i} doc={o} toEdit={this._toEdit} toInfo={this._toInfo} toDelete={this._toDelete}/>)}
+        </HStack>
+      </VStack>
+    );
   }
 
   render(){
     let {base, serverSidePagination, title} = this.state;
     return (
-      <VStack>
+      <VStack alignItems="flex-start" paddingX={1}>
         <Box padding={1} width="100%">
           <Typography style={{
             textAlign: "left", 
@@ -159,8 +215,10 @@ class Question extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} onDataChange={this._onDataChange}
           />
+        {this.renderQuestionBlocks()}
+        <Spacer height={15}/>
       </VStack>
     );
   }

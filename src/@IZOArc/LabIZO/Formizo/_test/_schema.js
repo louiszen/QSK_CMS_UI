@@ -3,6 +3,36 @@ import HStack from '@IZOArc/LabIZO/Stackizo/HStack';
 
 let simple = [
   {
+    label: "Check",
+    name: "check",
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "check",
+    selectCap: "",
+    selectVal: "",
+    selectDirection: "row"
+  },
+  {
+    label: "testarray2 Header",
+    name: "testarray2",
+    canAdd: true,
+    canDelete: true,
+    arrayStyle: "card",
+    array: [
+      {
+        label: "Check",
+        name: "check",
+        format: "select",
+        selectStyle: "checkbox",
+        selectRef: "check",
+        selectCap: "",
+        selectVal: "",
+        selectDirection: "row"
+      },
+    ]
+  },
+  /*
+  {
     header: "Header"
   },
   {
@@ -156,6 +186,7 @@ let simple = [
     name: "simplenumber",
     format: "number"
   }
+  */
 ];
 
 let select = [
