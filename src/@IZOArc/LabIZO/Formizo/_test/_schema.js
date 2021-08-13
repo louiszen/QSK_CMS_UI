@@ -13,6 +13,18 @@ let simple = [
     selectDirection: "row"
   },
   {
+    label: "",
+    control: "check",
+    controlFunc: (doc, field) => field === "A",
+    fold: [
+      {
+        label: "Separator",
+        name: "separator",
+        format: "text"
+      }
+    ]
+  },
+  {
     label: "testarray2 Header",
     name: "testarray2",
     canAdd: true,
@@ -23,11 +35,23 @@ let simple = [
         label: "Check",
         name: "check",
         format: "select",
-        selectStyle: "checkbox",
+        selectStyle: "radio",
         selectRef: "check",
         selectCap: "",
         selectVal: "",
         selectDirection: "row"
+      },
+      {
+        label: "",
+        control: "check",
+        controlFunc: (doc, field) => field === "A",
+        fold: [
+          {
+            label: "Separator",
+            name: "separator",
+            format: "text"
+          }
+        ]
       },
     ]
   },

@@ -36,15 +36,25 @@ class FGFold extends Component {
       this._setAllStates();
     }
 
-    let {ischema, formValue, open} = this.state;
+    let {ischema, formValue, open, preAccessor} = this.state;
     if(!ischema) return;
-
     let controlV;
+    let iname = ischema.control;
+    if(!_.isEmpty(preAccessor)){
+      if(!_.isEmpty(ischema.control)){
+        iname = preAccessor + "." + ischema.control;
+      }else{
+        iname = preAccessor;
+      }
+    }
+
+    console.log(iname)
+
     if(ischema.controlFunc && _.isFunction(ischema.controlFunc)){
-      let v = Accessor.Get(formValue, ischema.control);
+      let v = Accessor.Get(formValue, iname);
       controlV = ischema.controlFunc(formValue, v);
     }else{
-      controlV = Accessor.Get(formValue, ischema.control);
+      controlV = Accessor.Get(formValue, iname);
     }
 
     if(ischema.inverse) { controlV = !controlV; }
