@@ -71,7 +71,7 @@ class LangTabs extends Component {
     };
     return _.map(langs, (o, i) => {
       return (
-        <StyledButton onClick={() => this.onChangeTab(o)} theme={value === o? ontheme : offtheme}>
+        <StyledButton key={i} onClick={() => this.onChangeTab(o)} theme={value === o? ontheme : offtheme}>
           {o}
         </StyledButton>
       )

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Accessor, ColorX, store } from '@IZOArc/STATIC';
 import PropsType from 'prop-types';
 import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
-import { Tooltip, Typography } from '@material-ui/core';
+import { Tooltip, Typography, Collapse } from '@material-ui/core';
 import _ from 'lodash';
-import { DeleteForever, Edit, InfoOutlined } from '@material-ui/icons';
+import {  ArrowLeft, ArrowRight, DeleteForever, Edit, ExpandLess, ExpandMore, InfoOutlined } from '@material-ui/icons';
 import { StyledIconButton } from '@IZOArc/LabIZO/Stylizo';
 import LangTabs from './LangTabs';
 
@@ -17,7 +17,9 @@ class QuestionBlock extends Component {
     doc: PropsType.object,
     toEdit: PropsType.func,
     toInfo: PropsType.func,
-    toDelete: PropsType.func
+    toDelete: PropsType.func,
+    toLeft: PropsType.func,
+    toRight: PropsType.func,
   }
 
   static defaultProps = {
@@ -25,11 +27,15 @@ class QuestionBlock extends Component {
     toEdit: null,
     toInfo: null,
     toDelete: null,
+    toLeft: null,
+    toRight: null,
   }
 
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      choiceDetails: false
+    };
   }
 
   componentDidMount(){
@@ -52,6 +58,12 @@ class QuestionBlock extends Component {
     this.setState((state, props) => ({
       ...props,
     }), callback);
+  }
+
+  _onToggleChoice = () => {
+    this.setState((s, p) => ({
+      choiceDetails: !s.choiceDetails
+    }));
   }
 
   renderNoCond(){
@@ -87,9 +99,9 @@ class QuestionBlock extends Component {
     );
   }
 
-  renderCondList(){
+  renderCondList(accessor){
     let {doc} = this.props;
-    let conditions = Accessor.Get(doc, "conditions.$or");
+    let conditions = Accessor.Get(doc, accessor);
     if(!conditions){
       return this.renderNoCond();
     }else{
@@ -113,20 +125,20 @@ class QuestionBlock extends Component {
     }
   }
 
-  renderQCond(){
+  renderQCond(title, accessor){
     return (
-      <VStack justifyContent="flex-start" width="100%" height={200} style={{background: ColorX.GetBGColorCSS("lightYellow")}}>
+      <VStack justifyContent="flex-start" width="100%" height={150} style={{background: ColorX.GetBGColorCSS("lightYellow")}}>
         <Typography style={{fontSize: 12, width: "100%", fontWeight: "bold"}}>
-          {"Prerequisites:"}
+          {title}
         </Typography>
-        {this.renderCondList()}
+        {this.renderCondList(accessor)}
       </VStack>
     );
   }
 
   renderQContent(doc, lang){
     return (
-      <Typography style={{width: "100%"}}>
+      <Typography style={{width: "100%"}} key={lang}>
         {Accessor.Get(doc, "question.title." + lang)}
       </Typography>
     )
@@ -225,6 +237,7 @@ class QuestionBlock extends Component {
 
   renderChoice(){
     let {doc} = this.props;
+    let {choiceDetails} = this.state;
     return (
       <VStack width="100%" spacing={5}>
         <Typography style={{fontSize: 12, width: "100%", fontWeight: "bold" }}>
@@ -234,7 +247,6 @@ class QuestionBlock extends Component {
           <Typography style={{fontSize: 12, width: "100%"}}>
             {"Multi-Select:"}
           </Typography>
-          
           <Typography style={{fontSize: 12, width: "100%"}}>
             {Accessor.Get(doc, "choices.multiSelect")? "YES" : "NO"}
           </Typography>
@@ -271,13 +283,35 @@ class QuestionBlock extends Component {
           </Typography>
         </HStack>
         {Accessor.Get(doc, "choices.mapping.extDB") === true && this.rednerMappingExtDB()}
-        
+      </VStack>
+    );
+  }
+
+  renderPossibleAns(){
+    let {doc} = this.props;
+    let posAns = Accessor.Get(doc, "possibleAns");
+    return (
+      <VStack width="100%">
+        <Typography key={"pa"} style={{fontSize: 12, width: "100%", fontWeight: "bold" }}>
+          {"Possible Outcomes:"}
+        </Typography>
+        <HStack justifyContent="flex-start" spacing={5}>
+        {_.map(posAns, (o, i) => {
+          if(_.isBoolean(o)) o = o? "true" : "false";
+          return (
+            <Typography style={{fontSize: 12}} key={i}>
+              {o + (i !== posAns.length - 1 ? "," : "")}
+            </Typography>
+          );
+        })}
+        </HStack>
       </VStack>
     );
   }
 
   renderAnswer(){
     let {doc} = this.props;
+    let sel = Accessor.Get(doc, "variant") === "select";
     return (
       <VStack width="100%" height="fit-content">
         <HStack spacing={5}>
@@ -288,15 +322,47 @@ class QuestionBlock extends Component {
             {Accessor.Get(doc, "variant")}
           </Typography>
         </HStack>
-        {Accessor.Get(doc, "variant") === "select" && this.renderChoice()}
+        {sel && this.renderChoice()}
+        {this.renderPossibleAns()}
       </VStack>
+    );
+  }
+
+  renderDes(){
+    let {doc} = this.props;
+    return (
+      <VStack width="100%" height={80}>
+        <Typography style={{fontSize: 12, width: "100%", fontWeight: "bold" }}>
+          {"Description:"}
+        </Typography>
+        <Typography style={{fontSize: 12, width: "100%" }}>
+          {Accessor.Get(doc, "description")}
+        </Typography>
+      </VStack>
+    );  
+  }
+
+  renderDefaultAns(){
+    let {doc} = this.props;
+    let val = Accessor.Get(doc, "default");
+    if(_.isBoolean(val)) val = val? "true" : "false";
+    return (
+      <HStack width="100%">
+        <Typography style={{fontSize: 12, width: "100%", fontWeight: "bold" }}>
+          {"Default Outcome:"}
+        </Typography>
+        <Typography style={{fontSize: 12, width: "100%" }}>
+          {val}
+        </Typography>
+      </HStack>
     );
   }
 
   renderQuestion(){
     return (
       <VStack justifyContent="flex-start" width="100%">
-        {this.renderQCond()}
+        {this.renderDes()}
+        {this.renderQCond("Prerequisites:", "conditions.$or")}
         {this.renderQ()}
         {this.renderAnswer()}
       </VStack>
@@ -307,7 +373,10 @@ class QuestionBlock extends Component {
     let {doc} = this.props;
     return (
       <VStack justifyContent="flex-start" width="100%">
-        
+        {this.renderDes()}
+        {this.renderDefaultAns()}
+        {this.renderQCond("Except:", "except.$or")}
+        {this.renderAnswer()}
       </VStack>
     );
   }
@@ -334,7 +403,7 @@ class QuestionBlock extends Component {
   }
 
   renderRefID(){
-    let {doc, toEdit, toInfo, toDelete} = this.props;
+    let {doc, toEdit, toInfo, toDelete, toLeft, toRight} = this.props;
     return (
       <HStack width="100%">
         <Typography style={{width: "100%", fontSize: 18, fontWeight: "bold", color: doc.type === "verdict" ? ColorX.GetColorCSS("purple"): undefined}}>
@@ -342,6 +411,18 @@ class QuestionBlock extends Component {
         </Typography>
         <Spacer/>
         <HStack width="fit-content">
+        {this.renderIconButton({
+            theme: {label: "black"},
+            caption: "Left",
+            icon: <ArrowLeft size="small"/>,
+            func: toLeft
+          })}
+          {this.renderIconButton({
+            theme: {label: "black"},
+            caption: "Right",
+            icon: <ArrowRight size="small"/>,
+            func: toRight
+          })}
           {this.renderIconButton({
             theme: {label: "blue"},
             caption: "Edit",
