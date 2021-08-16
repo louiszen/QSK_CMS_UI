@@ -311,7 +311,7 @@ class Tablizo extends Component {
         }
 
         let sortComparator = undefined;
-        if(o.sortComparator){
+        if(_.isFunction(o.sortComparator)){
           sortComparator = (v1, v2, param1, param2) => {
             return o.sortComparator(param1.row, param2.row, Accessor.Get(param1.row, o.name), Accessor.Get(param2.row, o.name));
           };
@@ -348,7 +348,7 @@ class Tablizo extends Component {
           hide: o.hide
         };
 
-        if(o.sortComparator) rtn.sortComparator = sortComparator;
+        if(sortComparator) rtn.sortComparator = sortComparator;
         return rtn;
       }
     });

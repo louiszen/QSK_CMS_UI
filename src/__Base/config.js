@@ -1,7 +1,12 @@
+import { ColorX } from '@IZOArc/STATIC';
+import { Typography } from '@material-ui/core';
 import { ContactSupport, Dashboard, Public, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';
 
-export const Project = "COVID19 MiniSite";
+export const Project = 
+<Typography style={{color: ColorX.GetColorCSS("elainOrange")}}>
+  {"COVID19 MiniSite"}
+</Typography> ;
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
