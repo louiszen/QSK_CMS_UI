@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Accessor, ColorX, store } from '@IZOArc/STATIC';
 import PropsType from 'prop-types';
 import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
-import { Tooltip, Typography, Collapse } from '@material-ui/core';
+import { Tooltip, Typography } from '@material-ui/core';
 import _ from 'lodash';
-import {  ArrowLeft, ArrowRight, DeleteForever, Edit, ExpandLess, ExpandMore, InfoOutlined } from '@material-ui/icons';
+import {  ArrowLeft, ArrowRight, DeleteForever, Edit, InfoOutlined } from '@material-ui/icons';
 import { StyledIconButton } from '@IZOArc/LabIZO/Stylizo';
 import LangTabs from './LangTabs';
 
@@ -237,7 +237,6 @@ class QuestionBlock extends Component {
 
   renderChoice(){
     let {doc} = this.props;
-    let {choiceDetails} = this.state;
     return (
       <VStack width="100%" spacing={5}>
         <Typography style={{fontSize: 12, width: "100%", fontWeight: "bold" }}>
@@ -370,7 +369,6 @@ class QuestionBlock extends Component {
   }
 
   renderVerdict(){
-    let {doc} = this.props;
     return (
       <VStack justifyContent="flex-start" width="100%">
         {this.renderDes()}
