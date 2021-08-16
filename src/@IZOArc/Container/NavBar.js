@@ -74,9 +74,7 @@ class NavBar extends Component {
             </Typography>
           </Accessizo>
           <Box width="fit-content" marginX={3}>
-            <Typography style={{color: ColorX.GetColorCSS("elainOrange", 0.3)}}>
-              {Project}
-            </Typography>
+            {Project}
           </Box>
           <Box position="absolute" style={NavbarDis && NavbarDis.style}>
             <img src={NavbarDis && NavbarDis.src} alt="elain" draggable={false}/>
