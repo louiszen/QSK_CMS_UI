@@ -18,6 +18,7 @@ class CellExpand extends Component {
   constructor(){
     super();
     this.state = {
+      inDiv: false,
       showPopper: false,
       showFullCell: false,
       anchorEl: null
@@ -46,33 +47,29 @@ class CellExpand extends Component {
     }), callback);
   }
 
-  onMouseEnter = () => {
+  onMouseEnter = (e) => {
     let {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.cellValue;
     let isCurrentlyOverflown = clientHeight < scrollHeight || clientWidth < scrollWidth;
-    this.setShowPopper(isCurrentlyOverflown);
-    this.setAnchorEl(this.cellDiv);
-    this.setShowFullCell(true);
+    this.setState({
+      inDiv: true
+    }, () => {
+      setTimeout(() => {
+        let {inDiv} = this.state;
+        if(inDiv){
+          this.setState({
+            showFullCell: true,
+            showPopper: isCurrentlyOverflown,
+            anchorEl: this.cellDiv
+          })
+        }
+      }, 500);
+    });
   }
 
   onMouseLeave = () => {
-    this.setShowFullCell(false);
-  }
-
-  setShowFullCell = (f) => {
     this.setState({
-      showFullCell: f
-    });
-  }
-
-  setAnchorEl = (e) => {
-    this.setState({
-      anchorEl: e
-    });
-  }
-
-  setShowPopper = (f) => {
-    this.setState({
-      showPopper: f
+      inDiv: false,
+      showFullCell: false
     });
   }
 
@@ -116,7 +113,7 @@ class CellExpand extends Component {
         <Popper
           open={showFullCell && anchorEl != null}
           anchorEl={anchorEl}
-          style={{ width, marginLeft: -17, zIndex: 50 }}
+          style={{ width, marginLeft: -17, zIndex: 50}}
         >
           <Paper
             elevation={1}

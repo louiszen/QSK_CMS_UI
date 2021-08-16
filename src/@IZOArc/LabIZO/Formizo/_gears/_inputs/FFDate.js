@@ -98,7 +98,6 @@ class FFDate extends Component {
   }
 
   _handleReturn = (value, dateFormat) => {
-    console.log(value, dateFormat);
     if(_.isNull(value) || _.isUndefined(value)) return value;
     if(dateFormat === "moment"){
       if(moment.isMoment(value)) return value;
