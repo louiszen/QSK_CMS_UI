@@ -65,7 +65,12 @@ class FFAutoComplete extends Component {
     let {formValue, ischema, iname, addOns} = this.state;
     let ivalue = Accessor.Get(formValue, iname);
     if(ivalue){
-      let options = Accessor.Get(addOns, ischema.selectRef);
+      let options;
+      if(_.isArray(ischema.selectRef)){
+        options = ischema.selectRef;
+      }else{
+        options = Accessor.Get(addOns, ischema.selectRef);
+      }
       let filtered = _.filter(options, (o, i) => Accessor.Get(o, ischema.selectVal) === ivalue);
       if(filtered.length === 1){
         let capValue = Accessor.Get(filtered[0], ischema.selectCap);

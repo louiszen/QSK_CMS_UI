@@ -96,7 +96,12 @@ class FFCheckbox extends Component {
 
   renderOption(ivalue){
     let {ischema, addOns, iname, _onValueChange} = this.state;
-    let options = Accessor.Get(addOns, ischema.selectRef);
+    let options;
+    if(_.isArray(ischema.selectRef)){
+      options = ischema.selectRef;
+    }else{
+      options = Accessor.Get(addOns, ischema.selectRef);
+    }
 
     return _.map(options, (o, i) => {
       let val; 

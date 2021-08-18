@@ -95,7 +95,12 @@ class FFRadio extends Component {
 
   renderOption(){
     let {ischema, addOns} = this.state;
-    let options = Accessor.Get(addOns, ischema.selectRef);
+    let options;
+    if(_.isArray(ischema.selectRef)){
+      options = ischema.selectRef;
+    }else{
+      options = Accessor.Get(addOns, ischema.selectRef);
+    }
     return _.map(options, (o, i) => {
       let val; 
       let cap; 

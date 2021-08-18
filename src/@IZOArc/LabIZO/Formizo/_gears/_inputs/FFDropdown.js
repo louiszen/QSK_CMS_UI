@@ -95,7 +95,12 @@ class FFDropdown extends Component {
 
   renderOption(){
     let {ischema, addOns} = this.state;
-    let options = Accessor.Get(addOns, ischema.selectRef);
+    let options;
+    if(_.isArray(ischema.selectRef)){
+      options = ischema.selectRef;
+    }else{
+      options = Accessor.Get(addOns, ischema.selectRef);
+    }
     return _.map(options, (o, i) => {
       let v = _.isEmpty(ischema.selectVal) ? o : Accessor.Get(o, ischema.selectVal);
       let c = _.isEmpty(ischema.selectCap) ? o : Accessor.Get(o, ischema.selectCap);

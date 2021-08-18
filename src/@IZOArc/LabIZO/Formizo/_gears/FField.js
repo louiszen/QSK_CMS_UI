@@ -10,6 +10,7 @@ import {FFText, FFHidden, FFPassword, FFNumber,
 import { Accessor } from '@IZOArc/STATIC';
 import { StyledButton } from '@IZOArc/LabIZO/Stylizo';
 import { HStack, Spacer } from '@IZOArc/LabIZO/Stackizo';
+import FFRichText from './_inputs/FFRichText';
 
 class FField extends Component {
 
@@ -165,7 +166,7 @@ class FField extends Component {
 
     return (
       <FFText
-        key={"test"}
+        key={"text"}
         ifieldStyle={ifieldStyle}
         _onFieldFocus={this._onFieldFocus}
         _onFieldBlur={this._onFieldBlur}
@@ -180,7 +181,22 @@ class FField extends Component {
 
     return (
       <FFTextarea
-        key={"testarea"}
+        key={"textarea"}
+        ifieldStyle={ifieldStyle}
+        _onFieldFocus={this._onFieldFocus}
+        _onFieldBlur={this._onFieldBlur}
+        {...this.props}
+        />
+    );
+  }
+
+  renderRichText(){
+    let {ischema, fieldStyle} = this.state;
+    let ifieldStyle = (ischema.variant || fieldStyle);
+
+    return (
+      <FFRichText
+        key={"richtext"}
         ifieldStyle={ifieldStyle}
         _onFieldFocus={this._onFieldFocus}
         _onFieldBlur={this._onFieldBlur}
@@ -344,6 +360,8 @@ class FField extends Component {
         return this.renderUpload();
       case 'slider':
         return this.renderSlider();
+      case 'richtext':
+        return this.renderRichText();
       default:
     }
   }

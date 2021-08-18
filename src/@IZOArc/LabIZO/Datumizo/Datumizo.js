@@ -900,7 +900,7 @@ class Datumizo extends Component {
         return;
       }
       let url = DOMAIN + base.Export.url;
-      let selected = this.MountTablizo.GetSelectedRows();
+      let selected = this.MountTablizo? this.MountTablizo.GetSelectedRows() : [];
 
       let payloadOut = {
         JWT: store.user.JWT,
@@ -943,6 +943,10 @@ class Datumizo extends Component {
   DeleteBulk = {
     onClick: () => {
       let { base } = this.props;
+      if(!this.MountTablizo){
+        store.Alert("No rows are selected.", "warn");
+        return;
+      }
       let selected = this.MountTablizo.GetSelectedRows();
       if (selected.length <= 0) {
         store.Alert("No rows are selected.", "warn");

@@ -18,7 +18,8 @@
     | "password"    //password
     | "select"      //dropdown/checkbox/radio list
     | "hidden"      //hidden
-    | "display",    //for display only
+    | "display"    //for display only
+    | "richtext"  //rich text editor
 
   defaultValue?: String | Number | Boolean | Date,
   variant?: "row" | "standard" | "filled" | "outlined",
@@ -79,7 +80,7 @@
 
   //select specific
   selectStyle?: "dropdown" | "radio" | "checkbox"
-  selectRef?: String  //accessor for select type ref 
+  selectRef?: String | Array //accessor for select type ref 
   selectCap?: String  //option caption accessor from selectRef 
   selectVal?: String   //option value accessor from selectRef 
   selectEnable?: String   //option enabled accessor from selectRef 

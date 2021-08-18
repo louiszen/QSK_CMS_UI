@@ -1,7 +1,26 @@
 import React from 'react';
 import HStack from '@IZOArc/LabIZO/Stackizo/HStack';
+import { ZRichText } from '@IZOArc/STATIC';
 
 let simple = [
+  {
+    label: "Test RTE",
+    name: "rte",
+    format: "richtext"
+  },
+  {
+    label: "Test",
+    name: "rte",
+    format: "display",
+    Custom: (data, field, addOns) => {
+      return (
+        <HStack>
+          {ZRichText.IsRichText(field) && ZRichText.ToHTML(field)}
+        </HStack>
+      );
+    }
+  }
+  /*
   {
     label: "Check",
     name: "check",
@@ -55,7 +74,6 @@ let simple = [
       },
     ]
   },
-  /*
   {
     header: "Header"
   },
