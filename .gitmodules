@@ -1,0 +1,3 @@
+[submodule "src/IZOArc"]
+	path = src/IZOArc
+	url = https://louiszen@bitbucket.org/louiszen/izoarc.git
