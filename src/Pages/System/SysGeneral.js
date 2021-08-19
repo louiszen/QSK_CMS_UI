@@ -9,11 +9,11 @@ import { SaveOutlined } from '@material-ui/icons';
 import schema from './schema';
 import { DOMAIN } from '__Base/config';
 
-import Tablizo from '@IZOArc/LabIZO/Tablizo';
-import Accessizo from '@IZOArc/LabIZO/Accessizo';
-import { Accessor, ColorX, store, ErrorX } from '@IZOArc/STATIC';
-import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
-import { StyledButton } from '@IZOArc/LabIZO/Stylizo';
+import Tablizo from 'IZOArc/LabIZO/Tablizo';
+import Accessizo from 'IZOArc/LabIZO/Accessizo';
+import { Accessor, ColorX, store, ErrorX } from 'IZOArc/STATIC';
+import { HStack, Spacer, VStack } from 'IZOArc/LabIZO/Stackizo';
+import { StyledButton } from 'IZOArc/LabIZO/Stylizo';
 
 class SysGeneral extends Component {
 

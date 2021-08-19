@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Accessor, ColorX, store } from '@IZOArc/STATIC';
+import { Accessor, ColorX, store } from 'IZOArc/STATIC';
 import PropsType from 'prop-types';
-import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
+import { HStack, Spacer, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Tooltip, Typography } from '@material-ui/core';
 import _ from 'lodash';
 import {  ArrowLeft, ArrowRight, DeleteForever, Edit, InfoOutlined } from '@material-ui/icons';
-import { StyledIconButton } from '@IZOArc/LabIZO/Stylizo';
+import { StyledIconButton } from 'IZOArc/LabIZO/Stylizo';
 import LangTabs from './LangTabs';
 
 /**

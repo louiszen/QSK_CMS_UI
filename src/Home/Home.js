@@ -9,10 +9,10 @@ import schema from './schema';
 import { DOMAIN } from '__Base/config';
 import Version from '__Base/version';
 
-import Formizo from '@IZOArc/LabIZO/Formizo';
-import { Accessor, store, ColorX, Env } from '@IZOArc/STATIC';
-import { VStack, HStack, Spacer } from '@IZOArc/LabIZO/Stackizo';
-import { StyledButton, StyledLinearProgress } from '@IZOArc/LabIZO/Stylizo';
+import Formizo from 'IZOArc/LabIZO/Formizo';
+import { Accessor, store, ColorX, Env } from 'IZOArc/STATIC';
+import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
+import { StyledButton, StyledLinearProgress } from 'IZOArc/LabIZO/Stylizo';
 
 class Home extends Component {
 

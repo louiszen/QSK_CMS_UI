@@ -1,4 +1,4 @@
-import { HStack } from "@IZOArc/LabIZO/Stackizo";
+import { HStack } from "IZOArc/LabIZO/Stackizo";
 import { Check, Close } from "@material-ui/icons";
 
 const Table = [

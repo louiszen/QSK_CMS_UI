@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Cancel, CheckCircle } from '@material-ui/icons';
 import { IconButton, Tooltip } from '@material-ui/core';
 
-import { Accessor, ColorX } from '@IZOArc/STATIC';
-import { HStack } from '@IZOArc/LabIZO/Stackizo';
+import { Accessor, ColorX } from 'IZOArc/STATIC';
+import { HStack } from 'IZOArc/LabIZO/Stackizo';
 
 class SysDBInc extends Component {
 

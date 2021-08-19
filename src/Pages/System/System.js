@@ -5,8 +5,8 @@ import { Paper, Tab, Tabs } from '@material-ui/core';
 
 import tabs from './tabs';
 
-import { Accessor, Authority } from '@IZOArc/STATIC';
-import { VStack } from '@IZOArc/LabIZO/Stackizo';
+import { Accessor, Authority } from 'IZOArc/STATIC';
+import { VStack } from 'IZOArc/LabIZO/Stackizo';
 
 class System extends Component {
 

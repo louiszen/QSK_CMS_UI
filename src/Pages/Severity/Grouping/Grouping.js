@@ -5,9 +5,9 @@ import { Box, Typography } from '@material-ui/core';
 import schema from '../Grouping/schema';
 import datalink from '../Grouping/datalink';
 
-import Datumizo from '@IZOArc/LabIZO/Datumizo/Datumizo';
-import { VStack } from '@IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from '@IZOArc/STATIC';
+import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
+import { VStack } from 'IZOArc/LabIZO/Stackizo';
+import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 
 class Grouping extends Component {
 

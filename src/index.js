@@ -7,8 +7,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //page
-import Container from "@IZOArc/Container/Container";
-import { Denied, NoMatch } from "@IZOArc/Fallback";
+import Container from "IZOArc/Container/Container";
+import { Denied, NoMatch } from "IZOArc/Fallback";
 import Home from "./Home/Home";
 
 //css
@@ -26,7 +26,7 @@ import {
   StylizoTest, 
   StepizoTest,
   AnalytizoTest
-} from "@IZOArc/LabIZO/__TEST";
+} from "IZOArc/LabIZO/__TEST";
 
 //pages
 import Dashboard from "Pages/Dashboard/Dashboard";
@@ -47,7 +47,7 @@ import Grouping from "Pages/Severity/Grouping/Grouping";
 import SevGroup from "Pages/Severity/SevGroup/SevGroup";
 
 //store
-import {Env, store} from '@IZOArc/STATIC';
+import {Env, store} from 'IZOArc/STATIC';
 
 //mute the console on production launch
 if (process.env.NODE_ENV === "production") {

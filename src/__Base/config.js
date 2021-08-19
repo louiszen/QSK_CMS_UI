@@ -1,4 +1,4 @@
-import { ColorX } from '@IZOArc/STATIC';
+import { ColorX } from 'IZOArc/STATIC';
 import { Typography } from '@material-ui/core';
 import { ContactSupport, Dashboard, Public, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';

@@ -3,9 +3,9 @@ import { DeleteOutline, Restore } from "@material-ui/icons";
 
 import SysDBInc from "./SysDBInc";
 
-import { HStack } from "@IZOArc/LabIZO/Stackizo";
-import { StyledButton } from "@IZOArc/LabIZO/Stylizo";
-import { ColorX } from "@IZOArc/STATIC";
+import { HStack } from "IZOArc/LabIZO/Stackizo";
+import { StyledButton } from "IZOArc/LabIZO/Stylizo";
+import { ColorX } from "IZOArc/STATIC";
 
 const database = [
   {

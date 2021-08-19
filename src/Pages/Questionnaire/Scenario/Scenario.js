@@ -5,9 +5,9 @@ import { Box, Typography } from '@material-ui/core';
 import schema from './schema';
 import datalink from './datalink';
 
-import Datumizo from '@IZOArc/LabIZO/Datumizo/Datumizo';
-import { HStack, VStack } from '@IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority, store } from '@IZOArc/STATIC';
+import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
+import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
 import { DOMAIN } from '__Base/config';
 import axios from 'axios';
 import _ from 'lodash';

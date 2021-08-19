@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Accessor } from '@IZOArc/STATIC';
+import { Accessor } from 'IZOArc/STATIC';
 import PropsType from 'prop-types';
 import _ from 'lodash';
 import { Box } from '@material-ui/core';
-import { StyledButton } from '@IZOArc/LabIZO/Stylizo';
-import { HStack } from '@IZOArc/LabIZO/Stackizo';
+import { StyledButton } from 'IZOArc/LabIZO/Stylizo';
+import { HStack } from 'IZOArc/LabIZO/Stackizo';
 
 /**
  * @augments {Component<Props, State>}

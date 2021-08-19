@@ -5,9 +5,9 @@ import { Box, Typography } from '@material-ui/core';
 import schema from './schema';
 import datalink from './datalink';
 
-import Datumizo from '@IZOArc/LabIZO/Datumizo/Datumizo';
-import { HStack, Spacer, VStack } from '@IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from '@IZOArc/STATIC';
+import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
+import { HStack, Spacer, VStack } from 'IZOArc/LabIZO/Stackizo';
+import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import QuestionBlock from './QuestionBlock/QuestionBlock';
 import _ from 'lodash';
 import { Launch } from '@material-ui/icons';
