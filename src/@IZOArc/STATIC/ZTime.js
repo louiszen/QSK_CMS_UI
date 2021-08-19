@@ -1,7 +1,7 @@
 import moment from 'moment';
 import axios from 'axios';
 
-class Time {
+class ZTime {
 
   /**
    *  Return time difference
@@ -363,4 +363,4 @@ class Time {
   }
 }
 
-export default Time;
+export default ZTime;
