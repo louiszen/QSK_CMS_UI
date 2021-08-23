@@ -139,7 +139,7 @@ class QuestionBlock extends Component {
 
   renderQContent(doc, lang){
     return (
-      <Typography style={{width: "100%"}} key={lang}>
+      <Typography style={{width: "100%", fontWeight: "bold", fontSize: 18}} key={lang}>
         {Accessor.Get(doc, "question.title." + lang)}
       </Typography>
     )
@@ -361,9 +361,9 @@ class QuestionBlock extends Component {
   renderQuestion(){
     return (
       <VStack justifyContent="flex-start" width="100%">
+        {this.renderQ()}
         {this.renderDes()}
         {this.renderQCond("Prerequisites:", "conditions.$or")}
-        {this.renderQ()}
         {this.renderAnswer()}
       </VStack>
     )

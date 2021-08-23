@@ -4,7 +4,7 @@ import PropsType from 'prop-types';
 import _ from 'lodash';
 import { Box } from '@material-ui/core';
 import { StyledButton } from 'IZOArc/LabIZO/Stylizo';
-import { HStack } from 'IZOArc/LabIZO/Stackizo';
+import { HStack, Spacer, VStack } from 'IZOArc/LabIZO/Stackizo';
 
 /**
  * @augments {Component<Props, State>}
@@ -90,12 +90,13 @@ class LangTabs extends Component {
 
   render(){
     return (
-      <Box width="100%" height="100%">
+      <VStack width="100%" height="100%">
+        {this.renderTabPanel()}
+        <Spacer/>
         <HStack spacing={5} justifyContent="flex-start">
           {this.renderTabs()}
         </HStack>
-        {this.renderTabPanel()}
-      </Box>
+      </VStack>
     );
   }
 
