@@ -12,7 +12,7 @@ export const serverCheck = true;
 export const loginSys = true;
 
 export const NavbarDis = {
-  src: "/Images/QSK.png",
+  src: "Images/QSK.png",
   style: {
     width: 100,
     marginX: 3,
