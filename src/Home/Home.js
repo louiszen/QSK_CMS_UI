@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Box, Link, Typography } from '@material-ui/core';
 
 import schema from './schema';
-import { DOMAIN } from '__Base/config';
+import { IZOTheme, DOMAIN } from '__Base/config';
 import Version from '__Base/version';
 
 import Formizo from 'IZOArc/LabIZO/Formizo';
@@ -247,7 +247,7 @@ class Home extends Component {
           }}
           theme={{
             label: "white",
-            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS("elainOrange"),
+            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS(IZOTheme.foreground),
             hover: {
               background: ColorX.GetColorCSS("elainOrangeDark")
             },
@@ -262,7 +262,7 @@ class Home extends Component {
           </HStack>
         </StyledButton>
         { loading &&
-          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS("elainOrange"), background: ColorX.GetColorCSS("elainOrangeDark")}}/>
+          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS(IZOTheme.foreground), background: ColorX.GetColorCSS("elainOrangeDark")}}/>
         }
       </VStack>
     );
@@ -278,7 +278,7 @@ class Home extends Component {
           }}
           theme={{
             label: "white",
-            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS("elainOrange"),
+            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS(IZOTheme.foreground),
             hover: {
               background: ColorX.GetColorCSS("elainOrangeDark")
             },
@@ -293,7 +293,7 @@ class Home extends Component {
           </HStack>
         </StyledButton>
         { loading &&
-          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS("elainOrange"), background: ColorX.GetColorCSS("elainOrangeDark")}}/>
+          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS(IZOTheme.foreground), background: ColorX.GetColorCSS("elainOrangeDark")}}/>
         }
       </VStack>
     );
@@ -329,7 +329,7 @@ class Home extends Component {
         errorsShowOnHelperText={false}
         theme={{
           textfield: {
-            input: ColorX.GetColorCSS("elainOrange"),
+            input: ColorX.GetColorCSS(IZOTheme.foreground),
             background: "transparent",
             line: "transparent"
           }
@@ -357,7 +357,7 @@ class Home extends Component {
           }}
           theme={{
             label: "white",
-            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS("elainOrange"),
+            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS(IZOTheme.foreground),
             hover: {
               background: ColorX.GetColorCSS("elainOrangeDark")
             },
@@ -374,7 +374,7 @@ class Home extends Component {
         { loading &&
           <StyledLinearProgress 
             theme={{
-              bar: ColorX.GetColorCSS("elainOrange"), 
+              bar: ColorX.GetColorCSS(IZOTheme.foreground), 
               background: ColorX.GetColorCSS("elainOrangeDark")
             }}
             />
@@ -459,7 +459,7 @@ class Home extends Component {
     return (
       <VStack style={{
           background: ColorX.GetColorCSS("aliceblue"), 
-          color: ColorX.GetColorCSS("elainOrange"),
+          color: ColorX.GetColorCSS(IZOTheme.foreground),
           width: "100%"
         }}>
         <Spacer/>

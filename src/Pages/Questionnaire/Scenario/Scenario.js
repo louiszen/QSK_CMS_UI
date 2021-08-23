@@ -8,7 +8,7 @@ import datalink from './datalink';
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
-import { DOMAIN } from '__Base/config';
+import { IZOTheme, DOMAIN } from '__Base/config';
 import axios from 'axios';
 import _ from 'lodash';
 
@@ -327,7 +327,7 @@ class Scenario extends Component {
             textAlign: "left", 
             width: "100%",
             fontSize: 25,
-            color: ColorX.GetColorCSS("elainOrange")
+            color: ColorX.GetColorCSS(IZOTheme.foreground)
             }}>
             {title}
           </Typography>

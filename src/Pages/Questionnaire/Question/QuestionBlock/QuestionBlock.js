@@ -7,6 +7,7 @@ import _ from 'lodash';
 import {  ArrowLeft, ArrowRight, DeleteForever, Edit, InfoOutlined } from '@material-ui/icons';
 import { StyledIconButton } from 'IZOArc/LabIZO/Stylizo';
 import LangTabs from './LangTabs';
+import { IZOTheme } from '__Base/config';
 
 /**
  * @augments {Component<Props, State>}
@@ -448,7 +449,7 @@ class QuestionBlock extends Component {
     let {doc} = this.props;
     if(!doc) return <div/>;
     return (
-      <VStack alignItems="flex-start" flexGrow={1} style={{width: 250, border: "2px solid " + ColorX.GetBorderColorCSS("elainOrange"), borderRadius: 15, marginRight: 5, overflow: "hidden", padding: 10}}>
+      <VStack alignItems="flex-start" flexGrow={1} style={{width: 250, border: "2px solid " + ColorX.GetBorderColorCSS(IZOTheme.foreground), borderRadius: 15, marginRight: 5, overflow: "hidden", padding: 10}}>
         {this.renderRefID()}
         {doc.type === "question"? 
           this.renderQuestion()

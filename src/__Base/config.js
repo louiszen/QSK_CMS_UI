@@ -3,10 +3,16 @@ import { Typography } from '@material-ui/core';
 import { ContactSupport, Dashboard, Public, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';
 
+export const IZOTheme = {
+  background: "black",
+  foreground: "elainOrange",
+  btnHover: "elainOrangeDark",
+};
+
 export const Project = 
-<Typography style={{color: ColorX.GetColorCSS("elainOrange")}}>
-  {"COVID19 MiniSite"}
-</Typography> ;
+  <Typography style={{color: ColorX.GetColorCSS(IZOTheme.foreground)}}>
+    {"COVID19 MiniSite"}
+  </Typography>;
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;

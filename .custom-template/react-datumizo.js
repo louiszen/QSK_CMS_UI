@@ -8,6 +8,7 @@ import datalink from './datalink';
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { IZOTheme } from '__Base/config';
 
 /**
  * @augments {Component<Props, State>}
@@ -159,7 +160,7 @@ class ${1} extends Component {
             textAlign: "left", 
             width: "100%",
             fontSize: 25,
-            color: ColorX.GetColorCSS("elainOrange")
+            color: ColorX.GetColorCSS(IZOTheme.foreground)
             }}>
             {title}
           </Typography>

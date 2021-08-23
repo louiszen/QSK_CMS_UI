@@ -11,6 +11,7 @@ import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import QuestionBlock from './QuestionBlock/QuestionBlock';
 import _ from 'lodash';
 import { Launch } from '@material-ui/icons';
+import { IZOTheme } from '__Base/config';
 
 class Question extends Component {
 
@@ -209,7 +210,7 @@ class Question extends Component {
             textAlign: "left", 
             width: "100%",
             fontSize: 25,
-            color: ColorX.GetColorCSS("elainOrange")
+            color: ColorX.GetColorCSS(IZOTheme.foreground)
             }}>
             {title}
           </Typography>
