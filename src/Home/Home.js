@@ -448,7 +448,7 @@ class Home extends Component {
     return (
       <VStack spacing="1px" alignItems="flex-start" width="100%">
         <Box height={"90%"} marginTop={"10%"}>
-          <img src="Images/QSK.png" alt="Elain"/>
+          <img src="/Images/QSK.png" alt="Elain"/>
         </Box>
         {this.renderEnv()}
       </VStack>

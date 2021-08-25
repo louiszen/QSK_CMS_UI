@@ -14,6 +14,21 @@ const Table = [
     width: 150
   },
   {
+    label: "Effective Start Date",
+    name: "effective.Start",
+    transform: "datetime",
+    dateFormat: "YYYY/MM/DD",
+    filterable: false
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    transform: "datetime",
+    dateFormat: "YYYY/MM/DD",
+    fallback: " ",
+    filterable: false
+  },
+  {
     label: "Last Update",
     name: "lastUpdate",
     transform: "datetime",

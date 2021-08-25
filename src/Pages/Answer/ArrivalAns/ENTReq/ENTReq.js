@@ -13,7 +13,7 @@ import { IZOTheme } from '__Base/config';
 /**
  * @augments {Component<Props, State>}
  */
-class ArrivalAns extends Component {
+class ENTReq extends Component {
 
   static propTypes = {
 
@@ -26,13 +26,13 @@ class ArrivalAns extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Arrival Answer Templates",
+      title: "Entry Requirements",
       serverSidePagination: false, 
       base: {
-        title: "Arrival Answer Template",
-        exportDoc: "arrivalans_temp",
+        title: "Entry Requirement",
+        exportDoc: "ent_req",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns",
+        reqAuth: "Answer.ArrivalAns.ENTReq",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -51,58 +51,58 @@ class ArrivalAns extends Component {
         },
 
         Add: {
-          title: "Add Arrival Answer Template",
+          title: "Add Entry Requirement",
           url: datalink.Request.Add,
-          success: "Arrival Answer Template Added Successfully",
-          fail: "Arrival Answer Template Add Failed: ",
+          success: "Entry Requirement Added Successfully",
+          fail: "Entry Requirement Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add"
         },
         Delete: {
-          title: "Delete this Arrival Answer Template?",
+          title: "Delete this Entry Requirement?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Arrival Answer Template Deleted Successfully.",
-          fail: "Arrival Answer Template Delete Failed: ",
+          success: "Entry Requirement Deleted Successfully.",
+          fail: "Entry Requirement Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Arrival Answer Template ",
+          title: "Edit Entry Requirement ",
           url: datalink.Request.Edit,
-          success: "Arrival Answer Template Edited Successfully",
-          fail: "Arrival Answer Template Edit Failed: ",
+          success: "Entry Requirement Edited Successfully",
+          fail: "Entry Requirement Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit"
         },
         Info: {
-          title: "Arrival Answer Templates ",
+          title: "Entry Requirements ",
           url: datalink.Request.Info,
-          success: "Arrival Answer Templates Load Successfully",
-          fail: "Arrival Answer Templates Load Failed: ",
+          success: "Entry Requirements Load Successfully",
+          fail: "Entry Requirements Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "Arrival Answer Template Import",
+          title: "Entry Requirement Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Arrival Answer Template Imported Successfully.",
-          fail: "Arrival Answer Template Import Failed: ",
+          success: "Entry Requirement Imported Successfully.",
+          fail: "Entry Requirement Import Failed: ",
           schema: schema.ImportFormat,
-          replace: false
+          replace: true
         },
         Export: {
           url: datalink.Request.Export,
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Arrival Answer Template?",
+          title: (n) => "Delete these " + n + " Entry Requirement?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Arrival Answer Template Deleted Successfully.",
-          fail: "Arrival Answer Template Delete Failed: ",
+          success: "Entry Requirement Deleted Successfully.",
+          fail: "Entry Requirement Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -112,7 +112,7 @@ class ArrivalAns extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Arrival Answer Template", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Entry Requirement", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -125,12 +125,12 @@ class ArrivalAns extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns");
+    Authority.Require("Answer.ArrivalAns.ENTReq");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(ArrivalAns.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(ENTReq.defaultProps))){
       this._setAllStates();
     }
   }
@@ -174,4 +174,4 @@ class ArrivalAns extends Component {
 
 }
 
-export default ArrivalAns;
+export default ENTReq;

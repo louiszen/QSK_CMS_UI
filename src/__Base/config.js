@@ -18,7 +18,7 @@ export const serverCheck = true;
 export const loginSys = true;
 
 export const NavbarDis = {
-  src: "Images/QSK.png",
+  src: "/Images/QSK.png",
   style: {
     width: 100,
     marginX: 3,
@@ -85,16 +85,22 @@ export const MenuConfig = [
         auth: "Answer.ArrivalAns",
         submenu: [
           {
-            caption: "Quarantine",
+            caption: "Quarantine Req.",
             link: "/Answer/ArrivalAns/QUAReq",
             faIcon: "fas fa-syringe fa-lg",
             auth: "Answer.ArrivalAns.QUAReq",
           },
           {
-            caption: "Board/Entry",
-            link: "/Answer/ArrivalAns/BNEReq",
+            caption: "Document Req.",
+            link: "/Answer/ArrivalAns/DOCReq",
+            faIcon: "far fa-file-alt fa-lg",
+            auth: "Answer.ArrivalAns.DOCReq",
+          },
+          {
+            caption: "Entry Req.",
+            link: "/Answer/ArrivalAns/ENTReq",
             faIcon: "fas fa-door-open fa-lg",
-            auth: "Answer.ArrivalAns.BNEReq",
+            auth: "Answer.ArrivalAns.ENTReq",
           },
           {
             caption: "Airport Proc",

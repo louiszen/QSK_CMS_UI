@@ -34,8 +34,9 @@ import System from "Pages/System/System"
 import Answer from "./Pages/Answer/Answer";
 import ArrivalAns from "Pages/Answer/ArrivalAns/ArrivalAns";
 import APProc from "Pages/Answer/ArrivalAns/APProc/APProc";
-import BNEReq from "Pages/Answer/ArrivalAns/BNEReq/BNEReq";
+import DOCReq from "Pages/Answer/ArrivalAns/DOCReq/DOCReq";
 import QUAReq from "Pages/Answer/ArrivalAns/QUAReq/QUAReq";
+import ENTReq from "Pages/Answer/ArrivalAns/ENTReq/ENTReq";
 import DepartAns from "Pages/Answer/DepartAns/DepartAns";
 import TransitAns from "Pages/Answer/TransitAns/TransitAns";
 import Questionnaire from "./Pages/Questionnaire/Questionnaire";
@@ -63,8 +64,9 @@ function renderPages() {
     <Route key={4} path='/Severity' exact component={Severity}/>,
     <Route key={5} path='/Answer/ArrivalAns' exact component={ArrivalAns}/>,
     <Route key={6} path='/Answer/ArrivalAns/APProc' exact component={APProc}/>,
-    <Route key={7} path='/Answer/ArrivalAns/BNEReq' exact component={BNEReq}/>,
+    <Route key={7} path='/Answer/ArrivalAns/DOCReq' exact component={DOCReq}/>,
     <Route key={8} path='/Answer/ArrivalAns/QUAReq' exact component={QUAReq}/>,
+    <Route key={16} path='/Answer/ArrivalAns/ENTReq' exact component={ENTReq}/>,
     <Route key={9} path='/Answer/DepartAns' exact component={DepartAns}/>,
     <Route key={10} path='/Answer/TransitAns' exact component={TransitAns}/>,
     <Route key={11} path='/Questionnaire/Question' exact component={Question}/>,

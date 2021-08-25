@@ -10,7 +10,10 @@ import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 
-class BNEReq extends Component {
+/**
+ * @augments {Component<Props, State>}
+ */
+class DOCReq extends Component {
 
   static propTypes = {
 
@@ -23,13 +26,13 @@ class BNEReq extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Boarding & Entry Requirements",
+      title: "Document Requirements",
       serverSidePagination: false, 
       base: {
-        title: "Boarding & Entry Req",
-        exportDoc: "bne_req",
+        title: "Document Requirement",
+        exportDoc: "doc_req",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.BNEReq",
+        reqAuth: "Answer.ArrivalAns.DOCReq",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -39,6 +42,7 @@ class BNEReq extends Component {
         defaultPageSize: 50,
         showSelector: true,
         noDefaultTable: false,
+        noDefaultButtons: false,
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,
@@ -47,45 +51,45 @@ class BNEReq extends Component {
         },
 
         Add: {
-          title: "Add Boarding & Entry Req",
+          title: "Add Document Requirement",
           url: datalink.Request.Add,
-          success: "Boarding & Entry Req Added Successfully",
-          fail: "Boarding & Entry Req Add Failed: ",
+          success: "Document Requirement Added Successfully",
+          fail: "Document Requirement Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add"
         },
         Delete: {
-          title: "Delete this Boarding & Entry Req?",
+          title: "Delete this Document Requirement?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Boarding & Entry Req Deleted Successfully.",
-          fail: "Boarding & Entry Req Delete Failed: ",
+          success: "Document Requirement Deleted Successfully.",
+          fail: "Document Requirement Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Boarding & Entry Req ",
+          title: "Edit Document Requirement ",
           url: datalink.Request.Edit,
-          success: "Boarding & Entry Req Edited Successfully",
-          fail: "Boarding & Entry Req Edit Failed: ",
+          success: "Document Requirement Edited Successfully",
+          fail: "Document Requirement Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit"
         },
         Info: {
-          title: "Boarding & Entry Requirements ",
+          title: "Document Requirements ",
           url: datalink.Request.Info,
-          success: "Boarding & Entry Requirements Load Successfully",
-          fail: "Boarding & Entry Requirements Load Failed: ",
+          success: "Document Requirements Load Successfully",
+          fail: "Document Requirements Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "Boarding & Entry Req Import",
+          title: "Document Requirement Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Boarding & Entry Req Imported Successfully.",
-          fail: "Boarding & Entry Req Import Failed: ",
+          success: "Document Requirement Imported Successfully.",
+          fail: "Document Requirement Import Failed: ",
           schema: schema.ImportFormat,
           replace: true
         },
@@ -94,11 +98,11 @@ class BNEReq extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Boarding & Entry Req?",
+          title: (n) => "Delete these " + n + " Document Requirement?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Boarding & Entry Req Deleted Successfully.",
-          fail: "Boarding & Entry Req Delete Failed: ",
+          success: "Document Requirement Deleted Successfully.",
+          fail: "Document Requirement Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -108,24 +112,25 @@ class BNEReq extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Boarding & Entry Req", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Document Requirement", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
-      }
+      },
+      addOns: {}
     };
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.BNEReq");
+    Authority.Require("Answer.ArrivalAns.DOCReq");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(BNEReq.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(DOCReq.defaultProps))){
       this._setAllStates();
     }
   }
@@ -147,7 +152,7 @@ class BNEReq extends Component {
   }
 
   render(){
-    let {base, serverSidePagination, title} = this.state;
+    let {base, serverSidePagination, title, addOns} = this.state;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -161,7 +166,7 @@ class BNEReq extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
     );
@@ -169,4 +174,4 @@ class BNEReq extends Component {
 
 }
 
-export default BNEReq;
+export default DOCReq;
