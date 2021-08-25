@@ -70,20 +70,32 @@ const Tail = [
     format: "textarea"
   },
   {
-    label: "Last Update",
-    name: "lastUpdate",
+    label: "Effective Start Date",
+    name: "effective.Start",
     format: "date",
-    dateType: "datetime",
-    readOnly: true
+    dateType: "date"
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    format: "date",
+    dateType: "date"
   }
-];
+]
 
 const Add = [
   ...Tail
 ];
 
 const Info = [
-  ...Tail
+  ...Tail,
+  {
+    label: "Last Update",
+    name: "lastUpdate",
+    format: "date",
+    dateType: "datetime",
+    readOnly: true
+  }
 ];
 
 const Edit = [

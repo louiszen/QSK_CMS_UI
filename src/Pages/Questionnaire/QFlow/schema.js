@@ -8,14 +8,6 @@ const Table = [
     name: "description"
   },
   {
-    label: "Type",
-    name: "type"
-  },
-  {
-    label: "Order",
-    name: "order"
-  },
-  {
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
@@ -39,54 +31,9 @@ const Table = [
   }
 ];
 
-const Tail = [
-  {
-    label: "Ref. ID",
-    name: "refID",
-    format: "text"
-  },
-  {
-    label: "Description",
-    name: "description",
-    format: "textarea"
-  },
-  {
-    label: "Type",
-    name: "type",
-    format: "select",
-    selectStyle: "radio",
-    selectRef: ["datetime", "severity", "yesno"],
-    selectCap: "",
-    selectVal: ""
-  },
-  {
-    label: "Effective Start Date",
-    name: "effective.Start",
-    format: "date",
-    dateType: "date"
-  },
-  {
-    label: "Effective End Date",
-    name: "effective.End",
-    format: "date",
-    dateType: "date"
-  }
-];
+const Add = [];
 
-const Add = [
-  ...Tail
-];
-
-const Info = [
-  ...Tail,
-  {
-    label: "Last Update",
-    name: "lastUpdate",
-    format: "date",
-    dateType: "datetime",
-    readOnly: true
-  }
-];
+const Info = [];
 
 const Edit = [
   ...Info

@@ -9,8 +9,8 @@ const Table = [
     name: "description"
   },
   {
-    label: "Format",
-    name: "format",
+    label: "Version",
+    name: "version",
     width: 150
   },
   {
@@ -49,56 +49,97 @@ const Tail = [
     format: "textarea"
   },
   {
-    label: "Format",
-    name: "format",
+    header: "Display"
+  },
+  {
+    label: "Type",
+    name: "display.type",
     format: "select",
     selectStyle: "radio",
-    selectRef: "ansFormat",
+    selectRef: ["withicon", "circled", "ordered"],
     selectCap: "",
-    selectVal: "",
-    selectDirection: "row"
+    selectVal: ""
   },
   {
-    label: "",
-    control: "format",
-    controlFunc: (doc, field) => field === "array",
-    fold: [
-      {
-        label: "Separator",
-        name: "separator",
-        format: "text"
-      }
-    ]
+    label: "Icon",
+    name: "display.icon",
+    format: "text"
   },
   {
-    label: "",
-    control: "format",
-    controlFunc: (doc, field) => field === "select",
-    fold: [
+    tabs: [
       {
-        label: "Options",
-        name: "options",
-        canAdd: true,
-        canDelete: true,
-        array: [
+        label: "EN",
+        page: [
           {
-            label: "EN",
-            name: "EN",
+            label: "Title",
+            name: "display.title.EN",
             format: "text"
           },
           {
-            label: "TC",
-            name: "TC",
+            label: "Content",
+            name: "display.content.EN",
             format: "text"
           },
           {
-            label: "SC",
-            name: "SC",
+            label: "Remark",
+            name: "display.remark.EN",
+            format: "text"
+          }
+        ]
+      },
+      {
+        label: "TC",
+        page: [
+          {
+            label: "Title",
+            name: "display.title.TC",
+            format: "text"
+          },
+          {
+            label: "Content",
+            name: "display.content.TC",
+            format: "text"
+          },
+          {
+            label: "Remark",
+            name: "display.remark.TC",
+            format: "text"
+          }
+        ]
+      },
+      {
+        label: "SC",
+        page: [
+          {
+            label: "Title",
+            name: "display.title.SC",
+            format: "text"
+          },
+          {
+            label: "Content",
+            name: "display.content.SC",
+            format: "text"
+          },
+          {
+            label: "Remark",
+            name: "display.remark.SC",
             format: "text"
           }
         ]
       }
     ]
+  },
+  {
+    label: "Effective Start Date",
+    name: "effective.Start",
+    format: "date",
+    dateType: "date"
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    format: "date",
+    dateType: "date"
   }
 ]
 

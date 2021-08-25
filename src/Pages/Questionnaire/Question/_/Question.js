@@ -6,14 +6,13 @@ import schema from './schema';
 import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
-import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
+import { HStack, Spacer, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import QuestionBlock from './QuestionBlock/QuestionBlock';
+import _ from 'lodash';
+import { Launch } from '@material-ui/icons';
 import { IZOTheme } from '__Base/config';
-import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
 
-/**
- * @augments {Component<Props, State>}
- */
 class Question extends Component {
 
   static propTypes = {
@@ -39,11 +38,11 @@ class Question extends Component {
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "compact",
+        density: "standard",
         defaultPageSize: 25,
         showSelector: true,
-        noDefaultTable: false,
         noDefaultButtons: false,
+        noDefaultTable: true,
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,
@@ -58,8 +57,7 @@ class Question extends Component {
           fail: "Question Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          Custom: this.renderInner
+          onSubmit: "Add"
         },
         Delete: {
           title: "Delete this Question?",
@@ -76,8 +74,7 @@ class Question extends Component {
           fail: "Question Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          Custom: this.renderInner
+          onSubmit: "Edit"
         },
         Info: {
           title: "Questions ",
@@ -85,8 +82,7 @@ class Question extends Component {
           success: "Questions Load Successfully",
           fail: "Questions Load Failed: ",
           schema: schema.Info,
-          readOnly: true,
-          Custom: this.renderInner
+          readOnly: true
         },
         Import: {
           title: "Question Import",
@@ -94,8 +90,7 @@ class Question extends Component {
           url: datalink.Request.Import,
           success: "Question Imported Successfully.",
           fail: "Question Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
+          schema: schema.ImportFormat
         },
         Export: {
           url: datalink.Request.Export,
@@ -116,20 +111,22 @@ class Question extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          inlineOpposite: [
-            { icon: <ArrowUpward/>, func: () => {}, caption: "Move Up" },
-            { icon: <ArrowDownward/>, func: () => {}, caption: "Move Down" },
-          ],
           left: [{ icon: "add", func: "Add", caption: "Add Question", reqFunc: "Add" }],
           right: [
-            { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            //{ icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
+            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            { icon: <Launch/>, func: this.GenerateScenario, caption: "Generate Scenarios", reqFunc: "Generate", theme: "caution"}
           ],
         },
-      },
-      addOns: {}
+      }
     };
+  }
+
+  GenerateScenario = {
+    onClick: () => {
+      console.log("HELLO");
+    }
   }
 
   componentDidMount(){
@@ -149,31 +146,65 @@ class Question extends Component {
     };
   }
 
-  renderInner(docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns){
-    return (
-      <HStack alignItems="flex-start">
-        {renderFormizo()}
-        <Box width="30%">
-          <img src="/Images/Placeholder/Capture4.PNG" alt=""/>
-        </Box>
-      </HStack>
-    );
-  }
-
   _setAllStates = (callback) => {
     this.setState((state, props) => ({
       ...props,
     }), callback);
   }
 
+  _onDataChange = (data) => {
+    this.setState({
+      data: data
+    });
+  }
+
+  _toEdit = (id, doc) => {
+    if(this.MountDatumizo){
+      this.MountDatumizo.Edit(id, doc);
+    }
+  }
+
+  _toInfo = (id, doc) => {
+    if(this.MountDatumizo){
+      this.MountDatumizo.Info(id, doc);
+    }
+  }
+
+  _toDelete = (id, doc) => {
+    if(this.MountDatumizo){
+      this.MountDatumizo.Delete(id, doc);
+    }
+  }
+  
+  onWheel = (e) => {
+    let container = document.getElementById("hccontainer");
+    let containerScrollPosition = container.scrollLeft;
+    container.scrollTo({
+        top: 0,
+        left: containerScrollPosition + e.deltaY,
+        behaviour: 'smooth' //if you want smooth scrolling
+    })
+}
+
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;
   }
 
-  render(){
-    let {base, serverSidePagination, title, addOns} = this.state;
+  renderQuestionBlocks(){
+    let {data} = this.state;
     return (
-      <VStack>
+      <VStack id="hccontainer" flexGrow={1} width="100%" alignItems="flex-start" style={{overflow: "auto", paddingBottom: 10}} onWheel={this.onWheel}>
+        <HStack width="fit-content" style={{padding: 5}} flexGrow={1}>
+        {_.map(data, (o, i) => <QuestionBlock key={i} doc={o} toEdit={this._toEdit} toInfo={this._toInfo} toDelete={this._toDelete}/>)}
+        </HStack>
+      </VStack>
+    );
+  }
+
+  render(){
+    let {base, serverSidePagination, title} = this.state;
+    return (
+      <VStack alignItems="flex-start" paddingX={1}>
         <Box padding={1} width="100%">
           <Typography style={{
             textAlign: "left", 
@@ -185,8 +216,10 @@ class Question extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} onDataChange={this._onDataChange}
           />
+        {this.renderQuestionBlocks()}
+        <Spacer height={15}/>
       </VStack>
     );
   }

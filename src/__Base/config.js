@@ -136,11 +136,19 @@ export const MenuConfig = [
         faIcon: <ContactSupport/>,
         auth: "Questionnaire.Question"
       },
+      /*
       {
         caption: "Scenarios",
         link: "/Questionnaire/Scenario",
         faIcon: "fas fa-sitemap fa-lg",
         auth: "Questionnaire.Scenario"
+      }
+      */
+      {
+        caption: "Question Flow",
+        link: "/Questionnaire/QFlow",
+        faIcon: "fas fa-sitemap fa-lg",
+        auth: "Questionnaire.QFlow"
       }
     ]
   },

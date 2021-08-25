@@ -6,11 +6,15 @@ import schema from './schema';
 import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
-import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
+import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
+import FlowEditor from './FlowEditor/FlowEditor';
 
-class QUAReq extends Component {
+/**
+ * @augments {Component<Props, State>}
+ */
+class QFlow extends Component {
 
   static propTypes = {
 
@@ -23,22 +27,23 @@ class QUAReq extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Quarantine Requirements",
+      title: "Question Flows",
       serverSidePagination: false, 
       base: {
-        title: "Quarantine Req",
-        exportDoc: "qua_req",
+        title: "Question Flow",
+        exportDoc: "qflow",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.QUAReq",
+        reqAuth: "Questionnaire.QFlow",
 
         columnsToolbar: true,
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "compact",
-        defaultPageSize: 50,
+        density: "standard",
+        defaultPageSize: 25,
         showSelector: true,
         noDefaultTable: false,
+        noDefaultButtons: false,
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,
@@ -47,61 +52,61 @@ class QUAReq extends Component {
         },
 
         Add: {
-          title: "Add Quarantine Req",
+          title: "Add Question Flow",
           url: datalink.Request.Add,
-          success: "Quarantine Req Added Successfully",
-          fail: "Quarantine Req Add Failed: ",
+          success: "Question Flow Added Successfully",
+          fail: "Question Flow Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add",
-          Custom: this.renderInner
+          Custom: this.renderFlowEditor
         },
         Delete: {
-          title: "Delete this Quarantine Req?",
+          title: "Delete this Question Flow?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Quarantine Req Deleted Successfully.",
-          fail: "Quarantine Req Delete Failed: ",
+          success: "Question Flow Deleted Successfully.",
+          fail: "Question Flow Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Quarantine Req ",
+          title: "Edit Question Flow ",
           url: datalink.Request.Edit,
-          success: "Quarantine Req Edited Successfully",
-          fail: "Quarantine Req Edit Failed: ",
+          success: "Question Flow Edited Successfully",
+          fail: "Question Flow Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit",
-          Custom: this.renderInner
+          Custom: this.renderFlowEditor
         },
         Info: {
-          title: "Quarantine Requirements ",
+          title: "Question Flows ",
           url: datalink.Request.Info,
-          success: "Quarantine Requirements Load Successfully",
-          fail: "Quarantine Requirements Load Failed: ",
+          success: "Question Flows Load Successfully",
+          fail: "Question Flows Load Failed: ",
           schema: schema.Info,
           readOnly: true,
-          Custom: this.renderInner
+          Custom: this.renderFlowEditor
         },
         Import: {
-          title: "Quarantine Req Import",
+          title: "Question Flow Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Quarantine Req Imported Successfully.",
-          fail: "Quarantine Req Import Failed: ",
+          success: "Question Flow Imported Successfully.",
+          fail: "Question Flow Import Failed: ",
           schema: schema.ImportFormat,
-          replace: true
+          replace: false
         },
         Export: {
           url: datalink.Request.Export,
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Quarantine Req?",
+          title: (n) => "Delete these " + n + " Question Flow?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Quarantine Req Deleted Successfully.",
-          fail: "Quarantine Req Delete Failed: ",
+          success: "Question Flow Deleted Successfully.",
+          fail: "Question Flow Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -111,38 +116,31 @@ class QUAReq extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Quarantine Req", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Question Flow", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
       },
-      addOns: {
-        ansFormat: ["number", "select", "array"]
-      }
+      addOns: {}
     };
   }
 
-  renderInner(docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns){
+  renderFlowEditor = (docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns) => {
     return (
-      <HStack alignItems="flex-start">
-        {renderFormizo()}
-        <Box width="30%">
-          <img src="/Images/Placeholder/Capture1.PNG" alt=""/>
-        </Box>
-      </HStack>
+      <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh}/>
     );
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.QUAReq");
+    Authority.Require("Questionnaire.QFlow");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(QUAReq.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(QFlow.defaultProps))){
       this._setAllStates();
     }
   }
@@ -165,7 +163,6 @@ class QUAReq extends Component {
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
-    console.log(addOns);
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -187,5 +184,4 @@ class QUAReq extends Component {
 
 }
 
-export default QUAReq;
-  
+export default QFlow;

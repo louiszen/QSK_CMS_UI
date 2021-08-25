@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
 import { Box, Typography } from '@material-ui/core';
+import axios from 'axios';
 
 import schema from '../Grouping/schema';
 import datalink from '../Grouping/datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, ColorX, Authority, store, ErrorX } from 'IZOArc/STATIC';
+import { DOMAIN, IZOTheme } from '__Base/config';
 
 class Grouping extends Component {
 
@@ -120,7 +121,82 @@ class Grouping extends Component {
 
   componentDidMount(){
     Authority.Require("Severity.Location");
-    this._setAllStates();
+    this._setAllStates(() => {
+      this.GetData();
+    });
+  }
+
+  GetData = async () => {
+    this.GetAllLocations();
+    this.GetAllGroups();
+  };
+
+  GetAllLocations = async () => {
+    let url = DOMAIN + "/Tables/Location/AllLocations";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {
+    
+      },
+      addOns: {}
+    }
+    
+    try {
+    
+      console.log("/Tables/Location/AllLocations", payloadOut);
+    
+      store.isLoading(true);
+      let res = await axios.post(url, payloadOut);
+      store.isLoading(false);
+    
+      console.log("/Tables/Location/AllLocations", res.data);
+
+      let {Success, payload} = res.data;
+      if (Success === true) {
+        this.setState((state, props) => ({
+          locations: payload
+        }));
+      } else {
+        store.Alert(ErrorX.Handle(res.data), "error");
+      }
+    } catch (e) {
+      store.isLoading(false);
+      store.Alert(ErrorX.Handle(e), "error");
+    }
+  };
+
+  GetAllGroups = async () => {
+    let url = DOMAIN + "/Tables/SevGroup/AllGroups";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {
+    
+      },
+      addOns: {}
+    }
+    
+    try {
+    
+      console.log("/Tables/SevGroup/AllGroups", payloadOut);
+    
+      store.isLoading(true);
+      let res = await axios.post(url, payloadOut);
+      store.isLoading(false);
+    
+      console.log("/Tables/SevGroup/AllGroups", res.data);
+    
+      let {Success, payload} = res.data;
+      if (Success === true) {
+        this.setState((state, props) => ({
+          groups: payload
+        }));
+      } else {
+        store.Alert(ErrorX.Handle(res.data), "error");
+      }
+    } catch (e) {
+      store.isLoading(false);
+      store.Alert(ErrorX.Handle(e), "error");
+    }
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -146,7 +222,7 @@ class Grouping extends Component {
   }
 
   render(){
-    let {base, serverSidePagination, title} = this.state;
+    let {base, serverSidePagination, title, groups, locations} = this.state;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -160,7 +236,7 @@ class Grouping extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={{groups: groups, locations: locations}}
           />
       </VStack>
     );

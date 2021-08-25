@@ -31,9 +31,53 @@ const Table = [
   }
 ];
 
-const Add = [];
+const Tail = [
+  {
+    label: "Location",
+    name: "location",
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "locations",
+    selectCap: "",
+    selectVal: ""
+  },
+  {
+    label: "Group",
+    name: "group",
+    format: "select",
+    selectStyle: "radio",
+    selectRef: "groups",
+    selectCap: "",
+    selectVal: ""
+  },
+  {
+    label: "Effective Start Date",
+    name: "effective.Start",
+    format: "date",
+    dateType: "date"
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    format: "date",
+    dateType: "date"
+  }
+]
 
-const Info = [];
+const Add = [
+  ...Tail
+];
+
+const Info = [
+  ...Tail,
+  {
+    label: "Last Update",
+    name: "lastUpdate",
+    format: "date",
+    dateType: "datetime",
+    readOnly: true
+  }
+];
 
 const Edit = [
   ...Info

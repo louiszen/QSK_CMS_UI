@@ -6,7 +6,7 @@ import schema from './schema';
 import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
-import { VStack } from 'IZOArc/LabIZO/Stackizo';
+import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 
@@ -32,7 +32,7 @@ class ArrivalAns extends Component {
         title: "Arrival Answer Template",
         exportDoc: "arrivalans_temp",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns",
+        reqAuth: "Answer.ArrivalAns.ArrivalAns",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -57,7 +57,8 @@ class ArrivalAns extends Component {
           fail: "Arrival Answer Template Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
+          onSubmit: "Add",
+          Custom: this.renderInner
         },
         Delete: {
           title: "Delete this Arrival Answer Template?",
@@ -74,7 +75,8 @@ class ArrivalAns extends Component {
           fail: "Arrival Answer Template Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
+          onSubmit: "Edit",
+          Custom: this.renderInner
         },
         Info: {
           title: "Arrival Answer Templates ",
@@ -82,7 +84,8 @@ class ArrivalAns extends Component {
           success: "Arrival Answer Templates Load Successfully",
           fail: "Arrival Answer Templates Load Failed: ",
           schema: schema.Info,
-          readOnly: true
+          readOnly: true,
+          Custom: this.renderInner
         },
         Import: {
           title: "Arrival Answer Template Import",
@@ -145,6 +148,17 @@ class ArrivalAns extends Component {
     this.setState((state, props) => ({
       ...props,
     }), callback);
+  }
+
+  renderInner(docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns){
+    return (
+      <HStack alignItems="flex-start">
+        {renderFormizo()}
+        <Box width="30%">
+          <img src="/Images/Placeholder/Capture.PNG" alt=""/>
+        </Box>
+      </HStack>
+    );
   }
 
   onMountDatumizo = (callbacks) => {
