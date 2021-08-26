@@ -43,6 +43,7 @@ import Questionnaire from "./Pages/Questionnaire/Questionnaire";
 import Question from "Pages/Questionnaire/Question/Question";
 import Scenario from "Pages/Questionnaire/Scenario/Scenario";
 import QFlow from "Pages/Questionnaire/QFlow/QFlow";
+import QOrder from "Pages/Questionnaire/QOrder/QOrder";
 import Severity from "./Pages/Severity/Severity";
 import Location from "Pages/Severity/Location/Location";
 import Grouping from "Pages/Severity/Grouping/Grouping";
@@ -72,6 +73,7 @@ function renderPages() {
     <Route key={10} path='/Answer/TransitAns' exact component={TransitAns}/>,
     <Route key={11} path='/Questionnaire/Question' exact component={Question}/>,
     <Route key={12} path='/Questionnaire/Scenario' exact component={Scenario}/>,
+    <Route key={18} path='/Questionnaire/QOrder' exact component={QOrder}/>,
     <Route key={17} path='/Questionnaire/QFlow' exact component={QFlow}/>,
     <Route key={13} path='/Severity/Location' exact component={Location}/>,
     <Route key={14} path='/Severity/SevGroup' exact component={SevGroup}/>,

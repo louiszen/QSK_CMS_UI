@@ -136,6 +136,12 @@ export const MenuConfig = [
         faIcon: <ContactSupport/>,
         auth: "Questionnaire.Question"
       },
+      {
+        caption: "Question Order",
+        link: "/Questionnaire/QOrder",
+        faIcon: "fas fa-sort-amount-down-alt",
+        auth: "Questionnaire.QOrder"
+      },
       /*
       {
         caption: "Scenarios",

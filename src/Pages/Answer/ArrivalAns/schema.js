@@ -48,36 +48,130 @@ const Tail = [
     format: "number"
   },
   {
-    label: "Can Entry?",
-    name: "canEntry",
-    format: "bool"
+    header: "Quarantine Requirements"
   },
   {
-    label: "QUAReq",
-    name: "QUAReq",
-    canAdd: true,
-    canDelete: true,
-    arrayStyle: "card",
-    array: [
+    tabs: [
       {
-        label: "Ref. ID",
-        name: "ref",
-        format: "text"
+        label: "QUAReq001",
+        page: [
+          {
+            label: "Show?",
+            name: "QUAReq.QUAReq001.show",
+            format: "bool"
+          },
+          {
+            label: "Parameters",
+            name: "QUAReq.QUAReq001.parameters",
+            canAdd: true,
+            canDelete: true,
+            array: [
+              {
+                label: "",
+                name: "",
+                format: "text"
+              }
+            ]
+          },
+        ]
       },
       {
-        label: "Parameters",
-        name: "parameters",
-        canAdd: true,
-        canDelete: true,
-        array: [
+        label: "QUAReq002",
+        page: [
           {
-            label: "",
-            name: "",
-            format: "text"
-          }
+            label: "Show?",
+            name: "QUAReq.QUAReq002.show",
+            format: "bool"
+          },
+          {
+            label: "Parameters",
+            name: "QUAReq.QUAReq002.parameters",
+            canAdd: true,
+            canDelete: true,
+            array: [
+              {
+                label: "",
+                name: "",
+                format: "text"
+              }
+            ]
+          },
+        ]
+      },
+      {
+        label: "QUAReq003",
+        page: [
+          {
+            label: "Show?",
+            name: "QUAReq.QUAReq003.show",
+            format: "bool"
+          },
+          {
+            label: "Parameters",
+            name: "QUAReq.QUAReq003.parameters",
+            canAdd: true,
+            canDelete: true,
+            array: [
+              {
+                label: "",
+                name: "",
+                format: "text"
+              }
+            ]
+          },
+        ]
+      },
+      {
+        label: "QUAReq004",
+        page: [
+          {
+            label: "Show?",
+            name: "QUAReq.QUAReq004.show",
+            format: "bool"
+          },
+          {
+            label: "Parameters",
+            name: "QUAReq.QUAReq004.parameters",
+            canAdd: true,
+            canDelete: true,
+            array: [
+              {
+                label: "",
+                name: "",
+                format: "text"
+              }
+            ]
+          },
         ]
       }
     ]
+  },
+  {
+    label: "Document Requirements",
+    name: "DOCReq",
+    format: "select",
+    selectStyle: "checkbox",
+    selectRef: ["DOCReq001", "DOCReq002", "DOCReq003", "DOCReq004", "DOCReq005", "DOCReq006", "DOCReq007"],
+    selectCap: "",
+    selectVal: ""
+  },
+  {
+    label: "Entry Requirements",
+    name: "ENTReq",
+    format: "select",
+    selectStyle: "checkbox",
+    selectRef: ["ENTReq001", "ENTReq002"],
+    selectCap: "",
+    selectVal: ""
+  },
+  {
+    label: "Airport Proceed",
+    name: "APProc",
+    format: "select",
+    selectStyle: "checkbox",
+    selectRef: ["APProc001", "APProc002", "APProc003", "APProc004", "APProc005", "APProc006", "APProc007", "APProc008"],
+    selectCap: "",
+    selectVal: ""
   },
   {
     label: "Effective Start Date",

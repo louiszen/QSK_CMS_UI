@@ -1,3 +1,5 @@
+import QOrderInner from "./_gears/QOrderInner";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -6,14 +8,6 @@ const Table = [
   {
     label: "Description",
     name: "description"
-  },
-  {
-    label: "Type",
-    name: "type"
-  },
-  {
-    label: "Order",
-    name: "order"
   },
   {
     label: "Effective Start Date",
@@ -51,62 +45,19 @@ const Tail = [
     format: "textarea"
   },
   {
-    label: "Type",
-    name: "type",
-    format: "select",
-    selectStyle: "radio",
-    selectRef: ["datetime", "severity", "yesno"],
-    selectCap: "",
-    selectVal: ""
+    label: "Version",
+    name: "version",
+    format: "number"
   },
   {
-    tabs: [
-      {
-        label: "EN",
-        page: [
-          {
-            label: "Question",
-            name: "question.EN",
-            format: "text"
-          },
-          {
-            label: "Subtitle",
-            name: "subtitle.EN",
-            format: "text"
-          }
-        ]
-      },
-      {
-        label: "TC",
-        page: [
-          {
-            label: "Question",
-            name: "question.TC",
-            format: "text"
-          },
-          {
-            label: "Subtitle",
-            name: "subtitle.TC",
-            format: "text"
-          }
-        ]
-      },
-      {
-        label: "SC",
-        page: [
-          {
-            label: "Question",
-            name: "question.SC",
-            format: "text"
-          },
-          {
-            label: "Subtitle",
-            name: "subtitle.SC",
-            format: "text"
-          }
-        ]
-      },
-    ]
+    label: "Order",
+    name: "order",
+    format: "custom",
+    Custom: (data, field, addOns, _onValueChange) => {
+      return (
+        <QOrderInner data={data} field={field} addOns={addOns} _onValueChange={_onValueChange}/>
+      );
+    }
   },
   {
     label: "Effective Start Date",
@@ -127,14 +78,7 @@ const Add = [
 ];
 
 const Info = [
-  ...Tail,
-  {
-    label: "Last Update",
-    name: "lastUpdate",
-    format: "date",
-    dateType: "datetime",
-    readOnly: true
-  }
+  ...Tail
 ];
 
 const Edit = [

@@ -9,12 +9,11 @@ import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
-import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
 
 /**
  * @augments {Component<Props, State>}
  */
-class Question extends Component {
+class QOrder extends Component {
 
   static propTypes = {
 
@@ -27,13 +26,13 @@ class Question extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Questions",
+      title: "Question Ordering",
       serverSidePagination: false, 
       base: {
-        title: "Question",
-        exportDoc: "question",
+        title: "Question Ordering",
+        exportDoc: "qorder",
         schema: schema,
-        reqAuth: "Questionnaire.Question",
+        reqAuth: "Questionnaire.QOrder",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -52,61 +51,61 @@ class Question extends Component {
         },
 
         Add: {
-          title: "Add Question",
+          title: "Add Question Ordering",
           url: datalink.Request.Add,
-          success: "Question Added Successfully",
-          fail: "Question Add Failed: ",
+          success: "Question Ordering Added Successfully",
+          fail: "Question Ordering Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add",
           Custom: this.renderInner
         },
         Delete: {
-          title: "Delete this Question?",
+          title: "Delete this Question Ordering?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Question Deleted Successfully.",
-          fail: "Question Delete Failed: ",
+          success: "Question Ordering Deleted Successfully.",
+          fail: "Question Ordering Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Question ",
+          title: "Edit Question Ordering ",
           url: datalink.Request.Edit,
-          success: "Question Edited Successfully",
-          fail: "Question Edit Failed: ",
+          success: "Question Ordering Edited Successfully",
+          fail: "Question Ordering Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit",
           Custom: this.renderInner
         },
         Info: {
-          title: "Questions ",
+          title: "Question Ordering ",
           url: datalink.Request.Info,
-          success: "Questions Load Successfully",
-          fail: "Questions Load Failed: ",
+          success: "Question Ordering Load Successfully",
+          fail: "Question Ordering Load Failed: ",
           schema: schema.Info,
           readOnly: true,
           Custom: this.renderInner
         },
         Import: {
-          title: "Question Import",
+          title: "Question Ordering Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Question Imported Successfully.",
-          fail: "Question Import Failed: ",
+          success: "Question Ordering Imported Successfully.",
+          fail: "Question Ordering Import Failed: ",
           schema: schema.ImportFormat,
-          replace: false
+          replace: true
         },
         Export: {
           url: datalink.Request.Export,
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Question?",
+          title: (n) => "Delete these " + n + " Question Ordering?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Question Deleted Successfully.",
-          fail: "Question Delete Failed: ",
+          success: "Question Ordering Deleted Successfully.",
+          fail: "Question Ordering Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -116,11 +115,7 @@ class Question extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          inlineOpposite: [
-            //{ icon: <ArrowUpward/>, func: () => {}, caption: "Move Up" },
-            //{ icon: <ArrowDownward/>, func: () => {}, caption: "Move Down" },
-          ],
-          left: [{ icon: "add", func: "Add", caption: "Add Question", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Question Ordering", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -133,12 +128,12 @@ class Question extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Questionnaire.Question");
+    Authority.Require("Questionnaire.QOrder");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Question.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(QOrder.defaultProps))){
       this._setAllStates();
     }
   }
@@ -149,21 +144,21 @@ class Question extends Component {
     };
   }
 
+  _setAllStates = (callback) => {
+    this.setState((state, props) => ({
+      ...props,
+    }), callback);
+  }
+
   renderInner(docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns){
     return (
       <HStack alignItems="flex-start">
         {renderFormizo()}
         <Box width="30%">
-          <img src="/Images/Placeholder/Capture4.PNG" alt=""/>
+          <img src="/Images/Placeholder/Capture.PNG" alt=""/>
         </Box>
       </HStack>
     );
-  }
-
-  _setAllStates = (callback) => {
-    this.setState((state, props) => ({
-      ...props,
-    }), callback);
   }
 
   onMountDatumizo = (callbacks) => {
@@ -193,4 +188,4 @@ class Question extends Component {
 
 }
 
-export default Question;
+export default QOrder;
