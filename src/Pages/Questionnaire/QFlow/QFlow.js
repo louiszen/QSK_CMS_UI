@@ -39,7 +39,7 @@ class QFlow extends Component {
         filterToolbar: true,
         densityToolbar: true,
         exportToolbar: false,
-        density: "standard",
+        density: "compact",
         defaultPageSize: 25,
         showSelector: true,
         noDefaultTable: false,

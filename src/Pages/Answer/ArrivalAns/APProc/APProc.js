@@ -23,10 +23,10 @@ class APProc extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Airport Procs",
+      title: "Airport Procedures",
       serverSidePagination: false, 
       base: {
-        title: "Airport Proc",
+        title: "Airport Procedure",
         exportDoc: "airport_proc",
         schema: schema,
         reqAuth: "Answer.ArrivalAns.APProc",
@@ -47,45 +47,45 @@ class APProc extends Component {
         },
 
         Add: {
-          title: "Add Airport Proc",
+          title: "Add Airport Procedure",
           url: datalink.Request.Add,
-          success: "Airport Proc Added Successfully",
-          fail: "Airport Proc Add Failed: ",
+          success: "Airport Procedure Added Successfully",
+          fail: "Airport Procedure Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add"
         },
         Delete: {
-          title: "Delete this Airport Proc?",
+          title: "Delete this Airport Procedure?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Airport Proc Deleted Successfully.",
-          fail: "Airport Proc Delete Failed: ",
+          success: "Airport Procedure Deleted Successfully.",
+          fail: "Airport Procedure Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Airport Proc ",
+          title: "Edit Airport Procedure ",
           url: datalink.Request.Edit,
-          success: "Airport Proc Edited Successfully",
-          fail: "Airport Proc Edit Failed: ",
+          success: "Airport Procedure Edited Successfully",
+          fail: "Airport Procedure Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit"
         },
         Info: {
-          title: "Airport Procs ",
+          title: "Airport Procedures ",
           url: datalink.Request.Info,
-          success: "Airport Procs Load Successfully",
-          fail: "Airport Procs Load Failed: ",
+          success: "Airport Procedures Load Successfully",
+          fail: "Airport Procedures Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "Airport Proc Import",
+          title: "Airport Procedure Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Airport Proc Imported Successfully.",
-          fail: "Airport Proc Import Failed: ",
+          success: "Airport Procedure Imported Successfully.",
+          fail: "Airport Procedure Import Failed: ",
           schema: schema.ImportFormat,
           replace: true
         },
@@ -94,7 +94,7 @@ class APProc extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Airport Proc?",
+          title: (n) => "Delete these " + n + " Airport Procedure?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
           success: "Airport Proc Deleted Successfully.",
@@ -108,7 +108,7 @@ class APProc extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Airport Proc", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Airport Procedure", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },

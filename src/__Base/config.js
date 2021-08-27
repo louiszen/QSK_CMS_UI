@@ -45,12 +45,14 @@ export const MenuConfig = [
     link: "/Dashboard",
     faIcon: <Dashboard />,
     auth: "Dashboard",
+    disabled: true
   },
   {
     caption: "Severity",
     link: "/Severity",
     faIcon: "fas fa-map-marked-alt fa-lg",
     auth: "Severity",
+    disabled: true,
     submenu: [
       {
         caption: "Severity Group",
