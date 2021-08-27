@@ -59,6 +59,7 @@ if (process.env.NODE_ENV === "production") {
 
 function renderPages() {
   return [
+    <Route key={19} path='/cms' exact component={Dashboard}/>,
     <Route key={0} path='/Dashboard' exact component={Dashboard}/>,
     <Route key={1} path='/System' exact component={System}/>,
     <Route key={2} path='/Answer' exact component={Answer}/>,
