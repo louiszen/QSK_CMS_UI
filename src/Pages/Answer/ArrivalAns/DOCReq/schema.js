@@ -9,15 +9,15 @@ const Table = [
   },
   {
     label: "Content (EN)",
-    name: "content.EN"
+    name: "display.content.EN"
   },
   {
     label: "Content (TC)",
-    name: "content.TC"
+    name: "display.content.TC"
   },
   {
     label: "Content (SC)",
-    name: "content.SC"
+    name: "display.content.SC"
   },
   {
     label: "Effective Start Date",
@@ -56,17 +56,17 @@ const Tail = [
   },
   {
     label: "Content (EN)",
-    name: "content.EN",
+    name: "display.content.EN",
     format: "textarea"
   },
   {
     label: "Content (TC)",
-    name: "content.TC",
+    name: "display.content.TC",
     format: "textarea"
   },
   {
     label: "Content (SC)",
-    name: "content.SC",
+    name: "display.content.SC",
     format: "textarea"
   },
   {
