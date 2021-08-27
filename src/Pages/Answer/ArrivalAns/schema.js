@@ -147,7 +147,7 @@ const Tail = [
     ]
   },
   {
-    label: "Document Requirements",
+    label: "Document Requirements (Before You Fly)",
     name: "DOCReq",
     format: "select",
     selectStyle: "checkbox",
@@ -156,7 +156,7 @@ const Tail = [
     selectVal: ""
   },
   {
-    label: "Entry Requirements",
+    label: "Entry Requirements (Before You Fly)",
     name: "ENTReq",
     format: "select",
     selectStyle: "checkbox",
@@ -165,7 +165,7 @@ const Tail = [
     selectVal: ""
   },
   {
-    label: "Airport Proceed",
+    label: "Airport Proceed (Upon Landing)",
     name: "APProc",
     format: "select",
     selectStyle: "checkbox",
