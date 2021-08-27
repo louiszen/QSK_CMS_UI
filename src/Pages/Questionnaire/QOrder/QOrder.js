@@ -155,7 +155,7 @@ class QOrder extends Component {
       <HStack alignItems="flex-start">
         {renderFormizo()}
         <Box width="30%">
-          <img src="/Images/Placeholder/Capture.PNG" alt=""/>
+          <img src="/Images/Placeholder/Capture2.PNG" alt=""/>
         </Box>
       </HStack>
     );
