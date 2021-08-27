@@ -130,6 +130,29 @@ const Tail = [
     ]
   },
   {
+    label: "Parameters",
+    name: "parameters",
+    canAdd: true,
+    canDelete: true,
+    headerStyle: "outlined",
+    array: [
+      {
+        label: "Description",
+        name: "description",
+        format: "text"
+      },
+      {
+        label: "Format",
+        name: "format",
+        format: "select",
+        selectStyle: "dropdown",
+        selectRef: ["number", "select", "array"],
+        selectCap: "",
+        selectVal: ""
+      }
+    ]
+  },
+  {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
