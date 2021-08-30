@@ -113,6 +113,10 @@ class QUAReq extends Component {
           ],
           left: [{ icon: "add", func: "Add", caption: "Add Quarantine Req", reqFunc: "Add" }],
           right: [
+            { icon: "", func: null, caption: "Quarantine", theme: {color: "blue"} },
+            { icon: "", func: null, caption: "Documents", theme: {color: "blue"} },
+            { icon: "", func: null, caption: "Entry", theme: {color: "blue"} },
+            { icon: "", func: null, caption: "Airport Proc", theme: {color: "blue"} },
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
             { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },

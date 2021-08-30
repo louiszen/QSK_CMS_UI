@@ -127,6 +127,47 @@ export const MenuConfig = [
     ]
   },
   {
+    caption: "Answer",
+    link: "/Answer",
+    faIcon: <ReplyAll/>,
+    auth: "Answer",
+    submenu: [
+      {
+        caption: "Arrival",
+        link: "",
+        faIcon: "fas fa-plane-arrival fa-lg",
+        auth: "Answer.ArrivalAns",
+        disabled: true,
+        submenu: [
+          {
+            caption: "Answer Component",
+            link: "/Answer/ArrivalAns/QUAReq",
+            faIcon: "fas fa-shapes fa-lg",
+            auth: "Answer.ArrivalAns.QUAReq",
+          },
+          {
+            caption: "Answer Template",
+            link: "/Answer/ArrivalAns",
+            faIcon: "far fa-file-alt fa-lg",
+            auth: "Answer.ArrivalAns",
+          }
+        ]
+      },
+      {
+        caption: "Departure",
+        link: "/Answer/DepartAns",
+        faIcon: "fas fa-plane-departure fa-lg",
+        auth: "Answer.DepartAns"
+      },
+      {
+        caption: "Transition",
+        link: "/Answer/TransitAns",
+        faIcon: "fas fa-project-diagram fa-lg",
+        auth: "Answer.TransitAns"
+      }
+    ]
+  },
+  {
     caption: "Questionnaire",
     link: "/Questionnaire",
     faIcon: "fas fa-file-alt fa-lg",
