@@ -13,7 +13,7 @@ import { IZOTheme } from '__Base/config';
 /**
  * @augments {Component<Props, State>}
  */
-class ${1} extends Component {
+class Tips extends Component {
 
   static propTypes = {
 
@@ -26,13 +26,13 @@ class ${1} extends Component {
   constructor(){
     super();
     this.state = {
-      title: "${3}",
+      title: "Tips",
       serverSidePagination: false, 
       base: {
-        title: "${2}",
-        exportDoc: "${4}",
+        title: "Tip",
+        exportDoc: "tips",
         schema: schema,
-        reqAuth: "${5}",
+        reqAuth: "Answer.ArrivalAns.Components.Tips",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -42,7 +42,7 @@ class ${1} extends Component {
           filterToolbar: true,
           densityToolbar: true,
           exportToolbar: false,
-          density: "standard",
+          density: "compact",
           defaultPageSize: 25,
           showSelector: true,
         },
@@ -58,45 +58,45 @@ class ${1} extends Component {
         },
 
         Add: {
-          title: "Add ${2}",
+          title: "Add Tip",
           url: datalink.Request.Add,
-          success: "${2} Added Successfully",
-          fail: "${2} Add Failed: ",
+          success: "Tip Added Successfully",
+          fail: "Tip Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add"
         },
         Delete: {
-          title: "Delete this ${2}?",
+          title: "Delete this Tip?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "${2} Deleted Successfully.",
-          fail: "${2} Delete Failed: ",
+          success: "Tip Deleted Successfully.",
+          fail: "Tip Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit ${2} ",
+          title: "Edit Tip ",
           url: datalink.Request.Edit,
-          success: "${2} Edited Successfully",
-          fail: "${2} Edit Failed: ",
+          success: "Tip Edited Successfully",
+          fail: "Tip Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit"
         },
         Info: {
-          title: "${3} ",
+          title: "Tips ",
           url: datalink.Request.Info,
-          success: "${3} Load Successfully",
-          fail: "${3} Load Failed: ",
+          success: "Tips Load Successfully",
+          fail: "Tips Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "${2} Import",
+          title: "Tip Import",
           content: "",
           url: datalink.Request.Import,
-          success: "${2} Imported Successfully.",
-          fail: "${2} Import Failed: ",
+          success: "Tip Imported Successfully.",
+          fail: "Tip Import Failed: ",
           schema: schema.ImportFormat,
           replace: false
         },
@@ -105,11 +105,11 @@ class ${1} extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " ${2}?",
+          title: (n) => "Delete these " + n + " Tip?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "${2} Deleted Successfully.",
-          fail: "${2} Delete Failed: ",
+          success: "Tip Deleted Successfully.",
+          fail: "Tip Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -119,7 +119,7 @@ class ${1} extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add ${2}", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Tip", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -132,12 +132,12 @@ class ${1} extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("${5}");
+    Authority.Require("Answer.ArrivalAns.Components.Tips");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(${1}.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Tips.defaultProps))){
       this._setAllStates();
     }
   }
@@ -181,4 +181,4 @@ class ${1} extends Component {
 
 }
 
-export default ${1};
+export default Tips;

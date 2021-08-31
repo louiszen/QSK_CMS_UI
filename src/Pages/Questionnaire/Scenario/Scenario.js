@@ -42,16 +42,23 @@ class Scenario extends Component {
         exportDoc: "scenario",
         schema: schema,
         reqAuth: "Questionnaire.Scenario",
-
-        columnsToolbar: true,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "standard",
-        defaultPageSize: 25,
-        showSelector: true,
+        
         noDefaultTable: true,
         noDefaultButtons: false,
+
+        tablizo: {
+          columnsToolbar: true,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "standard",
+          defaultPageSize: 25,
+          showSelector: true,
+        },
+
+        formizo: {
+
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,

@@ -31,13 +31,19 @@ class SevGroup extends Component {
         schema: schema,
         reqAuth: "Severity.SevGroup",
 
-        columnsToolbar: false,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "compact",
-        defaultPageSize: 25,
-        showSelector: true,
+        tablizo: {
+          columnsToolbar: false,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "compact",
+          defaultPageSize: 25,
+          showSelector: true,
+        },
+
+        formizo: {
+
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,

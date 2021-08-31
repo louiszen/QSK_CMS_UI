@@ -35,15 +35,22 @@ class QFlow extends Component {
         schema: schema,
         reqAuth: "Questionnaire.QFlow",
 
-        columnsToolbar: true,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "compact",
-        defaultPageSize: 25,
-        showSelector: true,
         noDefaultTable: false,
         noDefaultButtons: false,
+
+        tablizo: {
+          columnsToolbar: true,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "compact",
+          defaultPageSize: 25,
+          showSelector: true,
+        },
+        
+        formizo: {
+
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,

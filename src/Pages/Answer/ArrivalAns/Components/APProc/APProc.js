@@ -31,14 +31,17 @@ class APProc extends Component {
         schema: schema,
         reqAuth: "Answer.ArrivalAns.Components.APProc",
 
-        columnsToolbar: true,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "compact",
-        defaultPageSize: 50,
-        showSelector: true,
         noDefaultTable: false,
+
+        tablizo: {
+          columnsToolbar: true,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "compact",
+          defaultPageSize: 50,
+          showSelector: true,
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,

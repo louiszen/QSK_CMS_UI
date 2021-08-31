@@ -5,7 +5,8 @@ const Request = {
   Delete: "/Tables/Location/Delete",
   Edit: "/Tables/Location/Edit",
   Export: "/Tables/Location/Export",
-  Import: "/Tables/Location/Import"
+  Import: "/Tables/Location/Import",
+  DeleteBulk: "/Tables/Location/DeleteBulk",
 };
 
 let exports = {

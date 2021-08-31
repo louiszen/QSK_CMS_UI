@@ -34,15 +34,22 @@ class DOCReq extends Component {
         schema: schema,
         reqAuth: "Answer.ArrivalAns.Components.DOCReq",
 
-        columnsToolbar: true,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "compact",
-        defaultPageSize: 50,
-        showSelector: true,
         noDefaultTable: false,
         noDefaultButtons: false,
+
+        tablizo: {
+          columnsToolbar: true,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "compact",
+          defaultPageSize: 50,
+          showSelector: true,
+        },
+
+        formizo: {
+
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,

@@ -32,13 +32,19 @@ class Grouping extends Component {
         schema: schema,
         reqAuth: "Severity.Grouping",
 
-        columnsToolbar: false,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "compact",
-        defaultPageSize: 50,
-        showSelector: true,
+        tablizo: {
+          columnsToolbar: false,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "compact",
+          defaultPageSize: 50,
+          showSelector: true,
+        },
+
+        formizo: {
+
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,

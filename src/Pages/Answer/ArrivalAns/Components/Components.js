@@ -116,4 +116,3 @@ class Components extends Component {
 }
 
 export default Components;
-  

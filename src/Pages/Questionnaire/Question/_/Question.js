@@ -34,15 +34,22 @@ class Question extends Component {
         schema: schema,
         reqAuth: "Questionnaire.Question",
 
-        columnsToolbar: true,
-        filterToolbar: true,
-        densityToolbar: true,
-        exportToolbar: false,
-        density: "standard",
-        defaultPageSize: 25,
-        showSelector: true,
         noDefaultButtons: false,
         noDefaultTable: true,
+
+        tablizo: {
+          columnsToolbar: true,
+          filterToolbar: true,
+          densityToolbar: true,
+          exportToolbar: false,
+          density: "standard",
+          defaultPageSize: 25,
+          showSelector: true,
+        },
+        
+        formizo: {
+
+        },
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,
