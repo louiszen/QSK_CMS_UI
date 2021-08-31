@@ -3,8 +3,6 @@ import { Accessor, ColorX } from 'IZOArc/STATIC';
 import PropsType from 'prop-types';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Typography } from '@material-ui/core';
-import { Add, ArrowRightAltSharp } from '@material-ui/icons';
-import { StyledIconButton } from 'IZOArc/LabIZO/Stylizo';
 
 class ANode extends Component {
 

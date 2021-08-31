@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Accessor } from 'IZOArc/STATIC';
 import PropsType from 'prop-types';
-import { StyledButton } from 'IZOArc/LabIZO/Stylizo';
-import { Box, Typography } from '@material-ui/core';
-import { HStack } from 'IZOArc/LabIZO/Stackizo';
+import { Box } from '@material-ui/core';
 import _ from 'lodash';
 import SNode from './SNode';
 import QNode from './QNode';
@@ -60,7 +58,7 @@ class Editor extends Component {
       switch(o.type){
         case 'severity': return <SNode key={i} item={o}/>;
         case 'question': return <QNode key={i} item={o}/>;
-        case 'answer': return <ANode key={i} item={o}/>;
+        default: case 'answer': return <ANode key={i} item={o}/>;
       }
     })
   }

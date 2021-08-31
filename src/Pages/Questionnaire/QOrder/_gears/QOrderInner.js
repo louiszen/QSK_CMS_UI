@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Accessor } from 'IZOArc/STATIC';
-import PropsType from 'prop-types';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Typography } from '@material-ui/core';
 import _ from 'lodash';

@@ -9,7 +9,6 @@ import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
-import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
 
 /**
  * @augments {Component<Props, State>}

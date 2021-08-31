@@ -9,6 +9,11 @@ const Table = [
     name: "description"
   },
   {
+    label: "Type",
+    name: "type",
+    width: 150
+  },
+  {
     label: "Version",
     name: "version",
     width: 150
@@ -50,15 +55,6 @@ const Tail = [
   },
   {
     header: "Display"
-  },
-  {
-    label: "Type",
-    name: "display.type",
-    format: "select",
-    selectStyle: "radio",
-    selectRef: ["withicon", "circled", "ordered"],
-    selectCap: "",
-    selectVal: ""
   },
   {
     label: "Icon",
@@ -126,29 +122,6 @@ const Tail = [
             format: "text"
           }
         ]
-      }
-    ]
-  },
-  {
-    label: "Parameters",
-    name: "parameters",
-    canAdd: true,
-    canDelete: true,
-    headerStyle: "outlined",
-    array: [
-      {
-        label: "Description",
-        name: "description",
-        format: "text"
-      },
-      {
-        label: "Format",
-        name: "format",
-        format: "select",
-        selectStyle: "dropdown",
-        selectRef: ["number", "select", "array"],
-        selectCap: "",
-        selectVal: ""
       }
     ]
   },
