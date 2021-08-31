@@ -13,7 +13,7 @@ import { IZOTheme } from '__Base/config';
 /**
  * @augments {Component<Props, State>}
  */
-class ArrivalAns extends Component {
+class Template extends Component {
 
   static propTypes = {
 
@@ -32,7 +32,7 @@ class ArrivalAns extends Component {
         title: "Arrival Answer Template",
         exportDoc: "arrivalans_temp",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.ArrivalAns",
+        reqAuth: "Answer.ArrivalAns.Template",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -128,12 +128,12 @@ class ArrivalAns extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns");
+    Authority.Require("Answer.ArrivalAns.Template");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(ArrivalAns.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Template.defaultProps))){
       this._setAllStates();
     }
   }
@@ -188,4 +188,4 @@ class ArrivalAns extends Component {
 
 }
 
-export default ArrivalAns;
+export default Template;

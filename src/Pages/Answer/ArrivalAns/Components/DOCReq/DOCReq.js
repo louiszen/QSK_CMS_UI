@@ -32,7 +32,7 @@ class DOCReq extends Component {
         title: "Document Requirement",
         exportDoc: "doc_req",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.DOCReq",
+        reqAuth: "Answer.ArrivalAns.Components.DOCReq",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -125,7 +125,7 @@ class DOCReq extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.DOCReq");
+    Authority.Require("Answer.ArrivalAns.Components.DOCReq");
     this._setAllStates();
   }
 

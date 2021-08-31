@@ -10,7 +10,10 @@ import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 
-class APProc extends Component {
+/**
+ * @augments {Component<Props, State>}
+ */
+class ENTReq extends Component {
 
   static propTypes = {
 
@@ -23,13 +26,13 @@ class APProc extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Airport Procedures",
+      title: "Entry Requirements",
       serverSidePagination: false, 
       base: {
-        title: "Airport Procedure",
-        exportDoc: "airport_proc",
+        title: "Entry Requirement",
+        exportDoc: "ent_req",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.APProc",
+        reqAuth: "Answer.ArrivalAns.Components.ENTReq",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -39,6 +42,7 @@ class APProc extends Component {
         defaultPageSize: 50,
         showSelector: true,
         noDefaultTable: false,
+        noDefaultButtons: false,
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,
@@ -47,45 +51,45 @@ class APProc extends Component {
         },
 
         Add: {
-          title: "Add Airport Procedure",
+          title: "Add Entry Requirement",
           url: datalink.Request.Add,
-          success: "Airport Procedure Added Successfully",
-          fail: "Airport Procedure Add Failed: ",
+          success: "Entry Requirement Added Successfully",
+          fail: "Entry Requirement Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
           onSubmit: "Add"
         },
         Delete: {
-          title: "Delete this Airport Procedure?",
+          title: "Delete this Entry Requirement?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Airport Procedure Deleted Successfully.",
-          fail: "Airport Procedure Delete Failed: ",
+          success: "Entry Requirement Deleted Successfully.",
+          fail: "Entry Requirement Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Airport Procedure ",
+          title: "Edit Entry Requirement ",
           url: datalink.Request.Edit,
-          success: "Airport Procedure Edited Successfully",
-          fail: "Airport Procedure Edit Failed: ",
+          success: "Entry Requirement Edited Successfully",
+          fail: "Entry Requirement Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
           onSubmit: "Edit"
         },
         Info: {
-          title: "Airport Procedures ",
+          title: "Entry Requirements ",
           url: datalink.Request.Info,
-          success: "Airport Procedures Load Successfully",
-          fail: "Airport Procedures Load Failed: ",
+          success: "Entry Requirements Load Successfully",
+          fail: "Entry Requirements Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "Airport Procedure Import",
+          title: "Entry Requirement Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Airport Procedure Imported Successfully.",
-          fail: "Airport Procedure Import Failed: ",
+          success: "Entry Requirement Imported Successfully.",
+          fail: "Entry Requirement Import Failed: ",
           schema: schema.ImportFormat,
           replace: true
         },
@@ -94,11 +98,11 @@ class APProc extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Airport Procedure?",
+          title: (n) => "Delete these " + n + " Entry Requirement?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Airport Proc Deleted Successfully.",
-          fail: "Airport Proc Delete Failed: ",
+          success: "Entry Requirement Deleted Successfully.",
+          fail: "Entry Requirement Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -108,24 +112,25 @@ class APProc extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Airport Procedure", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Entry Requirement", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
-      }
+      },
+      addOns: {}
     };
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.APProc");
+    Authority.Require("Answer.ArrivalAns.Components.ENTReq");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(APProc.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(ENTReq.defaultProps))){
       this._setAllStates();
     }
   }
@@ -147,7 +152,7 @@ class APProc extends Component {
   }
 
   render(){
-    let {base, serverSidePagination, title} = this.state;
+    let {base, serverSidePagination, title, addOns} = this.state;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -161,7 +166,7 @@ class APProc extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
     );
@@ -169,5 +174,4 @@ class APProc extends Component {
 
 }
 
-export default APProc;
-  
+export default ENTReq;

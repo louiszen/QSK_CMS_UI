@@ -87,69 +87,16 @@ export const MenuConfig = [
         auth: "Answer.ArrivalAns",
         submenu: [
           {
-            caption: "Quarantine Req.",
-            link: "/Answer/ArrivalAns/QUAReq",
-            faIcon: "fas fa-syringe fa-lg",
-            auth: "Answer.ArrivalAns.QUAReq",
-          },
-          {
-            caption: "Document Req.",
-            link: "/Answer/ArrivalAns/DOCReq",
-            faIcon: "far fa-file-alt fa-lg",
-            auth: "Answer.ArrivalAns.DOCReq",
-          },
-          {
-            caption: "Entry Req.",
-            link: "/Answer/ArrivalAns/ENTReq",
-            faIcon: "fas fa-door-open fa-lg",
-            auth: "Answer.ArrivalAns.ENTReq",
-          },
-          {
-            caption: "Airport Proc",
-            link: "/Answer/ArrivalAns/APProc",
-            faIcon: "fas fa-plane fa-lg",
-            auth: "Answer.ArrivalAns.APProc",
-          }
-        ]
-      },
-      {
-        caption: "Departure",
-        link: "/Answer/DepartAns",
-        faIcon: "fas fa-plane-departure fa-lg",
-        auth: "Answer.DepartAns"
-      },
-      {
-        caption: "Transition",
-        link: "/Answer/TransitAns",
-        faIcon: "fas fa-project-diagram fa-lg",
-        auth: "Answer.TransitAns"
-      }
-    ]
-  },
-  {
-    caption: "Answer",
-    link: "/Answer",
-    faIcon: <ReplyAll/>,
-    auth: "Answer",
-    submenu: [
-      {
-        caption: "Arrival",
-        link: "",
-        faIcon: "fas fa-plane-arrival fa-lg",
-        auth: "Answer.ArrivalAns",
-        disabled: true,
-        submenu: [
-          {
             caption: "Answer Component",
-            link: "/Answer/ArrivalAns/QUAReq",
+            link: "/Answer/ArrivalAns/Components",
             faIcon: "fas fa-shapes fa-lg",
-            auth: "Answer.ArrivalAns.QUAReq",
+            auth: "Answer.ArrivalAns.Components",
           },
           {
             caption: "Answer Template",
-            link: "/Answer/ArrivalAns",
+            link: "/Answer/ArrivalAns/Template",
             faIcon: "far fa-file-alt fa-lg",
-            auth: "Answer.ArrivalAns",
+            auth: "Answer.ArrivalAns.Template",
           }
         ]
       },

@@ -6,14 +6,11 @@ import schema from './schema';
 import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
-import { VStack } from 'IZOArc/LabIZO/Stackizo';
+import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 
-/**
- * @augments {Component<Props, State>}
- */
-class ENTReq extends Component {
+class QUAReq extends Component {
 
   static propTypes = {
 
@@ -26,13 +23,13 @@ class ENTReq extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Entry Requirements",
+      title: "Quarantine Requirements",
       serverSidePagination: false, 
       base: {
-        title: "Entry Requirement",
-        exportDoc: "ent_req",
+        title: "Quarantine Req",
+        exportDoc: "qua_req",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.ENTReq",
+        reqAuth: "Answer.ArrivalAns.Components.QUAReq",
 
         columnsToolbar: true,
         filterToolbar: true,
@@ -42,7 +39,6 @@ class ENTReq extends Component {
         defaultPageSize: 50,
         showSelector: true,
         noDefaultTable: false,
-        noDefaultButtons: false,
 
         Connect: {
           DBInfo: datalink.Request.DBInfo,
@@ -51,45 +47,48 @@ class ENTReq extends Component {
         },
 
         Add: {
-          title: "Add Entry Requirement",
+          title: "Add Quarantine Req",
           url: datalink.Request.Add,
-          success: "Entry Requirement Added Successfully",
-          fail: "Entry Requirement Add Failed: ",
+          success: "Quarantine Req Added Successfully",
+          fail: "Quarantine Req Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
+          onSubmit: "Add",
+          Custom: this.renderInner
         },
         Delete: {
-          title: "Delete this Entry Requirement?",
+          title: "Delete this Quarantine Req?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Entry Requirement Deleted Successfully.",
-          fail: "Entry Requirement Delete Failed: ",
+          success: "Quarantine Req Deleted Successfully.",
+          fail: "Quarantine Req Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Entry Requirement ",
+          title: "Edit Quarantine Req ",
           url: datalink.Request.Edit,
-          success: "Entry Requirement Edited Successfully",
-          fail: "Entry Requirement Edit Failed: ",
+          success: "Quarantine Req Edited Successfully",
+          fail: "Quarantine Req Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
+          onSubmit: "Edit",
+          Custom: this.renderInner
         },
         Info: {
-          title: "Entry Requirements ",
+          title: "Quarantine Requirements ",
           url: datalink.Request.Info,
-          success: "Entry Requirements Load Successfully",
-          fail: "Entry Requirements Load Failed: ",
+          success: "Quarantine Requirements Load Successfully",
+          fail: "Quarantine Requirements Load Failed: ",
           schema: schema.Info,
-          readOnly: true
+          readOnly: true,
+          Custom: this.renderInner
         },
         Import: {
-          title: "Entry Requirement Import",
+          title: "Quarantine Req Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Entry Requirement Imported Successfully.",
-          fail: "Entry Requirement Import Failed: ",
+          success: "Quarantine Req Imported Successfully.",
+          fail: "Quarantine Req Import Failed: ",
           schema: schema.ImportFormat,
           replace: true
         },
@@ -98,11 +97,11 @@ class ENTReq extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Entry Requirement?",
+          title: (n) => "Delete these " + n + " Quarantine Req?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Entry Requirement Deleted Successfully.",
-          fail: "Entry Requirement Delete Failed: ",
+          success: "Quarantine Req Deleted Successfully.",
+          fail: "Quarantine Req Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -112,25 +111,38 @@ class ENTReq extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Entry Requirement", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Quarantine Req", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            { icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
+            { icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
       },
-      addOns: {}
+      addOns: {
+        ansFormat: ["number", "select", "array"]
+      }
     };
   }
 
+  renderInner(docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns){
+    return (
+      <HStack alignItems="flex-start">
+        {renderFormizo()}
+        <Box width="30%">
+          <img src="/Images/Placeholder/Capture1.PNG" alt=""/>
+        </Box>
+      </HStack>
+    );
+  }
+
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.ENTReq");
+    Authority.Require("Answer.ArrivalAns.Components.QUAReq");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(ENTReq.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(QUAReq.defaultProps))){
       this._setAllStates();
     }
   }
@@ -153,6 +165,7 @@ class ENTReq extends Component {
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
+    console.log(addOns);
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -174,4 +187,5 @@ class ENTReq extends Component {
 
 }
 
-export default ENTReq;
+export default QUAReq;
+  

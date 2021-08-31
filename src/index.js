@@ -32,11 +32,8 @@ import {
 import Dashboard from "Pages/Dashboard/Dashboard";
 import System from "Pages/System/System"
 import Answer from "./Pages/Answer/Answer";
-import ArrivalAns from "Pages/Answer/ArrivalAns/ArrivalAns";
-import APProc from "Pages/Answer/ArrivalAns/APProc/APProc";
-import DOCReq from "Pages/Answer/ArrivalAns/DOCReq/DOCReq";
-import QUAReq from "Pages/Answer/ArrivalAns/QUAReq/QUAReq";
-import ENTReq from "Pages/Answer/ArrivalAns/ENTReq/ENTReq";
+import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
+import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";
 import DepartAns from "Pages/Answer/DepartAns/DepartAns";
 import TransitAns from "Pages/Answer/TransitAns/TransitAns";
 import Questionnaire from "./Pages/Questionnaire/Questionnaire";
@@ -65,11 +62,8 @@ function renderPages() {
     <Route key={2} path='/Answer' exact component={Answer}/>,
     <Route key={3} path='/Questionnaire' exact component={Questionnaire}/>,
     <Route key={4} path='/Severity' exact component={Severity}/>,
-    <Route key={5} path='/Answer/ArrivalAns' exact component={ArrivalAns}/>,
-    <Route key={6} path='/Answer/ArrivalAns/APProc' exact component={APProc}/>,
-    <Route key={7} path='/Answer/ArrivalAns/DOCReq' exact component={DOCReq}/>,
-    <Route key={8} path='/Answer/ArrivalAns/QUAReq' exact component={QUAReq}/>,
-    <Route key={16} path='/Answer/ArrivalAns/ENTReq' exact component={ENTReq}/>,
+    <Route key={5} path='/Answer/ArrivalAns/Template' exact component={ArrivalAnsTemp}/>,
+    <Route key={6} path='/Answer/ArrivalAns/Components' exact component={ArrivalAnsComp}/>,
     <Route key={9} path='/Answer/DepartAns' exact component={DepartAns}/>,
     <Route key={10} path='/Answer/TransitAns' exact component={TransitAns}/>,
     <Route key={11} path='/Questionnaire/Question' exact component={Question}/>,
