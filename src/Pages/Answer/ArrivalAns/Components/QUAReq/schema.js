@@ -10,8 +10,7 @@ const Table = [
   },
   {
     label: "Type",
-    name: "type",
-    width: 150
+    name: "type"
   },
   {
     label: "Version",
@@ -69,17 +68,20 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.EN",
-            format: "text"
+            format: "text",
+            readOnly: true
           },
           {
             label: "Content",
             name: "display.content.EN",
-            format: "text"
+            format: "text",
+            readOnly: true
           },
           {
             label: "Remark",
             name: "display.remark.EN",
-            format: "text"
+            format: "text",
+            readOnly: true
           }
         ]
       },
@@ -89,17 +91,20 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.TC",
-            format: "text"
+            format: "text",
+            readOnly: true
           },
           {
             label: "Content",
             name: "display.content.TC",
-            format: "text"
+            format: "text",
+            readOnly: true
           },
           {
             label: "Remark",
             name: "display.remark.TC",
-            format: "text"
+            format: "text",
+            readOnly: true
           }
         ]
       },
@@ -109,19 +114,45 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.SC",
-            format: "text"
+            format: "text",
+            readOnly: true
           },
           {
             label: "Content",
             name: "display.content.SC",
-            format: "text"
+            format: "text",
+            readOnly: true
           },
           {
             label: "Remark",
             name: "display.remark.SC",
-            format: "text"
+            format: "text",
+            readOnly: true
           }
         ]
+      }
+    ]
+  },
+  {
+    label: "Parameters",
+    name: "parameters",
+    headerStyle: "outlined",
+    array: [
+      {
+        label: "Description",
+        name: "description",
+        format: "text",
+        readOnly: true
+      },
+      {
+        label: "Format",
+        name: "format",
+        format: "select",
+        selectStyle: "dropdown",
+        selectRef: ["number", "select", "array"],
+        selectCap: "",
+        selectVal: "",
+        readOnly: true
       }
     ]
   },
