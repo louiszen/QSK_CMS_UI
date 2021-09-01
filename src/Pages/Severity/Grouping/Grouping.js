@@ -59,7 +59,16 @@ class Grouping extends Component {
           fail: "Location Severity Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
+          onSubmit: "Add",
+          defaultDoc: {
+            lastUpdate: "2021-06-02T16:00:00.000Z",
+            location: "Mainland China",
+            group: "Mainland China",
+            effective: {
+              Start: "2021-06-02T16:00:00.000Z",
+              End: null
+            }
+          }
         },
         Delete: {
           title: "Delete this Location Severity?",
