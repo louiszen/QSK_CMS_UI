@@ -54,7 +54,13 @@ const Tail = [
   {
     label: "Icon",
     name: "display.icon",
-    format: "text"
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "icons",
+    selectVal: "refID",
+    selectCap: "refID",
+    selectTip: "description",
+    showTooltip: true
   },
   {
     tabs: [
@@ -64,20 +70,17 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.EN",
-            format: "text",
-            readOnly: true
+            format: "text"
           },
           {
             label: "Content",
             name: "display.content.EN",
-            format: "text",
-            readOnly: true
+            format: "textarea"
           },
           {
             label: "Remark",
             name: "display.remark.EN",
-            format: "text",
-            readOnly: true
+            format: "textarea"
           }
         ]
       },
@@ -87,20 +90,17 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.TC",
-            format: "text",
-            readOnly: true
+            format: "text"
           },
           {
             label: "Content",
             name: "display.content.TC",
-            format: "text",
-            readOnly: true
+            format: "textarea"
           },
           {
             label: "Remark",
             name: "display.remark.TC",
-            format: "text",
-            readOnly: true
+            format: "textarea"
           }
         ]
       },
@@ -110,20 +110,17 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.SC",
-            format: "text",
-            readOnly: true
+            format: "text"
           },
           {
             label: "Content",
             name: "display.content.SC",
-            format: "text",
-            readOnly: true
+            format: "textarea"
           },
           {
             label: "Remark",
             name: "display.remark.SC",
-            format: "text",
-            readOnly: true
+            format: "textarea"
           }
         ]
       }
@@ -132,13 +129,16 @@ const Tail = [
   {
     label: "Parameters",
     name: "parameters",
+    canAdd: true,
+    canDelete: true,
     headerStyle: "outlined",
+    arrayStyle: "card",
+    startDisplayIndex: 1,
     array: [
       {
         label: "Description",
         name: "description",
-        format: "text",
-        readOnly: true
+        format: "text"
       },
       {
         label: "Format",
@@ -147,8 +147,39 @@ const Tail = [
         selectStyle: "dropdown",
         selectRef: ["number", "select", "array"],
         selectCap: "",
-        selectVal: "",
-        readOnly: true
+        selectVal: ""
+      },
+      {
+        control: "format",
+        controlFunc: (doc, field) => field === "select",
+        fold: [
+          {
+            label: "Options",
+            name: "options",
+            canAdd: true,
+            canDelete: true,
+            headerStyle: "outlined",
+            showIndex: true,
+            startDisplayIndex: 1,
+            array: [
+              {
+                label: "EN",
+                name: "EN",
+                format: "text"
+              },
+              {
+                label: "TC",
+                name: "TC",
+                format: "text"
+              },
+              {
+                label: "SC",
+                name: "SC",
+                format: "text"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

@@ -7,8 +7,9 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
+import { DOMAIN, IZOTheme } from '__Base/config';
+import axios from 'axios';
 
 class QUAReq extends Component {
 
@@ -145,9 +146,41 @@ class QUAReq extends Component {
     );
   }
 
+  getIconList = async () => {
+    let { addOns } = this.props;
+    let url = DOMAIN + "/Tables/IconDocs/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/IconDocs/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        this.setState((state, props) => ({
+          addOns: {
+            ...state.addOns,
+            icons: docs
+          }
+        }));
+      } else {
+        store.Alert("Cannot get icon list", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get icon list", "error");
+    }
+  }
+
   componentDidMount(){
     Authority.Require("Answer.ArrivalAns.Components.QUAReq");
-    this._setAllStates();
+    this._setAllStates(() => {
+      this.getIconList();
+    });
   }
 
   componentDidUpdate(prevProps, prevState){
