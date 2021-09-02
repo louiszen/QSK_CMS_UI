@@ -22,7 +22,7 @@ tabs = [
 /**
  * @augments {Component<Props, State>}
  */
-class Components extends Component {
+class Miscellaneous extends Component {
 
   static propTypes = {
 
@@ -40,12 +40,12 @@ class Components extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Components");
+    Authority.Require("Answer.ArrivalAns.Miscellaneous");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Components.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Miscellaneous.defaultProps))){
       this._setAllStates();
     }
   }
@@ -115,4 +115,4 @@ class Components extends Component {
 
 }
 
-export default Components;
+export default Miscellaneous;

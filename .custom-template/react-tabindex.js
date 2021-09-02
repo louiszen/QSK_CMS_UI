@@ -83,7 +83,7 @@ class ${1} extends Component {
     return _.map(tabs, (o, i) => {
       if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
         return (
-          <Tab key={o.label} label={o.label} icon={o.icon} disabled={o.disabled} style={{minHeight: 20, minWidth: 200}}/>
+          <Tab key={i} label={o.label} icon={o.icon} disabled={o.disabled} style={{minHeight: 20, minWidth: 200}}/>
         );
       }
     });

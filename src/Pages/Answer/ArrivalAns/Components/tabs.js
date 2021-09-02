@@ -4,7 +4,6 @@ import ENTReq from "./ENTReq/ENTReq";
 import APProc from "./APProc/APProc";
 import { Typography } from "@material-ui/core";
 import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
-import Tips from "./Tips/Tips";
 
 const tabs = [
   {
@@ -30,12 +29,6 @@ const tabs = [
     icon: null,
     reqAuth: "Answer.ArrivalAns.Components.APProc",
     render: <APProc/>
-  },
-  {
-    label: <HStack spacing={5}><i className="far fa-clipboard fa-lg"/><Typography style={{textTransform: 'none'}}>{"Tips"}</Typography><Spacer/></HStack>,
-    icon: null,
-    reqAuth: "Answer.ArrivalAns.Components.Tips",
-    render: <Tips/>
   }
 ];
 

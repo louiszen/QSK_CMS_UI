@@ -129,6 +129,18 @@ const Tail = [
       }
     ]
   },
+  {
+    label: "Effective Start Date",
+    name: "effective.Start",
+    format: "date",
+    dateType: "date"
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    format: "date",
+    dateType: "date"
+  }
 ];
 
 const Add = [

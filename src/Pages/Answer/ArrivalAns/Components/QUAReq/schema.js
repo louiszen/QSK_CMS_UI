@@ -9,10 +9,6 @@ const Table = [
     name: "description"
   },
   {
-    label: "Type",
-    name: "type"
-  },
-  {
     label: "Version",
     name: "version",
     width: 150

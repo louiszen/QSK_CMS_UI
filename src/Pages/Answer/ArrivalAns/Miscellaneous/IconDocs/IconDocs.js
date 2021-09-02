@@ -13,7 +13,7 @@ import { IZOTheme } from '__Base/config';
 /**
  * @augments {Component<Props, State>}
  */
-class Tips extends Component {
+class IconDocs extends Component {
 
   static propTypes = {
 
@@ -26,13 +26,13 @@ class Tips extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Tips",
+      title: "Icons",
       serverSidePagination: false, 
       base: {
-        title: "Tip",
-        exportDoc: "tips",
+        title: "Icon",
+        exportDoc: "icons",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.Components.Tips",
+        reqAuth: "Answer.ArrivalAns.Miscellaneous.IconDocs",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -43,7 +43,7 @@ class Tips extends Component {
           densityToolbar: true,
           exportToolbar: false,
           density: "compact",
-          defaultPageSize: 25,
+          defaultPageSize: 50,
           showSelector: true,
         },
 
@@ -58,45 +58,47 @@ class Tips extends Component {
         },
 
         Add: {
-          title: "Add Tip",
+          title: "Add Icon",
           url: datalink.Request.Add,
-          success: "Tip Added Successfully",
-          fail: "Tip Add Failed: ",
+          success: "Icon Added Successfully",
+          fail: "Icon Add Failed: ",
           schema: schema.Add,
           buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
+          onSubmit: "Add",
+          withFile: true
         },
         Delete: {
-          title: "Delete this Tip?",
+          title: "Delete this Icon?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.Delete,
-          success: "Tip Deleted Successfully.",
-          fail: "Tip Delete Failed: ",
+          success: "Icon Deleted Successfully.",
+          fail: "Icon Delete Failed: ",
           onSubmit: "Delete"
         },
         Edit: {
-          title: "Edit Tip ",
+          title: "Edit Icon ",
           url: datalink.Request.Edit,
-          success: "Tip Edited Successfully",
-          fail: "Tip Edit Failed: ",
+          success: "Icon Edited Successfully",
+          fail: "Icon Edit Failed: ",
           schema: schema.Edit,
           buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
+          onSubmit: "Edit",
+          withFile: true
         },
         Info: {
-          title: "Tips ",
+          title: "Icons ",
           url: datalink.Request.Info,
-          success: "Tips Load Successfully",
-          fail: "Tips Load Failed: ",
+          success: "Icons Load Successfully",
+          fail: "Icons Load Failed: ",
           schema: schema.Info,
           readOnly: true
         },
         Import: {
-          title: "Tip Import",
+          title: "Icon Import",
           content: "",
           url: datalink.Request.Import,
-          success: "Tip Imported Successfully.",
-          fail: "Tip Import Failed: ",
+          success: "Icon Imported Successfully.",
+          fail: "Icon Import Failed: ",
           schema: schema.ImportFormat,
           replace: false
         },
@@ -105,11 +107,11 @@ class Tips extends Component {
           schema: schema.Export,
         },
         DeleteBulk: {
-          title: (n) => "Delete these " + n + " Tip?",
+          title: (n) => "Delete these " + n + " Icon?",
           content: "Caution: This is irrevertable.",
           url: datalink.Request.DeleteBulk,
-          success: "Tip Deleted Successfully.",
-          fail: "Tip Delete Failed: ",
+          success: "Icon Deleted Successfully.",
+          fail: "Icon Delete Failed: ",
           onSubmit: "DeleteBulk",
         },
 
@@ -119,7 +121,7 @@ class Tips extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Tip", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Icon", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -132,12 +134,12 @@ class Tips extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Components.Tips");
+    Authority.Require("Answer.ArrivalAns.Miscellaneous.IconDocs");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Tips.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(IconDocs.defaultProps))){
       this._setAllStates();
     }
   }
@@ -181,4 +183,4 @@ class Tips extends Component {
 
 }
 
-export default Tips;
+export default IconDocs;

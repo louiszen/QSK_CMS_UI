@@ -87,6 +87,12 @@ export const MenuConfig = [
         auth: "Answer.ArrivalAns",
         submenu: [
           {
+            caption: "Miscellaneous",
+            link: "/Answer/ArrivalAns/Miscellaneous",
+            faIcon: "fas fa-cubes fa-lg",
+            auth: "Answer.ArrivalAns.Miscellaneous"
+          },
+          {
             caption: "Answer Component",
             link: "/Answer/ArrivalAns/Components",
             faIcon: "fas fa-shapes fa-lg",

@@ -31,17 +31,18 @@ import {
 //pages
 import Dashboard from "Pages/Dashboard/Dashboard";
 import System from "Pages/System/System"
-import Answer from "./Pages/Answer/Answer";
+import Answer from "Pages/Answer/Answer";
 import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
 import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";
+import ArrivalAnsMisc from "Pages/Answer/ArrivalAns/Miscellaneous/Miscellaneous";
 import DepartAns from "Pages/Answer/DepartAns/DepartAns";
 import TransitAns from "Pages/Answer/TransitAns/TransitAns";
-import Questionnaire from "./Pages/Questionnaire/Questionnaire";
+import Questionnaire from "Pages/Questionnaire/Questionnaire";
 import Question from "Pages/Questionnaire/Question/Question";
 import Scenario from "Pages/Questionnaire/Scenario/Scenario";
 import QFlow from "Pages/Questionnaire/QFlow/QFlow";
 import QOrder from "Pages/Questionnaire/QOrder/QOrder";
-import Severity from "./Pages/Severity/Severity";
+import Severity from "Pages/Severity/Severity";
 import Location from "Pages/Severity/Location/Location";
 import Grouping from "Pages/Severity/Grouping/Grouping";
 import SevGroup from "Pages/Severity/SevGroup/SevGroup";
@@ -73,6 +74,7 @@ function renderPages() {
     <Route key={13} path='/Severity/Location' exact component={Location}/>,
     <Route key={14} path='/Severity/SevGroup' exact component={SevGroup}/>,
     <Route key={15} path='/Severity/Grouping' exact component={Grouping}/>,
+    <Route key={20} path='/Answer/ArrivalAns/Miscellaneous' exact component={ArrivalAnsMisc}/>,
   ];
 }
 
