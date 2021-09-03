@@ -1,6 +1,6 @@
 import { ColorX } from 'IZOArc/STATIC';
 import { Typography } from '@material-ui/core';
-import { ContactSupport, Dashboard, Public, ReplyAll } from '@material-ui/icons';
+import { Dashboard, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';
 
 export const IZOTheme = {
@@ -51,28 +51,7 @@ export const MenuConfig = [
     caption: "Severity",
     link: "/Severity",
     faIcon: "fas fa-map-marked-alt fa-lg",
-    auth: "Severity",
-    disabled: true,
-    submenu: [
-      {
-        caption: "Severity Group",
-        link: "/Severity/SevGroup",
-        faIcon: "fas fa-th-large fa-lg",
-        auth: "Severity.SevGroup"
-      },
-      {
-        caption: "Location",
-        link: "/Severity/Location",
-        faIcon: <Public/>,
-        auth: "Severity.Location"
-      },
-      {
-        caption: "Location Severity",
-        link: "/Severity/Grouping",
-        faIcon: "far fa-bookmark fa-lg",
-        auth: "Severity.Grouping"
-      },
-    ]
+    auth: "Severity"
   },
   {
     caption: "Answer",
@@ -124,35 +103,7 @@ export const MenuConfig = [
     caption: "Questionnaire",
     link: "/Questionnaire",
     faIcon: "fas fa-file-alt fa-lg",
-    auth: "Questionnaire",
-    submenu: [
-      {
-        caption: "Questions",
-        link: "/Questionnaire/Question",
-        faIcon: <ContactSupport/>,
-        auth: "Questionnaire.Question"
-      },
-      {
-        caption: "Question Order",
-        link: "/Questionnaire/QOrder",
-        faIcon: "fas fa-sort-amount-down-alt",
-        auth: "Questionnaire.QOrder"
-      },
-      /*
-      {
-        caption: "Scenarios",
-        link: "/Questionnaire/Scenario",
-        faIcon: "fas fa-sitemap fa-lg",
-        auth: "Questionnaire.Scenario"
-      }
-      */
-      {
-        caption: "Question Flow",
-        link: "/Questionnaire/QFlow",
-        faIcon: "fas fa-sitemap fa-lg",
-        auth: "Questionnaire.QFlow"
-      }
-    ]
+    auth: "Questionnaire"
   },
   {
     caption: "System",

@@ -38,14 +38,7 @@ import ArrivalAnsMisc from "Pages/Answer/ArrivalAns/Miscellaneous/Miscellaneous"
 import DepartAns from "Pages/Answer/DepartAns/DepartAns";
 import TransitAns from "Pages/Answer/TransitAns/TransitAns";
 import Questionnaire from "Pages/Questionnaire/Questionnaire";
-import Question from "Pages/Questionnaire/Question/Question";
-import Scenario from "Pages/Questionnaire/Scenario/Scenario";
-import QFlow from "Pages/Questionnaire/QFlow/QFlow";
-import QOrder from "Pages/Questionnaire/QOrder/QOrder";
 import Severity from "Pages/Severity/Severity";
-import Location from "Pages/Severity/Location/Location";
-import Grouping from "Pages/Severity/Grouping/Grouping";
-import SevGroup from "Pages/Severity/SevGroup/SevGroup";
 
 //store
 import {Env, store} from 'IZOArc/STATIC';
@@ -67,13 +60,6 @@ function renderPages() {
     <Route key={6} path='/Answer/ArrivalAns/Components' exact component={ArrivalAnsComp}/>,
     <Route key={9} path='/Answer/DepartAns' exact component={DepartAns}/>,
     <Route key={10} path='/Answer/TransitAns' exact component={TransitAns}/>,
-    <Route key={11} path='/Questionnaire/Question' exact component={Question}/>,
-    <Route key={12} path='/Questionnaire/Scenario' exact component={Scenario}/>,
-    <Route key={18} path='/Questionnaire/QOrder' exact component={QOrder}/>,
-    <Route key={17} path='/Questionnaire/QFlow' exact component={QFlow}/>,
-    <Route key={13} path='/Severity/Location' exact component={Location}/>,
-    <Route key={14} path='/Severity/SevGroup' exact component={SevGroup}/>,
-    <Route key={15} path='/Severity/Grouping' exact component={Grouping}/>,
     <Route key={20} path='/Answer/ArrivalAns/Miscellaneous' exact component={ArrivalAnsMisc}/>,
   ];
 }
