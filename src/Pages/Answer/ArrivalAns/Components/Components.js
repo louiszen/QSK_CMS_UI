@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 import _ from 'lodash';
-import { Paper, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 
 import tabs from './tabs';
 
-import { Accessor, Authority } from 'IZOArc/STATIC';
+import { Accessor, Authority, store } from 'IZOArc/STATIC';
 import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
+import { DOMAIN } from '__Base/config';
+import axios from 'axios';
 
 /** 
 tabs = [
@@ -45,7 +47,9 @@ class Components extends Component {
 
   componentDidMount(){
     Authority.Require("Answer.ArrivalAns.Components");
-    this._setAllStates();
+    this._setAllStates(() => {
+      this.getIconList();
+    });
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -58,6 +62,36 @@ class Components extends Component {
     this.setState = (state, callback) => {
       return;
     };
+  }
+
+  getIconList = async () => {
+    let { addOns } = this.state;
+    let url = DOMAIN + "/Tables/IconDocs/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/IconDocs/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        this.setState((state, props) => ({
+          addOns: {
+            ...state.addOns,
+            icons: docs
+          }
+        }));
+      } else {
+        store.Alert("Cannot get icon list", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get icon list", "error");
+    }
   }
 
   _setAllStates = (callback) => {
@@ -73,12 +107,12 @@ class Components extends Component {
   }
 
   renderTabPanels(){
-    let {selectedTab} = this.state;
+    let {selectedTab, addOns} = this.state;
     return _.map(tabs, (o, i) => {
       return (
-        <div key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
-          {o.render}
-        </div>
+        <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
+          {_.isFunction(o.render)? o.render(addOns) : o.render}
+        </Box>
       );
     });
   }

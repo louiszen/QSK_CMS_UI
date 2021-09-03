@@ -149,29 +149,59 @@ const Tail = [
   {
     label: "Document Requirements (Before You Fly)",
     name: "DOCReq",
-    format: "select",
+    format: "selectTable",
     selectStyle: "checkbox",
-    selectRef: ["DOCReq001", "DOCReq002", "DOCReq003", "DOCReq004", "DOCReq005", "DOCReq006", "DOCReq007"],
-    selectCap: "",
-    selectVal: ""
+    selectRef: "DOCReq",
+    selectIdAccessor: "refID",
+    selectSchema: [
+      {
+        label: "Ref. ID",
+        name: "refID",
+        width: 150
+      },
+      {
+        label: "Description",
+        name: "description"
+      }
+    ]
   },
   {
     label: "Entry Requirements (Before You Fly)",
     name: "ENTReq",
-    format: "select",
+    format: "selectTable",
     selectStyle: "checkbox",
-    selectRef: ["ENTReq001", "ENTReq002"],
-    selectCap: "",
-    selectVal: ""
+    selectRef: "ENTReq",
+    selectIdAccessor: "refID",
+    selectSchema: [
+      {
+        label: "Ref. ID",
+        name: "refID",
+        width: 150
+      },
+      {
+        label: "Description",
+        name: "description"
+      }
+    ]
   },
   {
     label: "Airport Proceed (Upon Landing)",
     name: "APProc",
-    format: "select",
+    format: "selectTable",
     selectStyle: "checkbox",
-    selectRef: ["APProc001", "APProc002", "APProc003", "APProc004", "APProc005", "APProc006", "APProc007", "APProc008"],
-    selectCap: "",
-    selectVal: ""
+    selectRef: "APProc",
+    selectIdAccessor: "refID",
+    selectSchema: [
+      {
+        label: "Ref. ID",
+        name: "refID",
+        width: 150
+      },
+      {
+        label: "Description",
+        name: "description"
+      }
+    ]
   },
   {
     label: "Effective Start Date",

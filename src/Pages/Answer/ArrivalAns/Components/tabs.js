@@ -9,7 +9,7 @@ const tabs = [
     label: "Quarantine Requirements",
     icon: <i className="fas fa-syringe fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.QUAReq",
-    render: <QUAReq/>,
+    render: (addOns) => <QUAReq addOns={addOns}/>,
     iconPos: "left",
     noTransform: true,
     alignment: "left"
@@ -18,7 +18,7 @@ const tabs = [
     label: "Document Requirements",
     icon: <i className="far fa-file-alt fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.DOCReq",
-    render: <DOCReq/>,
+    render: (addOns) => <DOCReq addOns={addOns}/>,
     iconPos: "left",
     noTransform: true,
     alignment: "left"
@@ -27,7 +27,7 @@ const tabs = [
     label: "Entry Requirements",
     icon: <i className="fas fa-door-open fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.ENTReq",
-    render: <ENTReq/>,
+    render: (addOns) => <ENTReq addOns={addOns}/>,
     iconPos: "left",
     noTransform: true,
     alignment: "left"
@@ -36,7 +36,7 @@ const tabs = [
     label: "Airport Procedures",
     icon: <i className="fas fa-plane fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.APProc",
-    render: <APProc/>,
+    render: (addOns) => <APProc addOns={addOns}/>,
     iconPos: "left",
     noTransform: true,
     alignment: "left"
@@ -45,7 +45,7 @@ const tabs = [
     label: "Tips",
     icon: <i className="far fa-clipboard fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Miscellaneous.Tips",
-    render: <Tips/>,
+    render: (addOns) => <Tips addOns={addOns}/>,
     iconPos: "left",
     noTransform: true,
     alignment: "left"

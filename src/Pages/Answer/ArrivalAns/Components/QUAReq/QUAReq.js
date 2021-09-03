@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropsType from 'prop-types';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -7,18 +8,17 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
-import { DOMAIN, IZOTheme } from '__Base/config';
-import axios from 'axios';
+import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { IZOTheme } from '__Base/config';
 
 class QUAReq extends Component {
 
   static propTypes = {
-
+    addOns: PropsType.object
   }
 
   static defaultProps = {
-
+    addOns: {}
   }
 
   constructor(){
@@ -129,9 +129,7 @@ class QUAReq extends Component {
           ],
         },
       },
-      addOns: {
-        ansFormat: ["number", "select", "array"]
-      }
+      ansFormat: ["number", "select", "array"]
     };
   }
 
@@ -146,41 +144,9 @@ class QUAReq extends Component {
     );
   }
 
-  getIconList = async () => {
-    let { addOns } = this.props;
-    let url = DOMAIN + "/Tables/IconDocs/List";
-    let payloadOut = {
-      JWT: store.user.JWT,
-      data: {},
-      addOns: addOns,
-    };
-    try {
-      let res = await axios.post(url, payloadOut);
-      console.log("/Tables/IconDocs/List", res.data);
-    
-      let { Success, payload } = res.data;
-    
-      if (Success === true) {
-        let docs = payload.docs;
-        this.setState((state, props) => ({
-          addOns: {
-            ...state.addOns,
-            icons: docs
-          }
-        }));
-      } else {
-        store.Alert("Cannot get icon list", "error");
-      }
-    } catch (e) {
-      store.Alert("Cannot get icon list", "error");
-    }
-  }
-
   componentDidMount(){
     Authority.Require("Answer.ArrivalAns.Components.QUAReq");
-    this._setAllStates(() => {
-      this.getIconList();
-    });
+    this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -206,8 +172,9 @@ class QUAReq extends Component {
   }
 
   render(){
-    let {base, serverSidePagination, title, addOns} = this.state;
-    console.log(addOns);
+    let {addOns} = this.props;
+    let {base, serverSidePagination, title, ansFormat} = this.state;
+    addOns = {...addOns, ansFormat};
     return (
       <VStack>
         <Box padding={1} width="100%">

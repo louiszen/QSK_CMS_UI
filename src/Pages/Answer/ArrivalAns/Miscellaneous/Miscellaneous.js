@@ -73,11 +73,11 @@ class Miscellaneous extends Component {
   }
 
   renderTabPanels(){
-    let {selectedTab} = this.state;
+    let {selectedTab, addOns} = this.state;
     return _.map(tabs, (o, i) => {
       return (
         <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
-          {o.render}
+          {_.isFunction(o.render)? o.render(addOns) : o.render}
         </Box>
       );
     });

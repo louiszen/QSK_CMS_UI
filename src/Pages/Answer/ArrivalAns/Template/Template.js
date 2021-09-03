@@ -7,8 +7,10 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
+import { DOMAIN, IZOTheme } from '__Base/config';
+import _ from 'lodash';
+import axios from 'axios';
 
 /**
  * @augments {Component<Props, State>}
@@ -136,7 +138,12 @@ class Template extends Component {
 
   componentDidMount(){
     Authority.Require("Answer.ArrivalAns.Template");
-    this._setAllStates();
+    this._setAllStates(() => {
+      this.getReq("QUAReq");
+      this.getReq("DOCReq");
+      this.getReq("ENTReq");
+      this.getReq("APProc");
+    });
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -149,6 +156,37 @@ class Template extends Component {
     this.setState = (state, callback) => {
       return;
     };
+  }
+
+  getReq = async (type) => {
+    let { addOns } = this.props;
+    let url = DOMAIN + "/Tables/" + type + "/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/" + type + "/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        docs = _.filter(docs, o => _.isEmpty(o.effective.End));
+        this.setState((state, props) => ({
+          addOns: {
+            ...state.addOns,
+            [type]: docs
+          }
+        }));
+      } else {
+        store.Alert("Cannot get " + type + " list", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get " + type + " list", "error");
+    }
   }
 
   _setAllStates = (callback) => {

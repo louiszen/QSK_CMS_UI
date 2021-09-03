@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropsType from 'prop-types';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -13,11 +14,11 @@ import { IZOTheme } from '__Base/config';
 class APProc extends Component {
 
   static propTypes = {
-
+    addOns: PropsType.object
   }
 
   static defaultProps = {
-
+    addOns: {}
   }
 
   constructor(){
@@ -150,6 +151,7 @@ class APProc extends Component {
   }
 
   render(){
+    let {addOns} = this.props;
     let {base, serverSidePagination, title} = this.state;
     return (
       <VStack>
@@ -164,7 +166,7 @@ class APProc extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
     );
