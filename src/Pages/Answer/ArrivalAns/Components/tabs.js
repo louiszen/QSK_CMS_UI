@@ -2,34 +2,54 @@ import QUAReq from "./QUAReq/QUAReq";
 import DOCReq from "./DOCReq/DOCReq";
 import ENTReq from "./ENTReq/ENTReq";
 import APProc from "./APProc/APProc";
-import { Typography } from "@material-ui/core";
-import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
+import Tips from "./Tips/Tips";
 
 const tabs = [
   {
-    label: <HStack spacing={5}><i className="fas fa-syringe fa-lg"/><Typography style={{textTransform: 'none'}}>{"Quarantine Requirements"}</Typography><Spacer/></HStack>,
-    icon: null,
+    label: "Quarantine Requirements",
+    icon: <i className="fas fa-syringe fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.QUAReq",
-    render: <QUAReq/>
+    render: <QUAReq/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
   },
   {
-    label: <HStack spacing={5}><i className="far fa-file-alt fa-lg"/><Typography style={{textTransform: 'none'}}>{"Document Requirements"}</Typography><Spacer/></HStack>,
-    icon: null,
+    label: "Document Requirements",
+    icon: <i className="far fa-file-alt fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.DOCReq",
-    render: <DOCReq/>
+    render: <DOCReq/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
   },
   {
-    label: <HStack spacing={5}><i className="fas fa-door-open fa-lg"/><Typography style={{textTransform: 'none'}}>{"Entry Requirements"}</Typography><Spacer/></HStack>,
-    icon: null,
+    label: "Entry Requirements",
+    icon: <i className="fas fa-door-open fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.ENTReq",
-    render: <ENTReq/>
+    render: <ENTReq/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
   },
   {
-    label: <HStack spacing={5}><i className="fas fa-plane fa-lg"/><Typography style={{textTransform: 'none'}}>{"Airport Procedures"}</Typography><Spacer/></HStack>,
-    icon: null,
+    label: "Airport Procedures",
+    icon: <i className="fas fa-plane fa-lg"/>,
     reqAuth: "Answer.ArrivalAns.Components.APProc",
-    render: <APProc/>
-  }
+    render: <APProc/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
+  },
+  {
+    label: "Tips",
+    icon: <i className="far fa-clipboard fa-lg"/>,
+    reqAuth: "Answer.ArrivalAns.Miscellaneous.Tips",
+    render: <Tips/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
+  },
 ];
 
 export default tabs;
