@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import _ from 'lodash';
-import { Paper, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 
 import tabs from './tabs';
 
@@ -76,9 +76,9 @@ class Miscellaneous extends Component {
     let {selectedTab} = this.state;
     return _.map(tabs, (o, i) => {
       return (
-        <div key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
+        <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
           {o.render}
-        </div>
+        </Box>
       );
     });
   }

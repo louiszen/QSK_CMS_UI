@@ -123,7 +123,7 @@ class ${1} extends Component {
     let {selectedTab} = this.state;
 
     return (
-      <VStack width="100%">
+      <VStack width="100%" height="100%">
         <Paper position="static" style={{width: "100%"}}>
           <Tabs value={selectedTab} 
             indicatorColor="primary"

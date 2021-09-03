@@ -58,12 +58,14 @@ export const MenuConfig = [
     link: "/Answer",
     faIcon: <ReplyAll/>,
     auth: "Answer",
+    disabled: true,
     submenu: [
       {
         caption: "Arrival",
         link: "/Answer/ArrivalAns",
         faIcon: "fas fa-plane-arrival fa-lg",
         auth: "Answer.ArrivalAns",
+        disabled: true,
         submenu: [
           {
             caption: "Miscellaneous",

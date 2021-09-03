@@ -161,7 +161,7 @@ class Footnote extends Component {
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
     return (
-      <VStack>
+      <VStack width="100%" height="100%">
         <Box padding={1} width="100%">
           <Typography style={{
             textAlign: "left", 

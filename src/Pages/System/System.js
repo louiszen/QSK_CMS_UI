@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
 
 import _ from 'lodash';
-import { Paper, Tab, Tabs } from '@material-ui/core';
+import { Paper, Tab, Tabs, Typography } from '@material-ui/core';
 
 import tabs from './tabs';
 
 import { Accessor, Authority } from 'IZOArc/STATIC';
-import { VStack } from 'IZOArc/LabIZO/Stackizo';
+import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
 
+/** 
+tabs = [
+  {
+    label: String,
+    icon: String | JSX,
+    reqAuth: String,
+    render: JSX,
+    iconPos: "top" | "left" | "right" | "bottom",
+    noTransform: Boolean | false,
+    spacing: Number | 5,
+    alignment: "center" | "left" | "right"
+  }
+];
+*/
+
+/**
+ * @augments {Component<Props, State>}
+ */
 class System extends Component {
 
   static propTypes = {
@@ -68,8 +86,34 @@ class System extends Component {
   renderTabButtons(){
     return _.map(tabs, (o, i) => {
       if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
+        let label = o.label;
+        let icon = o.icon;
+        if(o.noTransform){
+          label = <Typography style={{textTransform: 'none'}}>{o.label}</Typography>
+        }
+        switch(o.iconPos){
+          case "top": default: 
+            break;
+          case "bottom":
+            label = <VStack spacing={o.spacing || 5}>{label}{icon}</VStack>; 
+            icon = null; break;
+          case "left": 
+            label = <HStack spacing={o.spacing || 5}>
+              {o.alignment === "right" && <Spacer/>}
+              {icon}{label}
+              {o.alignment === "left" && <Spacer/>}
+              </HStack>; 
+            icon = null; break;
+          case "right":
+            label = <HStack spacing={o.spacing || 5}>
+              {o.alignment === "right" && <Spacer/>}
+              {label}{icon}
+              {o.alignment === "left" && <Spacer/>}
+              </HStack>; 
+            icon = null; break;
+        }
         return (
-          <Tab key={i} label={o.label} icon={o.icon} disabled={o.disabled} style={{minHeight: 20, minWidth: 200}}/>
+          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: 20, minWidth: 200}}/>
         );
       }
     });
@@ -79,7 +123,7 @@ class System extends Component {
     let {selectedTab} = this.state;
 
     return (
-      <VStack width="100%">
+      <VStack width="100%" height="100%">
         <Paper position="static" style={{width: "100%"}}>
           <Tabs value={selectedTab} 
             indicatorColor="primary"

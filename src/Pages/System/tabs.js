@@ -7,7 +7,10 @@ const tabs = [
     label: "General",
     icon: <Apps/>,
     reqAuth: "System.General",
-    render: <SysGeneral/>
+    render: <SysGeneral/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
   }
 ];
 
