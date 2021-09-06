@@ -52,18 +52,15 @@ const Tail = [
     header: "Display"
   },
   {
-    label: "Type",
-    name: "display.type",
-    format: "select",
-    selectStyle: "radio",
-    selectRef: ["withicon", "circled", "ordered"],
-    selectCap: "",
-    selectVal: ""
-  },
-  {
     label: "Icon",
     name: "display.icon",
-    format: "text"
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "icons",
+    selectVal: "refID",
+    selectCap: "refID",
+    selectTip: "description",
+    showTooltip: true
   },
   {
     tabs: [
@@ -73,17 +70,7 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.EN",
-            format: "text"
-          },
-          {
-            label: "Content",
-            name: "display.content.EN",
-            format: "text"
-          },
-          {
-            label: "Remark",
-            name: "display.remark.EN",
-            format: "text"
+            format: "textarea"
           }
         ]
       },
@@ -93,17 +80,7 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.TC",
-            format: "text"
-          },
-          {
-            label: "Content",
-            name: "display.content.TC",
-            format: "text"
-          },
-          {
-            label: "Remark",
-            name: "display.remark.TC",
-            format: "text"
+            format: "textarea"
           }
         ]
       },
@@ -113,17 +90,7 @@ const Tail = [
           {
             label: "Title",
             name: "display.title.SC",
-            format: "text"
-          },
-          {
-            label: "Content",
-            name: "display.content.SC",
-            format: "text"
-          },
-          {
-            label: "Remark",
-            name: "display.remark.SC",
-            format: "text"
+            format: "textarea"
           }
         ]
       }

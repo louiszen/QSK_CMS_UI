@@ -1,3 +1,6 @@
+import { Accessor } from "IZOArc/STATIC";
+import _ from "lodash";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -51,98 +54,39 @@ const Tail = [
     header: "Quarantine Requirements"
   },
   {
-    tabs: [
+    label: "Quarantine Requirements",
+    name: "QUAReq",
+    canAdd: true,
+    canDelete: true,
+    arrayStyle: "card",
+    array: [
       {
-        label: "QUAReq001",
-        page: [
-          {
-            label: "Show?",
-            name: "QUAReq.QUAReq001.show",
-            format: "bool"
-          },
-          {
-            label: "Parameters",
-            name: "QUAReq.QUAReq001.parameters",
-            canAdd: true,
-            canDelete: true,
-            array: [
-              {
-                label: "",
-                name: "",
-                format: "text"
-              }
-            ]
-          },
-        ]
+        label: "Ref. ID",
+        name: "refID",
+        format: "select",
+        selectStyle: "dropdown",
+        selectRef: "QUAReq",
+        selectCap: "refID",
+        selectVal: "refID",
+        selectTip: "description",
+        showTooltip: true
       },
-      {
-        label: "QUAReq002",
-        page: [
-          {
-            label: "Show?",
-            name: "QUAReq.QUAReq002.show",
-            format: "bool"
-          },
-          {
-            label: "Parameters",
-            name: "QUAReq.QUAReq002.parameters",
-            canAdd: true,
-            canDelete: true,
-            array: [
-              {
-                label: "",
-                name: "",
-                format: "text"
-              }
-            ]
-          },
-        ]
-      },
-      {
-        label: "QUAReq003",
-        page: [
-          {
-            label: "Show?",
-            name: "QUAReq.QUAReq003.show",
-            format: "bool"
-          },
-          {
-            label: "Parameters",
-            name: "QUAReq.QUAReq003.parameters",
-            canAdd: true,
-            canDelete: true,
-            array: [
-              {
-                label: "",
-                name: "",
-                format: "text"
-              }
-            ]
-          },
-        ]
-      },
-      {
-        label: "QUAReq004",
-        page: [
-          {
-            label: "Show?",
-            name: "QUAReq.QUAReq004.show",
-            format: "bool"
-          },
-          {
-            label: "Parameters",
-            name: "QUAReq.QUAReq004.parameters",
-            canAdd: true,
-            canDelete: true,
-            array: [
-              {
-                label: "",
-                name: "",
-                format: "text"
-              }
-            ]
-          },
-        ]
+      (formValue, addOns, idx) => {
+        let refID = Accessor.Get(formValue, "QUAReq." + idx + ".refID");
+        let doc = addOns.QUAReq.find(o => o.refID === refID);
+        console.log(doc)
+        if(doc){
+          return _.map(doc.parameters, (o, i) => {
+            return {
+              label: o.description,
+              name: "parameters." + i,
+              format: "select",
+              selectRef: _.map(o.options, (v, x) => v.EN),
+              selectCap: "",
+              selectVal: ""
+            }
+          });
+        }
       }
     ]
   },

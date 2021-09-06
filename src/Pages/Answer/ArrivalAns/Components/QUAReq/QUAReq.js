@@ -129,7 +129,7 @@ class QUAReq extends Component {
           ],
         },
       },
-      ansFormat: ["number", "select", "array"]
+      ansFormat: ["Simple Text", "Highlighted Number", "Highlighted Ordered Number"],
     };
   }
 
