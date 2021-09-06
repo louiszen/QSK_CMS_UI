@@ -96,7 +96,6 @@ class QOrderInner extends Component {
       <VStack width="100%">
         {this.renderHeader()}
         {this.renderPre()}
-        {this.renderNext()}
         {this.renderPost()}
       </VStack>
     );
