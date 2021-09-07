@@ -76,11 +76,6 @@ const Tail = [
             label: "Content",
             name: "display.content.EN",
             format: "textarea"
-          },
-          {
-            label: "Remark",
-            name: "display.remark.EN",
-            format: "textarea"
           }
         ]
       },
@@ -96,11 +91,6 @@ const Tail = [
             label: "Content",
             name: "display.content.TC",
             format: "textarea"
-          },
-          {
-            label: "Remark",
-            name: "display.remark.TC",
-            format: "textarea"
           }
         ]
       },
@@ -115,11 +105,6 @@ const Tail = [
           {
             label: "Content",
             name: "display.content.SC",
-            format: "textarea"
-          },
-          {
-            label: "Remark",
-            name: "display.remark.SC",
             format: "textarea"
           }
         ]
