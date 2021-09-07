@@ -135,6 +135,11 @@ const Tail = [
         selectVal: ""
       },
       {
+        label: "Include Footnote?",
+        name: "incFootnote",
+        format: "bool"
+      },
+      {
         label: "Options",
         name: "options",
         canAdd: true,
