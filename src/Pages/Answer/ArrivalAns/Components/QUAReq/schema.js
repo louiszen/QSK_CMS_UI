@@ -140,8 +140,6 @@ const Tail = [
         canAdd: true,
         canDelete: true,
         headerStyle: "outlined",
-        showIndex: true,
-        startDisplayIndex: 1,
         array: [
           {
             label: "EN",
