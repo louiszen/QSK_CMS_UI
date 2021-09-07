@@ -120,7 +120,7 @@ class QUAReq extends Component {
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
           left: [
-            //{ icon: "add", func: "Add", caption: "Add Quarantine Req", reqFunc: "Add" }
+            { icon: "add", func: "Add", caption: "Add Quarantine Req", reqFunc: "Add" }
           ],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },

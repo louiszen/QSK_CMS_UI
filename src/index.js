@@ -25,7 +25,8 @@ import {
   MsgizoTest,
   StylizoTest, 
   StepizoTest,
-  AnalytizoTest
+  AnalytizoTest,
+  FlowizoTest
 } from "IZOArc/LabIZO/__TEST";
 
 //pages
@@ -73,6 +74,7 @@ function renderTest() {
     <Route key={3} path='/Test/Stylizo' exact component={StylizoTest} />,
     <Route key={4} path='/Test/Stepizo' exact component={StepizoTest} />,
     <Route key={5} path='/Test/Analytizo' exact component={AnalytizoTest} />,
+    <Route key={6} path='/Test/Flowizo' exact component={FlowizoTest} />,
   ];
 }
 
