@@ -58,60 +58,62 @@ class DOCReq extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Document Requirement",
-          url: datalink.Request.Add,
-          success: "Document Requirement Added Successfully",
-          fail: "Document Requirement Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Document Requirement?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Document Requirement Deleted Successfully.",
-          fail: "Document Requirement Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Document Requirement ",
-          url: datalink.Request.Edit,
-          success: "Document Requirement Edited Successfully",
-          fail: "Document Requirement Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Document Requirements ",
-          url: datalink.Request.Info,
-          success: "Document Requirements Load Successfully",
-          fail: "Document Requirements Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Document Requirement Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Document Requirement Imported Successfully.",
-          fail: "Document Requirement Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Document Requirement?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Document Requirement Deleted Successfully.",
-          fail: "Document Requirement Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Document Requirement",
+            url: datalink.Request.Add,
+            success: "Document Requirement Added Successfully",
+            fail: "Document Requirement Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Document Requirement?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Document Requirement Deleted Successfully.",
+            fail: "Document Requirement Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Document Requirement ",
+            url: datalink.Request.Edit,
+            success: "Document Requirement Edited Successfully",
+            fail: "Document Requirement Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Document Requirements ",
+            url: datalink.Request.Info,
+            success: "Document Requirements Load Successfully",
+            fail: "Document Requirements Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Document Requirement Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Document Requirement Imported Successfully.",
+            fail: "Document Requirement Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Document Requirement?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Document Requirement Deleted Successfully.",
+            fail: "Document Requirement Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

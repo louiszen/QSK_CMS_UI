@@ -54,63 +54,65 @@ class QUAReq extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Quarantine Req",
-          url: datalink.Request.Add,
-          success: "Quarantine Req Added Successfully",
-          fail: "Quarantine Req Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          Custom: this.renderInner
-        },
-        Delete: {
-          title: "Delete this Quarantine Req?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Quarantine Req Deleted Successfully.",
-          fail: "Quarantine Req Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Quarantine Req ",
-          url: datalink.Request.Edit,
-          success: "Quarantine Req Edited Successfully",
-          fail: "Quarantine Req Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          Custom: this.renderInner
-        },
-        Info: {
-          title: "Quarantine Requirements ",
-          url: datalink.Request.Info,
-          success: "Quarantine Requirements Load Successfully",
-          fail: "Quarantine Requirements Load Failed: ",
-          schema: schema.Info,
-          readOnly: true,
-          Custom: this.renderInner
-        },
-        Import: {
-          title: "Quarantine Req Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Quarantine Req Imported Successfully.",
-          fail: "Quarantine Req Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Quarantine Req?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Quarantine Req Deleted Successfully.",
-          fail: "Quarantine Req Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Quarantine Req",
+            url: datalink.Request.Add,
+            success: "Quarantine Req Added Successfully",
+            fail: "Quarantine Req Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add",
+            Custom: this.renderInner
+          },
+          Delete: {
+            title: "Delete this Quarantine Req?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Quarantine Req Deleted Successfully.",
+            fail: "Quarantine Req Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Quarantine Req ",
+            url: datalink.Request.Edit,
+            success: "Quarantine Req Edited Successfully",
+            fail: "Quarantine Req Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit",
+            Custom: this.renderInner
+          },
+          Info: {
+            title: "Quarantine Requirements ",
+            url: datalink.Request.Info,
+            success: "Quarantine Requirements Load Successfully",
+            fail: "Quarantine Requirements Load Failed: ",
+            schema: schema.Info,
+            readOnly: true,
+            Custom: this.renderInner
+          },
+          Import: {
+            title: "Quarantine Req Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Quarantine Req Imported Successfully.",
+            fail: "Quarantine Req Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Quarantine Req?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Quarantine Req Deleted Successfully.",
+            fail: "Quarantine Req Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

@@ -51,60 +51,62 @@ class SevGroup extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Severity Group",
-          url: datalink.Request.Add,
-          success: "Severity Group Added Successfully",
-          fail: "Severity Group Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Severity Group?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Severity Group Deleted Successfully.",
-          fail: "Severity Group Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Severity Group ",
-          url: datalink.Request.Edit,
-          success: "Severity Group Edited Successfully",
-          fail: "Severity Group Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Severity Groups ",
-          url: datalink.Request.Info,
-          success: "Severity Groups Load Successfully",
-          fail: "Severity Groups Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Severity Group Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Severity Group Imported Successfully.",
-          fail: "Severity Group Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Severity Group?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Severity Group Deleted Successfully.",
-          fail: "Severity Group Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Severity Group",
+            url: datalink.Request.Add,
+            success: "Severity Group Added Successfully",
+            fail: "Severity Group Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Severity Group?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Severity Group Deleted Successfully.",
+            fail: "Severity Group Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Severity Group ",
+            url: datalink.Request.Edit,
+            success: "Severity Group Edited Successfully",
+            fail: "Severity Group Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Severity Groups ",
+            url: datalink.Request.Info,
+            success: "Severity Groups Load Successfully",
+            fail: "Severity Groups Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Severity Group Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Severity Group Imported Successfully.",
+            fail: "Severity Group Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Severity Group?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Severity Group Deleted Successfully.",
+            fail: "Severity Group Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

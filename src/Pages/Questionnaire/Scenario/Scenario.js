@@ -66,60 +66,62 @@ class Scenario extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add scenario",
-          url: datalink.Request.Add,
-          success: "scenario Added Successfully",
-          fail: "scenario Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this scenario?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "scenario Deleted Successfully.",
-          fail: "scenario Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit scenario ",
-          url: datalink.Request.Edit,
-          success: "scenario Edited Successfully",
-          fail: "scenario Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Scenarios ",
-          url: datalink.Request.Info,
-          success: "Scenarios Load Successfully",
-          fail: "Scenarios Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "scenario Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "scenario Imported Successfully.",
-          fail: "scenario Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " scenario?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "scenario Deleted Successfully.",
-          fail: "scenario Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations:{
+          Add: {
+            title: "Add scenario",
+            url: datalink.Request.Add,
+            success: "scenario Added Successfully",
+            fail: "scenario Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this scenario?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "scenario Deleted Successfully.",
+            fail: "scenario Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit scenario ",
+            url: datalink.Request.Edit,
+            success: "scenario Edited Successfully",
+            fail: "scenario Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Scenarios ",
+            url: datalink.Request.Info,
+            success: "Scenarios Load Successfully",
+            fail: "Scenarios Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "scenario Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "scenario Imported Successfully.",
+            fail: "scenario Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " scenario?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "scenario Deleted Successfully.",
+            fail: "scenario Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

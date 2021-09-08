@@ -57,60 +57,62 @@ class Tips extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Tip",
-          url: datalink.Request.Add,
-          success: "Tip Added Successfully",
-          fail: "Tip Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Tip?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Tip Deleted Successfully.",
-          fail: "Tip Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Tip ",
-          url: datalink.Request.Edit,
-          success: "Tip Edited Successfully",
-          fail: "Tip Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Tips ",
-          url: datalink.Request.Info,
-          success: "Tips Load Successfully",
-          fail: "Tips Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Tip Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Tip Imported Successfully.",
-          fail: "Tip Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Tip?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Tip Deleted Successfully.",
-          fail: "Tip Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Tip",
+            url: datalink.Request.Add,
+            success: "Tip Added Successfully",
+            fail: "Tip Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Tip?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Tip Deleted Successfully.",
+            fail: "Tip Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Tip ",
+            url: datalink.Request.Edit,
+            success: "Tip Edited Successfully",
+            fail: "Tip Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Tips ",
+            url: datalink.Request.Info,
+            success: "Tips Load Successfully",
+            fail: "Tips Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Tip Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Tip Imported Successfully.",
+            fail: "Tip Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Tip?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Tip Deleted Successfully.",
+            fail: "Tip Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

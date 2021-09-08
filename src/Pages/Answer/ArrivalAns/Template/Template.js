@@ -59,63 +59,65 @@ class Template extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Arrival Answer Template",
-          url: datalink.Request.Add,
-          success: "Arrival Answer Template Added Successfully",
-          fail: "Arrival Answer Template Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          Custom: this.renderInner
-        },
-        Delete: {
-          title: "Delete this Arrival Answer Template?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Arrival Answer Template Deleted Successfully.",
-          fail: "Arrival Answer Template Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Arrival Answer Template ",
-          url: datalink.Request.Edit,
-          success: "Arrival Answer Template Edited Successfully",
-          fail: "Arrival Answer Template Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          Custom: this.renderInner
-        },
-        Info: {
-          title: "Arrival Answer Templates ",
-          url: datalink.Request.Info,
-          success: "Arrival Answer Templates Load Successfully",
-          fail: "Arrival Answer Templates Load Failed: ",
-          schema: schema.Info,
-          readOnly: true,
-          Custom: this.renderInner
-        },
-        Import: {
-          title: "Arrival Answer Template Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Arrival Answer Template Imported Successfully.",
-          fail: "Arrival Answer Template Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Arrival Answer Template?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Arrival Answer Template Deleted Successfully.",
-          fail: "Arrival Answer Template Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Arrival Answer Template",
+            url: datalink.Request.Add,
+            success: "Arrival Answer Template Added Successfully",
+            fail: "Arrival Answer Template Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add",
+            Custom: this.renderInner
+          },
+          Delete: {
+            title: "Delete this Arrival Answer Template?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Arrival Answer Template Deleted Successfully.",
+            fail: "Arrival Answer Template Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Arrival Answer Template ",
+            url: datalink.Request.Edit,
+            success: "Arrival Answer Template Edited Successfully",
+            fail: "Arrival Answer Template Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit",
+            Custom: this.renderInner
+          },
+          Info: {
+            title: "Arrival Answer Templates ",
+            url: datalink.Request.Info,
+            success: "Arrival Answer Templates Load Successfully",
+            fail: "Arrival Answer Templates Load Failed: ",
+            schema: schema.Info,
+            readOnly: true,
+            Custom: this.renderInner
+          },
+          Import: {
+            title: "Arrival Answer Template Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Arrival Answer Template Imported Successfully.",
+            fail: "Arrival Answer Template Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Arrival Answer Template?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Arrival Answer Template Deleted Successfully.",
+            fail: "Arrival Answer Template Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

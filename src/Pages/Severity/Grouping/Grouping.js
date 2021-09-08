@@ -52,60 +52,62 @@ class Grouping extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Location Severity",
-          url: datalink.Request.Add,
-          success: "Location Severity Added Successfully",
-          fail: "Location Severity Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Location Severity?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Location Severity Deleted Successfully.",
-          fail: "Location Severity Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Location Severity ",
-          url: datalink.Request.Edit,
-          success: "Location Severity Edited Successfully",
-          fail: "Location Severity Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Location Severity ",
-          url: datalink.Request.Info,
-          success: "Location Severity Load Successfully",
-          fail: "Location Severity Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Location Severity Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Location Severity Imported Successfully.",
-          fail: "Location Severity Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Location Severity?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Location Severity Deleted Successfully.",
-          fail: "Location Severity Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Location Severity",
+            url: datalink.Request.Add,
+            success: "Location Severity Added Successfully",
+            fail: "Location Severity Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Location Severity?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Location Severity Deleted Successfully.",
+            fail: "Location Severity Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Location Severity ",
+            url: datalink.Request.Edit,
+            success: "Location Severity Edited Successfully",
+            fail: "Location Severity Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Location Severity ",
+            url: datalink.Request.Info,
+            success: "Location Severity Load Successfully",
+            fail: "Location Severity Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Location Severity Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Location Severity Imported Successfully.",
+            fail: "Location Severity Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Location Severity?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Location Severity Deleted Successfully.",
+            fail: "Location Severity Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

@@ -57,62 +57,64 @@ class IconDocs extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Icon",
-          url: datalink.Request.Add,
-          success: "Icon Added Successfully",
-          fail: "Icon Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          withFile: true
-        },
-        Delete: {
-          title: "Delete this Icon?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Icon Deleted Successfully.",
-          fail: "Icon Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Icon ",
-          url: datalink.Request.Edit,
-          success: "Icon Edited Successfully",
-          fail: "Icon Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          withFile: true
-        },
-        Info: {
-          title: "Icons ",
-          url: datalink.Request.Info,
-          success: "Icons Load Successfully",
-          fail: "Icons Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Icon Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Icon Imported Successfully.",
-          fail: "Icon Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Icon?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Icon Deleted Successfully.",
-          fail: "Icon Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Icon",
+            url: datalink.Request.Add,
+            success: "Icon Added Successfully",
+            fail: "Icon Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add",
+            withFile: true
+          },
+          Delete: {
+            title: "Delete this Icon?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Icon Deleted Successfully.",
+            fail: "Icon Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Icon ",
+            url: datalink.Request.Edit,
+            success: "Icon Edited Successfully",
+            fail: "Icon Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit",
+            withFile: true
+          },
+          Info: {
+            title: "Icons ",
+            url: datalink.Request.Info,
+            success: "Icons Load Successfully",
+            fail: "Icons Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Icon Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Icon Imported Successfully.",
+            fail: "Icon Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Icon?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Icon Deleted Successfully.",
+            fail: "Icon Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

@@ -57,63 +57,65 @@ class QOrder extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Question Ordering",
-          url: datalink.Request.Add,
-          success: "Question Ordering Added Successfully",
-          fail: "Question Ordering Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          Custom: this.renderInner
-        },
-        Delete: {
-          title: "Delete this Question Ordering?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Question Ordering Deleted Successfully.",
-          fail: "Question Ordering Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Question Ordering ",
-          url: datalink.Request.Edit,
-          success: "Question Ordering Edited Successfully",
-          fail: "Question Ordering Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          Custom: this.renderInner
-        },
-        Info: {
-          title: "Question Ordering ",
-          url: datalink.Request.Info,
-          success: "Question Ordering Load Successfully",
-          fail: "Question Ordering Load Failed: ",
-          schema: schema.Info,
-          readOnly: true,
-          Custom: this.renderInner
-        },
-        Import: {
-          title: "Question Ordering Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Question Ordering Imported Successfully.",
-          fail: "Question Ordering Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Question Ordering?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Question Ordering Deleted Successfully.",
-          fail: "Question Ordering Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Question Ordering",
+            url: datalink.Request.Add,
+            success: "Question Ordering Added Successfully",
+            fail: "Question Ordering Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add",
+            Custom: this.renderInner
+          },
+          Delete: {
+            title: "Delete this Question Ordering?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Question Ordering Deleted Successfully.",
+            fail: "Question Ordering Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Question Ordering ",
+            url: datalink.Request.Edit,
+            success: "Question Ordering Edited Successfully",
+            fail: "Question Ordering Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit",
+            Custom: this.renderInner
+          },
+          Info: {
+            title: "Question Ordering ",
+            url: datalink.Request.Info,
+            success: "Question Ordering Load Successfully",
+            fail: "Question Ordering Load Failed: ",
+            schema: schema.Info,
+            readOnly: true,
+            Custom: this.renderInner
+          },
+          Import: {
+            title: "Question Ordering Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Question Ordering Imported Successfully.",
+            fail: "Question Ordering Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Question Ordering?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Question Ordering Deleted Successfully.",
+            fail: "Question Ordering Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

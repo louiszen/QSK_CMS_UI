@@ -51,60 +51,62 @@ class Location extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Location",
-          url: datalink.Request.Add,
-          success: "Location Added Successfully",
-          fail: "Location Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Location?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Location Deleted Successfully.",
-          fail: "Location Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Location ",
-          url: datalink.Request.Edit,
-          success: "Location Edited Successfully",
-          fail: "Location Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Locations ",
-          url: datalink.Request.Info,
-          success: "Locations Load Successfully",
-          fail: "Locations Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Location Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Location Imported Successfully.",
-          fail: "Location Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Location?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Location Deleted Successfully.",
-          fail: "Location Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Location",
+            url: datalink.Request.Add,
+            success: "Location Added Successfully",
+            fail: "Location Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Location?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Location Deleted Successfully.",
+            fail: "Location Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Location ",
+            url: datalink.Request.Edit,
+            success: "Location Edited Successfully",
+            fail: "Location Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Locations ",
+            url: datalink.Request.Info,
+            success: "Locations Load Successfully",
+            fail: "Locations Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Location Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Location Imported Successfully.",
+            fail: "Location Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Location?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Location Deleted Successfully.",
+            fail: "Location Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

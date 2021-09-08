@@ -57,60 +57,62 @@ class Footnote extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Footnote",
-          url: datalink.Request.Add,
-          success: "Footnote Added Successfully",
-          fail: "Footnote Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Footnote?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Footnote Deleted Successfully.",
-          fail: "Footnote Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Footnote ",
-          url: datalink.Request.Edit,
-          success: "Footnote Edited Successfully",
-          fail: "Footnote Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Footnotes ",
-          url: datalink.Request.Info,
-          success: "Footnotes Load Successfully",
-          fail: "Footnotes Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Footnote Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Footnote Imported Successfully.",
-          fail: "Footnote Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Footnote?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Footnote Deleted Successfully.",
-          fail: "Footnote Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Footnote",
+            url: datalink.Request.Add,
+            success: "Footnote Added Successfully",
+            fail: "Footnote Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Footnote?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Footnote Deleted Successfully.",
+            fail: "Footnote Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Footnote ",
+            url: datalink.Request.Edit,
+            success: "Footnote Edited Successfully",
+            fail: "Footnote Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Footnotes ",
+            url: datalink.Request.Info,
+            success: "Footnotes Load Successfully",
+            fail: "Footnotes Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Footnote Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Footnote Imported Successfully.",
+            fail: "Footnote Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Footnote?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Footnote Deleted Successfully.",
+            fail: "Footnote Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

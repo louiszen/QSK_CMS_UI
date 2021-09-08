@@ -50,60 +50,62 @@ class APProc extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Airport Procedure",
-          url: datalink.Request.Add,
-          success: "Airport Procedure Added Successfully",
-          fail: "Airport Procedure Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add"
-        },
-        Delete: {
-          title: "Delete this Airport Procedure?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Airport Procedure Deleted Successfully.",
-          fail: "Airport Procedure Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Airport Procedure ",
-          url: datalink.Request.Edit,
-          success: "Airport Procedure Edited Successfully",
-          fail: "Airport Procedure Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit"
-        },
-        Info: {
-          title: "Airport Procedures ",
-          url: datalink.Request.Info,
-          success: "Airport Procedures Load Successfully",
-          fail: "Airport Procedures Load Failed: ",
-          schema: schema.Info,
-          readOnly: true
-        },
-        Import: {
-          title: "Airport Procedure Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Airport Procedure Imported Successfully.",
-          fail: "Airport Procedure Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: true
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Airport Procedure?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Airport Proc Deleted Successfully.",
-          fail: "Airport Proc Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Airport Procedure",
+            url: datalink.Request.Add,
+            success: "Airport Procedure Added Successfully",
+            fail: "Airport Procedure Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add"
+          },
+          Delete: {
+            title: "Delete this Airport Procedure?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Airport Procedure Deleted Successfully.",
+            fail: "Airport Procedure Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Airport Procedure ",
+            url: datalink.Request.Edit,
+            success: "Airport Procedure Edited Successfully",
+            fail: "Airport Procedure Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit"
+          },
+          Info: {
+            title: "Airport Procedures ",
+            url: datalink.Request.Info,
+            success: "Airport Procedures Load Successfully",
+            fail: "Airport Procedures Load Failed: ",
+            schema: schema.Info,
+            readOnly: true
+          },
+          Import: {
+            title: "Airport Procedure Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Airport Procedure Imported Successfully.",
+            fail: "Airport Procedure Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: true
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Airport Procedure?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Airport Proc Deleted Successfully.",
+            fail: "Airport Proc Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

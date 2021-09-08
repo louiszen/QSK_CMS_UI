@@ -57,63 +57,65 @@ class Question extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Question",
-          url: datalink.Request.Add,
-          success: "Question Added Successfully",
-          fail: "Question Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          Custom: this.renderInner
-        },
-        Delete: {
-          title: "Delete this Question?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Question Deleted Successfully.",
-          fail: "Question Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Question ",
-          url: datalink.Request.Edit,
-          success: "Question Edited Successfully",
-          fail: "Question Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          Custom: this.renderInner
-        },
-        Info: {
-          title: "Questions ",
-          url: datalink.Request.Info,
-          success: "Questions Load Successfully",
-          fail: "Questions Load Failed: ",
-          schema: schema.Info,
-          readOnly: true,
-          Custom: this.renderInner
-        },
-        Import: {
-          title: "Question Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Question Imported Successfully.",
-          fail: "Question Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Question?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Question Deleted Successfully.",
-          fail: "Question Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Question",
+            url: datalink.Request.Add,
+            success: "Question Added Successfully",
+            fail: "Question Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add",
+            Custom: this.renderInner
+          },
+          Delete: {
+            title: "Delete this Question?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Question Deleted Successfully.",
+            fail: "Question Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Question ",
+            url: datalink.Request.Edit,
+            success: "Question Edited Successfully",
+            fail: "Question Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit",
+            Custom: this.renderInner
+          },
+          Info: {
+            title: "Questions ",
+            url: datalink.Request.Info,
+            success: "Questions Load Successfully",
+            fail: "Questions Load Failed: ",
+            schema: schema.Info,
+            readOnly: true,
+            Custom: this.renderInner
+          },
+          Import: {
+            title: "Question Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Question Imported Successfully.",
+            fail: "Question Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Question?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Question Deleted Successfully.",
+            fail: "Question Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {

@@ -58,63 +58,65 @@ class QFlow extends Component {
           schema: schema.Table
         },
 
-        Add: {
-          title: "Add Question Flow",
-          url: datalink.Request.Add,
-          success: "Question Flow Added Successfully",
-          fail: "Question Flow Add Failed: ",
-          schema: schema.Add,
-          buttons: ["Clear", "Submit"],
-          onSubmit: "Add",
-          Custom: this.renderFlowEditor
-        },
-        Delete: {
-          title: "Delete this Question Flow?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.Delete,
-          success: "Question Flow Deleted Successfully.",
-          fail: "Question Flow Delete Failed: ",
-          onSubmit: "Delete"
-        },
-        Edit: {
-          title: "Edit Question Flow ",
-          url: datalink.Request.Edit,
-          success: "Question Flow Edited Successfully",
-          fail: "Question Flow Edit Failed: ",
-          schema: schema.Edit,
-          buttons: ["Revert", "Submit"],
-          onSubmit: "Edit",
-          Custom: this.renderFlowEditor
-        },
-        Info: {
-          title: "Question Flows ",
-          url: datalink.Request.Info,
-          success: "Question Flows Load Successfully",
-          fail: "Question Flows Load Failed: ",
-          schema: schema.Info,
-          readOnly: true,
-          Custom: this.renderFlowEditor
-        },
-        Import: {
-          title: "Question Flow Import",
-          content: "",
-          url: datalink.Request.Import,
-          success: "Question Flow Imported Successfully.",
-          fail: "Question Flow Import Failed: ",
-          schema: schema.ImportFormat,
-          replace: false
-        },
-        Export: {
-          url: datalink.Request.Export,
-          schema: schema.Export,
-        },
-        DeleteBulk: {
-          title: (n) => "Delete these " + n + " Question Flow?",
-          content: "Caution: This is irrevertable.",
-          url: datalink.Request.DeleteBulk,
-          success: "Question Flow Deleted Successfully.",
-          fail: "Question Flow Delete Failed: ",
-          onSubmit: "DeleteBulk",
+        operations: {
+          Add: {
+            title: "Add Question Flow",
+            url: datalink.Request.Add,
+            success: "Question Flow Added Successfully",
+            fail: "Question Flow Add Failed: ",
+            schema: schema.Add,
+            buttons: ["Clear", "Submit"],
+            onSubmit: "Add",
+            Custom: this.renderFlowEditor
+          },
+          Delete: {
+            title: "Delete this Question Flow?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.Delete,
+            success: "Question Flow Deleted Successfully.",
+            fail: "Question Flow Delete Failed: ",
+            onSubmit: "Delete"
+          },
+          Edit: {
+            title: "Edit Question Flow ",
+            url: datalink.Request.Edit,
+            success: "Question Flow Edited Successfully",
+            fail: "Question Flow Edit Failed: ",
+            schema: schema.Edit,
+            buttons: ["Revert", "Submit"],
+            onSubmit: "Edit",
+            Custom: this.renderFlowEditor
+          },
+          Info: {
+            title: "Question Flows ",
+            url: datalink.Request.Info,
+            success: "Question Flows Load Successfully",
+            fail: "Question Flows Load Failed: ",
+            schema: schema.Info,
+            readOnly: true,
+            Custom: this.renderFlowEditor
+          },
+          Import: {
+            title: "Question Flow Import",
+            content: "",
+            url: datalink.Request.Import,
+            success: "Question Flow Imported Successfully.",
+            fail: "Question Flow Import Failed: ",
+            schema: schema.ImportFormat,
+            replace: false
+          },
+          Export: {
+            url: datalink.Request.Export,
+            schema: schema.Export,
+          },
+          DeleteBulk: {
+            title: (n) => "Delete these " + n + " Question Flow?",
+            content: "Caution: This is irrevertable.",
+            url: datalink.Request.DeleteBulk,
+            success: "Question Flow Deleted Successfully.",
+            fail: "Question Flow Delete Failed: ",
+            onSubmit: "DeleteBulk",
+          },
         },
 
         buttons: {
