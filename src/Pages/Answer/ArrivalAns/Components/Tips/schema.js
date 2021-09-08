@@ -71,7 +71,17 @@ const Tail = [
             label: "Title",
             name: "display.title.EN",
             format: "textarea"
-          }
+          },
+          {
+            label: "Content",
+            name: "display.content.EN",
+            format: "textarea"
+          },
+          {
+            label: "Collapse?",
+            name: "display.collapse.EN",
+            format: "bool"
+          },
         ]
       },
       {
@@ -81,7 +91,17 @@ const Tail = [
             label: "Title",
             name: "display.title.TC",
             format: "textarea"
-          }
+          },
+          {
+            label: "Content",
+            name: "display.content.TC",
+            format: "textarea"
+          },
+          {
+            label: "Collapse?",
+            name: "display.collapse.TC",
+            format: "bool"
+          },
         ]
       },
       {
@@ -91,7 +111,17 @@ const Tail = [
             label: "Title",
             name: "display.title.SC",
             format: "textarea"
-          }
+          },
+          {
+            label: "Content",
+            name: "display.content.SC",
+            format: "textarea"
+          },
+          {
+            label: "Collapse?",
+            name: "display.collapse.SC",
+            format: "bool"
+          },
         ]
       }
     ]
