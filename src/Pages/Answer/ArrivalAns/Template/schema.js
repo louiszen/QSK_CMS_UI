@@ -1,3 +1,5 @@
+import { Typography } from "antd";
+import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
 import { Accessor } from "IZOArc/STATIC";
 import _ from "lodash";
 
@@ -51,45 +53,172 @@ const Tail = [
     format: "number"
   },
   {
-    header: "Quarantine Requirements"
-  },
-  {
-    label: "Quarantine Requirements",
-    name: "QUAReq",
-    canAdd: true,
-    canDelete: true,
-    arrayStyle: "card",
-    array: [
+    tabs: [
       {
-        label: "Ref. ID",
-        name: "refID",
-        format: "select",
-        selectStyle: "dropdown",
-        selectRef: "QUAReq",
-        selectCap: "refID",
-        selectVal: "refID",
-        selectTip: "description",
-        showTooltip: true
+        label: "Quarantine Requirements",
+        icon: <i className="fas fa-syringe fa-lg"/>,
+        iconPos: "left",
+        noTransform: true,
+        alignment: "left",
+        page: [
+          {
+            label: "Add Quarantine Requirements",
+            name: "QUAReq",
+            canAdd: true,
+            canDelete: true,
+            arrayStyle: "card",
+            array: [
+              {
+                label: "Ref. ID",
+                name: "refID",
+                format: "select",
+                selectStyle: "dropdown",
+                selectRef: "QUAReq",
+                selectCap: "refID",
+                selectVal: "refID",
+                selectTip: "description",
+                showTooltip: true
+              },
+              (formValue, addOns, idx) => {
+                let refID = Accessor.Get(formValue, "QUAReq." + idx + ".refID");
+                let doc = addOns.QUAReq.find(o => o.refID === refID);
+                if(doc){
+                  return _.map(doc.parameters, (o, i) => {
+                    return {
+                      label: o.description,
+                      name: "parameters." + i,
+                      format: "select",
+                      selectRef: _.map(o.options, (v, x) => v.EN),
+                      selectCap: "",
+                      selectVal: ""
+                    }
+                  });
+                }
+              }
+            ]
+          },
+        ]
       },
-      (formValue, addOns, idx) => {
-        let refID = Accessor.Get(formValue, "QUAReq." + idx + ".refID");
-        let doc = addOns.QUAReq.find(o => o.refID === refID);
-        console.log(doc)
-        if(doc){
-          return _.map(doc.parameters, (o, i) => {
-            return {
-              label: o.description,
-              name: "parameters." + i,
-              format: "select",
-              selectRef: _.map(o.options, (v, x) => v.EN),
-              selectCap: "",
-              selectVal: ""
-            }
-          });
-        }
-      }
+      {
+        label: "Document Requirements",
+        icon: <i className="far fa-file-alt fa-lg"/>,
+        iconPos: "left",
+        noTransform: true,
+        alignment: "left",
+        page: [
+          {
+            label: "Add Document Requirements (Before You Fly)",
+            name: "DOCReq",
+            canAdd: true,
+            canDelete: true,
+            arrayStyle: "card",
+            array: [
+              {
+                label: "Ref. ID",
+                name: "refID",
+                format: "select",
+                selectStyle: "dropdown",
+                selectRef: "DOCReq",
+                selectCap: "refID",
+                selectVal: "refID",
+                selectTip: "description",
+                showTooltip: true
+              },
+              (formValue, addOns, idx) => {
+                let refID = Accessor.Get(formValue, "DOCReq." + idx + ".refID");
+                let doc = addOns?.DOCReq?.find(o => o.refID === refID);
+                return {
+                  label: "Description",
+                  name: "",
+                  format: "display",
+                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
+                };
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label: "Entry Requirements",
+        icon: <i className="fas fa-door-open fa-lg"/>,
+        iconPos: "left",
+        noTransform: true,
+        alignment: "left",
+        page: [
+          {
+            label: "Add Entry Requirements (Before You Fly)",
+            name: "ENTReq",
+            canAdd: true,
+            canDelete: true,
+            arrayStyle: "card",
+            array: [
+              {
+                label: "Ref. ID",
+                name: "refID",
+                format: "select",
+                selectStyle: "dropdown",
+                selectRef: "ENTReq",
+                selectCap: "refID",
+                selectVal: "refID",
+                selectTip: "description",
+                showTooltip: true
+              },
+              (formValue, addOns, idx) => {
+                let refID = Accessor.Get(formValue, "ENTReq." + idx + ".refID");
+                let doc = addOns?.ENTReq?.find(o => o.refID === refID);
+                return {
+                  label: "Description",
+                  name: "",
+                  format: "display",
+                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
+                };
+              }
+            ]
+          },
+        ]
+      },
+      {
+        label: "Airport Proceed",
+        icon: <i className="fas fa-plane fa-lg"/>,
+        iconPos: "left",
+        noTransform: true,
+        alignment: "left",
+        page: [
+          {
+            label: "Add Airport Proceed (Upon Landing)",
+            name: "APProc",
+            canAdd: true,
+            canDelete: true,
+            arrayStyle: "card",
+            array: [
+              {
+                label: "Ref. ID",
+                name: "refID",
+                format: "select",
+                selectStyle: "dropdown",
+                selectRef: "APProc",
+                selectCap: "refID",
+                selectVal: "refID",
+                selectTip: "description",
+                showTooltip: true
+              },
+              (formValue, addOns, idx) => {
+                let refID = Accessor.Get(formValue, "APProc." + idx + ".refID");
+                let doc = addOns?.APProc?.find(o => o.refID === refID);
+                return {
+                  label: "Description",
+                  name: "",
+                  format: "display",
+                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
+                };
+              }
+            ]
+          },
+        ]
+      },
     ]
   },
+  /* 
   {
     label: "Document Requirements (Before You Fly)",
     name: "DOCReq",
@@ -147,6 +276,7 @@ const Tail = [
       }
     ]
   },
+  */
   {
     label: "Effective Start Date",
     name: "effective.Start",
