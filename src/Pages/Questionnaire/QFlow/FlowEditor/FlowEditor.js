@@ -34,7 +34,12 @@ tabs = [
 class FlowEditor extends Component {
 
   static propTypes = {
-    data: PropsType.object
+    docID: PropsType.string,
+    doc: PropsType.object,
+    onQuit: PropsType.func, 
+    onQuitRefresh: PropsType.func,
+    renderFormizo: PropsType.func,
+    data: PropsType.object,
   }
 
   static defaultProps = {
@@ -238,44 +243,61 @@ class FlowEditor extends Component {
     console.log("onRevert");
   }
 
+  renderInfo = () => {
+    let {doc, renderFormizo} = this.props;
+    return renderFormizo();
+  }
+
+  renderButtons = () => {
+    return (
+      <HStack>
+        <StyledButton className={"formizo-h-m"} key={4} 
+          theme={{ 
+            color: "orange", 
+            background: "white", 
+            boxShadow: ColorX.GetBoxShadowCSS("grey"),
+            width: 120 
+            }} onClick={this._onRevert}>
+          <i className='fas fa-history' />
+          <div className='formizo-h-m'>Revert</div>
+        </StyledButton>
+        <StyledButton className={"formizo-h-m"} key={1} 
+          theme={{ 
+            color: "green", 
+            background: "white", 
+            boxShadow: ColorX.GetBoxShadowCSS("grey"),
+            width: 120
+            }} onClick={this._onSubmit}>
+          <i className='fas fa-paper-plane' />
+          <div className='formizo-h-m'>Submit</div>
+        </StyledButton>
+      </HStack>
+    );
+  }
+
   render(){
     let {doc} = this.props;
     let {Questions, Answers} = this.state;
     
     return (
       <VStack width="100%" height="100%">
-        <FlowizoWrap
-          defaultData={Accessor.Get(doc, "flow")}
-          onMounted={this.onMounted}
-          onDataUpdated={this.onDataUpdated}
-          controlsProps={{}}
-          reactFlowProps={{}}
-          addOns={{
-            Questions, 
-            Answers
-          }}
-          />
-        <HStack>
-          <StyledButton className={"formizo-h-m"} key={1} 
-            theme={{ 
-              color: "green", 
-              background: "white", 
-              boxShadow: ColorX.GetBoxShadowCSS("grey"),
-              width: 120
-              }} onClick={this._onSubmit}>
-            <i className='fas fa-paper-plane' />
-            <div className='formizo-h-m'>Submit</div>
-          </StyledButton>
-          <StyledButton className={"formizo-h-m"} key={4} 
-            theme={{ 
-              color: "orange", 
-              background: "white", 
-              boxShadow: ColorX.GetBoxShadowCSS("grey"),
-              width: 120 
-              }} onClick={this._onRevert}>
-            <i className='fas fa-history' />
-            <div className='formizo-h-m'>Revert</div>
-          </StyledButton>
+        <HStack width="100%" height="100%">
+          <VStack width="30%" height="100%">
+            {this.renderInfo()}
+          </VStack>
+          <VStack style={{flexGrow: 1}} height="100%">
+            <FlowizoWrap
+              defaultData={Accessor.Get(doc, "flow")}
+              onMounted={this.onMounted}
+              onDataUpdated={this.onDataUpdated}
+              controlsProps={{}}
+              reactFlowProps={{}}
+              addOns={{
+                Questions, 
+                Answers
+              }}
+              />
+          </VStack>
         </HStack>
       </VStack>
     );

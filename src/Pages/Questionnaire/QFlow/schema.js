@@ -8,6 +8,10 @@ const Table = [
     name: "description"
   },
   {
+    label: "Version",
+    name: "version"
+  },
+  {
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
@@ -31,9 +35,43 @@ const Table = [
   }
 ];
 
-const Add = [];
+const Tail = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text"
+  },
+  {
+    label: "Description",
+    name: "description",
+    format: "textarea"
+  },
+  {
+    label: "Version",
+    name: "version",
+    format: "number"
+  },
+  {
+    label: "Effective Start Date",
+    name: "effective.Start",
+    format: "date",
+    dateType: "date"
+  },
+  {
+    label: "Effective End Date",
+    name: "effective.End",
+    format: "date",
+    dateType: "date"
+  }
+];
 
-const Info = [];
+const Add = [
+  ...Tail
+];
+
+const Info = [
+  ...Tail
+];
 
 const Edit = [
   ...Info
