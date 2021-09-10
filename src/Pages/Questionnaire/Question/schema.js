@@ -8,14 +8,6 @@ const Table = [
     name: "description"
   },
   {
-    label: "Type",
-    name: "type"
-  },
-  {
-    label: "Order",
-    name: "order"
-  },
-  {
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
@@ -49,15 +41,6 @@ const Tail = [
     label: "Description",
     name: "description",
     format: "textarea"
-  },
-  {
-    label: "Type",
-    name: "type",
-    format: "select",
-    selectStyle: "radio",
-    selectRef: ["datetime", "severity", "yesno"],
-    selectCap: "",
-    selectVal: ""
   },
   {
     tabs: [
