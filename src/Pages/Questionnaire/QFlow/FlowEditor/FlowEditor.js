@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import PropsType from 'prop-types';
 
 import _ from 'lodash';
-import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 
 import tabs from './tabs';
 
 import { Accessor, Authority, ColorX, store } from 'IZOArc/STATIC';
-import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
+import { VStack, HStack } from 'IZOArc/LabIZO/Stackizo';
 import { DOMAIN } from '__Base/config';
 import axios from 'axios';
 import FlowizoWrap from './_gears/FlowizoWrap';
 import { StyledButton } from 'IZOArc/LabIZO/Stylizo';
+import Formizo from 'IZOArc/LabIZO/Formizo';
+import { v1 } from 'uuid';
 
 /** 
 tabs = [
@@ -40,10 +41,25 @@ class FlowEditor extends Component {
     onQuitRefresh: PropsType.func,
     renderFormizo: PropsType.func,
     data: PropsType.object,
+    ibase: PropsType.object,
+    onSubmit: PropsType.func,
+    auth: PropsType.object,
+    level: PropsType.number,
+    formizo: PropsType.object
   }
 
   static defaultProps = {
-    data: {}
+    docID: "",
+    doc: {},
+    onQuit: null,
+    onQuitRefresh: null,
+    renderFormizo: null,
+    data: {},
+    ibase: {},
+    onSubmit: null,
+    auth: {},
+    level: 999,
+    formizo: {}
   }
 
   constructor(){
@@ -173,6 +189,9 @@ class FlowEditor extends Component {
 
   onDataUpdated = (data) => {
     console.log("onDataUpdated", data);
+    this.setState({
+      data: data
+    });
   }
 
   /*
@@ -235,8 +254,19 @@ class FlowEditor extends Component {
     this.MountFlowizo = callbacks;
   }
 
-  _onSubmit = () => {
+  _onSubmit = async (formsProps) => {
     console.log("onSubmit");
+
+    let {data} = this.state;
+    let {onSubmit} = this.props;
+    console.log(formsProps);
+
+    
+    Accessor.Set(formsProps, "flow", data);
+    if(onSubmit){
+      await onSubmit(formsProps);
+    }
+
   }
 
   _onRevert = () => {
@@ -244,8 +274,22 @@ class FlowEditor extends Component {
   }
 
   renderInfo = () => {
-    let {doc, renderFormizo} = this.props;
-    return renderFormizo();
+    let {ibase, doc, addOns, auth, level, formizo} = this.props;
+    console.log(ibase);
+    return <Formizo
+      schema={ibase.schema}
+      formID={v1()}
+      buttons={ibase.buttons || []}
+      buttonAlign="right"
+      readOnly={ibase.readOnly}
+      onMounted={this.onMountFormizo}
+      defaultValue={doc}
+      onSubmit={this._onSubmit}
+      addOns={addOns}
+      auth={auth}
+      level={level}
+      {...formizo}
+      />
   }
 
   renderButtons = () => {

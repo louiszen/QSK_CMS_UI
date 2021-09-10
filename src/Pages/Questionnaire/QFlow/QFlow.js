@@ -6,7 +6,7 @@ import schema from './schema';
 import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
-import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
+import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 import FlowEditor from './FlowEditor/FlowEditor';
@@ -137,9 +137,9 @@ class QFlow extends Component {
     };
   }
 
-  renderFlowEditor = (docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns) => {
+  renderFlowEditor = (docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns, ibase, onSubmit, auth, level, formizo) => {
     return (
-      <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh} renderFormizo={renderFormizo}/>
+      <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh} renderFormizo={renderFormizo} onSubmit={onSubmit} auth={auth} level={level} formizo={formizo} ibase={ibase}/>
     );
   }
 
