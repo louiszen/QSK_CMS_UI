@@ -188,7 +188,7 @@ class FlowEditor extends Component {
   }
 
   onDataUpdated = (data) => {
-    console.log("onDataUpdated", data);
+    console.log("onDataUpdated");
     this.setState({
       data: data
     });
@@ -275,7 +275,6 @@ class FlowEditor extends Component {
 
   renderInfo = () => {
     let {ibase, doc, addOns, auth, level, formizo} = this.props;
-    console.log(ibase);
     return <Formizo
       schema={ibase.schema}
       formID={v1()}
