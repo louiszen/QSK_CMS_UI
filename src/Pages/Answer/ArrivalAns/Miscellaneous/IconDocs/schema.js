@@ -49,6 +49,11 @@ const Tail = [
     format: "textarea"
   },
   {
+    label: "Version",
+    name: "version",
+    format: "number"
+  },
+  {
     label: "Upload File",
     name: "upload",
     format: "file",

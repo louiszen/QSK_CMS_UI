@@ -13,6 +13,10 @@ const Table = [
     name: "description"
   },
   {
+    label: "Version",
+    name: "version"
+  },
+  {
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
