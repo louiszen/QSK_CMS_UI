@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropsType from 'prop-types';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -13,26 +14,26 @@ import { IZOTheme } from '__Base/config';
 /**
  * @augments {Component<Props, State>}
  */
-class Tips extends Component {
+class DefaultQ extends Component {
 
   static propTypes = {
-
+    addOns: PropsType.object
   }
 
   static defaultProps = {
-
+    addOns: {}
   }
 
   constructor(){
     super();
     this.state = {
-      title: "Tips",
+      title: "Default Questions",
       serverSidePagination: false, 
       base: {
-        title: "Tip",
-        exportDoc: "tips",
+        title: "Default Question",
+        exportDoc: "defaultq",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.Components.Tips",
+        reqAuth: "Answer.ArrivalAns.Miscellaneous.DefaultQ",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -42,7 +43,7 @@ class Tips extends Component {
           filterToolbar: true,
           densityToolbar: true,
           exportToolbar: false,
-          density: "compact",
+          density: "compact", //compact, standard, comfortable
           defaultPageSize: 50,
           showSelector: true,
         },
@@ -59,45 +60,45 @@ class Tips extends Component {
 
         operations: {
           Add: {
-            title: "Add Tip",
+            title: "Add Default Question",
             url: datalink.Request.Add,
-            success: "Tip Added Successfully",
-            fail: "Tip Add Failed: ",
+            success: "Default Question Added Successfully",
+            fail: "Default Question Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add"
           },
           Delete: {
-            title: "Delete this Tip?",
+            title: "Delete this Default Question?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.Delete,
-            success: "Tip Deleted Successfully.",
-            fail: "Tip Delete Failed: ",
+            success: "Default Question Deleted Successfully.",
+            fail: "Default Question Delete Failed: ",
             onSubmit: "Delete"
           },
           Edit: {
-            title: "Edit Tip ",
+            title: "Edit Default Question ",
             url: datalink.Request.Edit,
-            success: "Tip Edited Successfully",
-            fail: "Tip Edit Failed: ",
+            success: "Default Question Edited Successfully",
+            fail: "Default Question Edit Failed: ",
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit"
           },
           Info: {
-            title: "Tips ",
+            title: "Default Questions ",
             url: datalink.Request.Info,
-            success: "Tips Load Successfully",
-            fail: "Tips Load Failed: ",
+            success: "Default Questions Load Successfully",
+            fail: "Default Questions Load Failed: ",
             schema: schema.Info,
             readOnly: true
           },
           Import: {
-            title: "Tip Import",
+            title: "Default Question Import",
             content: "",
             url: datalink.Request.Import,
-            success: "Tip Imported Successfully.",
-            fail: "Tip Import Failed: ",
+            success: "Default Question Imported Successfully.",
+            fail: "Default Question Import Failed: ",
             schema: schema.ImportFormat,
             replace: false
           },
@@ -106,11 +107,11 @@ class Tips extends Component {
             schema: schema.Export,
           },
           DeleteBulk: {
-            title: (n) => "Delete these " + n + " Tip?",
+            title: (n) => "Delete these " + n + " Default Question?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.DeleteBulk,
-            success: "Tip Deleted Successfully.",
-            fail: "Tip Delete Failed: ",
+            success: "Default Question Deleted Successfully.",
+            fail: "Default Question Delete Failed: ",
             onSubmit: "DeleteBulk",
           },
         },
@@ -121,25 +122,24 @@ class Tips extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Tip", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Default Question", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
             //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],
         },
-      },
-      addOns: {}
+      }
     };
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Components.Tips");
+    Authority.Require("Answer.ArrivalAns.Miscellaneous.DefaultQ");
     this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Tips.defaultProps))){
+  if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(DefaultQ.defaultProps))){
       this._setAllStates();
     }
   }
@@ -161,7 +161,8 @@ class Tips extends Component {
   }
 
   render(){
-    let {base, serverSidePagination, title, addOns} = this.state;
+    let {addOns} = this.props;
+    let {base, serverSidePagination, title} = this.state;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -183,4 +184,4 @@ class Tips extends Component {
 
 }
 
-export default Tips;
+export default DefaultQ;
