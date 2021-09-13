@@ -9,6 +9,7 @@ import { Accessor, Authority, store } from 'IZOArc/STATIC';
 import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
 import { DOMAIN } from '__Base/config';
 import axios from 'axios';
+import { Denied } from 'IZOArc/Fallback';
 
 /** 
 tabs = [
@@ -46,7 +47,6 @@ class Components extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Components");
     this._setAllStates(() => {
       this.getIconList();
     });
@@ -155,7 +155,7 @@ class Components extends Component {
 
   render(){
     let {selectedTab} = this.state;
-
+    if(!Authority.IsAccessibleQ("Answer.ArrivalAns.Components")) return <Denied/>;
     return (
       <VStack width="100%">
         <Paper position="static" style={{width: "100%"}}>

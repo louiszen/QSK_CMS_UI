@@ -10,6 +10,7 @@ import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
+import { Denied } from 'IZOArc/Fallback';
 
 class QUAReq extends Component {
 
@@ -147,7 +148,6 @@ class QUAReq extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Components.QUAReq");
     this._setAllStates();
   }
 
@@ -177,6 +177,7 @@ class QUAReq extends Component {
     let {addOns} = this.props;
     let {base, serverSidePagination, title, ansFormat} = this.state;
     addOns = {...addOns, ansFormat};
+    if(!Authority.IsAccessibleQ("Answer.ArrivalAns.Components.QUAReq")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">

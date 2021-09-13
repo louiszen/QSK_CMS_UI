@@ -9,6 +9,7 @@ import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
+import { Denied } from 'IZOArc/Fallback';
 
 /**
  * @augments {Component<Props, State>}
@@ -134,7 +135,6 @@ class Tips extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Components.Tips");
     this._setAllStates();
   }
 
@@ -162,6 +162,7 @@ class Tips extends Component {
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
+    if(!Authority.IsAccessibleQ("Answer.ArrivalAns.Components.Tips")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">

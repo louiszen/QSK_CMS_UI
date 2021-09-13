@@ -9,6 +9,7 @@ import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
+import { Denied } from 'IZOArc/Fallback';
 
 class Location extends Component {
 
@@ -127,7 +128,6 @@ class Location extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Severity.Location");
     this._setAllStates();
   }
 
@@ -155,6 +155,7 @@ class Location extends Component {
 
   render(){
     let {base, serverSidePagination, title} = this.state;
+    if(!Authority.IsAccessibleQ("Severity.Location")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">

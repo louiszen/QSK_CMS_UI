@@ -8,8 +8,11 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
+import { DOMAIN, IZOTheme } from '__Base/config';
+import axios from 'axios';
+import _ from 'lodash';
+import { Denied } from 'IZOArc/Fallback';
 
 /**
  * @augments {Component<Props, State>}
@@ -134,8 +137,9 @@ class DefaultQ extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Questionnaire.DefaultQ");
-    this._setAllStates();
+    this._setAllStates(() => {
+      this._getDefaultQ()
+    });
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -156,13 +160,42 @@ class DefaultQ extends Component {
     }), callback);
   }
 
+  _getDefaultQ = async () => {
+    let { addOns } = this.props;
+    let url = DOMAIN + "/Tables/DefaultQ/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/DefaultQ/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        docs = _.uniqBy(docs, (o, i) => o.refID);
+        this.setState({
+          defaultQs: docs
+        })
+      } else {
+        store.Alert("Cannot get DefaultQ.", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get DefaultQ.", "error");
+    }
+  }
+
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;
   }
 
   render(){
     let {addOns} = this.props;
-    let {base, serverSidePagination, title} = this.state;
+    let {base, serverSidePagination, title, defaultQs} = this.state;
+    if(!Authority.IsAccessibleQ("Questionnaire.DefaultQ")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -176,7 +209,7 @@ class DefaultQ extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={{...addOns, defaultQs}}
           />
       </VStack>
     );

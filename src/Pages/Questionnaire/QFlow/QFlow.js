@@ -10,6 +10,7 @@ import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 import FlowEditor from './FlowEditor/FlowEditor';
+import { Denied } from 'IZOArc/Fallback';
 
 /**
  * @augments {Component<Props, State>}
@@ -144,7 +145,6 @@ class QFlow extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Questionnaire.QFlow");
     this._setAllStates();
   }
 
@@ -172,6 +172,7 @@ class QFlow extends Component {
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
+    if(!Authority.IsAccessibleQ("Questionnaire.QFlow")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">

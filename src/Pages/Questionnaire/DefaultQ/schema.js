@@ -35,7 +35,13 @@ const Tail = [
   {
     label: "Ref. ID",
     name: "refID",
-    format: "text"
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "defaultQs",
+    selectVal: "refID",
+    selectCap: "refID",
+    showTooltip: true,
+    selectTip: "description"
   },
   {
     label: "Description",

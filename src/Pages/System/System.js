@@ -7,6 +7,7 @@ import tabs from './tabs';
 
 import { Accessor, Authority } from 'IZOArc/STATIC';
 import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
+import { Denied } from 'IZOArc/Fallback';
 
 /** 
 tabs = [
@@ -44,7 +45,6 @@ class System extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("System");
     this._setAllStates();
   }
 
@@ -121,7 +121,7 @@ class System extends Component {
 
   render(){
     let {selectedTab} = this.state;
-
+    if(!Authority.IsAccessibleQ("System")) return <Denied/>;
     return (
       <VStack width="100%" height="100%">
         <Paper position="static" style={{width: "100%"}}>

@@ -11,6 +11,7 @@ import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
 import { DOMAIN, IZOTheme } from '__Base/config';
 import _ from 'lodash';
 import axios from 'axios';
+import { Denied } from 'IZOArc/Fallback';
 
 /**
  * @augments {Component<Props, State>}
@@ -139,7 +140,6 @@ class Template extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Template");
     this._setAllStates(() => {
       this.getReq("QUAReq");
       this.getReq("DOCReq");
@@ -214,6 +214,7 @@ class Template extends Component {
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
+    if(!Authority.IsAccessibleQ("Answer.ArrivalAns.Template")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">

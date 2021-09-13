@@ -10,6 +10,7 @@ import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority, store, ErrorX } from 'IZOArc/STATIC';
 import { DOMAIN, IZOTheme } from '__Base/config';
+import { Denied } from 'IZOArc/Fallback';
 
 class Grouping extends Component {
 
@@ -128,7 +129,6 @@ class Grouping extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Severity.Location");
     this._setAllStates(() => {
       this.GetData();
     });
@@ -231,6 +231,7 @@ class Grouping extends Component {
 
   render(){
     let {base, serverSidePagination, title, groups, locations} = this.state;
+    if(!Authority.IsAccessibleQ("Severity.Grouping")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">
