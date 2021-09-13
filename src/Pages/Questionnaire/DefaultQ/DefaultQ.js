@@ -33,7 +33,7 @@ class DefaultQ extends Component {
         title: "Default Question",
         exportDoc: "defaultq",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.Miscellaneous.DefaultQ",
+        reqAuth: "Questionnaire.DefaultQ",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -134,7 +134,7 @@ class DefaultQ extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("Answer.ArrivalAns.Miscellaneous.DefaultQ");
+    Authority.Require("Questionnaire.DefaultQ");
     this._setAllStates();
   }
 

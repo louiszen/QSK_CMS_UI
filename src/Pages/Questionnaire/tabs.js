@@ -1,9 +1,19 @@
 import { ContactSupport } from "@material-ui/icons";
+import DefaultQ from "./DefaultQ/DefaultQ";
 import QFlow from "./QFlow/QFlow";
 import QOrder from "./QOrder/QOrder";
 import Question from "./Question/Question";
 
 const tabs = [
+  {
+    label: "Default Questions",
+    icon: <i className="far fa-question-circle fa-lg"/>,
+    reqAuth: "Questionnaire.DefaultQ",
+    render: <DefaultQ/>,
+    iconPos: "left",
+    noTransform: true,
+    alignment: "left"
+  },
   {
     label: "Questions",
     icon: <ContactSupport/>,
