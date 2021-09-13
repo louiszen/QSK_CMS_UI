@@ -137,7 +137,6 @@ class IconDocs extends Component {
   }
 
   componentDidMount(){
-    //Authority.Require("Answer.ArrivalAns.Miscellaneous.IconDocs");
     this._setAllStates();
   }
 
