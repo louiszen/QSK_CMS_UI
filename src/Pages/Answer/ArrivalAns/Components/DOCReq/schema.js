@@ -8,6 +8,10 @@ const Table = [
     name: "description"
   },
   {
+    label: "Version",
+    name: "version"
+  },
+  {
     label: "Content (EN)",
     name: "display.content.EN"
   },
@@ -53,6 +57,14 @@ const Tail = [
     label: "Description",
     name: "description",
     format: "textarea"
+  },
+  {
+    label: "Version",
+    name: "version",
+    format: "number"
+  },
+  {
+    header: "Display"
   },
   {
     label: "Content (EN)",

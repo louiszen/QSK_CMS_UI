@@ -44,7 +44,7 @@ const tabs = [
   {
     label: "Tips",
     icon: <i className="far fa-clipboard fa-lg"/>,
-    reqAuth: "Answer.ArrivalAns.Miscellaneous.Tips",
+    reqAuth: "Answer.ArrivalAns.Components.Tips",
     render: (addOns) => <Tips addOns={addOns}/>,
     iconPos: "left",
     noTransform: true,

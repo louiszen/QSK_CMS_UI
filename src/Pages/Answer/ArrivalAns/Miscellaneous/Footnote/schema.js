@@ -54,6 +54,11 @@ const Tail = [
     format: "textarea"
   },
   {
+    label: "Version",
+    name: "version",
+    format: "number"
+  },
+  {
     header: "Display"
   },
   {

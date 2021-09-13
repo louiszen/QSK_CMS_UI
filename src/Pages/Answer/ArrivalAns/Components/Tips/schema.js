@@ -49,6 +49,11 @@ const Tail = [
     format: "textarea"
   },
   {
+    label: "Version",
+    name: "version",
+    format: "number"
+  },
+  {
     header: "Display"
   },
   {
@@ -76,12 +81,7 @@ const Tail = [
             label: "Content",
             name: "display.content.EN",
             format: "textarea"
-          },
-          {
-            label: "Collapse?",
-            name: "display.collapse.EN",
-            format: "bool"
-          },
+          }
         ]
       },
       {
@@ -96,12 +96,7 @@ const Tail = [
             label: "Content",
             name: "display.content.TC",
             format: "textarea"
-          },
-          {
-            label: "Collapse?",
-            name: "display.collapse.TC",
-            format: "bool"
-          },
+          }
         ]
       },
       {
@@ -116,12 +111,61 @@ const Tail = [
             label: "Content",
             name: "display.content.SC",
             format: "textarea"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: "Parameters",
+    name: "parameters",
+    canAdd: true,
+    canDelete: true,
+    headerStyle: "outlined",
+    arrayStyle: "card",
+    startDisplayIndex: 1,
+    array: [
+      {
+        label: "Description",
+        name: "description",
+        format: "text"
+      },
+      {
+        label: "Format",
+        name: "format",
+        format: "select",
+        selectStyle: "dropdown",
+        selectRef: "ansFormat",
+        selectCap: "",
+        selectVal: ""
+      },
+      {
+        label: "Include Footnote?",
+        name: "incFootnote",
+        format: "bool"
+      },
+      {
+        label: "Options",
+        name: "options",
+        canAdd: true,
+        canDelete: true,
+        headerStyle: "outlined",
+        array: [
+          {
+            label: "EN",
+            name: "EN",
+            format: "text"
           },
           {
-            label: "Collapse?",
-            name: "display.collapse.SC",
-            format: "bool"
+            label: "TC",
+            name: "TC",
+            format: "text"
           },
+          {
+            label: "SC",
+            name: "SC",
+            format: "text"
+          }
         ]
       }
     ]
@@ -138,21 +182,57 @@ const Tail = [
     format: "date",
     dateType: "date"
   }
-];
+]
 
 const Add = [
   ...Tail
 ];
 
 const Info = [
-  ...Tail
+  ...Tail,
+  {
+    label: "Last Update",
+    name: "lastUpdate",
+    format: "date",
+    dateType: "datetime",
+    readOnly: true
+  }
 ];
 
 const Edit = [
   ...Info
 ];
 
-const Export = [];
+const Export = [
+  {
+    label: "Ref. ID",
+    name: "refID"
+  },
+  {
+    label: "Description",
+    name: "description"
+  },
+  {
+    label: "Format",
+    name: "format"
+  },
+  {
+    label: "array: Separator",
+    name: "separator"
+  },
+  {
+    label: "select: Options",
+    name: "options",
+    format: "json"
+  },
+  {
+    label: "Last Update",
+    name: "lastUpdate",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
+    format: "datetime",
+    readOnly: true
+  }
+];
 
 const Import = [];
 
