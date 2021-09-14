@@ -140,7 +140,7 @@ class QFlow extends Component {
 
   renderFlowEditor = (docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns, ibase, onSubmit, auth, level, formizo) => {
     return (
-      <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh} renderFormizo={renderFormizo} onSubmit={onSubmit} auth={auth} level={level} formizo={formizo} ibase={ibase}/>
+      <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh} renderFormizo={renderFormizo} onSubmit={onSubmit} auth={auth} level={level} formizo={formizo} ibase={ibase} readOnly={ibase.readOnly}/>
     );
   }
 

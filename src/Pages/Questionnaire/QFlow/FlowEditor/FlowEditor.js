@@ -45,7 +45,8 @@ class FlowEditor extends Component {
     onSubmit: PropsType.func,
     auth: PropsType.object,
     level: PropsType.number,
-    formizo: PropsType.object
+    formizo: PropsType.object,
+    readOnly: PropsType.bool
   }
 
   static defaultProps = {
@@ -59,7 +60,8 @@ class FlowEditor extends Component {
     onSubmit: null,
     auth: {},
     level: 999,
-    formizo: {}
+    formizo: {},
+    readOnly: false
   }
 
   constructor(){
@@ -319,7 +321,7 @@ class FlowEditor extends Component {
   }
 
   render(){
-    let {doc} = this.props;
+    let {doc, readOnly} = this.props;
     let {Questions, Answers} = this.state;
     
     return (
@@ -339,6 +341,7 @@ class FlowEditor extends Component {
                 Questions, 
                 Answers
               }}
+              readOnly={readOnly}
               />
           </VStack>
         </HStack>

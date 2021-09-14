@@ -1,7 +1,6 @@
 import { Typography } from "antd";
 import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
 import { Accessor } from "IZOArc/STATIC";
-import _ from "lodash";
 
 const Table = [
   {

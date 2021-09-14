@@ -13,13 +13,15 @@ class FlowizoWrap extends Component {
   static propTypes = {
     defaultData: PropsType.array,
     addOns: PropsType.object,
-    onDataUpdated: PropsType.func
+    onDataUpdated: PropsType.func,
+    readOnly: PropsType.bool
   }
 
   static defaultProps = {
     defaultData: [],
     addOns: {},
-    onDataUpdated: null
+    onDataUpdated: null,
+    readOnly: false
   }
 
   constructor(){
@@ -67,10 +69,14 @@ class FlowizoWrap extends Component {
   }
 
   addQ = () => {
+    let {readOnly} = this.props;
+    if(readOnly) return;
     this.MountFlowizo.AddNode("Rect_YesNo");
   }
 
   addA = () => {
+    let {readOnly} = this.props;
+    if(readOnly) return;
     this.MountFlowizo.AddNode("Tube_End");
   }
 
@@ -79,14 +85,14 @@ class FlowizoWrap extends Component {
   }
 
   render(){
-    let {defaultData, addOns} = this.props;
+    let {defaultData, addOns, readOnly} = this.props;
     return (
       <VStack width="100%" height="100%">
         <HStack spacing={10}>
-          <StyledButton onClick={() => this.addQ()} theme={{color: "yellow"}}>
+          <StyledButton onClick={() => this.addQ()} theme={{color: readOnly? "grey": "yellow"}}>
             {"Add Question"}
           </StyledButton>
-          <StyledButton onClick={() => this.addA()} theme={{color: "blue"}}>
+          <StyledButton onClick={() => this.addA()} theme={{color: readOnly? "grey": "blue"}}>
             {"Add Answer"}
           </StyledButton>
         </HStack>
@@ -97,6 +103,7 @@ class FlowizoWrap extends Component {
           controlsProps={{}}
           reactFlowProps={{}}
           addOns={addOns}
+          readOnly={readOnly}
           />
       </VStack>
     );
