@@ -36,11 +36,14 @@ import Answer from "Pages/Answer/Answer";
 import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
 import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";
 import ArrivalAnsMisc from "Pages/Answer/ArrivalAns/Miscellaneous/Miscellaneous";
-import DepartAns from "Pages/Answer/DepartAns/DepartAns";
+
 import Questionnaire from "Pages/Questionnaire/Questionnaire";
 import Severity from "Pages/Severity/Severity";
 import TransitAnsTemp from "Pages/Answer/TransitAns/Template/Template";
 import TransitAnsComp from "Pages/Answer/TransitAns/Components/Components";
+import DepartAnsTemp from "Pages/Answer/DepartAns/Template/Template";
+import DepartAnsComp from "Pages/Answer/DepartAns/Components/Components";
+import DepartAnsMisc from "Pages/Answer/DepartAns/Miscellaneous/Miscellaneous";
 
 //store
 import {Env, store} from 'IZOArc/STATIC';
@@ -60,10 +63,13 @@ function renderPages() {
     <Route key={4} path='/Severity' exact component={Severity}/>,
     <Route key={5} path='/Answer/ArrivalAns/Template' exact component={ArrivalAnsTemp}/>,
     <Route key={6} path='/Answer/ArrivalAns/Components' exact component={ArrivalAnsComp}/>,
-    <Route key={9} path='/Answer/DepartAns' exact component={DepartAns}/>,
-    <Route key={10} path='/Answer/TransitAns/Template' exact component={TransitAnsTemp}/>,
-    <Route key={11} path='/Answer/TransitAns/Components' exact component={TransitAnsComp}/>,
-    <Route key={20} path='/Answer/ArrivalAns/Miscellaneous' exact component={ArrivalAnsMisc}/>,
+    <Route key={7} path='/Answer/ArrivalAns/Miscellaneous' exact component={ArrivalAnsMisc}/>,
+    <Route key={8} path='/Answer/DepartAns/Template' exact component={DepartAnsTemp}/>,
+    <Route key={9} path='/Answer/DepartAns/Components' exact component={DepartAnsComp}/>,
+    <Route key={10} path='/Answer/DepartAns/Miscellaneous' exact component={DepartAnsMisc}/>,
+    <Route key={11} path='/Answer/TransitAns/Template' exact component={TransitAnsTemp}/>,
+    <Route key={12} path='/Answer/TransitAns/Components' exact component={TransitAnsComp}/>,
+
   ];
 }
 

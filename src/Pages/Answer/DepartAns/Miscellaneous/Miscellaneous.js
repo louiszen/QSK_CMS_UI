@@ -29,7 +29,7 @@ tabs = [
 /**
  * @augments {Component<Props, State>}
  */
-class ${1} extends Component {
+class Miscellaneous extends Component {
 
   static propTypes = {
 
@@ -51,7 +51,7 @@ class ${1} extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(${1}.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Miscellaneous.defaultProps))){
       this._setAllStates();
     }
   }
@@ -115,7 +115,7 @@ class ${1} extends Component {
             icon = null; break;
         }
         return (
-          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: o.height || 20, minWidth: o.width || 200}}/>
+          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: 20, minWidth: o.width || 200}}/>
         );
       }
     });
@@ -123,7 +123,7 @@ class ${1} extends Component {
 
   render(){
     let {selectedTab} = this.state;
-    if(!Authority.IsAccessibleQ("${2}")) return <Denied/>;
+    if(!Authority.IsAccessibleQ("Answer.DepartAns.Miscellaneous")) return <Denied/>;
     return (
       <VStack width="100%" height="100%">
         <Paper position="static" style={{width: "100%"}}>
@@ -147,4 +147,4 @@ class ${1} extends Component {
 
 }
 
-export default ${1};
+export default Miscellaneous;

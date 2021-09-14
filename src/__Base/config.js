@@ -91,7 +91,28 @@ export const MenuConfig = [
         caption: "Departure",
         link: "/Answer/DepartAns",
         faIcon: "fas fa-plane-departure fa-lg",
-        auth: "Answer.DepartAns"
+        auth: "Answer.DepartAns",
+        disabled: true,
+        submenu: [
+          {
+            caption: "Miscellaneous",
+            link: "/Answer/DepartAns/Miscellaneous",
+            faIcon: "fas fa-cubes fa-lg",
+            auth: "Answer.DepartAns.Miscellaneous"
+          },
+          {
+            caption: "Components",
+            link: "/Answer/DepartAns/Components",
+            faIcon: "fas fa-shapes fa-lg",
+            auth: "Answer.DepartAns.Components",
+          },
+          {
+            caption: "Template",
+            link: "/Answer/DepartAns/Template",
+            faIcon: "far fa-file-alt fa-lg",
+            auth: "Answer.DepartAns.Template",
+          }
+        ]
       },
       {
         caption: "Transition",
