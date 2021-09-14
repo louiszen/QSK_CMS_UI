@@ -1,3 +1,5 @@
+import {DOMAIN} from '__Base/config';
+
 const Table = [
   {
     label: "Ref. ID",
@@ -52,6 +54,12 @@ const Tail = [
     label: "Version",
     name: "version",
     format: "number"
+  },
+  {
+    label: "Current Image",
+    name: "link",
+    format: "display",
+    Custom: (data, field, addOns) => <img src={DOMAIN + "/" + field} alt=""/>
   },
   {
     label: "Upload File",
