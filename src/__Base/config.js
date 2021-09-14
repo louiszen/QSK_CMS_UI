@@ -74,13 +74,13 @@ export const MenuConfig = [
             auth: "Answer.ArrivalAns.Miscellaneous"
           },
           {
-            caption: "Answer Component",
+            caption: "Components",
             link: "/Answer/ArrivalAns/Components",
             faIcon: "fas fa-shapes fa-lg",
             auth: "Answer.ArrivalAns.Components",
           },
           {
-            caption: "Answer Template",
+            caption: "Template",
             link: "/Answer/ArrivalAns/Template",
             faIcon: "far fa-file-alt fa-lg",
             auth: "Answer.ArrivalAns.Template",
@@ -97,7 +97,22 @@ export const MenuConfig = [
         caption: "Transition",
         link: "/Answer/TransitAns",
         faIcon: "fas fa-project-diagram fa-lg",
-        auth: "Answer.TransitAns"
+        auth: "Answer.TransitAns",
+        disabled: true,
+        submenu: [
+          {
+            caption: "Components",
+            link: "/Answer/TransitAns/Components",
+            faIcon: "fas fa-shapes fa-lg",
+            auth: "Answer.TransitAns.Components",
+          },
+          {
+            caption: "Template",
+            link: "/Answer/TransitAns/Template",
+            faIcon: "far fa-file-alt fa-lg",
+            auth: "Answer.TransitAns.Template",
+          }
+        ]
       }
     ]
   },

@@ -13,20 +13,28 @@ const Table = [
     Cell: (row, field, addOns) => <HStack>{field? <Check/> : <Close/>}</HStack>
   },
   {
-    label: "Display Sequence",
-    name: "priority"
-  },
-  {
     label: "Display (EN)",
     name: "display.EN"
+  },
+  {
+    label: "Priority (EN)",
+    name: "priority.EN"
   },
   {
     label: "Display (TC)",
     name: "display.TC"
   },
   {
+    label: "Priority (TC)",
+    name: "priority.TC"
+  },
+  {
     label: "Display (SC)",
     name: "display.SC"
+  },
+  {
+    label: "Priority (SC)",
+    name: "priority.SC"
   },
   {
     label: "Effective Start Date",
@@ -65,14 +73,14 @@ const Tail = [
     boolStyle: "switch"
   },
   {
-    label: "Display Sequence",
-    name: "priority",
-    format: "number"
-  },
-  {
     label: "Display Name (EN)",
     name: "display.EN",
     format: "text"
+  },
+  {
+    label: "Priority (EN)",
+    name: "priority.EN",
+    format: "number"
   },
   {
     label: "Display Name (TC)",
@@ -80,9 +88,19 @@ const Tail = [
     format: "text"
   },
   {
+    label: "Priority (TC)",
+    name: "priority.TC",
+    format: "number"
+  },
+  {
     label: "Display Name (SC)",
     name: "display.SC",
     format: "text"
+  },
+  {
+    label: "Priority (SC)",
+    name: "priority.SC",
+    format: "number"
   },
   {
     label: "Effective Start Date",
@@ -128,21 +146,31 @@ const Export = [
     format: "bool"
   },
   {
-    label: "Display Sequence",
-    name: "priority",
-    format: "number"
-  },
-  {
     label: "Display Name (EN)",
     name: "display.EN"
+  },
+  {
+    label: "Priority (EN)",
+    name: "priority.EN",
+    format: "number"
   },
   {
     label: "Display Name (TC)",
     name: "display.TC"
   },
   {
+    label: "Priority (TC)",
+    name: "priority.TC",
+    format: "number"
+  },
+  {
     label: "Display Name (SC)",
     name: "display.SC"
+  },
+  {
+    label: "Priority (SC)",
+    name: "priority.SC",
+    format: "number"
   },
   {
     label: "Effective Start Date",

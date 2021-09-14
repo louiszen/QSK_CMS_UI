@@ -37,9 +37,10 @@ import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
 import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";
 import ArrivalAnsMisc from "Pages/Answer/ArrivalAns/Miscellaneous/Miscellaneous";
 import DepartAns from "Pages/Answer/DepartAns/DepartAns";
-import TransitAns from "Pages/Answer/TransitAns/TransitAns";
 import Questionnaire from "Pages/Questionnaire/Questionnaire";
 import Severity from "Pages/Severity/Severity";
+import TransitAnsTemp from "Pages/Answer/TransitAns/Template/Template";
+import TransitAnsComp from "Pages/Answer/TransitAns/Components/Components";
 
 //store
 import {Env, store} from 'IZOArc/STATIC';
@@ -60,7 +61,8 @@ function renderPages() {
     <Route key={5} path='/Answer/ArrivalAns/Template' exact component={ArrivalAnsTemp}/>,
     <Route key={6} path='/Answer/ArrivalAns/Components' exact component={ArrivalAnsComp}/>,
     <Route key={9} path='/Answer/DepartAns' exact component={DepartAns}/>,
-    <Route key={10} path='/Answer/TransitAns' exact component={TransitAns}/>,
+    <Route key={10} path='/Answer/TransitAns/Template' exact component={TransitAnsTemp}/>,
+    <Route key={11} path='/Answer/TransitAns/Components' exact component={TransitAnsComp}/>,
     <Route key={20} path='/Answer/ArrivalAns/Miscellaneous' exact component={ArrivalAnsMisc}/>,
   ];
 }
