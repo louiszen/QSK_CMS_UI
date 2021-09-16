@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
-import PropsType from 'prop-types';
 
-import { Box, Typography } from '@material-ui/core';
+import _ from 'lodash';
+import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 
-import schema from './schema';
-import datalink from './datalink';
+import tabs from './tabs';
 
-import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
-import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, Authority } from 'IZOArc/STATIC';
+import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
 import { Denied } from 'IZOArc/Fallback';
+
+/** 
+tabs = [
+  {
+    label: String,
+    icon: String | JSX,
+    reqAuth: String,
+    render: JSX,
+    iconPos: "top" | "left" | "right" | "bottom",
+    noTransform: Boolean | false,
+    spacing: Number | 5,
+    alignment: "center" | "left" | "right",
+    width: Number | 200,
+    height: Number | 20
+  }
+];
+*/
 
 /**
  * @augments {Component<Props, State>}
@@ -18,119 +32,17 @@ import { Denied } from 'IZOArc/Fallback';
 class Components extends Component {
 
   static propTypes = {
-    addOns: PropsType.object
+
   }
 
   static defaultProps = {
-    addOns: {}
+
   }
 
   constructor(){
     super();
     this.state = {
-      title: "Departure Answer Components",
-      serverSidePagination: false, 
-      base: {
-        title: "Departure Answer Component",
-        exportDoc: "depart_ans_comp",
-        schema: schema,
-        reqAuth: "Answer.DepartAns.Components",
-
-        noDefaultTable: false,
-        noDefaultButtons: false,
-
-        tablizo: {
-          columnsToolbar: true,
-          filterToolbar: true,
-          densityToolbar: true,
-          exportToolbar: false,
-          density: "compact", //compact, standard, comfortable
-          defaultPageSize: 50,
-          showSelector: true,
-        },
-
-        formizo: {
-
-        },
-
-        Connect: {
-          DBInfo: datalink.Request.DBInfo,
-          List: datalink.Request.List,
-          schema: schema.Table
-        },
-
-        operations: {
-          Add: {
-            title: "Add Departure Answer Component",
-            url: datalink.Request.Add,
-            success: "Departure Answer Component Added Successfully",
-            fail: "Departure Answer Component Add Failed: ",
-            schema: schema.Add,
-            buttons: ["Clear", "Submit"],
-            onSubmit: "Add"
-          },
-          Delete: {
-            title: "Delete this Departure Answer Component?",
-            content: "Caution: This is irrevertable.",
-            url: datalink.Request.Delete,
-            success: "Departure Answer Component Deleted Successfully.",
-            fail: "Departure Answer Component Delete Failed: ",
-            onSubmit: "Delete"
-          },
-          Edit: {
-            title: "Edit Departure Answer Component ",
-            url: datalink.Request.Edit,
-            success: "Departure Answer Component Edited Successfully",
-            fail: "Departure Answer Component Edit Failed: ",
-            schema: schema.Edit,
-            buttons: ["Revert", "Submit"],
-            onSubmit: "Edit"
-          },
-          Info: {
-            title: "Departure Answer Components ",
-            url: datalink.Request.Info,
-            success: "Departure Answer Components Load Successfully",
-            fail: "Departure Answer Components Load Failed: ",
-            schema: schema.Info,
-            readOnly: true
-          },
-          Import: {
-            title: "Departure Answer Component Import",
-            content: "",
-            url: datalink.Request.Import,
-            success: "Departure Answer Component Imported Successfully.",
-            fail: "Departure Answer Component Import Failed: ",
-            schema: schema.ImportFormat,
-            replace: false
-          },
-          Export: {
-            url: datalink.Request.Export,
-            schema: schema.Export,
-          },
-          DeleteBulk: {
-            title: (n) => "Delete these " + n + " Departure Answer Component?",
-            content: "Caution: This is irrevertable.",
-            url: datalink.Request.DeleteBulk,
-            success: "Departure Answer Component Deleted Successfully.",
-            fail: "Departure Answer Component Delete Failed: ",
-            onSubmit: "DeleteBulk",
-          },
-        },
-
-        buttons: {
-          inline: [
-            { icon: "edit", func: "Edit", caption: "Edit", reqFunc: "Edit" },
-            { icon: "info", func: "Info", caption: "Details" },
-            { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
-          ],
-          left: [{ icon: "add", func: "Add", caption: "Add Departure Answer Component", reqFunc: "Add" }],
-          right: [
-            { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
-          ],
-        },
-      }
+      selectedTab: 0
     };
   }
 
@@ -144,7 +56,7 @@ class Components extends Component {
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.setState = (state, callback) => {
       return;
     };
@@ -156,29 +68,79 @@ class Components extends Component {
     }), callback);
   }
 
-  onMountDatumizo = (callbacks) => {
-    this.MountDatumizo = callbacks;
+  onChangeTab = (e, tab) => {
+    this.setState({
+      selectedTab: tab
+    });
+  }
+
+  renderTabPanels(){
+    let {selectedTab, addOns} = this.state;
+    return _.map(tabs, (o, i) => {
+      return (
+        <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
+          {_.isFunction(o.render)? o.render(addOns) : o.render}
+        </Box>
+      );
+    });
+  }
+
+  renderTabButtons(){
+    return _.map(tabs, (o, i) => {
+      if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
+        let label = o.label;
+        let icon = o.icon;
+        if(o.noTransform){
+          label = <Typography style={{textTransform: 'none'}}>{o.label}</Typography>
+        }
+        switch(o.iconPos){
+          case "top": default: 
+            break;
+          case "bottom":
+            label = <VStack spacing={o.spacing || 5}>{label}{icon}</VStack>; 
+            icon = null; break;
+          case "left": 
+            label = <HStack spacing={o.spacing || 5}>
+              {o.alignment === "right" && <Spacer/>}
+              {icon}{label}
+              {o.alignment === "left" && <Spacer/>}
+              </HStack>; 
+            icon = null; break;
+          case "right":
+            label = <HStack spacing={o.spacing || 5}>
+              {o.alignment === "right" && <Spacer/>}
+              {label}{icon}
+              {o.alignment === "left" && <Spacer/>}
+              </HStack>; 
+            icon = null; break;
+        }
+        return (
+          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: o.height || 20, minWidth: o.width || 200}}/>
+        );
+      }
+    });
   }
 
   render(){
-    let {addOns} = this.props;
-    let {base, serverSidePagination, title} = this.state;
+    let {selectedTab} = this.state;
     if(!Authority.IsAccessibleQ("Answer.DepartAns.Components")) return <Denied/>;
     return (
-      <VStack>
-        <Box padding={1} width="100%">
-          <Typography style={{
-            textAlign: "left", 
-            width: "100%",
-            fontSize: 25,
-            color: ColorX.GetColorCSS(IZOTheme.foreground)
-            }}>
-            {title}
-          </Typography>
-        </Box>
-        <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
-          />
+      <VStack width="100%" height="100%">
+        <Paper position="static" style={{width: "100%"}}>
+          <Tabs value={selectedTab} 
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={this.onChangeTab} 
+            style={{backgroundColor: "aliceblue", color: "blue", minHeight: 20}}
+            variant="scrollable"
+            scrollButtons="auto"
+            >
+            {this.renderTabButtons()}
+          </Tabs>
+        </Paper>
+        <Paper style={{width: "100%", height: "100%", background: "transparent", padding: "5px"}}>
+          {this.renderTabPanels()}
+        </Paper> 
       </VStack>
     );
   }

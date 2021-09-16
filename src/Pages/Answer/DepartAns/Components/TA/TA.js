@@ -8,16 +8,14 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
-import { DOMAIN, IZOTheme } from '__Base/config';
-import _ from 'lodash';
-import axios from 'axios';
+import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
 
 /**
  * @augments {Component<Props, State>}
  */
-class Template extends Component {
+class TA extends Component {
 
   static propTypes = {
     addOns: PropsType.object
@@ -30,13 +28,13 @@ class Template extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Departure Answer Template",
+      title: "Travel Advisories by Destination",
       serverSidePagination: false, 
       base: {
-        title: "Departure Answer Template",
-        exportDoc: "depart_ans_temp",
+        title: "Travel Advisories by Destination",
+        exportDoc: "ta_dest",
         schema: schema,
-        reqAuth: "Answer.DepartAns.Template",
+        reqAuth: "Answer.DepartAns.Components.TA",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -63,45 +61,45 @@ class Template extends Component {
 
         operations: {
           Add: {
-            title: "Add Departure Answer Template",
+            title: "Add Travel Advisories by Destination",
             url: datalink.Request.Add,
-            success: "Departure Answer Template Added Successfully",
-            fail: "Departure Answer Template Add Failed: ",
+            success: "Travel Advisories by Destination Added Successfully",
+            fail: "Travel Advisories by Destination Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add"
           },
           Delete: {
-            title: "Delete this Departure Answer Template?",
+            title: "Delete this Travel Advisories by Destination?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.Delete,
-            success: "Departure Answer Template Deleted Successfully.",
-            fail: "Departure Answer Template Delete Failed: ",
+            success: "Travel Advisories by Destination Deleted Successfully.",
+            fail: "Travel Advisories by Destination Delete Failed: ",
             onSubmit: "Delete"
           },
           Edit: {
-            title: "Edit Departure Answer Template ",
+            title: "Edit Travel Advisories by Destination ",
             url: datalink.Request.Edit,
-            success: "Departure Answer Template Edited Successfully",
-            fail: "Departure Answer Template Edit Failed: ",
+            success: "Travel Advisories by Destination Edited Successfully",
+            fail: "Travel Advisories by Destination Edit Failed: ",
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit"
           },
           Info: {
-            title: "Departure Answer Template ",
+            title: "Travel Advisories by Destination ",
             url: datalink.Request.Info,
-            success: "Departure Answer Template Load Successfully",
-            fail: "Departure Answer Template Load Failed: ",
+            success: "Travel Advisories by Destination Load Successfully",
+            fail: "Travel Advisories by Destination Load Failed: ",
             schema: schema.Info,
             readOnly: true
           },
           Import: {
-            title: "Departure Answer Template Import",
+            title: "Travel Advisories by Destination Import",
             content: "",
             url: datalink.Request.Import,
-            success: "Departure Answer Template Imported Successfully.",
-            fail: "Departure Answer Template Import Failed: ",
+            success: "Travel Advisories by Destination Imported Successfully.",
+            fail: "Travel Advisories by Destination Import Failed: ",
             schema: schema.ImportFormat,
             replace: false
           },
@@ -110,11 +108,11 @@ class Template extends Component {
             schema: schema.Export,
           },
           DeleteBulk: {
-            title: (n) => "Delete these " + n + " Departure Answer Template?",
+            title: (n) => "Delete these " + n + " Travel Advisories by Destination?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.DeleteBulk,
-            success: "Departure Answer Template Deleted Successfully.",
-            fail: "Departure Answer Template Delete Failed: ",
+            success: "Travel Advisories by Destination Deleted Successfully.",
+            fail: "Travel Advisories by Destination Delete Failed: ",
             onSubmit: "DeleteBulk",
           },
         },
@@ -125,7 +123,7 @@ class Template extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Departure Answer Template", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Travel Advisories by Destination", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -137,13 +135,11 @@ class Template extends Component {
   }
 
   componentDidMount(){
-    this._setAllStates(() => {
-      this.getLinks();
-    });
+    this._setAllStates();
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Template.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(TA.defaultProps))){
       this._setAllStates();
     }
   }
@@ -164,40 +160,10 @@ class Template extends Component {
     this.MountDatumizo = callbacks;
   }
 
-  getLinks = async () => {
-    let { addOns } = this.props;
-    let url = DOMAIN + "/Tables/DepartAnsLink/List";
-    let payloadOut = {
-      JWT: store.user.JWT,
-      data: {},
-      addOns: addOns,
-    };
-    try {
-      let res = await axios.post(url, payloadOut);
-      console.log("/Tables/DepartAnsLink/List", res.data);
-    
-      let { Success, payload } = res.data;
-    
-      if (Success === true) {
-        let docs = payload.docs;
-        docs = _.filter(docs, o => _.isEmpty(o.effective.End));
-        this.setState((state, props) => ({
-          addOns: {
-            ...state.addOns,
-            Links: docs
-          }
-        }));
-      } else {
-        store.Alert("Cannot get useful link list", "error");
-      }
-    } catch (e) {
-      store.Alert("Cannot get useful link list", "error");
-    }
-  }
-
   render(){
-    let {base, serverSidePagination, title, addOns} = this.state;
-    if(!Authority.IsAccessibleQ("Answer.DepartAns.Template")) return <Denied/>;
+    let {addOns} = this.props;
+    let {base, serverSidePagination, title} = this.state;
+    if(!Authority.IsAccessibleQ("Answer.DepartAns.Components.TA")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -219,4 +185,4 @@ class Template extends Component {
 
 }
 
-export default Template;
+export default TA;

@@ -4,13 +4,15 @@ import { Box, Typography } from '@material-ui/core';
 
 import schema from './schema';
 import datalink from './datalink';
+import axios from "axios";
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
+import { IZOTheme, DOMAIN } from '__Base/config';
 import FlowEditor from './FlowEditor/FlowEditor';
 import { Denied } from 'IZOArc/Fallback';
+import _ from 'lodash';
 
 /**
  * @augments {Component<Props, State>}
@@ -67,7 +69,7 @@ class QFlow extends Component {
             fail: "Question Flow Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
-            onSubmit: "Add",
+            onSubmit: this.Add,
             Custom: this.renderFlowEditor
           },
           Delete: {
@@ -85,7 +87,7 @@ class QFlow extends Component {
             fail: "Question Flow Edit Failed: ",
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
-            onSubmit: "Edit",
+            onSubmit: this.Edit,
             Custom: this.renderFlowEditor
           },
           Info: {
@@ -169,6 +171,172 @@ class QFlow extends Component {
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;
   }
+
+  Add = {
+    onClick: () => {
+      let {base} = this.props;
+      this.setState({
+        inEdit: true,
+        mode: "Add",
+        doc: base.operations?.Add?.defaultDoc || {}
+      });
+    },
+
+    onSubmit: async (formProps) => {
+      console.log("submit Add");
+      console.log(formProps);
+
+      let { base, addOns } = this.state;
+      let url = DOMAIN + base.operations?.Add?.url;
+      let docID = this.MountDatumizo.GetDocID();
+
+      _.map(formProps.flow, (o, i) => {
+        if(o.data && o.data.addOns) delete o.data.addOns;
+        if(o.data && o.data.callback) delete o.data.callback;
+      });
+
+      let payloadOut = {
+        data: {
+          ...formProps,
+        },
+        JWT: store.user.JWT,
+        addOns: addOns,
+      };
+
+      if(base.operations?.Add?.withFile){
+        payloadOut = this._getUploadFormData(payloadOut);
+      }
+      try {
+        console.log(base.operations?.Add?.url, payloadOut);
+
+        store.isLoading(true);
+        let res = await axios.post(url, payloadOut);
+        store.isLoading(false);
+
+        console.log(base.operations?.Add?.url, res.data);
+
+        let { Success, payload } = res.data;
+
+        if (Success === true) {
+          if (base.operations?.Add?.onSuccess) {
+            base.operations?.Add?.onSuccess(payload);
+          } else {
+            this.Add.onSuccess(payload);
+          }
+          this.MountDatumizo.QuitInner(docID);
+        } else {
+          if (base.operations?.Add?.onFail) {
+            base.operations?.Add?.onFail(payload);
+          } else {
+            this.Add.onFail(payload);
+          }
+        }
+      } catch (e) {
+        store.isLoading(false);
+        if (base.operations?.Add?.onFail) {
+          base.operations?.Add?.onFail(e);
+        } else {
+          this.Add.onFail(e);
+        }
+      }
+    },
+
+    onSuccess: (payload) => {
+      let { base } = this.state;
+      store.Alert(base.operations?.Add?.success, "success");
+      this.MountDatumizo.Reload();
+    },
+
+    onFail: (payload) => {
+      let { base } = this.state;
+      let msg = base.operations?.Add?.fail + (payload.message || "");
+      store.Alert(msg, "error");
+    },
+  };
+
+  Edit = {
+    onClick: (id, row) => {
+      this.setState({
+        inEdit: true,
+        mode: "Edit",
+        doc: row,
+        docID: id,
+      });
+    },
+    onSubmit: async (formProps) => {
+      console.log("submit Edit");
+      console.log(formProps);
+
+      let { base, addOns } = this.state;
+      let { doc } = this.state;
+
+      let url = DOMAIN + base.operations?.Edit?.url;
+
+      _.map(formProps.flow, (o, i) => {
+        if(o.data && o.data.addOns) delete o.data.addOns;
+        if(o.data && o.data.callback) delete o.data.callback;
+      });
+
+      let payloadOut = {
+        data: {
+          ...doc,
+          ...formProps,
+        },
+        JWT: store.user.JWT,
+        addOns: addOns,
+      };
+
+      if(base.operations?.Edit?.withFile){
+        payloadOut = this._getUploadFormData(payloadOut);
+      }
+
+      try {
+        console.log(base.operations?.Edit?.url, payloadOut);
+
+        store.isLoading(true);
+        let res = await axios.post(url, payloadOut);
+        store.isLoading(false);
+
+        console.log(base.operations?.Edit?.url, res.data);
+
+        let { Success, payload } = res.data;
+
+        if (Success === true) {
+          if (base.operations?.Edit?.onSuccess) {
+            base.operations?.Edit?.onSuccess(payload);
+          } else {
+            this.Edit.onSuccess(payload);
+          }
+          this.MountDatumizo.QuitInner();
+        } else {
+          if (base.operations?.Edit?.onSuccess) {
+            base.operations?.Edit?.onFail(payload);
+          } else {
+            this.Edit.onFail(payload);
+          }
+        }
+      } catch (e) {
+        store.isLoading(false);
+        if (base.operations?.Edit?.onFail) {
+          base.operations?.Edit?.onFail(e);
+        } else {
+          this.Edit.onFail(e);
+        }
+      }
+    },
+
+    onSuccess: (payload) => {
+      let { base } = this.state;
+      store.Alert(base.operations?.Edit?.success, "success");
+      this.MountDatumizo.Reload();
+    },
+
+    onFail: (payload) => {
+      let { base } = this.state;
+      let msg = base.operations?.Edit?.fail + (payload.message || "");
+      store.Alert(msg, "error");
+    },
+  };
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;

@@ -84,19 +84,23 @@ const Tail = [
     canAdd: true,
     canDelete: true,
     arrayStyle: "card",
-    array: _.map(LANGUAGES, (o, i) => {
-      return [
-        {
-          label: "Language",
-          format: "select",
-          selectStyle: "radio",
-          selectDirection: "row",
-          selectRef: ["All", ...LANGUAGES],
-          selectCap: "",
-          selectVal: ""
-        }
-      ]
-    })
+    array:[
+      {
+        label: "Language",
+        name: "lang",
+        format: "select",
+        selectStyle: "radio",
+        selectDirection: "row",
+        selectRef: ["All", ...LANGUAGES],
+        selectCap: "",
+        selectVal: ""
+      },
+      {
+        label: "URL",
+        name: "url",
+        format: "text",
+      }
+    ]
   },
   {
     label: "Effective Start Date",

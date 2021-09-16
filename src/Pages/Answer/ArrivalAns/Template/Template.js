@@ -87,7 +87,7 @@ class Template extends Component {
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit",
-            Custom: this.renderInner
+            Custom: this.renderInner,
           },
           Info: {
             title: "Arrival Answer Templates ",
@@ -211,6 +211,7 @@ class Template extends Component {
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;
   }
+  
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;

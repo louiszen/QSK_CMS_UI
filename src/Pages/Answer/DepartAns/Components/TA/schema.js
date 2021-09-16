@@ -1,8 +1,5 @@
 import _ from "lodash";
 import { LANGUAGES } from "__Base/config";
-import { Typography } from "antd";
-import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
-import { Accessor } from "IZOArc/STATIC";
 
 const Table = [
   {
@@ -61,20 +58,8 @@ const Tail = [
     header: "Display"
   },
   {
-    label: "Show Travel Advisories?",
-    name: "showTA",
-    format: "bool",
-    boolStyle: "switch"
-  },
-  {
-    label: "Show COVID-Tests at HKIA?",
-    name: "showCT",
-    format: "bool",
-    boolStyle: "switch"
-  },
-  {
-    label: "Show Others?",
-    name: "showOTH",
+    label: "Show Destination List",
+    name: "display.showDestinationOptions",
     format: "bool",
     boolStyle: "switch"
   },
@@ -84,13 +69,18 @@ const Tail = [
         label: o,
         page: [
           {
-            label: "Pre-wordings",
-            name: "prewordings." + o,
+            label: "Title",
+            name: "display.title." + o,
             format: "text"
           },
           {
-            label: "Others",
-            name: "others.title." + o,
+            label: "Subtitle",
+            name: "display.subtitle." + o,
+            format: "text"
+          },
+          {
+            label: "Content",
+            name: "display.content." + o,
             format: "textarea"
           },
         ]
@@ -98,34 +88,41 @@ const Tail = [
     })
   },
   {
-    label: "Add Links",
-    name: "others.links",
-    canAdd: true,
-    canDelete: true,
-    arrayStyle: "card",
-    array: [
-      {
-        label: "Ref. ID",
-        name: "refID",
-        format: "select",
-        selectStyle: "dropdown",
-        selectRef: "Links",
-        selectCap: "refID",
-        selectVal: "refID",
-        selectTip: "description",
-        showTooltip: true
-      },
-      (formValue, addOns, idx) => {
-        let refID = Accessor.Get(formValue, "others.links." + idx + ".refID");
-        let doc = addOns?.Links?.find(o => o.refID === refID);
-        return {
-          label: "Description",
-          name: "",
-          format: "display",
-          Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
-        };
+    header: "App Link"
+  },
+  {
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
+        page: [
+          {
+            label: "Content",
+            name: "applink.content." + o,
+            format: "text"
+          },
+          {
+            label: "Google",
+            name: "applink.google.caption." + o,
+            format: "text"
+          },
+          {
+            label: "Apple",
+            name: "applink.apple.caption." + o,
+            format: "text",
+          }
+        ]
       }
-    ]
+    })
+  },
+  {
+    label: "Google App URL",
+    name: "applink.google.url",
+    format: "text"
+  },
+  {
+    label: "Apple App URL",
+    name: "applink.apple.url",
+    format: "text"
   },
   {
     label: "Effective Start Date",

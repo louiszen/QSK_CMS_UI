@@ -17,7 +17,7 @@ import { Denied } from 'IZOArc/Fallback';
 /**
  * @augments {Component<Props, State>}
  */
-class Template extends Component {
+class CT extends Component {
 
   static propTypes = {
     addOns: PropsType.object
@@ -30,13 +30,13 @@ class Template extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Departure Answer Template",
+      title: "COVID-19 Test for Passengers at HKIA",
       serverSidePagination: false, 
       base: {
-        title: "Departure Answer Template",
-        exportDoc: "depart_ans_temp",
+        title: "COVID-19 Test for Passengers at HKIA",
+        exportDoc: "covidtest",
         schema: schema,
-        reqAuth: "Answer.DepartAns.Template",
+        reqAuth: "Answer.DepartAns.Components.CT",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -63,45 +63,45 @@ class Template extends Component {
 
         operations: {
           Add: {
-            title: "Add Departure Answer Template",
+            title: "Add COVID-19 Test for Passengers at HKIA",
             url: datalink.Request.Add,
-            success: "Departure Answer Template Added Successfully",
-            fail: "Departure Answer Template Add Failed: ",
+            success: "COVID-19 Test for Passengers at HKIA Added Successfully",
+            fail: "COVID-19 Test for Passengers at HKIA Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add"
           },
           Delete: {
-            title: "Delete this Departure Answer Template?",
+            title: "Delete this COVID-19 Test for Passengers at HKIA?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.Delete,
-            success: "Departure Answer Template Deleted Successfully.",
-            fail: "Departure Answer Template Delete Failed: ",
+            success: "COVID-19 Test for Passengers at HKIA Deleted Successfully.",
+            fail: "COVID-19 Test for Passengers at HKIA Delete Failed: ",
             onSubmit: "Delete"
           },
           Edit: {
-            title: "Edit Departure Answer Template ",
+            title: "Edit COVID-19 Test for Passengers at HKIA ",
             url: datalink.Request.Edit,
-            success: "Departure Answer Template Edited Successfully",
-            fail: "Departure Answer Template Edit Failed: ",
+            success: "COVID-19 Test for Passengers at HKIA Edited Successfully",
+            fail: "COVID-19 Test for Passengers at HKIA Edit Failed: ",
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit"
           },
           Info: {
-            title: "Departure Answer Template ",
+            title: "COVID-19 Test for Passengers at HKIA ",
             url: datalink.Request.Info,
-            success: "Departure Answer Template Load Successfully",
-            fail: "Departure Answer Template Load Failed: ",
+            success: "COVID-19 Test for Passengers at HKIA Load Successfully",
+            fail: "COVID-19 Test for Passengers at HKIA Load Failed: ",
             schema: schema.Info,
             readOnly: true
           },
           Import: {
-            title: "Departure Answer Template Import",
+            title: "COVID-19 Test for Passengers at HKIA Import",
             content: "",
             url: datalink.Request.Import,
-            success: "Departure Answer Template Imported Successfully.",
-            fail: "Departure Answer Template Import Failed: ",
+            success: "COVID-19 Test for Passengers at HKIA Imported Successfully.",
+            fail: "COVID-19 Test for Passengers at HKIA Import Failed: ",
             schema: schema.ImportFormat,
             replace: false
           },
@@ -110,11 +110,11 @@ class Template extends Component {
             schema: schema.Export,
           },
           DeleteBulk: {
-            title: (n) => "Delete these " + n + " Departure Answer Template?",
+            title: (n) => "Delete these " + n + " COVID-19 Test for Passengers at HKIA?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.DeleteBulk,
-            success: "Departure Answer Template Deleted Successfully.",
-            fail: "Departure Answer Template Delete Failed: ",
+            success: "COVID-19 Test for Passengers at HKIA Deleted Successfully.",
+            fail: "COVID-19 Test for Passengers at HKIA Delete Failed: ",
             onSubmit: "DeleteBulk",
           },
         },
@@ -125,7 +125,7 @@ class Template extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Departure Answer Template", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add COVID-19 Test for Passengers at HKIA", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
@@ -138,12 +138,12 @@ class Template extends Component {
 
   componentDidMount(){
     this._setAllStates(() => {
-      this.getLinks();
+      this.getVTests();
     });
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Template.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(CT.defaultProps))){
       this._setAllStates();
     }
   }
@@ -164,9 +164,9 @@ class Template extends Component {
     this.MountDatumizo = callbacks;
   }
 
-  getLinks = async () => {
+  getVTests = async () => {
     let { addOns } = this.props;
-    let url = DOMAIN + "/Tables/DepartAnsLink/List";
+    let url = DOMAIN + "/Tables/DepartAnsTest/List";
     let payloadOut = {
       JWT: store.user.JWT,
       data: {},
@@ -174,7 +174,7 @@ class Template extends Component {
     };
     try {
       let res = await axios.post(url, payloadOut);
-      console.log("/Tables/DepartAnsLink/List", res.data);
+      console.log("/Tables/DepartAnsTest/List", res.data);
     
       let { Success, payload } = res.data;
     
@@ -184,20 +184,20 @@ class Template extends Component {
         this.setState((state, props) => ({
           addOns: {
             ...state.addOns,
-            Links: docs
+            VTests: docs
           }
         }));
       } else {
-        store.Alert("Cannot get useful link list", "error");
+        store.Alert("Cannot get COVID-19 test list", "error");
       }
     } catch (e) {
-      store.Alert("Cannot get useful link list", "error");
+      store.Alert("Cannot get COVID-19 test list", "error");
     }
   }
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
-    if(!Authority.IsAccessibleQ("Answer.DepartAns.Template")) return <Denied/>;
+    if(!Authority.IsAccessibleQ("Answer.DepartAns.Components.CT")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -219,4 +219,4 @@ class Template extends Component {
 
 }
 
-export default Template;
+export default CT;

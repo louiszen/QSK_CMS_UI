@@ -61,36 +61,18 @@ const Tail = [
     header: "Display"
   },
   {
-    label: "Show Travel Advisories?",
-    name: "showTA",
-    format: "bool",
-    boolStyle: "switch"
-  },
-  {
-    label: "Show COVID-Tests at HKIA?",
-    name: "showCT",
-    format: "bool",
-    boolStyle: "switch"
-  },
-  {
-    label: "Show Others?",
-    name: "showOTH",
-    format: "bool",
-    boolStyle: "switch"
-  },
-  {
     tabs: _.map(LANGUAGES, (o, i) => {
       return {
         label: o,
         page: [
           {
-            label: "Pre-wordings",
-            name: "prewordings." + o,
+            label: "Title",
+            name: "display.title." + o,
             format: "text"
           },
           {
-            label: "Others",
-            name: "others.title." + o,
+            label: "Content",
+            name: "display.content." + o,
             format: "textarea"
           },
         ]
@@ -98,8 +80,8 @@ const Tail = [
     })
   },
   {
-    label: "Add Links",
-    name: "others.links",
+    label: "Add COVID-19 Tests",
+    name: "tests",
     canAdd: true,
     canDelete: true,
     arrayStyle: "card",
@@ -109,15 +91,15 @@ const Tail = [
         name: "refID",
         format: "select",
         selectStyle: "dropdown",
-        selectRef: "Links",
+        selectRef: "VTests",
         selectCap: "refID",
         selectVal: "refID",
         selectTip: "description",
         showTooltip: true
       },
       (formValue, addOns, idx) => {
-        let refID = Accessor.Get(formValue, "others.links." + idx + ".refID");
-        let doc = addOns?.Links?.find(o => o.refID === refID);
+        let refID = Accessor.Get(formValue, "tests." + idx + ".refID");
+        let doc = addOns?.VTests?.find(o => o.refID === refID);
         return {
           label: "Description",
           name: "",
