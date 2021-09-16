@@ -1,3 +1,6 @@
+import _ from "lodash";
+import { LANGUAGES } from "__Base/config";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -71,38 +74,18 @@ const Tail = [
     selectVal: ""
   },
   {
-    tabs: [
-      {
-        label: "EN",
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
         page: [
           {
             label: "Content",
-            name: "display.content.EN",
-            format: "textarea"
-          }
-        ]
-      },
-      {
-        label: "TC",
-        page: [
-          {
-            label: "Content",
-            name: "display.content.TC",
-            format: "textarea"
-          }
-        ]
-      },
-      {
-        label: "SC",
-        page: [
-          {
-            label: "Content",
-            name: "display.content.SC",
+            name: "display.content." + o,
             format: "textarea"
           }
         ]
       }
-    ]
+    })
   },
   {
     label: "Effective Start Date",

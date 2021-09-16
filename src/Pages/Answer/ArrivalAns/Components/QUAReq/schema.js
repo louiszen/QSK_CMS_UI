@@ -1,3 +1,6 @@
+import _ from "lodash";
+import { LANGUAGES } from "__Base/config";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -68,53 +71,23 @@ const Tail = [
     showTooltip: true
   },
   {
-    tabs: [
-      {
-        label: "EN",
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
         page: [
           {
             label: "Title",
-            name: "display.title.EN",
+            name: "display.title." + o,
             format: "text"
           },
           {
             label: "Content",
-            name: "display.content.EN",
-            format: "textarea"
-          }
-        ]
-      },
-      {
-        label: "TC",
-        page: [
-          {
-            label: "Title",
-            name: "display.title.TC",
-            format: "text"
-          },
-          {
-            label: "Content",
-            name: "display.content.TC",
-            format: "textarea"
-          }
-        ]
-      },
-      {
-        label: "SC",
-        page: [
-          {
-            label: "Title",
-            name: "display.title.SC",
-            format: "text"
-          },
-          {
-            label: "Content",
-            name: "display.content.SC",
+            name: "display.content." + o,
             format: "textarea"
           }
         ]
       }
-    ]
+    }),
   },
   {
     label: "Parameters",
@@ -150,23 +123,13 @@ const Tail = [
         canAdd: true,
         canDelete: true,
         headerStyle: "outlined",
-        array: [
-          {
-            label: "EN",
-            name: "EN",
-            format: "text"
-          },
-          {
-            label: "TC",
-            name: "TC",
-            format: "text"
-          },
-          {
-            label: "SC",
-            name: "SC",
+        array: _.map(LANGUAGES, (o, i) => {
+          return {
+            label: o,
+            name: o,
             format: "text"
           }
-        ]
+        })
       }
     ]
   },

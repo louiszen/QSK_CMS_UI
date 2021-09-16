@@ -1,3 +1,6 @@
+import _ from "lodash";
+import { LANGUAGES } from "__Base/config";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -68,107 +71,23 @@ const Tail = [
     showTooltip: true
   },
   {
-    tabs: [
-      {
-        label: "EN",
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
         page: [
           {
             label: "Title",
-            name: "display.title.EN",
+            name: "display.title." + o,
             format: "textarea"
           },
           {
             label: "Content",
-            name: "display.content.EN",
-            format: "textarea"
-          }
-        ]
-      },
-      {
-        label: "TC",
-        page: [
-          {
-            label: "Title",
-            name: "display.title.TC",
-            format: "textarea"
-          },
-          {
-            label: "Content",
-            name: "display.content.TC",
-            format: "textarea"
-          }
-        ]
-      },
-      {
-        label: "SC",
-        page: [
-          {
-            label: "Title",
-            name: "display.title.SC",
-            format: "textarea"
-          },
-          {
-            label: "Content",
-            name: "display.content.SC",
+            name: "display.content." + o,
             format: "textarea"
           }
         ]
       }
-    ]
-  },
-  {
-    label: "Parameters",
-    name: "parameters",
-    canAdd: true,
-    canDelete: true,
-    headerStyle: "outlined",
-    arrayStyle: "card",
-    startDisplayIndex: 1,
-    array: [
-      {
-        label: "Description",
-        name: "description",
-        format: "text"
-      },
-      {
-        label: "Format",
-        name: "format",
-        format: "select",
-        selectStyle: "dropdown",
-        selectRef: "ansFormat",
-        selectCap: "",
-        selectVal: ""
-      },
-      {
-        label: "Include Footnote?",
-        name: "incFootnote",
-        format: "bool"
-      },
-      {
-        label: "Options",
-        name: "options",
-        canAdd: true,
-        canDelete: true,
-        headerStyle: "outlined",
-        array: [
-          {
-            label: "EN",
-            name: "EN",
-            format: "text"
-          },
-          {
-            label: "TC",
-            name: "TC",
-            format: "text"
-          },
-          {
-            label: "SC",
-            name: "SC",
-            format: "text"
-          }
-        ]
-      }
-    ]
+    }),
   },
   {
     label: "Effective Start Date",

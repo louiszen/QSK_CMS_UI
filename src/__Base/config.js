@@ -16,6 +16,7 @@ export const Project =
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
+export const LANGUAGES = ["EN", "TC", "SC"];
 
 export const NavbarDis = {
   src: "/Images/QSK.png",

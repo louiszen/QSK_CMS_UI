@@ -1,3 +1,6 @@
+import _ from "lodash";
+import { LANGUAGES } from "__Base/config";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -11,18 +14,12 @@ const Table = [
     label: "Version",
     name: "version"
   },
-  {
-    label: "Content (EN)",
-    name: "display.content.EN"
-  },
-  {
-    label: "Content (TC)",
-    name: "display.content.TC"
-  },
-  {
-    label: "Content (SC)",
-    name: "display.content.SC"
-  },
+  _.map(LANGUAGES, (o, i) => {
+    return {
+      label: "Content ("+ o + ")",
+      name: "display.content." + o
+    }
+  }),
   {
     label: "Effective Start Date",
     name: "effective.Start",
@@ -66,21 +63,13 @@ const Tail = [
   {
     header: "Display"
   },
-  {
-    label: "Content (EN)",
-    name: "display.content.EN",
-    format: "textarea"
-  },
-  {
-    label: "Content (TC)",
-    name: "display.content.TC",
-    format: "textarea"
-  },
-  {
-    label: "Content (SC)",
-    name: "display.content.SC",
-    format: "textarea"
-  },
+  _.map(LANGUAGES, (o, i) => {
+    return {
+      label: "Content (" + o + ")",
+      name: "display.content." + o,
+      format: "textarea"
+    }
+  }),
   {
     label: "Effective Start Date",
     name: "effective.Start",

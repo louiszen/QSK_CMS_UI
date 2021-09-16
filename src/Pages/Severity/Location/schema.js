@@ -1,5 +1,7 @@
 import { HStack } from "IZOArc/LabIZO/Stackizo";
 import { Check, Close } from "@material-ui/icons";
+import { LANGUAGES } from "__Base/config";
+import _ from "lodash";
 
 const Table = [
   {
@@ -12,30 +14,18 @@ const Table = [
     width: 100,
     Cell: (row, field, addOns) => <HStack>{field? <Check/> : <Close/>}</HStack>
   },
-  {
-    label: "Display (EN)",
-    name: "display.EN"
-  },
-  {
-    label: "Priority (EN)",
-    name: "priority.EN"
-  },
-  {
-    label: "Display (TC)",
-    name: "display.TC"
-  },
-  {
-    label: "Priority (TC)",
-    name: "priority.TC"
-  },
-  {
-    label: "Display (SC)",
-    name: "display.SC"
-  },
-  {
-    label: "Priority (SC)",
-    name: "priority.SC"
-  },
+  () => _.map(LANGUAGES, (o, i) => {
+    return [
+      {
+        label: "Display (" + o + ")",
+        name: "display." + o 
+      },
+      {
+        label: "Priority (" + o + ")",
+        name: "priority." + o 
+      }
+    ]
+  }),
   {
     label: "Effective Start Date",
     name: "effective.Start",
@@ -72,36 +62,20 @@ const Tail = [
     format: "bool",
     boolStyle: "switch"
   },
-  {
-    label: "Display Name (EN)",
-    name: "display.EN",
-    format: "text"
-  },
-  {
-    label: "Priority (EN)",
-    name: "priority.EN",
-    format: "number"
-  },
-  {
-    label: "Display Name (TC)",
-    name: "display.TC",
-    format: "text"
-  },
-  {
-    label: "Priority (TC)",
-    name: "priority.TC",
-    format: "number"
-  },
-  {
-    label: "Display Name (SC)",
-    name: "display.SC",
-    format: "text"
-  },
-  {
-    label: "Priority (SC)",
-    name: "priority.SC",
-    format: "number"
-  },
+  _.map(LANGUAGES, (o, i) => {
+    return [
+      {
+        label: "Display Name (" + o + ")",
+        name: "display." + o,
+        format: "text"
+      },
+      {
+        label: "Priority (" + o + ")",
+        name: "priority." + o,
+        format: "number"
+      }
+    ]
+  }),
   {
     label: "Effective Start Date",
     name: "effective.Start",
