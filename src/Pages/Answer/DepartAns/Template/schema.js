@@ -86,11 +86,6 @@ const Tail = [
           {
             label: "Pre-wordings",
             name: "prewordings." + o,
-            format: "text"
-          },
-          {
-            label: "Others",
-            name: "others.title." + o,
             format: "textarea"
           },
         ]
@@ -99,7 +94,7 @@ const Tail = [
   },
   {
     label: "Add Links",
-    name: "others.links",
+    name: "links",
     canAdd: true,
     canDelete: true,
     arrayStyle: "card",
@@ -116,7 +111,7 @@ const Tail = [
         showTooltip: true
       },
       (formValue, addOns, idx) => {
-        let refID = Accessor.Get(formValue, "others.links." + idx + ".refID");
+        let refID = Accessor.Get(formValue, "links." + idx + ".refID");
         let doc = addOns?.Links?.find(o => o.refID === refID);
         return {
           label: "Description",

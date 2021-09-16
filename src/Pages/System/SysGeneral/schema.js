@@ -92,36 +92,9 @@ const restore = [
   
 ];
 
-let mwconfig = [
-  {
-    label: "Chatbot Name",
-    name: "cbname",
-    format: "text"
-  },
-  {
-    label: "Icon URL",
-    name: "avatar",
-    format: "text"
-  },
-  {
-    label: "Live Chat",
-    name: "LiveChat",
-    format: "bool",
-    boolStyle: "switch"
-  },
-  {
-    label: "Ambiguous Handling",
-    name: "SResolve",
-    format: "bool",
-    boolStyle: "switch",
-
-  }
-];
-
 let schema = {
   database,
-  restore,
-  mwconfig
+  restore
 };
 
 export default schema;

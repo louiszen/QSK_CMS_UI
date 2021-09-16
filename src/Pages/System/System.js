@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import _ from 'lodash';
-import { Paper, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 
 import tabs from './tabs';
 
@@ -19,7 +19,9 @@ tabs = [
     iconPos: "top" | "left" | "right" | "bottom",
     noTransform: Boolean | false,
     spacing: Number | 5,
-    alignment: "center" | "left" | "right"
+    alignment: "center" | "left" | "right",
+    width: Number | 200,
+    height: Number | 20
   }
 ];
 */
@@ -73,12 +75,12 @@ class System extends Component {
   }
 
   renderTabPanels(){
-    let {selectedTab} = this.state;
+    let {selectedTab, addOns} = this.state;
     return _.map(tabs, (o, i) => {
       return (
-        <div key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
-          {o.render}
-        </div>
+        <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
+          {_.isFunction(o.render)? o.render(addOns) : o.render}
+        </Box>
       );
     });
   }
@@ -113,7 +115,7 @@ class System extends Component {
             icon = null; break;
         }
         return (
-          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: 20, minWidth: 200}}/>
+          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: o.height || 20, minWidth: o.width || 200}}/>
         );
       }
     });
