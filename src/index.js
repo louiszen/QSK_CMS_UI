@@ -30,8 +30,9 @@ import {
 } from "IZOArc/LabIZO/__TEST";
 
 //pages
+import System from "System/System";
+
 import Dashboard from "Pages/Dashboard/Dashboard";
-import System from "Pages/System/System"
 import Answer from "Pages/Answer/Answer";
 import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
 import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";

@@ -119,33 +119,20 @@ const Export = [
     name: "inChina",
     format: "bool"
   },
-  {
-    label: "Display Name (EN)",
-    name: "display.EN"
-  },
-  {
-    label: "Priority (EN)",
-    name: "priority.EN",
-    format: "number"
-  },
-  {
-    label: "Display Name (TC)",
-    name: "display.TC"
-  },
-  {
-    label: "Priority (TC)",
-    name: "priority.TC",
-    format: "number"
-  },
-  {
-    label: "Display Name (SC)",
-    name: "display.SC"
-  },
-  {
-    label: "Priority (SC)",
-    name: "priority.SC",
-    format: "number"
-  },
+  _.map(LANGUAGES, (o, i) => {
+    return [
+      {
+        label: "Display Name (" + o + ")",
+        name: "display." + o,
+        format: "text"
+      },
+      {
+        label: "Priority (" + o + ")",
+        name: "priority." + o,
+        format: "number"
+      }
+    ]
+  }),
   {
     label: "Effective Start Date",
     name: "effective.Start",
