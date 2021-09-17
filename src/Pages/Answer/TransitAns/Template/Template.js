@@ -29,10 +29,10 @@ class Template extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Transition Answer Templates",
+      title: "Transit Answer Templates",
       serverSidePagination: false, 
       base: {
-        title: "Transition Answer Template",
+        title: "Transit Answer Template",
         exportDoc: "tra_answer_temp",
         schema: schema,
         reqAuth: "Answer.TransitAns.Template",
@@ -62,45 +62,45 @@ class Template extends Component {
 
         operations: {
           Add: {
-            title: "Add Transition Answer Template",
+            title: "Add Transit Answer Template",
             url: datalink.Request.Add,
-            success: "Transition Answer Template Added Successfully",
-            fail: "Transition Answer Template Add Failed: ",
+            success: "Transit Answer Template Added Successfully",
+            fail: "Transit Answer Template Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add"
           },
           Delete: {
-            title: "Delete this Transition Answer Template?",
+            title: "Delete this Transit Answer Template?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.Delete,
-            success: "Transition Answer Template Deleted Successfully.",
-            fail: "Transition Answer Template Delete Failed: ",
+            success: "Transit Answer Template Deleted Successfully.",
+            fail: "Transit Answer Template Delete Failed: ",
             onSubmit: "Delete"
           },
           Edit: {
-            title: "Edit Transition Answer Template ",
+            title: "Edit Transit Answer Template ",
             url: datalink.Request.Edit,
-            success: "Transition Answer Template Edited Successfully",
-            fail: "Transition Answer Template Edit Failed: ",
+            success: "Transit Answer Template Edited Successfully",
+            fail: "Transit Answer Template Edit Failed: ",
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit"
           },
           Info: {
-            title: "Transition Answer Templates ",
+            title: "Transit Answer Templates ",
             url: datalink.Request.Info,
-            success: "Transition Answer Templates Load Successfully",
-            fail: "Transition Answer Templates Load Failed: ",
+            success: "Transit Answer Templates Load Successfully",
+            fail: "Transit Answer Templates Load Failed: ",
             schema: schema.Info,
             readOnly: true
           },
           Import: {
-            title: "Transition Answer Template Import",
+            title: "Transit Answer Template Import",
             content: "",
             url: datalink.Request.Import,
-            success: "Transition Answer Template Imported Successfully.",
-            fail: "Transition Answer Template Import Failed: ",
+            success: "Transit Answer Template Imported Successfully.",
+            fail: "Transit Answer Template Import Failed: ",
             schema: schema.ImportFormat,
             replace: false
           },
@@ -109,11 +109,11 @@ class Template extends Component {
             schema: schema.Export,
           },
           DeleteBulk: {
-            title: (n) => "Delete these " + n + " Transition Answer Template?",
+            title: (n) => "Delete these " + n + " Transit Answer Template?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.DeleteBulk,
-            success: "Transition Answer Template Deleted Successfully.",
-            fail: "Transition Answer Template Delete Failed: ",
+            success: "Transit Answer Template Deleted Successfully.",
+            fail: "Transit Answer Template Delete Failed: ",
             onSubmit: "DeleteBulk",
           },
         },
@@ -124,7 +124,7 @@ class Template extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Transition Answer Template", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Transit Answer Template", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },

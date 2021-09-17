@@ -1,7 +1,7 @@
 const Table = [
   {
     label: "Location",
-    name: "location"
+    name: "refID"
   },
   {
     label: "Group",
@@ -34,7 +34,7 @@ const Table = [
 const Tail = [
   {
     label: "Location",
-    name: "location",
+    name: "refID",
     format: "select",
     selectStyle: "dropdown",
     selectRef: "locations",
@@ -86,7 +86,7 @@ const Edit = [
 const Export = [
   {
     label: "Location",
-    name: "location"
+    name: "refID"
   },
   {
     label: "Group",

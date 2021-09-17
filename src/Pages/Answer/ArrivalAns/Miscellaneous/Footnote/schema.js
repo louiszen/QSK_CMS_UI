@@ -69,7 +69,7 @@ const Tail = [
     name: "symbol",
     format: "select",
     selectStyle: "dropdown",
-    selectRef: ["*", "^", "#"],
+    selectRef: ["*", "^", "#", "†", "‡", "∆"],
     selectCap: "",
     selectVal: ""
   },

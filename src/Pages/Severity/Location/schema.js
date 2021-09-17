@@ -21,7 +21,7 @@ const Table = [
         name: "display." + o 
       },
       {
-        label: "Priority (" + o + ")",
+        label: "DspSeq (" + o + ")",
         name: "priority." + o 
       }
     ]
@@ -70,7 +70,7 @@ const Tail = [
         format: "text"
       },
       {
-        label: "Priority (" + o + ")",
+        label: "DspSeq (" + o + ")",
         name: "priority." + o,
         format: "number"
       }
@@ -80,7 +80,8 @@ const Tail = [
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "date"
+    dateType: "date",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",
@@ -127,7 +128,7 @@ const Export = [
         format: "text"
       },
       {
-        label: "Priority (" + o + ")",
+        label: "Display Sequence (" + o + ")",
         name: "priority." + o,
         format: "number"
       }

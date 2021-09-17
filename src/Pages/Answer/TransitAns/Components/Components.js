@@ -28,10 +28,10 @@ class Components extends Component {
   constructor(){
     super();
     this.state = {
-      title: "Transition Answer Components",
+      title: "Transit Answer Components",
       serverSidePagination: false, 
       base: {
-        title: "Transition Answer Component",
+        title: "Transit Answer Component",
         exportDoc: "tra_answer_comp",
         schema: schema,
         reqAuth: "Answer.TransitAns.Components",
@@ -61,45 +61,45 @@ class Components extends Component {
 
         operations: {
           Add: {
-            title: "Add Transition Answer Component",
+            title: "Add Transit Answer Component",
             url: datalink.Request.Add,
-            success: "Transition Answer Component Added Successfully",
-            fail: "Transition Answer Component Add Failed: ",
+            success: "Transit Answer Component Added Successfully",
+            fail: "Transit Answer Component Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add"
           },
           Delete: {
-            title: "Delete this Transition Answer Component?",
+            title: "Delete this Transit Answer Component?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.Delete,
-            success: "Transition Answer Component Deleted Successfully.",
-            fail: "Transition Answer Component Delete Failed: ",
+            success: "Transit Answer Component Deleted Successfully.",
+            fail: "Transit Answer Component Delete Failed: ",
             onSubmit: "Delete"
           },
           Edit: {
-            title: "Edit Transition Answer Component ",
+            title: "Edit Transit Answer Component ",
             url: datalink.Request.Edit,
-            success: "Transition Answer Component Edited Successfully",
-            fail: "Transition Answer Component Edit Failed: ",
+            success: "Transit Answer Component Edited Successfully",
+            fail: "Transit Answer Component Edit Failed: ",
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit"
           },
           Info: {
-            title: "Transition Answer Components ",
+            title: "Transit Answer Components ",
             url: datalink.Request.Info,
-            success: "Transition Answer Components Load Successfully",
-            fail: "Transition Answer Components Load Failed: ",
+            success: "Transit Answer Components Load Successfully",
+            fail: "Transit Answer Components Load Failed: ",
             schema: schema.Info,
             readOnly: true
           },
           Import: {
-            title: "Transition Answer Component Import",
+            title: "Transit Answer Component Import",
             content: "",
             url: datalink.Request.Import,
-            success: "Transition Answer Component Imported Successfully.",
-            fail: "Transition Answer Component Import Failed: ",
+            success: "Transit Answer Component Imported Successfully.",
+            fail: "Transit Answer Component Import Failed: ",
             schema: schema.ImportFormat,
             replace: false
           },
@@ -108,11 +108,11 @@ class Components extends Component {
             schema: schema.Export,
           },
           DeleteBulk: {
-            title: (n) => "Delete these " + n + " Transition Answer Component?",
+            title: (n) => "Delete these " + n + " Transit Answer Component?",
             content: "Caution: This is irrevertable.",
             url: datalink.Request.DeleteBulk,
-            success: "Transition Answer Component Deleted Successfully.",
-            fail: "Transition Answer Component Delete Failed: ",
+            success: "Transit Answer Component Deleted Successfully.",
+            fail: "Transit Answer Component Delete Failed: ",
             onSubmit: "DeleteBulk",
           },
         },
@@ -123,7 +123,7 @@ class Components extends Component {
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
-          left: [{ icon: "add", func: "Add", caption: "Add Transition Answer Component", reqFunc: "Add" }],
+          left: [{ icon: "add", func: "Add", caption: "Add Transit Answer Component", reqFunc: "Add" }],
           right: [
             { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
