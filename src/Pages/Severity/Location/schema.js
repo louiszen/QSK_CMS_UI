@@ -9,6 +9,10 @@ const Table = [
     name: "refID"
   },
   {
+    label: "External ID",
+    name: "externalID"
+  },
+  {
     label: "in China",
     name: "inChina",
     width: 100,
@@ -54,6 +58,11 @@ const Tail = [
   {
     label: "Ref. ID",
     name: "refID",
+    format: "text"
+  },
+  {
+    label: "External ID",
+    name: "externalID",
     format: "text"
   },
   {
@@ -114,6 +123,10 @@ const Export = [
   {
     label: "Ref. ID",
     name: "refID"
+  },
+  {
+    label: "External ID",
+    name: "externalID",
   },
   {
     label: "in China?",

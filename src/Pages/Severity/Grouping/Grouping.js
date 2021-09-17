@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropsType from 'prop-types';
 
 import { Box, Typography } from '@material-ui/core';
 import axios from 'axios';
@@ -12,14 +13,18 @@ import { Accessor, ColorX, Authority, store, ErrorX } from 'IZOArc/STATIC';
 import { DOMAIN, IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
 
+/**
+ * Datumizo - display documents with tables and controls
+ * @augments {Component<Props, State>}
+ */
 class Grouping extends Component {
 
   static propTypes = {
-
+    onMounted: PropsType.func,
   }
 
   static defaultProps = {
-
+    onMounted: undefined,
   }
 
   constructor(){
@@ -129,9 +134,7 @@ class Grouping extends Component {
   }
 
   componentDidMount(){
-    this._setAllStates(() => {
-      this.GetData();
-    });
+    this._setAllStates();
   }
 
   GetData = async () => {
@@ -220,10 +223,21 @@ class Grouping extends Component {
   }
 
   _setAllStates = (callback) => {
-    this.setState((state, props) => ({
-      ...props,
-    }), callback);
-  }
+    this.setState(
+      (state, props) => ({
+        ...props,
+      }),
+      () => {
+        if (this.props.onMounted) {
+          this.props.onMounted({
+            Refresh: this.GetData,
+          });
+        }
+        if (callback) callback();
+      }
+    );
+  };
+
 
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;

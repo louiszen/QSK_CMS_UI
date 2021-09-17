@@ -38,8 +38,8 @@ const Tail = [
     format: "select",
     selectStyle: "dropdown",
     selectRef: "locations",
-    selectCap: "",
-    selectVal: ""
+    selectCap: "display",
+    selectVal: "refID"
   },
   {
     label: "Group",
@@ -47,8 +47,8 @@ const Tail = [
     format: "select",
     selectStyle: "radio",
     selectRef: "groups",
-    selectCap: "",
-    selectVal: ""
+    selectCap: "display",
+    selectVal: "refID"
   },
   {
     label: "Effective Start Date",

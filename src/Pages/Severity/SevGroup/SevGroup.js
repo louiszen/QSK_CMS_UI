@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import PropsType from "prop-types";
 import { Box, Typography } from '@material-ui/core';
 
 import schema from './schema';
@@ -14,11 +15,11 @@ import { Denied } from 'IZOArc/Fallback';
 class SevGroup extends Component {
 
   static propTypes = {
-
+    onDataChange: PropsType.func
   }
 
   static defaultProps = {
-
+    onDataChange: undefined
   }
 
   constructor(){
@@ -154,6 +155,7 @@ class SevGroup extends Component {
   }
 
   render(){
+    let {onDataChange} = this.props;
     let {base, serverSidePagination, title} = this.state;
     if(!Authority.IsAccessibleQ("Severity.SevGroup")) return <Denied/>;
     return (
@@ -169,7 +171,7 @@ class SevGroup extends Component {
           </Typography>
         </Box>
         <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo}
+          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} onDataChange={onDataChange}
           />
       </VStack>
     );

@@ -72,9 +72,20 @@ class Severity extends Component {
     });
   }
 
+  onDataChange = () => {
+    if(this.MountGrouping){
+      this.MountGrouping.Refresh();
+    }
+    
+  }
+
+  onMountGrouping = (callbacks) => {
+    this.MountGrouping = callbacks;
+  }
+
   renderTabPanels(){
     let {selectedTab} = this.state;
-    return _.map(tabs, (o, i) => {
+    return _.map(tabs(this.onDataChange, this.onMountGrouping), (o, i) => {
       return (
         <div key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
           {o.render}
@@ -84,7 +95,7 @@ class Severity extends Component {
   }
 
   renderTabButtons(){
-    return _.map(tabs, (o, i) => {
+    return _.map(tabs(), (o, i) => {
       if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
         let label = o.label;
         let icon = o.icon;
