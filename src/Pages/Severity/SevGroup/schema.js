@@ -42,11 +42,6 @@ const Table = [
 
 const Tail = [
   {
-    label: "Ref. ID",
-    name: "refID",
-    format: "text"
-  },
-  {
     label: "Display Name",
     name: "display",
     format: "text"
@@ -77,10 +72,22 @@ const Tail = [
 ]
 
 const Add = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text",
+    validate: ["required"]
+  },
   ...Tail
 ];
 
 const Info = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text",
+    readOnly: true
+  },
   ...Tail,
   {
     label: "Last Update",

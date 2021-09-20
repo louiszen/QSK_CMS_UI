@@ -114,7 +114,8 @@ const Info = [
   {
     label: "Ref. ID",
     name: "refID",
-    format: "text"
+    format: "text",
+    readOnly: true,
   },
   ...Tail,
   {
@@ -127,12 +128,6 @@ const Info = [
 ];
 
 const Edit = [
-  {
-    label: "Ref. ID",
-    name: "refID",
-    format: "text",
-    readOnly: true
-  },
   ...Info
 ];
 

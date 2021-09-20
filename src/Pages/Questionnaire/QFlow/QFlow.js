@@ -126,6 +126,7 @@ class QFlow extends Component {
           inline: [
             { icon: "edit", func: "Edit", caption: "Edit", reqFunc: "Edit" },
             { icon: "info", func: "Info", caption: "Details" },
+            { icon: "duplicate", func: "DuplicateAdd", caption: "Duplicate", reqFunc: "Duplicate" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
           left: [{ icon: "add", func: "Add", caption: "Add Question Flow", reqFunc: "Add" }],

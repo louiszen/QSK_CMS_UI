@@ -33,15 +33,6 @@ const Table = [
 
 const Tail = [
   {
-    label: "Location",
-    name: "refID",
-    format: "select",
-    selectStyle: "dropdown",
-    selectRef: "locations",
-    selectCap: "display",
-    selectVal: "refID"
-  },
-  {
     label: "Group",
     name: "group",
     format: "select",
@@ -65,10 +56,29 @@ const Tail = [
 ]
 
 const Add = [
+  {
+    label: "Location",
+    name: "refID",
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "locations",
+    selectCap: "display",
+    selectVal: "refID"
+  },
   ...Tail
 ];
 
 const Info = [
+  {
+    label: "Location",
+    name: "refID",
+    format: "select",
+    selectStyle: "dropdown",
+    selectRef: "locations",
+    selectCap: "display",
+    selectVal: "refID",
+    readOnly: true
+  },
   ...Tail,
   {
     label: "Last Update",

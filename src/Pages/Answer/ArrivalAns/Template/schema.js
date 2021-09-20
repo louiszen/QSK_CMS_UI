@@ -95,6 +95,7 @@ const Tail = [
             canAdd: true,
             canDelete: true,
             arrayStyle: "card",
+            reordering: true,
             array: [
               {
                 label: "Ref. ID",
