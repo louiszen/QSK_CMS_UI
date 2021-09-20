@@ -34,14 +34,14 @@ const Table = [
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     filterable: false
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     fallback: " ",
     filterable: false
   },
@@ -56,11 +56,6 @@ const Table = [
 
 const Tail = [
   {
-    label: "Ref. ID",
-    name: "refID",
-    format: "text"
-  },
-  {
     label: "External ID",
     name: "externalID",
     format: "text"
@@ -71,40 +66,56 @@ const Tail = [
     format: "bool",
     boolStyle: "switch"
   },
-  _.map(LANGUAGES, (o, i) => {
-    return [
-      {
-        label: "Display Name (" + o + ")",
-        name: "display." + o,
-        format: "text"
-      },
-      {
-        label: "DspSeq (" + o + ")",
-        name: "priority." + o,
-        format: "number"
+  {
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
+        page: [
+          {
+            label: "Display Name",
+            name: "display." + o,
+            format: "text"
+          },
+          {
+            label: "Display Sequence",
+            name: "priority." + o,
+            format: "number"
+          }
+        ]
       }
-    ]
-  }),
+    }),
+  },
   {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "date",
+    dateType: "datetime",
     validate: ["required"]
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     format: "date",
-    dateType: "date"
+    dateType: "datetime",
   }
 ]
 
 const Add = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text",
+    validate: ["required"]
+  },
   ...Tail
 ];
 
 const Info = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text"
+  },
   ...Tail,
   {
     label: "Last Update",
@@ -116,6 +127,12 @@ const Info = [
 ];
 
 const Edit = [
+  {
+    label: "Ref. ID",
+    name: "refID",
+    format: "text",
+    readOnly: true
+  },
   ...Info
 ];
 
@@ -150,16 +167,16 @@ const Export = [
   {
     label: "Effective Start Date",
     name: "effective.Start",
-    format: "date",
-    dateFormat: "YYYY/MM/DD",
-    dateMod: "startOfDay"
+    format: "datetime",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
+    //dateMod: "startOfDay"
   },
   {
     label: "Effective End Date",
     name: "effective.End",
-    format: "date",
-    dateFormat: "YYYY/MM/DD",
-    dateMod: "endOfDay"
+    format: "datetime",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
+    //dateMod: "endOfDay"
   },
   {
     label: "Last Update",

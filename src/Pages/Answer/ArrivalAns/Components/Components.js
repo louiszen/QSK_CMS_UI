@@ -42,7 +42,10 @@ class Components extends Component {
   constructor(){
     super();
     this.state = {
-      selectedTab: 0
+      selectedTab: 0,
+      addOns: {
+        ansFormat: ["Simple Text", "Highlighted Number", "Highlighted Ordered Number"]
+      }
     };
   }
 
@@ -108,6 +111,7 @@ class Components extends Component {
 
   renderTabPanels(){
     let {selectedTab, addOns} = this.state;
+
     return _.map(tabs, (o, i) => {
       return (
         <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>

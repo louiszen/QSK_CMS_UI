@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import tabs from './tabs';
 
-import { Accessor, Authority, ColorX, store } from 'IZOArc/STATIC';
+import { Accessor, ColorX, store } from 'IZOArc/STATIC';
 import { VStack, HStack } from 'IZOArc/LabIZO/Stackizo';
 import { DOMAIN } from '__Base/config';
 import axios from 'axios';
@@ -72,7 +72,6 @@ class FlowEditor extends Component {
   }
 
   componentDidMount(){
-    Authority.Require("");
     this._setAllStates(() => {
       this._getSeverity();
       this._getQuestions();
@@ -196,62 +195,6 @@ class FlowEditor extends Component {
     });
   }
 
-  /*
-  onChangeTab = (e, tab) => {
-    this.setState({
-      selectedTab: tab
-    });
-  }
-
-  renderTabPanels(){
-    let {selectedTab, addOns} = this.state;
-    let displayTabs = this._getTabs();
-    return _.map(displayTabs, (o, i) => {
-      return (
-        <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
-          {_.isFunction(o.render)? o.render(addOns) : o.render}
-        </Box>
-      );
-    });
-  }
-
-  renderTabButtons(){
-    let displayTabs = this._getTabs();
-    return _.map(displayTabs, (o, i) => {
-      if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
-        let label = o.label;
-        let icon = o.icon;
-        if(o.noTransform){
-          label = <Typography style={{textTransform: 'none'}}>{o.label}</Typography>
-        }
-        switch(o.iconPos){
-          case "top": default: 
-            break;
-          case "bottom":
-            label = <VStack spacing={o.spacing || 5}>{label}{icon}</VStack>; 
-            icon = null; break;
-          case "left": 
-            label = <HStack spacing={o.spacing || 5}>
-              {o.alignment === "right" && <Spacer/>}
-              {icon}{label}
-              {o.alignment === "left" && <Spacer/>}
-              </HStack>; 
-            icon = null; break;
-          case "right":
-            label = <HStack spacing={o.spacing || 5}>
-              {o.alignment === "right" && <Spacer/>}
-              {label}{icon}
-              {o.alignment === "left" && <Spacer/>}
-              </HStack>; 
-            icon = null; break;
-        }
-        return (
-          <Tab key={i} label={label} icon={icon} disabled={o.disabled} style={{minHeight: 20, minWidth: 200}}/>
-        );
-      }
-    });
-  }
-  */
   onMountFlowizo = (callbacks) => {
     this.MountFlowizo = callbacks;
   }
@@ -348,29 +291,6 @@ class FlowEditor extends Component {
       </VStack>
     );
 
-    /*
-
-    return (
-      <VStack width="100%" height="100%">
-        <Paper position="static" style={{width: "100%"}}>
-          <Tabs value={selectedTab} 
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={this.onChangeTab} 
-            style={{backgroundColor: "aliceblue", color: "blue", minHeight: 20}}
-            variant="scrollable"
-            scrollButtons="auto"
-            >
-            {this.renderTabButtons()}
-          </Tabs>
-        </Paper>
-        <Paper style={{width: "100%", height: "100%", background: "transparent", padding: "5px"}}>
-          {this.renderTabPanels()}
-        </Paper> 
-      </VStack>
-    );
-
-    */
   }
 
 }

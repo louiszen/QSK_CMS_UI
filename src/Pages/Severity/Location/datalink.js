@@ -3,6 +3,7 @@ const Request = {
   List: "/Tables/Location/List",
   Add: "/Tables/Location/Add",
   Delete: "/Tables/Location/Delete",
+  Duplicate: "/Tables/Location/Duplicate",
   Edit: "/Tables/Location/Edit",
   Export: "/Tables/Location/Export",
   Import: "/Tables/Location/Import",

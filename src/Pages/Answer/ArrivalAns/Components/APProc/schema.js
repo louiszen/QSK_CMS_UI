@@ -24,14 +24,14 @@ const Table = [
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     filterable: false
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     fallback: " ",
     filterable: false
   },
@@ -63,24 +63,75 @@ const Tail = [
   {
     header: "Display"
   },
-  _.map(LANGUAGES, (o, i) => {
-    return {
-      label: "Content (" + o + ")",
-      name: "display.content." + o,
-      format: "textarea"
-    }
-  }),
+  {
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
+        page: [
+          {
+            label: "Content",
+            name: "display.content." + o,
+            format: "textarea"
+          }
+        ]
+      }
+    }),
+  },
+  {
+    label: "Parameters",
+    name: "parameters",
+    canAdd: true,
+    canDelete: true,
+    headerStyle: "outlined",
+    arrayStyle: "card",
+    startDisplayIndex: 1,
+    array: [
+      {
+        label: "Description",
+        name: "description",
+        format: "text"
+      },
+      {
+        label: "Format",
+        name: "format",
+        format: "select",
+        selectStyle: "dropdown",
+        selectRef: "ansFormat",
+        selectCap: "",
+        selectVal: ""
+      },
+      {
+        label: "Include Footnote?",
+        name: "incFootnote",
+        format: "bool"
+      },
+      {
+        label: "Options",
+        name: "options",
+        canAdd: true,
+        canDelete: true,
+        headerStyle: "outlined",
+        array: _.map(LANGUAGES, (o, i) => {
+          return {
+            label: o,
+            name: o,
+            format: "text"
+          }
+        })
+      }
+    ]
+  },
   {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "date"
+    dateType: "datetime"
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     format: "date",
-    dateType: "date"
+    dateType: "datetime"
   }
 ]
 

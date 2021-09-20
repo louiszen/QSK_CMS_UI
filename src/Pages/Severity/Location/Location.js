@@ -81,10 +81,10 @@ class Location extends Component {
             onSubmit: "Edit"
           },
           Info: {
-            title: "Locations ",
+            title: "Location ",
             url: datalink.Request.Info,
-            success: "Locations Load Successfully",
-            fail: "Locations Load Failed: ",
+            success: "Location Load Successfully",
+            fail: "Location Load Failed: ",
             schema: schema.Info,
             readOnly: true
           },
@@ -115,6 +115,7 @@ class Location extends Component {
           inline: [
             { icon: "edit", func: "Edit", caption: "Edit", reqFunc: "Edit" },
             { icon: "info", func: "Info", caption: "Details" },
+            { icon: "duplicate", func: "DuplicateAdd", caption: "Duplicate", reqFunc: "Duplicate" },
             { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
           left: [{ icon: "add", func: "Add", caption: "Add Location", reqFunc: "Add" }],

@@ -18,14 +18,14 @@ const Table = [
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     filterable: false
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     fallback: " ",
     filterable: false
   },
@@ -106,13 +106,13 @@ const Tail = [
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "date"
+    dateType: "datetime"
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     format: "date",
-    dateType: "date"
+    dateType: "datetime"
   }
 ]
 

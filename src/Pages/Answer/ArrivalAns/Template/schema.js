@@ -3,6 +3,30 @@ import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
 import { Accessor } from "IZOArc/STATIC";
 import _ from "lodash";
 
+const REQDoc = [
+  {
+    name: "QUAReq",
+    caption: "Quarantine Requirements",
+    icon: "fas fa-syringe fa-lg"
+  },
+  {
+    name: "DOCReq",
+    caption: "Document Requirements",
+    icon: "far fa-file-alt fa-lg"
+  },
+  {
+    name: "ENTReq",
+    caption: "Entry Requirements",
+    icon: "fas fa-door-open fa-lg"
+  },
+  {
+    name: "APProc",
+    caption: "Airport Proceed",
+    icon: "fas fa-plane fa-lg"
+  }
+];
+ 
+
 const Table = [
   {
     label: "Ref. ID",
@@ -20,14 +44,14 @@ const Table = [
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     filterable: false
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     transform: "datetime",
-    dateFormat: "YYYY/MM/DD",
+    dateFormat: "YYYY/MM/DD HH:mm:ss",
     fallback: " ",
     filterable: false
   },
@@ -57,17 +81,17 @@ const Tail = [
     format: "number"
   },
   {
-    tabs: [
-      {
-        label: "Quarantine Requirements",
-        icon: <i className="fas fa-syringe fa-lg"/>,
+    tabs: _.map(REQDoc, (o, i) => {
+      return {
+        label: o.caption,
+        icon: <i className={o.icon}/>,
         iconPos: "left",
         noTransform: true,
         alignment: "left",
         page: [
           {
-            label: "Add Quarantine Requirements",
-            name: "QUAReq",
+            label: "Add " + o.caption,
+            name: o.name,
             canAdd: true,
             canDelete: true,
             arrayStyle: "card",
@@ -77,15 +101,25 @@ const Tail = [
                 name: "refID",
                 format: "select",
                 selectStyle: "dropdown",
-                selectRef: "QUAReq",
+                selectRef: o.name,
                 selectCap: "refID",
                 selectVal: "refID",
                 selectTip: "description",
                 showTooltip: true
               },
               (formValue, addOns, idx) => {
-                let refID = Accessor.Get(formValue, "QUAReq." + idx + ".refID");
-                let doc = addOns.QUAReq.find(o => o.refID === refID);
+                let refID = Accessor.Get(formValue, o.name + "." + idx + ".refID");
+                let doc = addOns[o.name]?.find(o => o.refID === refID);
+                return {
+                  label: "Description",
+                  name: "",
+                  format: "display",
+                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
+                };
+              },
+              (formValue, addOns, idx) => {
+                let refID = Accessor.Get(formValue, o.name + "." + idx + ".refID");
+                let doc = addOns[o.name]?.find(o => o.refID === refID);
                 if(doc){
                   return _.map(doc.parameters, (o, i) => {
                     return {
@@ -102,196 +136,20 @@ const Tail = [
             ]
           },
         ]
-      },
-      {
-        label: "Document Requirements",
-        icon: <i className="far fa-file-alt fa-lg"/>,
-        iconPos: "left",
-        noTransform: true,
-        alignment: "left",
-        page: [
-          {
-            label: "Add Document Requirements (Before You Fly)",
-            name: "DOCReq",
-            canAdd: true,
-            canDelete: true,
-            arrayStyle: "card",
-            array: [
-              {
-                label: "Ref. ID",
-                name: "refID",
-                format: "select",
-                selectStyle: "dropdown",
-                selectRef: "DOCReq",
-                selectCap: "refID",
-                selectVal: "refID",
-                selectTip: "description",
-                showTooltip: true
-              },
-              (formValue, addOns, idx) => {
-                let refID = Accessor.Get(formValue, "DOCReq." + idx + ".refID");
-                let doc = addOns?.DOCReq?.find(o => o.refID === refID);
-                return {
-                  label: "Description",
-                  name: "",
-                  format: "display",
-                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
-                };
-              }
-            ]
-          }
-        ]
-      },
-      {
-        label: "Entry Requirements",
-        icon: <i className="fas fa-door-open fa-lg"/>,
-        iconPos: "left",
-        noTransform: true,
-        alignment: "left",
-        page: [
-          {
-            label: "Add Entry Requirements (Before You Fly)",
-            name: "ENTReq",
-            canAdd: true,
-            canDelete: true,
-            arrayStyle: "card",
-            array: [
-              {
-                label: "Ref. ID",
-                name: "refID",
-                format: "select",
-                selectStyle: "dropdown",
-                selectRef: "ENTReq",
-                selectCap: "refID",
-                selectVal: "refID",
-                selectTip: "description",
-                showTooltip: true
-              },
-              (formValue, addOns, idx) => {
-                let refID = Accessor.Get(formValue, "ENTReq." + idx + ".refID");
-                let doc = addOns?.ENTReq?.find(o => o.refID === refID);
-                return {
-                  label: "Description",
-                  name: "",
-                  format: "display",
-                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
-                };
-              }
-            ]
-          },
-        ]
-      },
-      {
-        label: "Airport Proceed",
-        icon: <i className="fas fa-plane fa-lg"/>,
-        iconPos: "left",
-        noTransform: true,
-        alignment: "left",
-        page: [
-          {
-            label: "Add Airport Proceed (Upon Landing)",
-            name: "APProc",
-            canAdd: true,
-            canDelete: true,
-            arrayStyle: "card",
-            array: [
-              {
-                label: "Ref. ID",
-                name: "refID",
-                format: "select",
-                selectStyle: "dropdown",
-                selectRef: "APProc",
-                selectCap: "refID",
-                selectVal: "refID",
-                selectTip: "description",
-                showTooltip: true
-              },
-              (formValue, addOns, idx) => {
-                let refID = Accessor.Get(formValue, "APProc." + idx + ".refID");
-                let doc = addOns?.APProc?.find(o => o.refID === refID);
-                return {
-                  label: "Description",
-                  name: "",
-                  format: "display",
-                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
-                };
-              }
-            ]
-          },
-        ]
-      },
-    ]
-  },
-  /* 
-  {
-    label: "Document Requirements (Before You Fly)",
-    name: "DOCReq",
-    format: "selectTable",
-    selectStyle: "checkbox",
-    selectRef: "DOCReq",
-    selectIdAccessor: "refID",
-    selectSchema: [
-      {
-        label: "Ref. ID",
-        name: "refID",
-        width: 150
-      },
-      {
-        label: "Description",
-        name: "description"
       }
-    ]
+    }),
   },
-  {
-    label: "Entry Requirements (Before You Fly)",
-    name: "ENTReq",
-    format: "selectTable",
-    selectStyle: "checkbox",
-    selectRef: "ENTReq",
-    selectIdAccessor: "refID",
-    selectSchema: [
-      {
-        label: "Ref. ID",
-        name: "refID",
-        width: 150
-      },
-      {
-        label: "Description",
-        name: "description"
-      }
-    ]
-  },
-  {
-    label: "Airport Proceed (Upon Landing)",
-    name: "APProc",
-    format: "selectTable",
-    selectStyle: "checkbox",
-    selectRef: "APProc",
-    selectIdAccessor: "refID",
-    selectSchema: [
-      {
-        label: "Ref. ID",
-        name: "refID",
-        width: 150
-      },
-      {
-        label: "Description",
-        name: "description"
-      }
-    ]
-  },
-  */
   {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "date"
+    dateType: "datetime"
   },
   {
     label: "Effective End Date",
     name: "effective.End",
     format: "date",
-    dateType: "date"
+    dateType: "datetime"
   }
 ]
 

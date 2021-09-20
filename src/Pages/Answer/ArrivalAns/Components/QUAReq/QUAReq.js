@@ -132,7 +132,6 @@ class QUAReq extends Component {
           ],
         },
       },
-      ansFormat: ["Simple Text", "Highlighted Number", "Highlighted Ordered Number"],
     };
   }
 
@@ -175,8 +174,8 @@ class QUAReq extends Component {
 
   render(){
     let {addOns} = this.props;
-    let {base, serverSidePagination, title, ansFormat} = this.state;
-    addOns = {...addOns, ansFormat};
+    let {base, serverSidePagination, title} = this.state;
+
     if(!Authority.IsAccessibleQ("Answer.ArrivalAns.Components.QUAReq")) return <Denied/>;
     return (
       <VStack>
