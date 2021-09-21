@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import { LANGUAGES } from "__Base/config";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -43,51 +46,50 @@ const Tail = [
     format: "textarea"
   },
   {
-    tabs: [
-      {
-        label: "EN",
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
         page: [
           {
             label: "Question",
-            name: "question.EN",
+            name: "question." + o,
             format: "text"
           },
           {
             label: "Subtitle",
-            name: "subtitle.EN",
-            format: "text"
-          }
-        ]
-      },
-      {
-        label: "TC",
-        page: [
-          {
-            label: "Question",
-            name: "question.TC",
+            name: "subtitle." + o,
             format: "text"
           },
           {
-            label: "Subtitle",
-            name: "subtitle.TC",
+            label: "Verdict Text",
+            name: "verdict." + o,
             format: "text"
           }
         ]
-      },
+      };
+    })
+  },
+  {
+    label: "Show Info?",
+    name: "showInfo",
+    format: "bool"
+  },
+  {
+    control: "showInfo",
+    fold: [
       {
-        label: "SC",
-        page: [
-          {
-            label: "Question",
-            name: "question.SC",
-            format: "text"
-          },
-          {
-            label: "Subtitle",
-            name: "subtitle.SC",
-            format: "text"
-          }
-        ]
+        tabs: _.map(LANGUAGES, (o, i) => {
+          return {
+            label: o,
+            page: [
+              {
+                label: "Info Content",
+                name: "infoContent." + o,
+                format: "textarea"
+              },
+            ]
+          };
+        })
       },
     ]
   },
