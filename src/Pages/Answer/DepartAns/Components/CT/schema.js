@@ -66,6 +66,11 @@ const Tail = [
         label: o,
         page: [
           {
+            label: "Display Last Update",
+            name: "displayLastUpdate." + o,
+            format: "text"
+          },
+          {
             label: "Title",
             name: "display.title." + o,
             format: "text"
