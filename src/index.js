@@ -33,6 +33,7 @@ import {
 import System from "System/System";
 
 import Dashboard from "Pages/Dashboard/Dashboard";
+import Landing from "Pages/Landing/Landing";
 import Answer from "Pages/Answer/Answer";
 import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
 import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";
@@ -70,6 +71,7 @@ function renderPages() {
     <Route key={10} path='/Answer/DepartAns/Miscellaneous' exact component={DepartAnsMisc}/>,
     <Route key={11} path='/Answer/TransitAns/Template' exact component={TransitAnsTemp}/>,
     <Route key={12} path='/Answer/TransitAns/Components' exact component={TransitAnsComp}/>,
+    <Route key={13} path='/Landing' exact component={Landing}/>,
 
   ];
 }

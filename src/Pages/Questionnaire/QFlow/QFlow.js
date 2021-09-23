@@ -13,6 +13,7 @@ import { IZOTheme, DOMAIN } from '__Base/config';
 import FlowEditor from './FlowEditor/FlowEditor';
 import { Denied } from 'IZOArc/Fallback';
 import _ from 'lodash';
+import { v1 } from 'uuid';
 
 /**
  * @augments {Component<Props, State>}
@@ -70,7 +71,7 @@ class QFlow extends Component {
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: this.Add,
-            Custom: this.renderFlowEditor
+            Custom: this.renderFlowEditorAdd
           },
           Delete: {
             title: "Delete this Question Flow?",
@@ -147,8 +148,28 @@ class QFlow extends Component {
     );
   }
 
+  renderFlowEditorAdd = (docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns, ibase, onSubmit, auth, level, formizo) => {
+    let {sevgroups} = this.state;
+
+    doc.flow = _.map(sevgroups, (o, i) => {
+      return {
+        id: v1(),
+        type: "Tube_Src",
+        data: {
+          inner: "Severity " + o
+        },
+        position: { x: i * 300, y: 100}
+      };
+    })
+    return (
+      <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh} renderFormizo={renderFormizo} onSubmit={onSubmit} auth={auth} level={level} formizo={formizo} ibase={ibase} readOnly={ibase.readOnly}/>
+    );
+  }
+
   componentDidMount(){
-    this._setAllStates();
+    this._setAllStates(() => {
+      this.getSevGroup();
+    });
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -171,6 +192,35 @@ class QFlow extends Component {
 
   onMountDatumizo = (callbacks) => {
     this.MountDatumizo = callbacks;
+  }
+
+  getSevGroup = async () => {
+    let { addOns } = this.props;
+    let url = DOMAIN + "/Tables/SevGroup/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/SevGroup/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        let sevgroups = _.map(docs, o => o.severity);
+        sevgroups = _.uniq(sevgroups);
+        this.setState({
+          sevgroups: sevgroups
+        })
+      } else {
+        store.Alert("Cannot get Severity Groups", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get Severity Groups", "error");
+    }
   }
 
   Add = {

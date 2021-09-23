@@ -81,64 +81,75 @@ const Tail = [
     format: "number"
   },
   {
-    tabs: _.map(REQDoc, (o, i) => {
-      return {
-        label: o.caption,
-        icon: <i className={o.icon}/>,
-        iconPos: "left",
-        noTransform: true,
-        alignment: "left",
-        page: [
-          {
-            label: "Add " + o.caption,
-            name: o.name,
-            canAdd: true,
-            canDelete: true,
-            arrayStyle: "card",
-            reordering: true,
-            array: [
+    label: "Eligible to enter HK?",
+    name: "canEntry",
+    format: "bool",
+    boolStyle: "switch"
+  },
+  {
+    control: "canEntry",
+    fold: [
+      {
+        tabs: _.map(REQDoc, (o, i) => {
+          return {
+            label: o.caption,
+            icon: <i className={o.icon}/>,
+            iconPos: "left",
+            noTransform: true,
+            alignment: "left",
+            page: [
               {
-                label: "Ref. ID",
-                name: "refID",
-                format: "select",
-                selectStyle: "dropdown",
-                selectRef: o.name,
-                selectCap: "refID",
-                selectVal: "refID",
-                selectTip: "description",
-                showTooltip: true
-              },
-              (formValue, addOns, idx) => {
-                let refID = Accessor.Get(formValue, o.name + "." + idx + ".refID");
-                let doc = addOns[o.name]?.find(o => o.refID === refID);
-                return {
-                  label: "Description",
-                  name: "",
-                  format: "display",
-                  Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
-                };
-              },
-              (formValue, addOns, idx) => {
-                let refID = Accessor.Get(formValue, o.name + "." + idx + ".refID");
-                let doc = addOns[o.name]?.find(o => o.refID === refID);
-                if(doc){
-                  return _.map(doc.parameters, (o, i) => {
+                label: "Add " + o.caption,
+                name: o.name,
+                canAdd: true,
+                canDelete: true,
+                arrayStyle: "card",
+                reordering: true,
+                array: [
+                  {
+                    label: "Ref. ID",
+                    name: "refID",
+                    format: "select",
+                    selectStyle: "dropdown",
+                    selectRef: o.name,
+                    selectCap: "refID",
+                    selectVal: "refID",
+                    selectTip: "description",
+                    showTooltip: true
+                  },
+                  (formValue, addOns, idx) => {
+                    let refID = Accessor.Get(formValue, o.name + "." + idx + ".refID");
+                    let doc = addOns[o.name]?.find(o => o.refID === refID);
                     return {
-                      label: o.description,
-                      name: "parameters." + i,
-                      format: "select",
-                      selectRef: _.map(o.options, (v, x) => v.EN),
-                      selectCap: "",
-                      selectVal: ""
+                      label: "Description",
+                      name: "",
+                      format: "display",
+                      Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
+                    };
+                  },
+                  (formValue, addOns, idx) => {
+                    let refID = Accessor.Get(formValue, o.name + "." + idx + ".refID");
+                    let doc = addOns[o.name]?.find(o => o.refID === refID);
+                    if(doc){
+                      return _.map(doc.parameters, (o, i) => {
+                        return {
+                          label: o.description,
+                          name: "parameters." + i,
+                          format: "select",
+                          selectRef: _.map(o.options, (v, x) => v.EN),
+                          selectCap: "",
+                          selectVal: ""
+                        }
+                      });
                     }
-                  });
-                }
-              }
+                  }
+                ]
+              },
             ]
-          },
-        ]
+          }
+        }),
       }
-    }),
+    ]
   },
   {
     label: "Effective Start Date",

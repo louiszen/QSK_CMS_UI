@@ -1,6 +1,6 @@
 import { ColorX } from 'IZOArc/STATIC';
 import { Typography } from '@material-ui/core';
-import { Dashboard, ReplyAll } from '@material-ui/icons';
+import { Dashboard, FlightLand, ReplyAll } from '@material-ui/icons';
 import _ from 'lodash';
 
 export const IZOTheme = {
@@ -47,6 +47,12 @@ export const MenuConfig = [
     faIcon: <Dashboard />,
     auth: "Dashboard",
     disabled: true
+  },
+  {
+    caption: "Landing Page",
+    link: "/Landing",
+    faIcon: <FlightLand/>,
+    auth: "Landing"
   },
   {
     caption: "Severity",

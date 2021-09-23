@@ -1,14 +1,14 @@
-import { Apps, Group } from "@material-ui/icons";
+import { Group, Sync } from "@material-ui/icons";
 
-import SysGeneral from "./SysGeneral/SysGeneral";
+import SysBnR from "./SysBnR/SysBnR";
 import SysUser from "./SysUser/SysUser";
 
 const tabs = [
   {
-    label: "General",
-    icon: <Apps/>,
-    reqAuth: "System.General",
-    render: <SysGeneral/>,
+    label: "Backup & Restore",
+    icon: <Sync/>,
+    reqAuth: "System.BnR",
+    render: <SysBnR/>,
     iconPos: "left",
     noTransform: true,
     alignment: "left"

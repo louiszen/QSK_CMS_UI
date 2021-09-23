@@ -15,7 +15,7 @@ import { Accessor, ColorX, store, ErrorX } from 'IZOArc/STATIC';
 import { HStack, Spacer, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { StyledButton } from 'IZOArc/LabIZO/Stylizo';
 
-class SysGeneral extends Component {
+class SysBnR extends Component {
 
   static propTypes = {
 
@@ -37,7 +37,7 @@ class SysGeneral extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(SysGeneral.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(SysBnR.defaultProps))){
       this._setAllStates();
     }
   }
@@ -331,4 +331,4 @@ class SysGeneral extends Component {
 
 }
 
-export default SysGeneral;
+export default SysBnR;
