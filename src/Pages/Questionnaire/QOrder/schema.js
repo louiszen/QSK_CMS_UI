@@ -1,5 +1,3 @@
-import QOrderInner from "./_gears/QOrderInner";
-
 const Table = [
   {
     label: "Ref. ID",
@@ -41,7 +39,9 @@ const Tail = [
   {
     label: "Ref. ID",
     name: "refID",
-    format: "text"
+    format: "text",
+    readOnly: true,
+    validate: ["required"]
   },
   {
     label: "Description",
@@ -54,20 +54,37 @@ const Tail = [
     format: "number"
   },
   {
-    label: "Order",
-    name: "order",
-    format: "custom",
-    Custom: (data, field, addOns, _onValueChange) => {
-      return (
-        <QOrderInner data={data} field={field} addOns={addOns} _onValueChange={_onValueChange}/>
-      );
-    }
+    label: "Order (Default Questions)",
+    name: "pre",
+    reordering: true,
+    array: [
+      {
+        label: "Ref. ID",
+        name: "",
+        format: "text",
+        readOnly: true
+      }
+    ]
+  },
+  {
+    label: "Order (Yes-No Questions)",
+    name: "post",
+    reordering: true,
+    array: [
+      {
+        label: "Ref. ID",
+        name: "",
+        format: "text",
+        readOnly: true
+      }
+    ]
   },
   {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",

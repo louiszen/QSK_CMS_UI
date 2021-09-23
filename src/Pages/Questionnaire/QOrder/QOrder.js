@@ -7,9 +7,11 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
+import { DOMAIN, IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
+import axios from 'axios';
+import _ from 'lodash';
 
 /**
  * @augments {Component<Props, State>}
@@ -67,6 +69,7 @@ class QOrder extends Component {
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add",
+            defaultDoc: this.GetDefaultDoc,
             Custom: this.renderInner
           },
           Delete: {
@@ -139,7 +142,9 @@ class QOrder extends Component {
   }
 
   componentDidMount(){
-    this._setAllStates();
+    this._setAllStates(() => {
+      this.GetAllQ();
+    });
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -158,6 +163,45 @@ class QOrder extends Component {
     this.setState((state, props) => ({
       ...props,
     }), callback);
+  }
+
+  GetAllQ = async () => {
+    let { addOns } = this.props;
+    let url = DOMAIN + "/Tables/Question/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/Question/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        docs = _.uniqBy(docs, o => o.refID);
+        docs = _.filter(docs, o => o.refID !== "_QHKR");
+        this.setState({
+          questions: docs
+        });
+      } else {
+        store.Alert("Cannot get questions", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get questions", "error");
+    }
+  }
+
+  GetDefaultDoc = () => {
+    let {questions} = this.state;
+    console.log("GetDefaultDoc");
+    return {
+      refID: "Order",
+      pre: ["_QDate", "_QHKR", "_QLoc"],
+      post: _.map(questions, o => o.refID)
+    }
   }
 
   renderInner(docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns){

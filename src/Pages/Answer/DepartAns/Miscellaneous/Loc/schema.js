@@ -48,7 +48,8 @@ const Tail = [
   {
     label: "Ref. ID",
     name: "refID",
-    format: "text"
+    format: "text",
+    validate: ["required"]
   },
   {
     label: "Description",
@@ -86,7 +87,8 @@ const Tail = [
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",

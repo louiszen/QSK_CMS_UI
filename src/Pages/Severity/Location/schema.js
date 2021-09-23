@@ -116,6 +116,7 @@ const Info = [
     name: "refID",
     format: "text",
     readOnly: true,
+    validate: ["required"]
   },
   ...Tail,
   {

@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import { LANGUAGES } from "__Base/config";
+
 const Table = [
   {
     label: "Ref. ID",
@@ -41,7 +44,8 @@ const Tail = [
     selectVal: "refID",
     selectCap: "refID",
     showTooltip: true,
-    selectTip: "description"
+    selectTip: "description",
+    validate: ["required"]
   },
   {
     label: "Description",
@@ -49,59 +53,35 @@ const Tail = [
     format: "textarea"
   },
   {
-    tabs: [
-      {
-        label: "EN",
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
         page: [
           {
             label: "Question",
-            name: "question.EN",
+            name: "question." + o,
             format: "text"
           },
           {
             label: "Subtitle",
-            name: "subtitle.EN",
-            format: "text"
-          }
-        ]
-      },
-      {
-        label: "TC",
-        page: [
-          {
-            label: "Question",
-            name: "question.TC",
-            format: "text"
+            name: "subtitle." + o,
+            format: "textarea"
           },
           {
-            label: "Subtitle",
-            name: "subtitle.TC",
+            label: "Verdict Text",
+            name: "verdict." + o,
             format: "text"
           }
         ]
-      },
-      {
-        label: "SC",
-        page: [
-          {
-            label: "Question",
-            name: "question.SC",
-            format: "text"
-          },
-          {
-            label: "Subtitle",
-            name: "subtitle.SC",
-            format: "text"
-          }
-        ]
-      },
-    ]
+      };
+    })
   },
   {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",

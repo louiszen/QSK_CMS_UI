@@ -44,12 +44,14 @@ const Tail = [
   {
     label: "Display Name",
     name: "display",
-    format: "text"
+    format: "text",
+    validate: ["required"]
   },
   {
     label: "Severity",
     name: "severity",
-    format: "number"
+    format: "number",
+    validate: ["required"]
   },
   {
     label: "Relevant Periods (Days)",
@@ -61,7 +63,8 @@ const Tail = [
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",
@@ -86,7 +89,8 @@ const Info = [
     label: "Ref. ID",
     name: "refID",
     format: "text",
-    readOnly: true
+    readOnly: true,
+    validate: ["required"]
   },
   ...Tail,
   {

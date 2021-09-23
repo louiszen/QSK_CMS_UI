@@ -1,11 +1,61 @@
+import { Typography } from "@material-ui/core";
+import { Error } from "@material-ui/icons";
+import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
+import { ColorX } from "IZOArc/STATIC";
+import _ from "lodash";
+
 const Table = [
   {
-    label: "Location",
+    label: "Location Code",
     name: "refID"
   },
   {
-    label: "Group",
+    label: "Location",
+    name: "<Location>",
+    Cell: (row, field, addOns) => {
+      let locations = addOns.locations;
+      if(locations){
+        let thisLoc = _.find(locations, o => o.refID === row.refID);
+        if(thisLoc){
+          return thisLoc.display;
+        }
+        return (
+          <HStack width="100%">
+            <Error style={{color: ColorX.GetColorCSS("gold")}}/>
+            <Typography style={{fontSize: 9}}>
+              {"Location Code Not Mapped"}
+            </Typography>
+            <Spacer/>
+          </HStack> 
+        );
+      }
+    }
+  },
+  {
+    label: "Group Code",
     name: "group"
+  },
+  {
+    label: "Group",
+    name: "<Group>",
+    Cell: (row, field, addOns) => {
+      let groups = addOns.groups;
+      if(groups){
+        let thisGrp = _.find(groups, o => o.refID === row.group);
+        if(thisGrp){
+          return thisGrp.display;
+        }
+        return (
+          <HStack width="100%">
+            <Error style={{color: ColorX.GetColorCSS("gold")}}/>
+            <Typography style={{fontSize: 9}}>
+              {"Group Code Not Mapped"}
+            </Typography>
+            <Spacer/>
+          </HStack> 
+        );
+      }
+    }
   },
   {
     label: "Effective Start Date",
@@ -39,13 +89,15 @@ const Tail = [
     selectStyle: "radio",
     selectRef: "groups",
     selectCap: "display",
-    selectVal: "refID"
+    selectVal: "refID",
+    validate: ["required"]
   },
   {
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",
@@ -63,7 +115,8 @@ const Add = [
     selectStyle: "dropdown",
     selectRef: "locations",
     selectCap: "display",
-    selectVal: "refID"
+    selectVal: "refID",
+    validate: ["required"]
   },
   ...Tail
 ];

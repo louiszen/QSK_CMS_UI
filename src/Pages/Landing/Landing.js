@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Accessor, Authority, store } from 'IZOArc/STATIC';
+import { Accessor, Authority, store, ColorX } from 'IZOArc/STATIC';
 
+import { Typography, Box } from '@material-ui/core';
 import { Denied } from 'IZOArc/Fallback';
 import Formizo from 'IZOArc/LabIZO/Formizo';
-import { DOMAIN } from '__Base/config';
+import { DOMAIN, IZOTheme } from '__Base/config';
 import axios from 'axios';
 
 import schema from './schema';
@@ -60,6 +61,7 @@ class Landing extends Component {
       addOns: addOns,
     };
     try {
+      store.isLoading(true);
       let res = await axios.post(url, payloadOut);
       console.log("/Config/Landing/Info", res.data);
     
@@ -68,11 +70,15 @@ class Landing extends Component {
       if (Success === true) {
         this.setState({
           doc: payload
+        }, () => {
+          store.isLoading(false);
         });
       } else {
+        store.isLoading(false);
         store.Alert("Cannot get Landing Config", "error");
       }
     } catch (e) {
+      store.isLoading(false);
       store.Alert("Cannot get Landing Config", "error");
     }
   }
@@ -112,6 +118,7 @@ class Landing extends Component {
         defaultValue={doc}
         buttons={["Revert", "Submit"]}
         onSubmit={this.Config.onSubmit}
+        labelXS={2}
         />
     );
   }
@@ -120,6 +127,16 @@ class Landing extends Component {
     if(!Authority.IsAccessibleQ("Landing")) return <Denied/>;
     return (
       <VStack>
+        <Box padding={1} width="100%">
+          <Typography style={{
+            textAlign: "left", 
+            width: "100%",
+            fontSize: 25,
+            color: ColorX.GetColorCSS(IZOTheme.foreground)
+            }}>
+            {"Landing Page"}
+          </Typography>
+        </Box>
         {this.renderFormizo()}
       </VStack>
     );

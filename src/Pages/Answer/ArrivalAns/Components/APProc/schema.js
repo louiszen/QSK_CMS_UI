@@ -48,7 +48,8 @@ const Tail = [
   {
     label: "Ref. ID",
     name: "refID",
-    format: "text"
+    format: "text",
+    validate: ["required"]
   },
   {
     label: "Description",
@@ -77,6 +78,22 @@ const Tail = [
             label: "Content",
             name: "display.content." + o,
             format: "textarea"
+          },
+          {
+            label: "Include Collapse?",
+            name: "display.showCollapse." + o,
+            format: "bool",
+            boolStyle: "switch"
+          },
+          {
+            control: "display.showCollapse." + o,
+            fold: [
+              {
+                label: "Collapse Content",
+                name: "display.collapse." + o,
+                format: "textarea"
+              }
+            ]
           }
         ]
       }
@@ -130,7 +147,8 @@ const Tail = [
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",

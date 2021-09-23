@@ -14,18 +14,12 @@ const Table = [
     label: "Version",
     name: "version"
   },
-  {
-    label: "Content (EN)",
-    name: "display.content.EN"
-  },
-  {
-    label: "Content (TC)",
-    name: "display.content.TC"
-  },
-  {
-    label: "Content (SC)",
-    name: "display.content.SC"
-  },
+  _.map(LANGUAGES, (o, i) => {
+    return {
+      label: "Content (" + o + ")",
+      name: "display.content." + o
+    }
+  }),
   {
     label: "Effective Start Date",
     name: "effective.Start",
@@ -54,7 +48,8 @@ const Tail = [
   {
     label: "Ref. ID",
     name: "refID",
-    format: "text"
+    format: "text",
+    validate: ["required"]
   },
   {
     label: "Description",
@@ -97,7 +92,8 @@ const Tail = [
     label: "Effective Start Date",
     name: "effective.Start",
     format: "date",
-    dateType: "datetime"
+    dateType: "datetime",
+    validate: ["required"]
   },
   {
     label: "Effective End Date",
