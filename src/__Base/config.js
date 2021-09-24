@@ -49,6 +49,12 @@ export const MenuConfig = [
     disabled: true
   },
   {
+    caption: "Icons",
+    link: "/IconDocs",
+    faIcon:  <i className="fas fa-icons fa-lg"/>,
+    auth: "IconDocs"
+  },
+  {
     caption: "Landing Page",
     link: "/Landing",
     faIcon: <FlightLand/>,

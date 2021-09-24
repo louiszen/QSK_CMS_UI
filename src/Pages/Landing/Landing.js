@@ -29,8 +29,9 @@ class Landing extends Component {
   }
 
   componentDidMount(){
-    this._setAllStates(() => {
-      this.getLandingConfig();
+    this._setAllStates(async () => {
+      await this.getIconList();
+      await this.getLandingConfig();
     });
   }
 
@@ -50,6 +51,36 @@ class Landing extends Component {
     this.setState((state, props) => ({
       ...props,
     }), callback);
+  }
+
+  getIconList = async () => {
+    let { addOns } = this.state;
+    let url = DOMAIN + "/Tables/IconDocs/List";
+    let payloadOut = {
+      JWT: store.user.JWT,
+      data: {},
+      addOns: addOns,
+    };
+    try {
+      let res = await axios.post(url, payloadOut);
+      console.log("/Tables/IconDocs/List", res.data);
+    
+      let { Success, payload } = res.data;
+    
+      if (Success === true) {
+        let docs = payload.docs;
+        this.setState((state, props) => ({
+          addOns: {
+            ...state.addOns,
+            icons: docs
+          }
+        }));
+      } else {
+        store.Alert("Cannot get icon list", "error");
+      }
+    } catch (e) {
+      store.Alert("Cannot get icon list", "error");
+    }
   }
 
   getLandingConfig = async () => {
@@ -111,7 +142,7 @@ class Landing extends Component {
   }
 
   renderFormizo() {
-    let {doc} = this.state;
+    let {doc, addOns} = this.state;
     return (
       <Formizo
         schema={schema.Landing}
@@ -119,6 +150,7 @@ class Landing extends Component {
         buttons={["Revert", "Submit"]}
         onSubmit={this.Config.onSubmit}
         labelXS={2}
+        addOns={addOns}
         />
     );
   }
@@ -134,7 +166,7 @@ class Landing extends Component {
             fontSize: 25,
             color: ColorX.GetColorCSS(IZOTheme.foreground)
             }}>
-            {"Landing Page"}
+            {"Landing Page & Main Settings"}
           </Typography>
         </Box>
         {this.renderFormizo()}

@@ -150,17 +150,19 @@ class QFlow extends Component {
 
   renderFlowEditorAdd = (docID, doc, onQuit, onQuitRefresh, renderFormizo, addOns, ibase, onSubmit, auth, level, formizo) => {
     let {sevgroups} = this.state;
-    doc.refID = "Flow";
-    doc.flow = _.map(sevgroups, (o, i) => {
-      return {
-        id: v1(),
-        type: "Tube_Src",
-        data: {
-          inner: "Severity " + o
-        },
-        position: { x: i * 300, y: 100}
-      };
-    })
+    if(_.isEmpty(doc)){
+      doc.refID = "Flow";
+      doc.flow = _.map(sevgroups, (o, i) => {
+        return {
+          id: v1(),
+          type: "Tube_Src",
+          data: {
+            inner: "Severity " + o
+          },
+          position: { x: i * 300, y: 100}
+        };
+      });
+    }
     return (
       <FlowEditor docID={docID} doc={doc} onQuit={onQuit} onQuitRefresh={onQuitRefresh} renderFormizo={renderFormizo} onSubmit={onSubmit} auth={auth} level={level} formizo={formizo} ibase={ibase} readOnly={ibase.readOnly}/>
     );

@@ -2,14 +2,6 @@ import _ from "lodash";
 import { LANGUAGES } from "__Base/config";
 
 const Landing = [
-  _.map(LANGUAGES, (o, i) => {
-    return {
-      label: "Page Title (" + o + ")",
-      name: "Config.PageTitle." + o,
-      format: "text",
-      validate: ["required"]
-    }
-  }),
   {
     label: "Under Maintenance?",
     name: "Config.underMaintenance",
@@ -49,149 +41,205 @@ const Landing = [
         ]
       },
       {
-        label: "Arrival",
+        label: "Landing Page",
         noTransform: true,
         page: [
+          _.map(LANGUAGES, (o, i) => {
+            return {
+              label: "Page Title (" + o + ")",
+              name: "Config.PageTitle." + o,
+              format: "text",
+              validate: ["required"]
+            }
+          }),
           {
-            tabs: _.map(LANGUAGES, (o, i) => {
-              return {
-                label: o,
+            tabs: [
+              {
+                label: "Arrival",
+                noTransform: true,
                 page: [
                   {
-                    label: "Title",
-                    name: "Config.Arrival.title." + o,
-                    format: "text"
+                    label: "Icon",
+                    name: "Config.Arrival.icon",
+                    format: "select",
+                    selectStyle: "dropdown",
+                    selectRef: "icons",
+                    selectVal: "refID",
+                    selectCap: "refID",
+                    selectTip: "description",
+                    showTooltip: true
                   },
                   {
-                    label: "Content",
-                    name: "Config.Arrival.content." + o,
-                    format: "textarea"
+                    tabs: _.map(LANGUAGES, (o, i) => {
+                      return {
+                        label: o,
+                        page: [
+                          {
+                            label: "Page Title",
+                            name: "Config.Arrival.pageTitle." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Title",
+                            name: "Config.Arrival.title." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Content",
+                            name: "Config.Arrival.content." + o,
+                            format: "textarea"
+                          },
+                          {
+                            label: "Headerline Disclaimer",
+                            name: "Config.Arrival.disclaimerLine." + o,
+                            format: "textarea"
+                          },
+                          {
+                            label: "Popup Disclaimer Title",
+                            name: "Config.Arrival.disclaimerTitle." + o,
+                            format: "textarea"
+                          },
+                          {
+                            label: "Popup Disclaimer Content",
+                            name: "Config.Arrival.disclaimerContent." + o,
+                            format: "textarea",
+                            rows: 8
+                          }
+                        ]
+                      };
+                    })
                   }
                 ]
-              };
-            })
-          }
-        ]
-      },
-      {
-        label: "Departure",
-        noTransform: true,
-        page: [
-          {
-            tabs: _.map(LANGUAGES, (o, i) => {
-              return {
-                label: o,
+              },
+              {
+                label: "Departure",
+                noTransform: true,
                 page: [
                   {
-                    label: "Title",
-                    name: "Config.Departure.title." + o,
-                    format: "text"
+                    label: "Icon",
+                    name: "Config.Departure.icon",
+                    format: "select",
+                    selectStyle: "dropdown",
+                    selectRef: "icons",
+                    selectVal: "refID",
+                    selectCap: "refID",
+                    selectTip: "description",
+                    showTooltip: true
                   },
                   {
-                    label: "Content",
-                    name: "Config.Departure.content." + o,
-                    format: "textarea"
+                    tabs: _.map(LANGUAGES, (o, i) => {
+                      return {
+                        label: o,
+                        page: [
+                          {
+                            label: "Page Title",
+                            name: "Config.Departure.pageTitle." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Title",
+                            name: "Config.Departure.title." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Content",
+                            name: "Config.Departure.content." + o,
+                            format: "textarea"
+                          }
+                        ]
+                      };
+                    })
                   }
                 ]
-              };
-            })
-          }
-        ]
-      },
-      {
-        label: "Transit",
-        noTransform: true,
-        page: [
-          {
-            tabs: _.map(LANGUAGES, (o, i) => {
-              return {
-                label: o,
+              },
+              {
+                label: "Transit",
+                noTransform: true,
                 page: [
                   {
-                    label: "Title",
-                    name: "Config.Transit.title." + o,
-                    format: "text"
+                    label: "Icon",
+                    name: "Config.Transit.icon",
+                    format: "select",
+                    selectStyle: "dropdown",
+                    selectRef: "icons",
+                    selectVal: "refID",
+                    selectCap: "refID",
+                    selectTip: "description",
+                    showTooltip: true
                   },
                   {
-                    label: "Content",
-                    name: "Config.Transit.content." + o,
-                    format: "textarea"
+                    tabs: _.map(LANGUAGES, (o, i) => {
+                      return {
+                        label: o,
+                        page: [
+                          {
+                            label: "Page Title",
+                            name: "Config.Transit.pageTitle." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Title",
+                            name: "Config.Transit.title." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Content",
+                            name: "Config.Transit.content." + o,
+                            format: "textarea"
+                          }
+                        ]
+                      };
+                    })
                   }
                 ]
-              };
-            })
-          }
-        ]
-      },
-      {
-        label: "ImageBanner",
-        noTransform: true,
-        page: [
-          {
-            tabs: _.map(LANGUAGES, (o, i) => {
-              return {
-                label: o,
+              },
+              {
+                label: "ImageBanner",
+                noTransform: true,
                 page: [
                   {
-                    label: "Content",
-                    name: "Config.ImageBanner." + o,
-                    format: "textarea"
+                    tabs: _.map(LANGUAGES, (o, i) => {
+                      return {
+                        label: o,
+                        page: [
+                          {
+                            label: "Content",
+                            name: "Config.ImageBanner." + o,
+                            format: "textarea"
+                          }
+                        ]
+                      };
+                    })
                   }
                 ]
-              };
-            })
-          }
-        ]
-      },
-      {
-        label: "Notice",
-        noTransform: true,
-        page: [
-          {
-            tabs: _.map(LANGUAGES, (o, i) => {
-              return {
-                label: o,
+              },
+              {
+                label: "Notice",
+                noTransform: true,
                 page: [
                   {
-                    label: "Title",
-                    name: "Config.Notice.title." + o,
-                    format: "text"
-                  },
-                  {
-                    label: "Content",
-                    name: "Config.Notice.content." + o,
-                    format: "textarea",
-                    rows: 8
+                    tabs: _.map(LANGUAGES, (o, i) => {
+                      return {
+                        label: o,
+                        page: [
+                          {
+                            label: "Title",
+                            name: "Config.Notice.title." + o,
+                            format: "text"
+                          },
+                          {
+                            label: "Content",
+                            name: "Config.Notice.content." + o,
+                            format: "textarea",
+                            rows: 8
+                          }
+                        ]
+                      };
+                    })
                   }
                 ]
-              };
-            })
-          }
-        ]
-      },
-      {
-        label: "Arrival Disclaimer",
-        noTransform: true,
-        page: [
-          {
-            tabs: _.map(LANGUAGES, (o, i) => {
-              return {
-                label: o,
-                page: [
-                  {
-                    label: "Title",
-                    name: "Config.ArrivalDisclaimer.title." + o,
-                    format: "text"
-                  },
-                  {
-                    label: "Content",
-                    name: "Config.ArrivalDisclaimer.content." + o,
-                    format: "textarea",
-                    rows: 8
-                  }
-                ]
-              };
-            })
+              },
+            ]
           }
         ]
       },

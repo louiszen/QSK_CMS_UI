@@ -16,6 +16,11 @@ const Table = [
     width: 150
   },
   {
+    label: "Preview",
+    name: "link",
+    Cell: (row, field, addOns) => <img src={DOMAIN + "/" + field} alt=""/>
+  },
+  {
     label: "Effective Start Date",
     name: "effective.Start",
     transform: "datetime",

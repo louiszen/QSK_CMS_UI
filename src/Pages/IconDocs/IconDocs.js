@@ -33,7 +33,7 @@ class IconDocs extends Component {
         title: "Icon",
         exportDoc: "icons",
         schema: schema,
-        reqAuth: "Answer.ArrivalAns.Miscellaneous.IconDocs",
+        reqAuth: "IconDocs",
 
         noDefaultTable: false,
         noDefaultButtons: false,
@@ -165,7 +165,7 @@ class IconDocs extends Component {
 
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
-    if(!Authority.IsAccessibleQ("Answer.ArrivalAns.Miscellaneous.IconDocs")) return <Denied/>;
+    if(!Authority.IsAccessibleQ("IconDocs")) return <Denied/>;
     return (
       <VStack width="100%" height="100%">
         <Box padding={1} width="100%">

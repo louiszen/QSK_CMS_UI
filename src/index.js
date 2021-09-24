@@ -46,6 +46,7 @@ import TransitAnsComp from "Pages/Answer/TransitAns/Components/Components";
 import DepartAnsTemp from "Pages/Answer/DepartAns/Template/Template";
 import DepartAnsComp from "Pages/Answer/DepartAns/Components/Components";
 import DepartAnsMisc from "Pages/Answer/DepartAns/Miscellaneous/Miscellaneous";
+import IconDocs from "Pages/IconDocs/IconDocs";
 
 //store
 import {Env, store} from 'IZOArc/STATIC';
@@ -72,6 +73,7 @@ function renderPages() {
     <Route key={11} path='/Answer/TransitAns/Template' exact component={TransitAnsTemp}/>,
     <Route key={12} path='/Answer/TransitAns/Components' exact component={TransitAnsComp}/>,
     <Route key={13} path='/Landing' exact component={Landing}/>,
+    <Route key={14} path='/IconDocs' exact component={IconDocs}/>,
 
   ];
 }
