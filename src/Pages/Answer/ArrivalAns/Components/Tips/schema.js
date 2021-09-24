@@ -92,7 +92,7 @@ const Tail = [
             format: "textarea"
           },
           {
-            label: "Include Collapse?",
+            label: "Include Collapsable Section?",
             name: "display.showCollapse." + o,
             format: "bool",
             boolStyle: "switch"
@@ -101,7 +101,7 @@ const Tail = [
             control: "display.showCollapse." + o,
             fold: [
               {
-                label: "Collapse Content",
+                label: "Collapsable Content",
                 name: "display.collapse." + o,
                 format: "textarea"
               }

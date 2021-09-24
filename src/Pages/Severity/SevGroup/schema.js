@@ -51,13 +51,14 @@ const Tail = [
     label: "Severity",
     name: "severity",
     format: "number",
-    validate: ["required"]
+    validate: ["required", "number"]
   },
   {
     label: "Relevant Periods (Days)",
     name: "period",
     format: "number",
-    min: 0
+    min: 0,
+    validate: ["required", "number"]
   },
   {
     label: "Effective Start Date",
