@@ -1,5 +1,6 @@
 import _ from "lodash";
-import { LANGUAGES } from "__Base/config";
+import { LANGUAGES, DOMAIN } from "__Base/config";
+import { Accessor } from "IZOArc/STATIC";
 
 const SECTIONS = [
   {
@@ -78,15 +79,36 @@ const Landing = [
                 noTransform: true,
                 page: [
                   {
-                    label: "Icon",
-                    name: "Config.Arrival.icon",
-                    format: "select",
-                    selectStyle: "dropdown",
-                    selectRef: "icons",
-                    selectVal: "refID",
-                    selectCap: "refID",
-                    selectTip: "description",
-                    showTooltip: true
+                    inline: [
+                      {
+                        label: "Icon",
+                        name: "Config.Arrival.icon",
+                        format: "select",
+                        selectStyle: "dropdown",
+                        selectRef: "icons",
+                        selectVal: "refID",
+                        selectCap: "refID",
+                        selectTip: "description",
+                        showTooltip: true
+                      },
+                      {
+                        label: "Preview",
+                        name: "Config.Arrival.icon",
+                        format: "display",
+                        noLabelGrid: true,
+                        width: 400,
+                        Custom: (row, field, addOns) => {
+                          let icons = Accessor.Get(addOns, "icons");
+                          let iconDoc = _.find(icons, o => o.refID === field);
+                          if(iconDoc){
+                            console.log(iconDoc)
+                            return (
+                              <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
+                            );
+                          }
+                        }
+                      },
+                    ]
                   },
                   {
                     tabs: _.map(LANGUAGES, (o, i) => {
@@ -135,15 +157,36 @@ const Landing = [
                 noTransform: true,
                 page: [
                   {
-                    label: "Icon",
-                    name: "Config.Departure.icon",
-                    format: "select",
-                    selectStyle: "dropdown",
-                    selectRef: "icons",
-                    selectVal: "refID",
-                    selectCap: "refID",
-                    selectTip: "description",
-                    showTooltip: true
+                    inline: [
+                      {
+                        label: "Icon",
+                        name: "Config.Departure.icon",
+                        format: "select",
+                        selectStyle: "dropdown",
+                        selectRef: "icons",
+                        selectVal: "refID",
+                        selectCap: "refID",
+                        selectTip: "description",
+                        showTooltip: true
+                      },
+                      {
+                        label: "Preview",
+                        name: "Config.Departure.icon",
+                        format: "display",
+                        noLabelGrid: true,
+                        width: 400,
+                        Custom: (row, field, addOns) => {
+                          let icons = Accessor.Get(addOns, "icons");
+                          let iconDoc = _.find(icons, o => o.refID === field);
+                          if(iconDoc){
+                            console.log(iconDoc)
+                            return (
+                              <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
+                            );
+                          }
+                        }
+                      },
+                    ]
                   },
                   {
                     tabs: _.map(LANGUAGES, (o, i) => {
@@ -176,15 +219,36 @@ const Landing = [
                 noTransform: true,
                 page: [
                   {
-                    label: "Icon",
-                    name: "Config.Transit.icon",
-                    format: "select",
-                    selectStyle: "dropdown",
-                    selectRef: "icons",
-                    selectVal: "refID",
-                    selectCap: "refID",
-                    selectTip: "description",
-                    showTooltip: true
+                    inline: [
+                      {
+                        label: "Icon",
+                        name: "Config.Transit.icon",
+                        format: "select",
+                        selectStyle: "dropdown",
+                        selectRef: "icons",
+                        selectVal: "refID",
+                        selectCap: "refID",
+                        selectTip: "description",
+                        showTooltip: true
+                      },
+                      {
+                        label: "Preview",
+                        name: "Config.Transit.icon",
+                        format: "display",
+                        noLabelGrid: true,
+                        width: 400,
+                        Custom: (row, field, addOns) => {
+                          let icons = Accessor.Get(addOns, "icons");
+                          let iconDoc = _.find(icons, o => o.refID === field);
+                          if(iconDoc){
+                            console.log(iconDoc)
+                            return (
+                              <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
+                            );
+                          }
+                        }
+                      },
+                    ]
                   },
                   {
                     tabs: _.map(LANGUAGES, (o, i) => {
@@ -314,27 +378,70 @@ const Landing = [
           _.map(SECTIONS, (o, i) => {
             return [
               {
-                label: o.label,
-                name: "Config.Answer." + o.name + ".icon",
-                format: "select",
-                selectStyle: "dropdown",
-                selectRef: "icons",
-                selectVal: "refID",
-                selectCap: "refID",
-                selectTip: "description",
-                showTooltip: true
+                inline: [
+                  {
+                    label: o.label,
+                    name: "Config.Answer." + o.name + ".icon",
+                    format: "select",
+                    selectStyle: "dropdown",
+                    selectRef: "icons",
+                    selectVal: "refID",
+                    selectCap: "refID",
+                    selectTip: "description",
+                    showTooltip: true
+                  },
+                  {
+                    label: "Preview",
+                    name: "Config.Answer." + o.name + ".icon",
+                    format: "display",
+                    noLabelGrid: true,
+                    width: 400,
+                    Custom: (row, field, addOns) => {
+                      let icons = Accessor.Get(addOns, "icons");
+                      let iconDoc = _.find(icons, o => o.refID === field);
+                      if(iconDoc){
+                        console.log(iconDoc)
+                        return (
+                          <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
+                        );
+                      }
+                    }
+                  },
+                ]
               },
               {
-                label: o.label + " (Selected)",
-                name: "Config.Answer." + o.name + ".icon_selected",
-                format: "select",
-                selectStyle: "dropdown",
-                selectRef: "icons",
-                selectVal: "refID",
-                selectCap: "refID",
-                selectTip: "description",
-                showTooltip: true
-              },
+                inline: [
+                  {
+                    label: o.label + " (Selected)",
+                    name: "Config.Answer." + o.name + ".icon_selected",
+                    format: "select",
+                    selectStyle: "dropdown",
+                    selectRef: "icons",
+                    selectVal: "refID",
+                    selectCap: "refID",
+                    selectTip: "description",
+                    showTooltip: true
+                  },
+                  {
+                    label: "Preview",
+                    name: "Config.Answer." + o.name + ".icon_selected",
+                    format: "display",
+                    noLabelGrid: true,
+                    width: 400,
+                    Custom: (row, field, addOns) => {
+                      let icons = Accessor.Get(addOns, "icons");
+                      let iconDoc = _.find(icons, o => o.refID === field);
+                      if(iconDoc){
+                        console.log(iconDoc)
+                        return (
+                          <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
+                        );
+                      }
+                    }
+                  },
+                ]
+              }
+              
             ]
           }).flat(Infinity)
         ]

@@ -21,21 +21,6 @@ const Table = [
     Cell: (row, field, addOns) => <img src={DOMAIN + "/" + field} alt=""/>
   },
   {
-    label: "Effective Start Date",
-    name: "effective.Start",
-    transform: "datetime",
-    dateFormat: "YYYY/MM/DD HH:mm:ss",
-    filterable: false
-  },
-  {
-    label: "Effective End Date",
-    name: "effective.End",
-    transform: "datetime",
-    dateFormat: "YYYY/MM/DD HH:mm:ss",
-    fallback: " ",
-    filterable: false
-  },
-  {
     label: "Last Update",
     name: "lastUpdate",
     transform: "datetime",
@@ -72,19 +57,6 @@ const Tail = [
     name: "upload",
     format: "file",
     accept: ".png"
-  },
-  {
-    label: "Effective Start Date",
-    name: "effective.Start",
-    format: "date",
-    dateType: "datetime",
-    validate: ["required"]
-  },
-  {
-    label: "Effective End Date",
-    name: "effective.End",
-    format: "date",
-    dateType: "datetime"
   }
 ]
 
