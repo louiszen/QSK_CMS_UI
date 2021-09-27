@@ -166,7 +166,7 @@ class Landing extends Component {
             fontSize: 25,
             color: ColorX.GetColorCSS(IZOTheme.foreground)
             }}>
-            {"Landing Page & Main Settings"}
+            {"App Settings"}
           </Typography>
         </Box>
         {this.renderFormizo()}

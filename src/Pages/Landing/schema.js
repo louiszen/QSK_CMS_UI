@@ -1,6 +1,25 @@
 import _ from "lodash";
 import { LANGUAGES } from "__Base/config";
 
+const SECTIONS = [
+  {
+    label: "Quarantine Req.",
+    name: "QUAReq"
+  },
+  {
+    label: "Before You Fly",
+    name: "DOCReq"
+  },
+  {
+    label: "Upon Landing",
+    name: "APProc"
+  },
+  {
+    label: "Tips",
+    name: "Tips"
+  }
+]
+
 const Landing = [
   {
     label: "Under Maintenance?",
@@ -268,6 +287,58 @@ const Landing = [
           }
         ]
       },
+      {
+        label: "Answer Sections",
+        noTransform: true,
+        page: [
+          {
+            header: "Caption"
+          },
+          {
+            tabs: _.map(LANGUAGES, (o, i) => {
+              return {
+                label: o,
+                page: _.map(SECTIONS, (v, w) => {
+                  return {
+                    label: v.label,
+                    name: "Config.Answer."+ v.name +".caption." + o,
+                    format: "text"
+                  };
+                })
+              };
+            })
+          },
+          {
+            header: "Icons"
+          },
+          _.map(SECTIONS, (o, i) => {
+            return [
+              {
+                label: o.label,
+                name: "Config.Answer." + o.name + ".icon",
+                format: "select",
+                selectStyle: "dropdown",
+                selectRef: "icons",
+                selectVal: "refID",
+                selectCap: "refID",
+                selectTip: "description",
+                showTooltip: true
+              },
+              {
+                label: o.label + " (Selected)",
+                name: "Config.Answer." + o.name + ".icon_selected",
+                format: "select",
+                selectStyle: "dropdown",
+                selectRef: "icons",
+                selectVal: "refID",
+                selectCap: "refID",
+                selectTip: "description",
+                showTooltip: true
+              },
+            ]
+          }).flat(Infinity)
+        ]
+      }
     ]
   }
 ];
