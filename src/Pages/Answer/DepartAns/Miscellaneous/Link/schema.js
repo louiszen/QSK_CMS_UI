@@ -81,7 +81,7 @@ const Tail = [
   },
   {
     label: "Links",
-    name: "links",
+    name: "display.links",
     canAdd: true,
     canDelete: true,
     arrayStyle: "card",
