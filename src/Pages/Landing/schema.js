@@ -207,6 +207,11 @@ const Landing = [
                             label: "Content",
                             name: "Config.Departure.content." + o,
                             format: "textarea"
+                          },
+                          {
+                            label: "Select Destination Page Title",
+                            name: "Config.Departure.selectLoc." + o,
+                            format: "text"
                           }
                         ]
                       };

@@ -164,3 +164,5 @@ export const MenuConfig = [
     auth: "System",
   },
 ];
+
+export const StartUp = [];
