@@ -69,7 +69,10 @@ class CT extends Component {
             fail: "COVID-19 Test for Passengers at HKIA Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
-            onSubmit: "Add"
+            onSubmit: "Add",
+            defaultDoc: {
+              refID: "DepCT"
+            }
           },
           Delete: {
             title: "Delete this COVID-19 Test for Passengers at HKIA?",

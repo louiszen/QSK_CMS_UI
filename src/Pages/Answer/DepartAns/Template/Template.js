@@ -69,7 +69,10 @@ class Template extends Component {
             fail: "Departure Answer Template Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
-            onSubmit: "Add"
+            onSubmit: "Add",
+            defaultDoc: {
+              refID: "DepartAns"
+            }
           },
           Delete: {
             title: "Delete this Departure Answer Template?",

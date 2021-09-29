@@ -46,7 +46,8 @@ const Tail = [
     label: "Ref. ID",
     name: "refID",
     format: "text",
-    validate: ["required"]
+    validate: ["required"],
+    readOnly: true
   },
   {
     label: "Description",
@@ -60,6 +61,20 @@ const Tail = [
   },
   {
     header: "Display"
+  },
+  {
+    tabs: _.map(LANGUAGES, (o, i) => {
+      return {
+        label: o,
+        page: [
+          {
+            label: "Pre-wordings",
+            name: "prewordings." + o,
+            format: "textarea"
+          },
+        ]
+      }
+    })
   },
   {
     label: "Show Travel Advisories?",
@@ -80,46 +95,37 @@ const Tail = [
     boolStyle: "switch"
   },
   {
-    tabs: _.map(LANGUAGES, (o, i) => {
-      return {
-        label: o,
-        page: [
-          {
-            label: "Pre-wordings",
-            name: "prewordings." + o,
-            format: "textarea"
-          },
-        ]
-      }
-    })
-  },
-  {
-    label: "Add Links",
-    name: "links",
-    canAdd: true,
-    canDelete: true,
-    arrayStyle: "card",
-    array: [
+    control: "showOTH",
+    fold: [
       {
-        label: "Ref. ID",
-        name: "refID",
-        format: "select",
-        selectStyle: "dropdown",
-        selectRef: "Links",
-        selectCap: "refID",
-        selectVal: "refID",
-        selectTip: "description",
-        showTooltip: true
-      },
-      (formValue, addOns, idx) => {
-        let refID = Accessor.Get(formValue, "links." + idx + ".refID");
-        let doc = addOns?.Links?.find(o => o.refID === refID);
-        return {
-          label: "Description",
-          name: "",
-          format: "display",
-          Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
-        };
+        label: "Add Sub-Sections under Other",
+        name: "links",
+        canAdd: true,
+        canDelete: true,
+        arrayStyle: "card",
+        array: [
+          {
+            label: "Ref. ID",
+            name: "refID",
+            format: "select",
+            selectStyle: "dropdown",
+            selectRef: "Links",
+            selectCap: "refID",
+            selectVal: "refID",
+            selectTip: "description",
+            showTooltip: true
+          },
+          (formValue, addOns, idx) => {
+            let refID = Accessor.Get(formValue, "links." + idx + ".refID");
+            let doc = addOns?.Links?.find(o => o.refID === refID);
+            return {
+              label: "Description",
+              name: "",
+              format: "display",
+              Custom: () => <HStack width="100%"><Typography>{doc?.description}</Typography><Spacer/></HStack>
+            };
+          }
+        ]
       }
     ]
   },

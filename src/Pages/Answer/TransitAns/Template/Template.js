@@ -68,7 +68,10 @@ class Template extends Component {
             fail: "Transit Answer Template Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
-            onSubmit: "Add"
+            onSubmit: "Add",
+            defaultDoc: {
+              refID: "TraAns"
+            }
           },
           Delete: {
             title: "Delete this Transit Answer Template?",

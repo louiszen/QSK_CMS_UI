@@ -67,7 +67,10 @@ class TA extends Component {
             fail: "Travel Advisories by Destination Add Failed: ",
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
-            onSubmit: "Add"
+            onSubmit: "Add",
+            defaultDoc: {
+              refID: "DepTA"
+            }
           },
           Delete: {
             title: "Delete this Travel Advisories by Destination?",

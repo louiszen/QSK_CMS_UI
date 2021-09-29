@@ -43,6 +43,7 @@ const Tail = [
     label: "Ref. ID",
     name: "refID",
     format: "text",
+    readOnly: true,
     validate: ["required"]
   },
   {
