@@ -65,6 +65,30 @@ const Tail = [
     header: "Display"
   },
   {
+    label: "Show Map?",
+    name: "display.showMap",
+    format: "bool",
+    boolStyle: "switch"
+  },
+  {
+    label: "Show Service Hours?",
+    name: "display.showTime",
+    format: "bool",
+    boolStyle: "switch"
+  },
+  {
+    label: "Show Phone?",
+    name: "display.showTel",
+    format: "bool",
+    boolStyle: "switch"
+  },
+  {
+    label: "Show URL?",
+    name: "display.showURL",
+    format: "bool",
+    boolStyle: "switch"
+  },
+  {
     tabs: _.map(LANGUAGES, (o, i) => {
       return {
         label: o,
