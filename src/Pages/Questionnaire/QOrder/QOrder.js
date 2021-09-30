@@ -127,11 +127,11 @@ class QOrder extends Component {
             { icon: "edit", func: "Edit", caption: "Edit", reqFunc: "Edit" },
             { icon: "info", func: "Info", caption: "Details" },
             { icon: "duplicate", func: "DuplicateAdd", caption: "Duplicate", reqFunc: "Duplicate" },
-            { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
+            //{ icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
           ],
           left: [{ icon: "add", func: "Add", caption: "Add Question Ordering", reqFunc: "Add" }],
           right: [
-            { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
+            //{ icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
             //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
             //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
           ],

@@ -1,9 +1,5 @@
 const Table = [
   {
-    label: "Ref. ID",
-    name: "refID"
-  },
-  {
     label: "Description",
     name: "description"
   },
