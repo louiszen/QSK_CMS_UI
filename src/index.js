@@ -93,6 +93,8 @@ function renderTest() {
 
 store.isLoading(false);
 store.clearAsk();
+store.clearAlert();
+store.clearBackdrop();
 if(store.isLoggedIn()){
   Env.CheckInitialized();
 }
