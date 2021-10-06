@@ -155,6 +155,21 @@ const Landing = [
                             name: "Config.Arrival.disclaimerContent." + o,
                             format: "textarea",
                             rows: 8
+                          },
+                          {
+                            label: "Verdict Message (YES)",
+                            name: "Config.Arrival.verdictYes." + o,
+                            format: "textarea",
+                          },
+                          {
+                            label: "Verdict Message (NO)",
+                            name: "Config.Arrival.verdictNo." + o,
+                            format: "textarea",
+                          },
+                          {
+                            label: "Verdict Note",
+                            name: "Config.Arrival.verdictNote." + o,
+                            format: "textarea",
                           }
                         ]
                       };
