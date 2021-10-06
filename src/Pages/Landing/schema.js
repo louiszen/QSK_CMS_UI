@@ -29,6 +29,16 @@ const Landing = [
     boolStyle: "switch"
   },
   {
+    label: "Default Severity",
+    name: "Config.defaultSeverity",
+    format: "number"
+  },
+  {
+    label: "Default Relevant Period",
+    name: "Config.defaultRelevantPeriod",
+    format: "number"
+  },
+  {
     tabs: [
       {
         label: "Maintenance Page",
