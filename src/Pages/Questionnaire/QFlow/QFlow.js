@@ -157,7 +157,8 @@ class QFlow extends Component {
           id: v1(),
           type: "Tube_Src",
           data: {
-            inner: "Severity " + o
+            inner: "Severity " + o,
+            severity: o
           },
           position: { x: i * 300, y: 100}
         };
