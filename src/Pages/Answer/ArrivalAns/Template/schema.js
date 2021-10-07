@@ -1,4 +1,5 @@
-import { Typography } from "antd";
+import { Typography } from "@material-ui/core";
+import { LANGUAGES } from "__Base/config";
 import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
 import { Accessor } from "IZOArc/STATIC";
 import _ from "lodash";
@@ -23,6 +24,11 @@ const REQDoc = [
     name: "APProc",
     caption: "Airport Proceed",
     icon: "fas fa-plane fa-lg"
+  },
+  {
+    name: "Tips",
+    caption: "Tips",
+    icon: "far fa-clipboard fa-lg"
   }
 ];
  
@@ -99,6 +105,13 @@ const Tail = [
             noTransform: true,
             alignment: "left",
             page: [
+              _.map(LANGUAGES, (v, x) => {
+                return {
+                  label: "Display Last Update (" + v + ")",
+                  name: "displayLastUpdate." + o.name + "." + v,
+                  format: "text"
+                }
+              }),
               {
                 label: "Add " + o.caption,
                 name: o.name,

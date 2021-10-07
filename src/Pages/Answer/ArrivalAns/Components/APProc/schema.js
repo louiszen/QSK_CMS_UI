@@ -70,11 +70,6 @@ const Tail = [
         label: o,
         page: [
           {
-            label: "Display Last Update",
-            name: "displayLastUpdate." + o,
-            format: "text"
-          },
-          {
             label: "Content",
             name: "display.content." + o,
             format: "textarea"

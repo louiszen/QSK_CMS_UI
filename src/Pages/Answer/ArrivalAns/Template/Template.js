@@ -146,6 +146,7 @@ class Template extends Component {
       this.getReq("DOCReq");
       this.getReq("ENTReq");
       this.getReq("APProc");
+      this.getReq("Tips");
     });
   }
 
