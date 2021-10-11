@@ -1,8 +1,8 @@
-import { ColorX } from 'IZOArc/STATIC';
-import { Typography } from '@material-ui/core';
-import { Dashboard, ReplyAll } from '@material-ui/icons';
-import _ from 'lodash';
-import { AppSettingsAlt } from '@mui/icons-material';
+import { ColorX } from "IZOArc/STATIC";
+import { Typography } from "@material-ui/core";
+import { Dashboard, ReplyAll } from "@material-ui/icons";
+import _ from "lodash";
+import { AppSettingsAlt } from "@mui/icons-material";
 
 export const IZOTheme = {
   background: "black",
@@ -10,10 +10,7 @@ export const IZOTheme = {
   btnHover: "elainOrangeDark",
 };
 
-export const Project = 
-  <Typography style={{color: ColorX.GetColorCSS(IZOTheme.foreground)}}>
-    {"COVID19 MiniSite"}
-  </Typography>;
+export const Project = <Typography style={{ color: ColorX.GetColorCSS(IZOTheme.foreground) }}>{"COVID19 MiniSite"}</Typography>;
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
@@ -26,8 +23,8 @@ export const NavbarDis = {
     marginX: 3,
     right: 160,
     top: 0,
-    opacity: 0.2
-  }
+    opacity: 0.2,
+  },
 };
 
 export const StartDate = process.env.REACT_APP_STARTDATE || "2021-02";
@@ -35,11 +32,10 @@ export const StartDate = process.env.REACT_APP_STARTDATE || "2021-02";
 export const _domain = {
   dev: "<dev domain>",
   test: "http://localhost:7777",
+  uat: "http://localhost:7777",
 };
 
-export const DOMAIN = process.env.NODE_ENV === "production" ? 
-  (_.isEmpty(process.env.REACT_APP_DOMAIN) ? _domain[process.env.REACT_APP_STAGE] : process.env.REACT_APP_DOMAIN)
-  : _domain.test;
+export const DOMAIN = process.env.NODE_ENV === "production" ? (_.isEmpty(process.env.REACT_APP_DOMAIN) ? _domain[process.env.REACT_APP_STAGE] : process.env.REACT_APP_DOMAIN) : _domain.test;
 
 export const MenuConfig = [
   {
@@ -47,30 +43,30 @@ export const MenuConfig = [
     link: "/Dashboard",
     faIcon: <Dashboard />,
     auth: "Dashboard",
-    disabled: true
+    disabled: true,
   },
   {
     caption: "Icons",
     link: "/IconDocs",
-    faIcon:  <i className="fas fa-icons fa-lg"/>,
-    auth: "IconDocs"
+    faIcon: <i className="fas fa-icons fa-lg" />,
+    auth: "IconDocs",
   },
   {
     caption: "App Settings",
     link: "/Landing",
-    faIcon: <AppSettingsAlt/>,
-    auth: "Landing"
+    faIcon: <AppSettingsAlt />,
+    auth: "Landing",
   },
   {
     caption: "Severity",
     link: "/Severity",
     faIcon: "fas fa-map-marked-alt fa-lg",
-    auth: "Severity"
+    auth: "Severity",
   },
   {
     caption: "Answer",
     link: "/Answer",
-    faIcon: <ReplyAll/>,
+    faIcon: <ReplyAll />,
     auth: "Answer",
     disabled: true,
     submenu: [
@@ -85,7 +81,7 @@ export const MenuConfig = [
             caption: "Miscellaneous",
             link: "/Answer/ArrivalAns/Miscellaneous",
             faIcon: "fas fa-cubes fa-lg",
-            auth: "Answer.ArrivalAns.Miscellaneous"
+            auth: "Answer.ArrivalAns.Miscellaneous",
           },
           {
             caption: "Components",
@@ -98,8 +94,8 @@ export const MenuConfig = [
             link: "/Answer/ArrivalAns/Template",
             faIcon: "far fa-file-alt fa-lg",
             auth: "Answer.ArrivalAns.Template",
-          }
-        ]
+          },
+        ],
       },
       {
         caption: "Departure",
@@ -112,7 +108,7 @@ export const MenuConfig = [
             caption: "Miscellaneous",
             link: "/Answer/DepartAns/Miscellaneous",
             faIcon: "fas fa-cubes fa-lg",
-            auth: "Answer.DepartAns.Miscellaneous"
+            auth: "Answer.DepartAns.Miscellaneous",
           },
           {
             caption: "Components",
@@ -125,8 +121,8 @@ export const MenuConfig = [
             link: "/Answer/DepartAns/Template",
             faIcon: "far fa-file-alt fa-lg",
             auth: "Answer.DepartAns.Template",
-          }
-        ]
+          },
+        ],
       },
       {
         caption: "Transition",
@@ -146,16 +142,16 @@ export const MenuConfig = [
             link: "/Answer/TransitAns/Template",
             faIcon: "far fa-file-alt fa-lg",
             auth: "Answer.TransitAns.Template",
-          }
-        ]
-      }
-    ]
+          },
+        ],
+      },
+    ],
   },
   {
     caption: "Questionnaire",
     link: "/Questionnaire",
     faIcon: "fas fa-file-alt fa-lg",
-    auth: "Questionnaire"
+    auth: "Questionnaire",
   },
   {
     caption: "System",
