@@ -16,8 +16,16 @@ export const serverCheck = true;
 export const loginSys = true;
 export const LANGUAGES = ["EN", "TC", "SC"];
 
-export const NavbarDis = {
+export const GateDis = {
   src: "/Images/QSK.png",
+  style: {
+    height: "90%",
+    marginTop: "10%"
+  }
+};
+
+export const NavbarDis = {
+  src: "/Images/__QSK.png",
   style: {
     width: 100,
     marginX: 3,

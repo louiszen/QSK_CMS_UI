@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Box, Link, Typography } from '@material-ui/core';
 
 import schema from './schema';
-import { IZOTheme, DOMAIN } from '__Base/config';
+import { IZOTheme, DOMAIN, GateDis } from '__Base/config';
 import Version from '__Base/version';
 
 import Formizo from 'IZOArc/LabIZO/Formizo';
@@ -447,8 +447,8 @@ class Home extends Component {
   renderLogo(){
     return (
       <VStack spacing="1px" alignItems="flex-start" width="100%">
-        <Box height={"90%"} marginTop={"10%"}>
-          <img src="/Images/QSK.png" alt="Elain"/>
+        <Box style={GateDis.style}>
+          <img src={GateDis.src} alt="Logo"/>
         </Box>
         {this.renderEnv()}
       </VStack>
