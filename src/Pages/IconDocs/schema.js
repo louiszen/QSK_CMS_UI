@@ -18,7 +18,13 @@ const Table = [
   {
     label: "Preview",
     name: "link",
-    Cell: (row, field, addOns) => <img src={DOMAIN + "/" + field} alt=""/>
+    Cell: (row, field, addOns) => {
+      if(field) {
+        return (
+          <img src={DOMAIN + "/" + field} alt=""/>
+        );
+      }
+    }
   },
   {
     label: "Last Update",
@@ -50,7 +56,13 @@ const Tail = [
     label: "Current Image",
     name: "link",
     format: "display",
-    Custom: (data, field, addOns) => <img src={DOMAIN + "/" + field} alt=""/>
+    Custom: (data, field, addOns) => {
+      if(field) {
+        return (
+          <img src={DOMAIN + "/" + field} alt=""/>
+        );
+      }
+    }
   },
   {
     label: "Upload File",
