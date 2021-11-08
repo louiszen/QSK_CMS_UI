@@ -1,12 +1,12 @@
 const Request = {
-  DBInfo: "/Base/User/Info",
-  List: "/Base/User/List",
-  Add: "/Base/User/Add",
-  Delete: "/Base/User/Delete",
-  Edit: "/Base/User/Edit",
-  Export: "/Base/User/Export",
-  Import: "/Base/User/Import",
-  DeleteBulk: "/Base/User/DeleteBulk",
+  DBInfo: "/Common/User/Info",
+  List: "/Common/User/List",
+  Add: "/Common/User/Add",
+  Delete: "/Common/User/Delete",
+  Edit: "/Common/User/Edit",
+  Export: "/Common/User/Export",
+  Import: "/Common/User/Import",
+  DeleteBulk: "/Common/User/DeleteBulk",
 };
 
 let exports = {

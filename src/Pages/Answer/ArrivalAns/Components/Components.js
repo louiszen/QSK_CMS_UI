@@ -82,7 +82,7 @@ class Components extends Component {
       let { Success, payload } = res.data;
     
       if (Success === true) {
-        let docs = payload.docs;
+        let docs = payload;
         this.setState((state, props) => ({
           addOns: {
             ...state.addOns,

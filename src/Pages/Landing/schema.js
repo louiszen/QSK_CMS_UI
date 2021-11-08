@@ -111,7 +111,6 @@ const Landing = [
                           let icons = Accessor.Get(addOns, "icons");
                           let iconDoc = _.find(icons, o => o.refID === field);
                           if(iconDoc){
-                            console.log(iconDoc)
                             return (
                               <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
                             );
@@ -204,7 +203,6 @@ const Landing = [
                           let icons = Accessor.Get(addOns, "icons");
                           let iconDoc = _.find(icons, o => o.refID === field);
                           if(iconDoc){
-                            console.log(iconDoc)
                             return (
                               <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
                             );
@@ -271,7 +269,6 @@ const Landing = [
                           let icons = Accessor.Get(addOns, "icons");
                           let iconDoc = _.find(icons, o => o.refID === field);
                           if(iconDoc){
-                            console.log(iconDoc)
                             return (
                               <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
                             );
@@ -430,7 +427,6 @@ const Landing = [
                       let icons = Accessor.Get(addOns, "icons");
                       let iconDoc = _.find(icons, o => o.refID === field);
                       if(iconDoc){
-                        console.log(iconDoc)
                         return (
                           <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
                         );
@@ -462,7 +458,6 @@ const Landing = [
                       let icons = Accessor.Get(addOns, "icons");
                       let iconDoc = _.find(icons, o => o.refID === field);
                       if(iconDoc){
-                        console.log(iconDoc)
                         return (
                           <img src={DOMAIN + "/" + iconDoc.link} alt=""/>
                         );

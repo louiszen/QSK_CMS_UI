@@ -64,7 +64,7 @@ class Home extends Component {
 
   _CheckUser = (formProps) => {
 
-    let url = DOMAIN + '/Base/Authorize/CheckUserName';
+    let url = DOMAIN + '/Common/Authorize/CheckUserName';
     let req = {
       ...formProps
     };
@@ -106,7 +106,7 @@ class Home extends Component {
     console.log("_signIn");
 
     let {username} = this.state;
-    let url = DOMAIN + '/Base/Authorize/SignIn';
+    let url = DOMAIN + '/Common/Authorize/SignIn';
 
     let req = {
       username: username,
@@ -156,7 +156,7 @@ class Home extends Component {
     },
     onSubmit: async (formProps) => {
       store.SetAskLoading(true);
-      let url = DOMAIN + "/Base/Env/Init";
+      let url = DOMAIN + "/Common/Env/Init";
       let payloadOut = {
         JWT: store.user.JWT,
         ...formProps
@@ -167,7 +167,7 @@ class Home extends Component {
       try{
         let res = await axios.post(url, payloadOut);
         store.SetAskLoading(false);
-        console.log("/Base/Env/Init", res.data);
+        console.log("/Common/Env/Init", res.data);
         let {Success} = res.data;
         if(Success === true){
           this.Init.onSuccess(res, formProps);
@@ -187,14 +187,14 @@ class Home extends Component {
       
       store.Alert("Project Initialized Successfully.", "success");
       if(formProps.initialwatsons){
-        let url = DOMAIN + "/Base/Env/InitWatsons";
+        let url = DOMAIN + "/Common/Env/InitWatsons";
         let payloadOut = {
           JWT: store.user.JWT
         };
         
         try{
           let res = await axios.post(url, payloadOut);
-          console.log("/Base/Env/InitWatsons", res.data);
+          console.log("/Common/Env/InitWatsons", res.data);
           let {Success} = res.data;
           if(Success === true){
             await Env.CheckInitialized();

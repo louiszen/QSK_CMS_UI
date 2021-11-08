@@ -69,7 +69,10 @@ class SysBnR extends Component {
     };
 
     try{
+      console.log("/Data/General/Info", payloadOut);
       let res = await axios.post(url, payloadOut);
+
+      console.log("/Data/General/Info", res.data);
 
       let {Success, payload} = res.data;
       if (Success === true) {
@@ -134,7 +137,7 @@ class SysBnR extends Component {
 
   _IncToggle = async (dbname, f) => {
     console.log(dbname, f);
-    let url = DOMAIN + "/Config/CouchDB/Include";
+    let url = DOMAIN + "/Config/Database/Include";
     let payloadOut = {
       JWT: store.user.JWT,
       data: {
