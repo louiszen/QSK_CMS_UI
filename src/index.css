@@ -35,17 +35,16 @@ img {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(200, 123, 30);
+  background: rgb(160, 160, 160);
   background: linear-gradient(180deg, 
-    rgb(200, 123, 30) 0%, 
-    rgb(125, 60, 10) 75.75%, 
-    rgb(125, 60, 10) 100%);
-
+    rgb(160, 160, 160) 0%, 
+    rgb(80, 80, 80) 75.75%, 
+    rgb(80, 80, 80) 100%);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(255, 123, 30);
+  background: rgb(180, 180, 180);
 }
 
 input{

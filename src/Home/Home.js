@@ -64,7 +64,7 @@ class Home extends Component {
 
   _CheckUser = (formProps) => {
 
-    let url = DOMAIN + '/CommonAPI/Authorization/CheckUserName';
+    let url = DOMAIN + '/CommonAPI/Auth/CheckUserName';
     let req = {
       ...formProps
     };
@@ -106,7 +106,7 @@ class Home extends Component {
     console.log("_signIn");
 
     let {username} = this.state;
-    let url = DOMAIN + '/CommonAPI/Authorization/SignIn';
+    let url = DOMAIN + '/CommonAPI/Auth/SignIn';
 
     let req = {
       username: username,
@@ -128,7 +128,7 @@ class Home extends Component {
 
           if(!store.isInitialized()){
             this.setState({
-              page: "initial",
+              page: "user",
               loading: false
             });
           }
@@ -247,9 +247,9 @@ class Home extends Component {
           }}
           theme={{
             label: "white",
-            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS(IZOTheme.foreground),
+            background: loading? ColorX.GetColorCSS(IZOTheme.btnHover) : ColorX.GetColorCSS(IZOTheme.menuFG),
             hover: {
-              background: ColorX.GetColorCSS("elainOrangeDark")
+              background: ColorX.GetColorCSS(IZOTheme.btnHover)
             },
             borderRadius: "0px", 
             width: "100%"
@@ -262,7 +262,7 @@ class Home extends Component {
           </HStack>
         </StyledButton>
         { loading &&
-          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS(IZOTheme.foreground), background: ColorX.GetColorCSS("elainOrangeDark")}}/>
+          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS(IZOTheme.menuFG), background: ColorX.GetColorCSS(IZOTheme.btnHover)}}/>
         }
       </VStack>
     );
@@ -278,9 +278,9 @@ class Home extends Component {
           }}
           theme={{
             label: "white",
-            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS(IZOTheme.foreground),
+            background: loading? ColorX.GetColorCSS(IZOTheme.btnHover) : ColorX.GetColorCSS(IZOTheme.menuFG),
             hover: {
-              background: ColorX.GetColorCSS("elainOrangeDark")
+              background: ColorX.GetColorCSS(IZOTheme.btnHover)
             },
             borderRadius: "0px", 
             width: "100%"
@@ -293,7 +293,7 @@ class Home extends Component {
           </HStack>
         </StyledButton>
         { loading &&
-          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS(IZOTheme.foreground), background: ColorX.GetColorCSS("elainOrangeDark")}}/>
+          <StyledLinearProgress theme={{bar: ColorX.GetColorCSS(IZOTheme.menuFG), background: ColorX.GetColorCSS(IZOTheme.btnHover)}}/>
         }
       </VStack>
     );
@@ -329,7 +329,7 @@ class Home extends Component {
         errorsShowOnHelperText={false}
         theme={{
           textfield: {
-            input: ColorX.GetColorCSS(IZOTheme.foreground),
+            input: ColorX.GetColorCSS(IZOTheme.menuFG),
             background: "transparent",
             line: "transparent"
           }
@@ -357,9 +357,9 @@ class Home extends Component {
           }}
           theme={{
             label: "white",
-            background: loading? ColorX.GetColorCSS("elainOrangeDark") : ColorX.GetColorCSS(IZOTheme.foreground),
+            background: loading? ColorX.GetColorCSS(IZOTheme.btnHover) : ColorX.GetColorCSS(IZOTheme.menuFG),
             hover: {
-              background: ColorX.GetColorCSS("elainOrangeDark")
+              background: ColorX.GetColorCSS(IZOTheme.btnHover)
             },
             borderRadius: "0px", 
             width: "100%"
@@ -374,8 +374,8 @@ class Home extends Component {
         { loading &&
           <StyledLinearProgress 
             theme={{
-              bar: ColorX.GetColorCSS(IZOTheme.foreground), 
-              background: ColorX.GetColorCSS("elainOrangeDark")
+              bar: ColorX.GetColorCSS(IZOTheme.menuFG), 
+              background: ColorX.GetColorCSS(IZOTheme.btnHover)
             }}
             />
         }
@@ -459,7 +459,7 @@ class Home extends Component {
     return (
       <VStack style={{
           background: ColorX.GetColorCSS("aliceblue"), 
-          color: ColorX.GetColorCSS(IZOTheme.foreground),
+          color: ColorX.GetColorCSS(IZOTheme.menuFG),
           width: "100%"
         }}>
         <Spacer/>

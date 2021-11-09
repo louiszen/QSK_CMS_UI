@@ -172,7 +172,7 @@ class ENTReq extends Component {
             textAlign: "left", 
             width: "100%",
             fontSize: 25,
-            color: ColorX.GetColorCSS(IZOTheme.foreground)
+            color: ColorX.GetColorCSS(IZOTheme.menuFG)
             }}>
             {title}
           </Typography>

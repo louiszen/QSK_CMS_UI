@@ -5,12 +5,13 @@ import _ from "lodash";
 import { AppSettingsAlt } from "@mui/icons-material";
 
 export const IZOTheme = {
-  background: "black",
-  foreground: "elainOrange",
-  btnHover: "elainOrangeDark",
+  homeBG: "aliceblue",
+  menuBG: "black",
+  menuFG: "greyOut",
+  btnHover: "grey",
 };
 
-export const Project = <Typography style={{ color: ColorX.GetColorCSS(IZOTheme.foreground) }}>{"COVID19 MiniSite"}</Typography>;
+export const Project = <Typography style={{ color: ColorX.GetColorCSS(IZOTheme.menuFG) }}>{"Quick Starter Kit"}</Typography>;
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
