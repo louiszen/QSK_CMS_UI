@@ -3,6 +3,8 @@ import { Typography } from "@material-ui/core";
 import { Dashboard, ReplyAll } from "@material-ui/icons";
 import _ from "lodash";
 import { AppSettingsAlt } from "@mui/icons-material";
+import EN from "./Locale/EN";
+import TC from "./Locale/TC";
 
 export const IZOTheme = {
   homeBG: "aliceblue",
@@ -11,11 +13,30 @@ export const IZOTheme = {
   btnHover: "grey",
 };
 
-export const Project = <Typography style={{ color: ColorX.GetColorCSS(IZOTheme.menuFG) }}>{"Quick Starter Kit"}</Typography>;
+export const Project = (
+  <Typography style={{ 
+    fontFamily: "Palanquin", 
+    color: ColorX.GetColorCSS(IZOTheme.menuFG) 
+    }}>
+    {"Quick Starter Kit"}
+  </Typography>);
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
 export const LANGUAGES = ["EN", "TC", "SC"];
+
+export const Locale = [
+  {
+    code: "EN",
+    caption: "English",
+    lib: EN
+  },
+  {
+    code: "TC",
+    caption: "繁體中文",
+    lib: TC
+  }
+]
 
 export const GateDis = {
   src: "/Images/QSK.png",
@@ -26,9 +47,9 @@ export const GateDis = {
 };
 
 export const NavbarDis = {
-  src: "/Images/__QSK.png",
+  src: "/Images/navbar.png",
   style: {
-    width: 100,
+    width: 95,
     marginX: 3,
     right: 160,
     top: 0,
