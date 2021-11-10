@@ -55,7 +55,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "zen": "cross-env REACT_APP_STAGE=zen npm run build",
-    "curtis": "cross-env REACT_APP_STAGE=curtis npm run build",
     "dev": "cross-env REACT_APP_STAGE=dev npm run build",
     "uat": "cross-env REACT_APP_STAGE=uat npm run build",
     "poc": "cross-env REACT_APP_STAGE=poc npm run build",
