@@ -3,8 +3,8 @@ import { Typography } from "@material-ui/core";
 import { Dashboard, ReplyAll } from "@material-ui/icons";
 import _ from "lodash";
 import { AppSettingsAlt } from "@mui/icons-material";
-import EN from "./Locale/EN";
-import TC from "./Locale/TC";
+import EN from "Locale/EN";
+import TC from "Locale/TC";
 
 export const IZOTheme = {
   homeBG: "aliceblue",
@@ -65,7 +65,10 @@ export const _domain = {
   uat: "http://localhost:7777",
 };
 
-export const DOMAIN = process.env.NODE_ENV === "production" ? (_.isEmpty(process.env.REACT_APP_DOMAIN) ? _domain[process.env.REACT_APP_STAGE] : process.env.REACT_APP_DOMAIN) : _domain.test;
+export const DOMAIN = process.env.NODE_ENV === "production" ? 
+  (_.isEmpty(process.env.REACT_APP_DOMAIN) ? 
+  _domain[process.env.REACT_APP_STAGE] 
+  : process.env.REACT_APP_DOMAIN) : _domain.test;
 
 export const MenuConfig = [
   {
