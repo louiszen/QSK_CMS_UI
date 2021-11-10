@@ -37,6 +37,15 @@ export const Locale = [
   }
 ]
 
+export const IZODis = {
+  src: "/Images/izo.png",
+  style: {
+    width: 150,
+    marginTop: 0,
+    opacity: 0.15
+  }
+}
+
 export const GateDis = {
   src: "/Images/QSK.png",
   style: {
