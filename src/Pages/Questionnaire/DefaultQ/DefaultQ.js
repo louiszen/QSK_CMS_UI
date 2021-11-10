@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropsType from 'prop-types';
+import { observer } from 'mobx-react';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -209,7 +210,7 @@ class DefaultQ extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={{...addOns, defaultQs}}
           />
       </VStack>
@@ -218,4 +219,4 @@ class DefaultQ extends Component {
 
 }
 
-export default DefaultQ;
+export default observer(DefaultQ);

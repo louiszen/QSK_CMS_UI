@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropsType from 'prop-types';
+import { observer } from 'mobx-react';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -8,7 +9,7 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
 
@@ -185,8 +186,11 @@ class ${1} extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
-          base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
+        <Datumizo lang={store.lang}
+          base={base}
+          addOns={addOns} 
+          serverSidePagination={serverSidePagination} 
+          onMounted={this.onMountDatumizo} 
           />
       </VStack>
     );
@@ -194,4 +198,4 @@ class ${1} extends Component {
 
 }
 
-export default ${1};
+export default observer(${1});

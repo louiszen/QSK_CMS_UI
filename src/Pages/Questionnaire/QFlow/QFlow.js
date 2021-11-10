@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { observer } from 'mobx-react';
 import { Box, Typography } from '@material-ui/core';
 
 import schema from './schema';
@@ -407,7 +407,7 @@ class QFlow extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
@@ -416,4 +416,4 @@ class QFlow extends Component {
 
 }
 
-export default QFlow;
+export default observer(QFlow);

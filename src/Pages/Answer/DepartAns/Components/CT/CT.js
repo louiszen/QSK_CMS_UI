@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropsType from 'prop-types';
+import { observer } from 'mobx-react';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -214,7 +215,7 @@ class CT extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
@@ -223,4 +224,4 @@ class CT extends Component {
 
 }
 
-export default CT;
+export default observer(CT);

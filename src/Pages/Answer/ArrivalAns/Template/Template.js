@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -230,7 +231,7 @@ class Template extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
@@ -239,4 +240,4 @@ class Template extends Component {
 
 }
 
-export default Template;
+export default observer(Template);

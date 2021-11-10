@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 //page
 import Container from "IZOArc/Container/Container";
 import { Denied, NoMatch } from "IZOArc/Fallback";
-import Home from "./Home/Home";
+import Login from "./Login/Login";
 
 //css
 import "./index.css";
@@ -103,7 +103,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Container>
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact component={Login} />
         <Route path='/Denied' exact component={Denied} />
         {renderPages()}
         {renderTest()}

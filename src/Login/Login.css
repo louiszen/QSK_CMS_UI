@@ -1,18 +1,18 @@
-.Home{
+.Login{
   width: 100vw;
   height: 100vh;
   background: rgba(29, 25, 25, 1);
 }
 
-.home-elain{
+.Login-elain{
   height: 40vh;
 }
 
-.home-elain img{
+.Login-elain img{
   height: 100%;
 }
 
-.home-elain-form{
+.Login-elain-form{
   background-color:white;
   width: 300px;
 }

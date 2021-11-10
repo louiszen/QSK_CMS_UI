@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { observer } from 'mobx-react';
 import PropsType from "prop-types";
 import { Box, Typography } from '@material-ui/core';
 
@@ -8,7 +8,7 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
 
@@ -171,7 +171,7 @@ class SevGroup extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} onDataChange={onDataChange}
           />
       </VStack>
@@ -180,4 +180,4 @@ class SevGroup extends Component {
 
 }
 
-export default SevGroup;
+export default observer(SevGroup);

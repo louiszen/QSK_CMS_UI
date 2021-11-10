@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropsType from 'prop-types';
+import { observer } from 'mobx-react';
 
 import { Box, Typography } from '@material-ui/core';
 
@@ -8,7 +9,7 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
 
@@ -177,7 +178,7 @@ class ENTReq extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
@@ -186,4 +187,4 @@ class ENTReq extends Component {
 
 }
 
-export default ENTReq;
+export default observer(ENTReq);

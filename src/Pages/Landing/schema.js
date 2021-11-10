@@ -1,6 +1,7 @@
 import _ from "lodash";
-import { LANGUAGES, DOMAIN } from "__Base/config";
+import { DOMAIN } from "__Base/config";
 import { Accessor } from "IZOArc/STATIC";
+import { LANGUAGES } from "__Base/def";
 
 const SECTIONS = [
   {

@@ -3,18 +3,19 @@ import { withRouter } from 'react-router';
 
 import { observer } from 'mobx-react';
 import axios from 'axios';
-import { Box, Link, Typography } from '@material-ui/core';
+import { Box, IconButton, Link, Typography, Tooltip } from '@material-ui/core';
 
 import schema from './schema';
-import { IZOTheme, DOMAIN, GateDis } from '__Base/config';
+import { IZOTheme, DOMAIN, GateDis, Locale } from '__Base/config';
 import Version from '__Base/version';
 
 import Formizo from 'IZOArc/LabIZO/Formizo';
-import { Accessor, store, ColorX, Env } from 'IZOArc/STATIC';
+import { Accessor, store, ColorX, Env, LocaleX } from 'IZOArc/STATIC';
 import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
 import { StyledButton, StyledLinearProgress } from 'IZOArc/LabIZO/Stylizo';
+import { Language } from '@material-ui/icons';
 
-class Home extends Component {
+class Login extends Component {
 
   static propTypes = {
 
@@ -41,7 +42,7 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Home.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(Login.defaultProps))){
       this._setAllStates();
     }
   }
@@ -60,6 +61,32 @@ class Home extends Component {
 
   onMountForm = (callbacks) => {
     this.MountForm = callbacks;
+  }
+
+  _ToggleLanguage = () => {
+    let max = Locale.length;
+    let idx = Locale.findIndex(o => o.code === store.lang);
+    idx += 1;
+    if(idx >= max) idx = 0;
+    let newLang = Locale[idx].code;
+    store.setLang(newLang);
+  }
+
+  renderLocale(){
+    let langO = Locale.find(o => o.code === store.lang);
+    let langLabel = langO.caption;
+    return (
+      <HStack width="fit-content" marginX={5}>
+        <Tooltip title={LocaleX.Get("NavBar.SwitchLang")} arrow={true} placement="bottom">
+          <IconButton style={{color: ColorX.GetColorCSS(IZOTheme.menuFG, 1)}} size="small" onClick={() => this._ToggleLanguage()}>
+            <Language/>
+          </IconButton>
+        </Tooltip>
+        <Typography style={{width: 60, marginLeft: 5, fontFamily: "Palanquin", fontSize: 14, fontWeight: "bold", color: ColorX.GetColorCSS(IZOTheme.menuFG)}}>
+          {langLabel}
+        </Typography>
+      </HStack>
+    );
   }
 
   _CheckUser = (formProps) => {
@@ -86,14 +113,14 @@ class Home extends Component {
               userDisplayName: payload.UserDisplayName
             });
           }else{
-            store.Alert("User not found", "error");
+            store.Alert(LocaleX.Get("Alert.UserNotFound"), "error");
             this.setState({
               loading: false
             });
           }
         }
       }catch(e){
-        store.Alert("Cannot connect to server", "error");
+        store.Alert(LocaleX.Get("Alert.CannotConnect"), "error");
         this.setState({
           loading: false
         });
@@ -123,7 +150,7 @@ class Home extends Component {
         if(Success === true){
           console.log(payload);
           store.setUser(payload);
-          store.Alert("Login Successful", "success");
+          store.Alert(LocaleX.Get("Alert.SuccessLogin"), "success");
           await Env.CheckInitialized();
 
           if(!store.isInitialized()){
@@ -134,98 +161,18 @@ class Home extends Component {
           }
           
         }else{
-          store.Alert("Incorrect Password", "error");
+          store.Alert(LocaleX.Get("IncorrectPassword"), "error");
           this.setState({
             loading: false
           });
         }
       }catch(e){
-        store.Alert("Cannot connect to server", "error");
+        store.Alert(LocaleX.Get("Alert.CannotConnect"), "error");
         this.setState({
           loading: false
         });
       }
     });
-  }
-
-  Init = {
-    onClick: () => {
-      store.Ask("Initialize project?",
-        "(Caution: It will reset all data in database.)",
-        () => {this.MountForm.Submit()}, null, false);
-    },
-    onSubmit: async (formProps) => {
-      store.SetAskLoading(true);
-      let url = DOMAIN + "/CommonAPI/Env/Init";
-      let payloadOut = {
-        JWT: store.user.JWT,
-        ...formProps
-      };
-
-      console.log(payloadOut)
-
-      try{
-        let res = await axios.post(url, payloadOut);
-        store.SetAskLoading(false);
-        console.log("/CommonAPI/Env/Init", res.data);
-        let {Success} = res.data;
-        if(Success === true){
-          this.Init.onSuccess(res, formProps);
-          store.clearAsk();
-          return {Success: true};
-        }else{
-          this.Init.onFail();
-          return {Success: false};
-        }
-      }catch(e){
-        this.Init.onFail(e);
-        return {Success: false};
-      }
-      
-    },
-    onSuccess: async (res, formProps) => {
-      
-      store.Alert("Project Initialized Successfully.", "success");
-      if(formProps.initialwatsons){
-        let url = DOMAIN + "/CommonAPI/Env/InitWatsons";
-        let payloadOut = {
-          JWT: store.user.JWT
-        };
-        
-        try{
-          let res = await axios.post(url, payloadOut);
-          console.log("/CommonAPI/Env/InitWatsons", res.data);
-          let {Success} = res.data;
-          if(Success === true){
-            await Env.CheckInitialized();
-            this.redirectToDashboard();
-          }else{
-            this.Init.onWatsonsFail();
-          }
-        }catch(e){
-          this.Init.onWatsonsFail(e);
-        }
-      }else{
-        store.isLoading(false);
-        await Env.CheckInitialized();
-        this.redirectToDashboard();
-      }
-
-    },
-    onFail: async () => {
-      store.isLoading(false);
-      store.Alert("Project Cannot be Initialized.", "error");
-      await Env.CheckInitialized();
-    },
-    onWatsonsFail: async () => {
-      store.isLoading(false);
-      store.Alert("Watsons Cannot be Initialized.", "error");
-      await Env.CheckInitialized();
-    },
-    onError: (e) => {
-      store.isLoading(false);
-      store.Alert("Cannot connect to server.", "error");
-    }
   }
 
   redirectToDashboard = () => {
@@ -256,7 +203,7 @@ class Home extends Component {
           }}
           disabled={loading}>
           <HStack>
-            <div>NEXT</div>
+            <div>{LocaleX.Get("Login.Next")}</div>
             <Spacer/>
             <i className="fas fa-arrow-right"/>
           </HStack>
@@ -287,7 +234,7 @@ class Home extends Component {
           }}
           disabled={loading}>
           <HStack>
-            <div>Log in</div>
+            <div>{LocaleX.Get("Login.Login")}</div>
             <Spacer/>
             <i className="fas fa-arrow-right"/>
           </HStack>
@@ -301,6 +248,7 @@ class Home extends Component {
 
   renderForm(){
     let {page, loading} = this.state;
+
     return (
       <Formizo
         formID="login"
@@ -314,14 +262,12 @@ class Home extends Component {
           schema.initial}
         buttons={[
           page === "user"? this.renderNextButton() :
-          page === "password"? this.renderLoginButton() :
-          this.renderInitial()
+          this.renderLoginButton()
         ]}
         buttonPadding={0}
         onSubmit={
           page === "user"? this._CheckUser : 
-          page === "password"? this._Login:
-          this.Init.onSubmit
+          this._Login
         }
         onMounted={this.onMountForm}
         fieldStyle="standard"
@@ -347,52 +293,15 @@ class Home extends Component {
     });
   }
 
-  renderInitial(){
-    let {loading} = this.state;
-    return (
-      <VStack width="100%" key="next">
-        <StyledButton
-          onClick={() => {
-            this.Init.onClick();
-          }}
-          theme={{
-            label: "white",
-            background: loading? ColorX.GetColorCSS(IZOTheme.btnHover) : ColorX.GetColorCSS(IZOTheme.menuFG),
-            hover: {
-              background: ColorX.GetColorCSS(IZOTheme.btnHover)
-            },
-            borderRadius: "0px", 
-            width: "100%"
-          }}
-          disabled={loading}>
-          <HStack>
-            <div>Initialize</div>
-            <Spacer/>
-            <i className="fas fa-arrow-right"/>
-          </HStack>
-        </StyledButton>
-        { loading &&
-          <StyledLinearProgress 
-            theme={{
-              bar: ColorX.GetColorCSS(IZOTheme.menuFG), 
-              background: ColorX.GetColorCSS(IZOTheme.btnHover)
-            }}
-            />
-        }
-      </VStack>
-    );
-  }
-
   renderHeaderMessage(){
     let {page, userDisplayName} = this.state;
     switch(page){
-      default: case "user": return "Log in with your User ID";
+      default: case "user": return LocaleX.Get("Login.HeaderMessage");
       case "password": return (
         <Link onClick={() => this.backToUser()}>
-          {"Not " + userDisplayName + " ?"}
+          {LocaleX.Get("Login.Not") + " " + userDisplayName + " ?"}
         </Link>
       );
-      case "initial": return "Press the button to initialize the project";
     }
   }
 
@@ -468,6 +377,9 @@ class Home extends Component {
           {this.renderInside()}
           <Spacer/>
         </HStack> 
+        <VStack>
+          {this.renderLocale()}
+        </VStack>
         <Spacer/>
       </VStack>
     );
@@ -475,4 +387,4 @@ class Home extends Component {
 
 }
 
-export default withRouter(observer(Home));
+export default withRouter(observer(Login));

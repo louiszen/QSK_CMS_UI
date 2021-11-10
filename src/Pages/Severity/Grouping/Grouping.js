@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropsType from 'prop-types';
-
+import { observer } from 'mobx-react';
 import { Box, Typography } from '@material-ui/core';
 import axios from 'axios';
 
@@ -259,7 +259,7 @@ class Grouping extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={{groups: groups, locations: locations}}
           />
       </VStack>
@@ -268,4 +268,4 @@ class Grouping extends Component {
 
 }
 
-export default Grouping;
+export default observer(Grouping);

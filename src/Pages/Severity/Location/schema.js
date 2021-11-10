@@ -1,6 +1,6 @@
 import { HStack } from "IZOArc/LabIZO/Stackizo";
 import { Check, Close } from "@material-ui/icons";
-import { LANGUAGES } from "__Base/config";
+import { LANGUAGES } from "__Base/def";
 import _ from "lodash";
 
 const Table = [

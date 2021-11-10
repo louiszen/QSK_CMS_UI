@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { observer } from 'mobx-react';
 import { Box, Typography } from '@material-ui/core';
 
 import schema from './schema';
@@ -7,7 +7,7 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority } from 'IZOArc/STATIC';
+import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
 import { IZOTheme } from '__Base/config';
 import { Denied } from 'IZOArc/Fallback';
 
@@ -166,6 +166,7 @@ class IconDocs extends Component {
   render(){
     let {base, serverSidePagination, title, addOns} = this.state;
     if(!Authority.IsAccessibleQ("IconDocs")) return <Denied/>;
+    console.log(store.lang)
     return (
       <VStack width="100%" height="100%">
         <Box padding={1} width="100%">
@@ -178,7 +179,7 @@ class IconDocs extends Component {
             {title}
           </Typography>
         </Box>
-        <Datumizo
+        <Datumizo lang={store.lang}
           base={base} serverSidePagination={serverSidePagination} onMounted={this.onMountDatumizo} addOns={addOns}
           />
       </VStack>
@@ -187,4 +188,4 @@ class IconDocs extends Component {
 
 }
 
-export default IconDocs;
+export default observer(IconDocs);

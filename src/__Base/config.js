@@ -1,4 +1,4 @@
-import { ColorX } from "IZOArc/STATIC";
+import { ColorX, LocaleX } from "IZOArc/STATIC";
 import { Typography } from "@material-ui/core";
 import { Dashboard, ReplyAll } from "@material-ui/icons";
 import _ from "lodash";
@@ -23,7 +23,6 @@ export const Project = (
 export const hasContainer = true;
 export const serverCheck = true;
 export const loginSys = true;
-export const LANGUAGES = ["EN", "TC", "SC"];
 
 export const Locale = [
   {
@@ -187,7 +186,7 @@ export const MenuConfig = [
     auth: "Questionnaire",
   },
   {
-    caption: "System",
+    caption: () => LocaleX.Get("MenuBar.System"),
     link: "/System",
     faIcon: "fas fa-cog fa-lg",
     auth: "System",
