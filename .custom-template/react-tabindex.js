@@ -101,7 +101,7 @@ class ${1} extends Component {
 
   renderTabButtons(){
     return _.map(tabs, (o, i) => {
-      if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
+      if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc, o.reqGroup, o.reqRole)){
         let label = _.isFunction(o.label)? o.label() : o.label;
         let icon = o.icon;
         if(o.noTransform){

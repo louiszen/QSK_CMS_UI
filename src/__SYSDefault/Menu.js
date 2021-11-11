@@ -1,14 +1,15 @@
 import { LocaleX } from "IZOArc/STATIC";
-import { Dashboard, ReplyAll } from "@material-ui/icons";
-import { AppSettingsAlt } from "@mui/icons-material";
 
 /**
  * @typedef {{
  *    caption: String | (() => String),
  *    link: String,
  *    faIcon: JSX.Element | String,
- *    auth: String,
- *    disabled: Boolean,
+ *    auth?: String,
+ *    level?: Number,
+ *    group?: String,
+ *    role?: String,
+ *    disabled?: Boolean,
  *    submenu?: [Menu]
  * }} Menu
 
