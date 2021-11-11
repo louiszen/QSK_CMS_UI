@@ -14,16 +14,20 @@ import { IZOTheme } from '__SYSDefault/Theme';
 import { Denied } from 'IZOArc/Fallback';
 
 /**
+ * add ~react-datalink.js as datalink.js in the same scope
+ * add ~react-schema.js as schema.js in the same scope
  * @augments {Component<Props, State>}
  */
 class ${1} extends Component {
 
   static propTypes = {
-    addOns: PropsType.object
+    addOns: PropsType.object,
+    onDataChange: PropsType.func
   }
 
   static defaultProps = {
-    addOns: {}
+    addOns: {},
+    onDataChange: undefined
   }
 
   constructor(){
@@ -171,7 +175,7 @@ class ${1} extends Component {
   }
 
   render(){
-    let {addOns} = this.props;
+    let {addOns, onDataChange} = this.props;
     let {base, serverSidePagination, title} = this.state;
     if(!Authority.IsAccessibleQ("${5}")) return <Denied/>;
     return (
@@ -191,6 +195,7 @@ class ${1} extends Component {
           addOns={addOns} 
           serverSidePagination={serverSidePagination} 
           onMounted={this.onMountDatumizo} 
+          onDataChange={onDataChange}
           />
       </VStack>
     );

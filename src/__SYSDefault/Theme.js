@@ -2,6 +2,7 @@
 import { CSSProperties } from 'react';
 import { Typography } from '@material-ui/core';
 import { ColorX } from 'IZOArc/STATIC';
+import { ProjectName } from './Config';
 
 /**
  * @type {Object.<string, String | {r: Number, g: Number, b: Number, a: Number}>}
@@ -21,7 +22,7 @@ import { ColorX } from 'IZOArc/STATIC';
     fontFamily: "Palanquin", 
     color: ColorX.GetColorCSS(IZOTheme.menuFG) 
     }}>
-    {"Quick Starter Kit"}
+    {ProjectName}
   </Typography>);
 
   /**

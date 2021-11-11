@@ -1,10 +1,9 @@
 /**
  * 
- * @param {Function} onDataChange 
- * @param {Function} onMountedGrouping 
+ * @param {*} addOns 
  * @returns {[
  *  {
- *    label: String,
+ *    label: String | (() => String),
  *    icon: String | JSX.Element | (() => String | JSX.Element)
  *    reqAuth: String,
  *    render: JSX.Element | (() => JSX.Element),
@@ -17,7 +16,7 @@
  *  }
  * ]}}
  */
-const tabs = (onDataChange, onMountedGrouping) => {
+const tabs = (addOns) => {
   return [
     {
       

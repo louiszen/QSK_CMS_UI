@@ -10,21 +10,22 @@ import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
 import { Denied } from 'IZOArc/Fallback';
 
 /** 
-tabs = [
-  {
-    label: String,
-    icon: String | JSX,
-    reqAuth: String,
-    render: JSX,
-    iconPos: "top" | "left" | "right" | "bottom",
-    noTransform: Boolean | false,
-    spacing: Number | 5,
-    alignment: "center" | "left" | "right",
-    width: Number | 200,
-    height: Number | 20
-  }
-];
-*/
+ * Add ~react-tabs.js as tab.js in the same scope
+ * tabs = [
+ * {
+ *   label: String,
+ *   icon: String | JSX,
+ *   reqAuth: String,
+ *   render: JSX,
+ *   iconPos: "top" | "left" | "right" | "bottom",
+ *   noTransform: Boolean | false,
+ *   spacing: Number | 5,
+ *   alignment: "center" | "left" | "right",
+ *   width: Number | 200,
+ *   height: Number | 20
+ * }
+ * ];
+ */
 
 /**
  * @augments {Component<Props, State>}
@@ -42,7 +43,8 @@ class ${1} extends Component {
   constructor(){
     super();
     this.state = {
-      selectedTab: 0
+      selectedTab: 0,
+      addOns: {}
     };
   }
 
@@ -76,6 +78,18 @@ class ${1} extends Component {
 
   renderTabPanels(){
     let {selectedTab, addOns} = this.state;
+    let renderTabs = _.isFunction(tabs)? tabs(addOns) : tabs;
+    return _.map(renderTabs, (o, i) => {
+      return (
+        <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
+          {_.isFunction(o.render)? o.render(addOns) : o.render}
+        </Box>
+      );
+    });
+  }
+
+  renderTabPanels(){
+    let {selectedTab, addOns} = this.state;
     return _.map(tabs, (o, i) => {
       return (
         <Box key={i} hidden={selectedTab !== i} style={{width: "100%", height: "100%"}}>
@@ -88,10 +102,10 @@ class ${1} extends Component {
   renderTabButtons(){
     return _.map(tabs, (o, i) => {
       if(Authority.IsAccessibleQ(o.reqAuth, o.reqLevel, o.reqFunc)){
-        let label = o.label;
+        let label = _.isFunction(o.label)? o.label() : o.label;
         let icon = o.icon;
         if(o.noTransform){
-          label = <Typography style={{textTransform: 'none'}}>{o.label}</Typography>
+          label = <Typography style={{textTransform: 'none'}}>{label}</Typography>
         }
         switch(o.iconPos){
           case "top": default: 

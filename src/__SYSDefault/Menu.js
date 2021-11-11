@@ -1,6 +1,5 @@
 import { LocaleX } from "IZOArc/STATIC";
 import { Dashboard, ReplyAll } from "@material-ui/icons";
-import _ from "lodash";
 import { AppSettingsAlt } from "@mui/icons-material";
 
 /**
@@ -132,7 +131,7 @@ export const MenuConfig = [
     auth: "Questionnaire",
   },
   {
-    caption: () => LocaleX.Get("MenuBar.System"),
+    caption: () => LocaleX.Get("__IZO.MenuBar.System"),
     link: "/System",
     faIcon: "fas fa-cog fa-lg",
     auth: "System",
