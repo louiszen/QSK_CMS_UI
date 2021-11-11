@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { LANGUAGES } from "__Base/def";
+import { LANGUAGES } from "__SYSDefault/DEF";
 
 const Table = [
   {

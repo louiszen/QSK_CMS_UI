@@ -1,5 +1,5 @@
 import { Typography } from "@material-ui/core";
-import { LANGUAGES } from "__Base/def";
+import { LANGUAGES } from "__SYSDefault/DEF";
 import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
 import { Accessor } from "IZOArc/STATIC";
 import _ from "lodash";

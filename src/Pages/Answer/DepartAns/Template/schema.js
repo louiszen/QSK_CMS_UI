@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { LANGUAGES } from "__Base/def";
+import { LANGUAGES } from "__SYSDefault/DEF";
 import { Typography } from "antd";
 import { HStack, Spacer } from "IZOArc/LabIZO/Stackizo";
 import { Accessor } from "IZOArc/STATIC";

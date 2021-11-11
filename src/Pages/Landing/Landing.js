@@ -4,7 +4,8 @@ import { Accessor, Authority, store, ColorX } from 'IZOArc/STATIC';
 import { Typography, Box } from '@material-ui/core';
 import { Denied } from 'IZOArc/Fallback';
 import Formizo from 'IZOArc/LabIZO/Formizo';
-import { DOMAIN, IZOTheme } from '__Base/config';
+import { DOMAIN } from '__SYSDefault/Domain';
+import { IZOTheme } from '__SYSDefault/Theme';
 import axios from 'axios';
 
 import schema from './schema';

@@ -8,7 +8,7 @@ import datalink from './datalink';
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
-import { IZOTheme } from '__Base/config';
+import { IZOTheme } from '__SYSDefault/Theme';
 import { Denied } from 'IZOArc/Fallback';
 
 /**

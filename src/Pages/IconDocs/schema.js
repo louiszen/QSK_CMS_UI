@@ -1,4 +1,4 @@
-import {DOMAIN} from '__Base/config';
+import { DOMAIN } from '__SYSDefault/Domain';
 
 const Table = [
   {

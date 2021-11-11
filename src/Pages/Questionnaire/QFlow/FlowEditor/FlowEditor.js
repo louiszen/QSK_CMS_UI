@@ -7,7 +7,7 @@ import tabs from './tabs';
 
 import { Accessor, ColorX, store } from 'IZOArc/STATIC';
 import { VStack, HStack } from 'IZOArc/LabIZO/Stackizo';
-import { DOMAIN } from '__Base/config';
+import { DOMAIN } from '__SYSDefault/Domain';
 import axios from 'axios';
 import FlowizoWrap from './_gears/FlowizoWrap';
 import { StyledButton } from 'IZOArc/LabIZO/Stylizo';

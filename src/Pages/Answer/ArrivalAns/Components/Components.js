@@ -7,7 +7,7 @@ import tabs from './tabs';
 
 import { Accessor, Authority, store } from 'IZOArc/STATIC';
 import { VStack, HStack, Spacer } from 'IZOArc/LabIZO/Stackizo';
-import { DOMAIN } from '__Base/config';
+import { DOMAIN } from '__SYSDefault/Domain';
 import axios from 'axios';
 import { Denied } from 'IZOArc/Fallback';
 

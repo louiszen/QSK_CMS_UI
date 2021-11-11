@@ -9,10 +9,13 @@ import datalink from './datalink';
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { HStack, VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority, store } from 'IZOArc/STATIC';
-import { DOMAIN, IZOTheme } from '__Base/config';
+import { Denied } from 'IZOArc/Fallback';
+
+import { DOMAIN } from '__SYSDefault/Domain';
+import { IZOTheme } from '__SYSDefault/Theme';
+
 import _ from 'lodash';
 import axios from 'axios';
-import { Denied } from 'IZOArc/Fallback';
 
 /**
  * @augments {Component<Props, State>}

@@ -10,7 +10,8 @@ import datalink from '../Grouping/datalink';
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
 import { Accessor, ColorX, Authority, store, ErrorX } from 'IZOArc/STATIC';
-import { DOMAIN, IZOTheme } from '__Base/config';
+import { DOMAIN } from '__SYSDefault/Domain';
+import { IZOTheme } from '__SYSDefault/Theme';
 import { Denied } from 'IZOArc/Fallback';
 
 /**

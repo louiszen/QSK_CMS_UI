@@ -1,90 +1,27 @@
-import { ColorX, LocaleX } from "IZOArc/STATIC";
-import { Typography } from "@material-ui/core";
+import { LocaleX } from "IZOArc/STATIC";
 import { Dashboard, ReplyAll } from "@material-ui/icons";
 import _ from "lodash";
 import { AppSettingsAlt } from "@mui/icons-material";
-import EN from "Locale/EN";
-import TC from "Locale/TC";
 
-export const IZOTheme = {
-  homeBG: "aliceblue",
-  menuBG: "black",
-  menuFG: "greyOut",
-  btnHover: "grey",
-};
+/**
+ * @typedef {{
+ *    caption: String | (() => String),
+ *    link: String,
+ *    faIcon: JSX.Element | String,
+ *    auth: String,
+ *    disabled: Boolean,
+ *    submenu?: [Menu]
+ * }} Menu
 
-export const Project = (
-  <Typography style={{ 
-    fontFamily: "Palanquin", 
-    color: ColorX.GetColorCSS(IZOTheme.menuFG) 
-    }}>
-    {"Quick Starter Kit"}
-  </Typography>);
-export const hasContainer = true;
-export const serverCheck = true;
-export const loginSys = true;
-
-export const Locale = [
-  {
-    code: "EN",
-    caption: "English",
-    lib: EN
-  },
-  {
-    code: "TC",
-    caption: "繁體中文",
-    lib: TC
-  }
-]
-
-export const IZODis = {
-  src: "/Images/izo.png",
-  style: {
-    width: 150,
-    marginTop: 0,
-    opacity: 0.15
-  }
-}
-
-export const GateDis = {
-  src: "/Images/QSK.png",
-  style: {
-    height: "90%",
-    marginTop: "10%"
-  }
-};
-
-export const NavbarDis = {
-  src: "/Images/navbar.png",
-  style: {
-    width: 95,
-    marginX: 3,
-    right: 160,
-    top: 0,
-    opacity: 0.2,
-  },
-};
-
-export const StartDate = process.env.REACT_APP_STARTDATE || "2021-02";
-
-export const _domain = {
-  dev: "<dev domain>",
-  test: "http://localhost:7777",
-  uat: "http://localhost:7777",
-};
-
-export const DOMAIN = process.env.NODE_ENV === "production" ? 
-  (_.isEmpty(process.env.REACT_APP_DOMAIN) ? 
-  _domain[process.env.REACT_APP_STAGE] 
-  : process.env.REACT_APP_DOMAIN) : _domain.test;
-
+ * @type {[Menu]}
+ */
 export const MenuConfig = [
   {
     caption: "DashBoard",
     link: "/Dashboard",
     faIcon: <Dashboard />,
     auth: "Dashboard",
-    disabled: true,
+    disabled: true
   },
   {
     caption: "Icons",
@@ -201,5 +138,3 @@ export const MenuConfig = [
     auth: "System",
   },
 ];
-
-export const StartUp = [];

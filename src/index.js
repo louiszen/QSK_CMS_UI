@@ -8,8 +8,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //page
 import Container from "IZOArc/Container/Container";
-import { Denied, NoMatch } from "IZOArc/Fallback";
-import Login from "./Login/Login";
+import Home from "Home/Home";
+import { Denied, NoMatch, Login, Landing, System } from "IZOArc/Fallback";
 
 //css
 import "./index.css";
@@ -30,10 +30,8 @@ import {
 } from "IZOArc/LabIZO/__TEST";
 
 //pages
-import System from "System/System";
-
 import Dashboard from "Pages/Dashboard/Dashboard";
-import Landing from "Pages/Landing/Landing";
+
 import Answer from "Pages/Answer/Answer";
 import ArrivalAnsTemp from "Pages/Answer/ArrivalAns/Template/Template";
 import ArrivalAnsComp from "Pages/Answer/ArrivalAns/Components/Components";
@@ -103,7 +101,9 @@ ReactDOM.render(
   <BrowserRouter>
     <Container>
       <Switch>
-        <Route path='/' exact component={Login} />
+        <Route path='/' exact component={Landing} />
+        <Route path='/Home' exact component={Home} />
+        <Route path='/Login' exact component={Login} />
         <Route path='/Denied' exact component={Denied} />
         {renderPages()}
         {renderTest()}
