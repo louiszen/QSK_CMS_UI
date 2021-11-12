@@ -43,7 +43,9 @@ import { ProjectName } from './Config';
   /**
    * @type {{
    *  src: String,
-   *  style: CSSProperties
+   *  style: CSSProperties,
+   *  preRender: JSX.Element,
+   *  postRender: JSX.Element
    * }}
    */
   export const GateDis = {
