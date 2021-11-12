@@ -23,3 +23,8 @@ export const loginSys = true;
  * @type {String}
  */
 export const StartDate = process.env.REACT_APP_STARTDATE || "2021-02";
+
+/**
+ * @type {String}
+ */
+ export const FirstPage = "/Dashboard";
