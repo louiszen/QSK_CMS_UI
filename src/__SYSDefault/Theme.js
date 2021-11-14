@@ -4,6 +4,8 @@ import { Typography } from '@material-ui/core';
 import { ColorX } from 'IZOArc/STATIC';
 import { ProjectName } from './Config';
 
+export const IZOFontFamily = "Palanquin";
+
 /**
  * @type {Object.<string, String | {r: Number, g: Number, b: Number, a: Number}>}
  */
