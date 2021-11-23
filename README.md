@@ -17,3 +17,13 @@ git remote add upstream https://github.com/<userName>/<reponame>
 git push origin master
 git push --all
 ```
+
+### Docker
+```
+docker build --pull --rm -f "Dockerfile" -t gptwcmsui:latest "." --build-arg env=<env>
+```
+
+Use 
+```
+npm run docker --env=<env>
+```

@@ -31,6 +31,7 @@ import {
 
 //pages
 
+
 //store
 import {Env, store} from 'IZOArc/STATIC';
 
@@ -45,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
  */
 function renderPages() {
   return [
-
+    
   ];
 }
 

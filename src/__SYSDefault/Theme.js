@@ -3,13 +3,14 @@ import { CSSProperties } from 'react';
 import { Typography } from '@material-ui/core';
 import { ColorX } from 'IZOArc/STATIC';
 import { ProjectName } from './Config';
+import { SITEBASE } from './Domain';
 
 export const IZOFontFamily = "Palanquin";
 
 /**
  * @type {Object.<string, String | {r: Number, g: Number, b: Number, a: Number}>}
  */
-export const IZOTheme = {
+ export const IZOTheme = {
   homeBG: "aliceblue",
   menuBG: "black",
   menuFG: "greyOut",
@@ -19,60 +20,88 @@ export const IZOTheme = {
 /**
  * @type {JSX.Element}
  */
-export const ProjectDis = (
-<Typography style={{ 
-  fontFamily: "Palanquin", 
-  color: ColorX.GetColorCSS(IZOTheme.menuFG) 
-  }}>
-  {ProjectName}
-</Typography>);
+ export const ProjectDis = (
+  <Typography style={{ 
+    fontFamily: "Palanquin", 
+    color: ColorX.GetColorCSS(IZOTheme.menuFG) 
+    }}>
+    {ProjectName}
+  </Typography>);
 
-/**
+  /**
  * @type {{
  *  src: String,
- *  style: CSSProperties,
- *  preRender: JSX.Element,
- *  postRender: JSX.Element
- * }}
- */
-export const GateDis = {
-  src: "/Images/QSK.png",
-  style: {
-    height: "90%",
-    marginTop: "10%",
-    marginLeft: "-20%"
+   *  style: CSSProperties
+   * }}
+   */
+  export const IZODis = {
+    src: "/Images/izo.png",
+    style: {
+      width: 150,
+      marginTop: 0,
+      opacity: 0.15
+    }
   }
-};
+  
+  /**
+   * @type {{
+   *  src: String,
+   *  style: CSSProperties
+   * }}
+   */
+  export const GateDis = {
+    src: "/Images/QSK.png",
+    style: {
+      height: "90%",
+      marginTop: "10%"
+    }
+  };
+  
+  /**
+   * @type {{
+   *  src: String,
+   *  style: CSSProperties
+   * }}
+   */
+  export const NavbarDis = {
+    src: "/Images/navbar.png",
+    style: {
+      width: 95,
+      marginX: 3,
+      right: 160,
+      top: 0,
+      opacity: 0.2,
+    },
+  };
 
-/**
+  /**
  * @type {{
  *  src: String,
- *  style: CSSProperties,
- *  preRender: JSX.Element,
- *  postRender: JSX.Element
- * }}
- */
-export const NavbarDis = {
-  src: "/Images/navbar.png",
-  style: {
-    width: 95,
-    marginX: 3,
-    right: 160,
-    top: 0,
-    opacity: 0.2,
-  },
-};
-
-/**
- * @type {{
- *  src: String,
- *  style: CSSProperties,
- *  imgStyle: CSSProperties,
- *  preRender: JSX.Element,
- *  postRender: JSX.Element
- * }}
- */
-export const CompanyDis = {
-  src: "",
-  style: {},
-};
+   *  style: CSSProperties,
+   *  imgStyle: CSSProperties,
+   *  preRender: JSX.Element,
+   *  postRender: JSX.Element
+   * }}
+   */
+  export const CompanyDis = {
+    src: SITEBASE + "Images/QSK.png",
+    style: {
+      width: 200,
+      margin: 3,
+      left: 300,
+      opacity: 0.7,
+    },
+    imgStyle: {
+      width: 25,
+      margin: 5
+    },
+    postRender: <Typography style={{ 
+      fontFamily: IZOFontFamily, 
+      color: ColorX.GetColorCSS(IZOTheme.menuFG),
+      fontSize: 14,
+      fontWeight: "bold",
+      userSelect: "none"
+      }}>
+      {"QSK"}
+    </Typography>
+  };
