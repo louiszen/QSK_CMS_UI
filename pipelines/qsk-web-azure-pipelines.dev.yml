@@ -1,3 +1,4 @@
+
 name: '$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)'
 trigger:
 - none
@@ -10,7 +11,7 @@ variables:
 - name: dockerRegistryServiceConnection
   value: 'gammondev ACR connection'
 - name: imageRepository
-  value: 'gauthz-web-dev'
+  value: 'qsk-web-dev'
 - name: tag
   value: "$(Build.BuildNumber)"
 - name: vmImageName
@@ -22,13 +23,13 @@ variables:
 
 stages:
 
-- stage: build_gauthz_web_stage
-  displayName: Build GAuthZ Web stage
+- stage: build_qsk_web_stage
+  displayName: Build qsk Web stage
   dependsOn: []
 
   jobs:
-    - job: build_gauthz_web_image
-      displayName: Build GAuthZ Web Image
+    - job: build_qsk_web_image
+      displayName: Build qsk Web Image
       pool:
         vmImage: $(vmImageName)
       steps:
@@ -45,3 +46,4 @@ stages:
             tags: |
               $(tag)
               latest
+  

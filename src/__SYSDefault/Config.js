@@ -1,4 +1,5 @@
-export const ProjectName = "Gammon Permit-to-Work";
+export const ProjectName = "Quick Start Kit";
+export const ProjectID = "QSK";
 
 export const hasContainer = true;
 export const serverCheck = true;
