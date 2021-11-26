@@ -3,8 +3,6 @@ import { CSSProperties } from 'react';
 import { Typography } from '@material-ui/core';
 import { ColorX } from 'IZOArc/STATIC';
 import { ProjectName } from './Config';
-import { HStack } from 'IZOArc/LabIZO/Stackizo';
-import { Box } from '@mui/system';
 import { SITEBASE } from './Domain';
 
 export const IZOFontFamily = "Palanquin";
