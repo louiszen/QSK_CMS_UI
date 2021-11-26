@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gptw-web-dev-svc
+  name: gauthz-web-dev-svc
   labels:
-    app: gptwwebdev
-    name: gptw-web-dev
+    app: gauthzwebdev
+    name: gauthz-web-dev
     kind: service
     tier: web
     purpose: dev
 spec:
   selector:
-    app: gptwwebdev
-    name: gptw-web-dev
+    app: gauthzwebdev
+    name: gauthz-web-dev
     kind: deployment
     tier: web
     purpose: dev

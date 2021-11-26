@@ -30,10 +30,13 @@ import {
 } from "IZOArc/LabIZO/__TEST";
 
 //pages
+import Dashboard from "Pages/Dashboard/Dashboard";
+import SubmitPermit from "Pages/SubmitPermit/SubmitPermit";
+import Submission from "Pages/Submission/Submission";
+import Permit from "Pages/SubmitPermit/Permit/Permit";
 
-
-//store
-import {Env, store} from 'IZOArc/STATIC';
+//STORE
+import {Env, STORE} from 'IZOArc/STATIC';
 
 //mute the console on production launch
 if (process.env.NODE_ENV === "production") {
@@ -46,7 +49,10 @@ if (process.env.NODE_ENV === "production") {
  */
 function renderPages() {
   return [
-    
+    <Route key={0} path='/Dashboard' exact component={Dashboard} />,
+    <Route key={1} path='/SubmitPermit' exact component={SubmitPermit} />,
+    <Route key={2} path='/Submission' exact component={Submission} />,
+    <Route key={3} path='/Permit' exact component={Permit} />,
   ];
 }
 
@@ -63,11 +69,11 @@ function renderTest() {
   ];
 }
 
-store.isLoading(false);
-store.clearAsk();
-store.clearAlert();
-store.clearBackdrop();
-if(store.isLoggedIn()){
+STORE.isLoading(false);
+STORE.clearAsk();
+STORE.clearAlert();
+STORE.clearBackdrop();
+if(STORE.isLoggedIn()){
   Env.CheckInitialized();
 }
 

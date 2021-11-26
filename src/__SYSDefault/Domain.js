@@ -4,9 +4,9 @@ import _ from 'lodash';
  * @type {<Object.<string, String>}
  */
  export const _domain = {
-  dev: "<dev domain>",
+  local: "http://localhost:7654",
   test: "http://localhost:7777",
-  uat: "http://localhost:7777",
+  dev: "https://gptw-api-poc.dev.gammonconstruction.com"
 };
 
 /**
@@ -17,7 +17,7 @@ export const DOMAIN = process.env.NODE_ENV === "production" ?
   _domain[process.env.REACT_APP_STAGE] 
   : process.env.REACT_APP_DOMAIN) : _domain.test;
 
-  /**
+/**
  * @type {<Object.<string, String>}
  */
  export const _sitebase = {
@@ -32,3 +32,4 @@ export const DOMAIN = process.env.NODE_ENV === "production" ?
 export const SITEBASE = process.env.NODE_ENV === "production" ? 
 (_sitebase[process.env.REACT_APP_STAGE] ? _sitebase[process.env.REACT_APP_STAGE] : "/")
   : _sitebase.test;
+

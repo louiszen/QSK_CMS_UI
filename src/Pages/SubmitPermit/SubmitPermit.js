@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropsType from 'prop-types';
 import { observer } from 'mobx-react';
 
+import _ from 'lodash';
 import { Box, Typography } from '@material-ui/core';
 
 import schema from './schema';
@@ -9,7 +10,7 @@ import datalink from './datalink';
 
 import Datumizo from 'IZOArc/LabIZO/Datumizo/Datumizo';
 import { VStack } from 'IZOArc/LabIZO/Stackizo';
-import { Accessor, ColorX, Authority, STORE } from 'IZOArc/STATIC';
+import { Accessor, ColorX, Authority, STORE, LocaleX } from 'IZOArc/STATIC';
 import { IZOTheme } from '__SYSDefault/Theme';
 import { Denied } from 'IZOArc/Fallback';
 
@@ -18,7 +19,7 @@ import { Denied } from 'IZOArc/Fallback';
  * add ~react-schema.js as schema.js in the same scope
  * @augments {Component<Props, State>}
  */
-class ${1} extends Component {
+class SubmitPermit extends Component {
 
   static propTypes = {
     addOns: PropsType.object,
@@ -33,25 +34,25 @@ class ${1} extends Component {
   constructor(){
     super();
     this.state = {
-      title: "${3}",
+      title: () => LocaleX.Get("SubmitPermit.PageTitle"),
       serverSidePagination: false, 
       base: {
-        title: "${2}",
-        exportDoc: "${4}",
+        title: () => LocaleX.Get("SubmitPermit.Title"),
+        exportDoc: "permits",
         schema: schema,
-        reqAuth: "${5}",
+        reqAuth: "SubmitPermit",
 
         noDefaultTable: false,
         noDefaultButtons: false,
 
         tablizo: {
-          columnsToolbar: true,
+          columnsToolbar: false,
           filterToolbar: true,
-          densityToolbar: true,
+          densityToolbar: false,
           exportToolbar: false,
           density: "compact", //compact, standard, comfortable
           defaultPageSize: 50,
-          showSelector: true,
+          showSelector: false,
         },
 
         formizo: {
@@ -66,52 +67,52 @@ class ${1} extends Component {
 
         operations: {
           Add: {
-            title: "Add ${2}",
+            title: () => LocaleX.Get("SubmitPermit.Add.title"),
             url: datalink.Request.Add,
-            success: "${2} Added Successfully",
-            fail: "${2} Add Failed: ",
+            success:  () => LocaleX.Get("SubmitPermit.Add.success"),
+            fail:  () => LocaleX.Get("SubmitPermit.Add.fail"),
             schema: schema.Add,
             buttons: ["Clear", "Submit"],
             onSubmit: "Add"
           },
           Delete: {
-            title: "Delete this ${2}?",
-            content: "Caution: This is irrevertable.",
+            title: () => LocaleX.Get("SubmitPermit.Delete.title"),
+            content: () => LocaleX.Get("SubmitPermit.Delete.content"),
             url: datalink.Request.Delete,
-            success: "${2} Deleted Successfully.",
-            fail: "${2} Delete Failed: ",
+            success: () => LocaleX.Get("SubmitPermit.Delete.success"),
+            fail: () => LocaleX.Get("SubmitPermit.Delete.fail"),
             onSubmit: "Delete"
           },
           Edit: {
-            title: "Edit ${2} ",
+            title: () => LocaleX.Get("SubmitPermit.Edit.title"),
             url: datalink.Request.Edit,
-            success: "${2} Edited Successfully",
-            fail: "${2} Edit Failed: ",
+            success: () => LocaleX.Get("SubmitPermit.Edit.success"),
+            fail: () => LocaleX.Get("SubmitPermit.Edit.fail"),
             schema: schema.Edit,
             buttons: ["Revert", "Submit"],
             onSubmit: "Edit"
           },
           Info: {
-            title: "${2} ",
+            title: () => LocaleX.Get("SubmitPermit.Info.title"),
             url: datalink.Request.Info,
-            success: "${2} Load Successfully",
-            fail: "${2} Load Failed: ",
+            success: () => LocaleX.Get("SubmitPermit.Info.success"),
+            fail: () => LocaleX.Get("SubmitPermit.Info.fail"),
             schema: schema.Info,
             readOnly: true
           },
           Duplicate: { //direct duplicate, for to Add, plz use func: "DuplicateAdd"
-            title: "Duplicate this ${2}?",
+            title: () => LocaleX.Get("SubmitPermit.Duplicate.title"),
             url: datalink.Request.Duplicate,
-            success: "${2} Duplicated Successfully.",
-            fail: "${2} Duplicated Failed: ",
+            success: () => LocaleX.Get("SubmitPermit.Duplicate.success"),
+            fail: () => LocaleX.Get("SubmitPermit.Duplicate.fail"),
             onSubmit: "Duplicate"
           },
           Import: {
-            title: "${3} Import",
+            title: () => LocaleX.Get("SubmitPermit.Import.title"),
             content: "",
             url: datalink.Request.Import,
-            success: "${3} Imported Successfully.",
-            fail: "${3} Import Failed: ",
+            success: () => LocaleX.Get("SubmitPermit.Import.success"),
+            fail: () => LocaleX.Get("SubmitPermit.Import.fail"),
             schema: schema.ImportFormat,
             replace: false
           },
@@ -120,30 +121,30 @@ class ${1} extends Component {
             schema: schema.Export,
           },
           DeleteBulk: {
-            title: (n) => "Delete these " + n + " ${3}?",
-            content: "Caution: This is irrevertable.",
+            title: (n) => LocaleX.Get("SubmitPermit.DeleteBulk.title", {n: n}),
+            content: () => LocaleX.Get("SubmitPermit.DeleteBulk.content"),
             url: datalink.Request.DeleteBulk,
-            success: "${3} Deleted Successfully.",
-            fail: "${3} Delete Failed: ",
+            success: () => LocaleX.Get("SubmitPermit.DeleteBulk.success"),
+            fail: () => LocaleX.Get("SubmitPermit.DeleteBulk.fail"),
             onSubmit: "DeleteBulk",
           },
         },
 
         buttons: {
           inline: [
-            { icon: "edit", func: "Edit", caption: "Edit", reqFunc: "Edit" },
-            { icon: "info", func: "Info", caption: "Details" },
-            //{ icon: "duplicate", func: "Duplicate", caption: "Duplicate", reqFunc: "Duplicate" },
-            //{ icon: "duplicate", func: "DuplicateAdd", caption: "Duplicate", reqFunc: "Duplicate" },
-            { icon: "delete", func: "Delete", caption: "Delete", reqFunc: "Delete" },
+            //{ icon: "edit", func: "Edit", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Edit"), reqFunc: "Edit" },
+            //{ icon: "info", func: "Info", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Info") },
+            //{ icon: "delete", func: "Delete", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Delete"), reqFunc: "Delete" },
+            //{ icon: "duplicate", func: "Duplicate", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Duplicate"), reqFunc: "Duplicate" },
+            //{ icon: "duplicate", func: "DuplicateAdd", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Duplicate"), reqFunc: "Duplicate" },
           ],
           left: [
-            { icon: "add", func: "Add", caption: "Add ${2}", reqFunc: "Add" }
+            //{ icon: "add", func: "Add", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Add"), reqFunc: "Add" }
           ],
           right: [
-            { icon: "deletebulk", func: "DeleteBulk", caption: (n) => "Delete (" + n + ")", reqFunc: "Delete", theme: "caution" },
-            //{ icon: "export", func: "Export", caption: (n) => "Export (" + (n === 0 ? "All" : n) + ")", reqFunc: "Export" },
-            //{ icon: "import", func: "Import", caption: "Import", reqFunc: "Import" },
+            //{ icon: "deletebulk", func: "DeleteBulk", caption: (n) => LocaleX.Get("SubmitPermit.ButtonCaption.DeleteBulk", {n: n}), reqFunc: "Delete", theme: "caution" },
+            //{ icon: "export", func: "Export", caption: (n) => LocaleX.Get("SubmitPermit.ButtonCaption.Export", {n: n === 0? LocaleX.Get("__IZO.Datumizo.All") : n}), reqFunc: "Export" },
+            //{ icon: "import", func: "Import", caption: () => LocaleX.Get("SubmitPermit.ButtonCaption.Import"), reqFunc: "Import" },
           ],
         },
       }
@@ -155,7 +156,7 @@ class ${1} extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(${1}.defaultProps))){
+    if(!Accessor.IsIdentical(prevProps, this.props, Object.keys(SubmitPermit.defaultProps))){
       this._setAllStates();
     }
   }
@@ -179,7 +180,13 @@ class ${1} extends Component {
   render(){
     let {addOns, onDataChange} = this.props;
     let {base, serverSidePagination, title} = this.state;
-    if(!Authority.IsAccessibleQ("${5}")) return <Denied/>;
+    if(!Authority.IsAccessibleQ("SubmitPermit")) return <Denied/>;
+    
+    let pageTitle = title;
+    if(_.isFunction(title)){
+      pageTitle = title();
+    }
+
     return (
       <VStack>
         <Box padding={1} width="100%">
@@ -189,7 +196,7 @@ class ${1} extends Component {
             fontSize: 25,
             color: ColorX.GetColorCSS(IZOTheme.foreground)
             }}>
-            {title}
+            {pageTitle}
           </Typography>
         </Box>
         <Datumizo lang={STORE.lang}
@@ -205,4 +212,4 @@ class ${1} extends Component {
 
 }
 
-export default observer(${1});
+export default observer(SubmitPermit);

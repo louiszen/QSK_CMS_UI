@@ -10,7 +10,7 @@ variables:
 - name: dockerRegistryServiceConnection
   value: 'gammondev ACR connection'
 - name: imageRepository
-  value: 'gptw-web-dev'
+  value: 'gauthz-web-dev'
 - name: tag
   value: "$(Build.BuildNumber)"
 - name: vmImageName
@@ -22,13 +22,13 @@ variables:
 
 stages:
 
-- stage: build_gptw_web_stage
-  displayName: Build GPTW Web stage
+- stage: build_gauthz_web_stage
+  displayName: Build GAuthZ Web stage
   dependsOn: []
 
   jobs:
-    - job: build_gptw_web_image
-      displayName: Build GPTW Web Image
+    - job: build_gauthz_web_image
+      displayName: Build GAuthZ Web Image
       pool:
         vmImage: $(vmImageName)
       steps:

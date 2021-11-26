@@ -20,7 +20,7 @@ git push --all
 
 ### Docker
 ```
-docker build --pull --rm -f "Dockerfile" -t gptwcmsui:latest "." --build-arg env=<env>
+docker build --pull --rm -f "Dockerfile" -t test:latest "." --build-arg env=<env>
 ```
 
 Use 
