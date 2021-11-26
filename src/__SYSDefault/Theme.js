@@ -98,7 +98,7 @@ export const NavbarDis = {
  * }}
  */
 export const CompanyDis = {
-  src: SITEBASE + "Images/Gammon_logo.png",
+  src: SITEBASE + "Images/QSK.png",
   style: {
     width: 200,
     margin: 3,
@@ -116,6 +116,6 @@ export const CompanyDis = {
     fontWeight: "bold",
     userSelect: "none"
     }}>
-    {"GPTW"}
+    {"QSK"}
   </Typography>
 };
