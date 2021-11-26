@@ -41,31 +41,11 @@ export const IZOFontFamily = "Palanquin";
  * }}
  */
 export const GateDis = {
-  src: SITEBASE + "Images/Gammon_logo.png",
+  src: SITEBASE + "Images/QSK.png",
   style: {
-    width: 200,
-    height: 200
-  },
-  postRender: 
-    <HStack>
-      <Typography style={{ 
-        fontFamily: IZOFontFamily, 
-        color: ColorX.GetColorCSS(IZOTheme.menuFG),
-        fontSize: 30,
-        fontWeight: "bold",
-        userSelect: "none"
-        }}>
-        {"Gammon Permit-to-Work"}
-      </Typography>
-      <Box style={{position: "relative", marginTop: -30, marginLeft: -30, userSelect: "none"}}>
-        <Box width={75} style={{position: "absolute"}}>
-          <img src={SITEBASE + "Images/tick.png"} alt="permit"/>
-        </Box>
-        <Box width={80} style={{position: "absolute", left: 20}}>
-          <img src={SITEBASE + "Images/tick.png"} alt="permit"/>
-        </Box>
-      </Box>
-    </HStack>
+    height: "90%",
+    marginTop: "10%"
+  }
 };
 
 /**
