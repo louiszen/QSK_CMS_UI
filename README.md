@@ -27,3 +27,8 @@ Use
 ```
 npm run docker --env=<env>
 ```
+
+Generate Azure Pipelines Docs
+```
+npm run genpipes <Project_ID>
+```
