@@ -18,7 +18,7 @@ git push origin master
 git push --all
 ```
 
-### Docker
+## Docker
 ```
 docker build --pull --rm -f "Dockerfile" -t test:latest "." --build-arg env=<env>
 ```
@@ -28,6 +28,7 @@ Use
 npm run docker --env=<env>
 ```
 
+## Azure Pipelines
 Generate Azure Pipelines Docs
 ```
 npm run genpipes <Project_ID>
