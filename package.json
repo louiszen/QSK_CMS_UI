@@ -67,7 +67,34 @@
     "genpipes": "node src/IZOArc/__CodeGen/AzurePipelines.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "semi": [
+        "warn",
+        "always"
+      ],
+      "quotes": [
+        "warn",
+        "double"
+      ],
+      "no-unused-vars": [
+        "warn",
+        {
+          "vars": "all",
+          "args": "none",
+          "ignoreRestSiblings": false
+        }
+      ],
+      "no-empty": [
+        "warn",
+        {
+          "allowEmptyCatch": true
+        }
+      ],
+      "no-console": "off",
+      "require-await": "off",
+      "no-use-before-define": "warn"    
+    }
   },
   "browserslist": [
     ">0.2%",

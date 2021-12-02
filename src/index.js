@@ -33,7 +33,7 @@ import {
 
 
 //STORE
-import {Env, STORE} from 'IZOArc/STATIC';
+import {Env, STORE} from "IZOArc/STATIC";
 
 //mute the console on production launch
 if (process.env.NODE_ENV === "production") {
@@ -53,13 +53,13 @@ function renderPages() {
 function renderTest() {
   if (process.env.NODE_ENV === "production") return;
   return [
-    <Route key={0} path='/Test/Formizo' exact component={FormizoTest} />,
-    <Route key={1} path='/Test/Tablizo' exact component={TablizoTest} />,
-    <Route key={2} path='/Test/Msgizo' exact component={MsgizoTest} />,
-    <Route key={3} path='/Test/Stylizo' exact component={StylizoTest} />,
-    <Route key={4} path='/Test/Stepizo' exact component={StepizoTest} />,
-    <Route key={5} path='/Test/Analytizo' exact component={AnalytizoTest} />,
-    <Route key={6} path='/Test/Flowizo' exact component={FlowizoTest} />,
+    <Route key={0} path="/Test/Formizo" exact component={FormizoTest} />,
+    <Route key={1} path="/Test/Tablizo" exact component={TablizoTest} />,
+    <Route key={2} path="/Test/Msgizo" exact component={MsgizoTest} />,
+    <Route key={3} path="/Test/Stylizo" exact component={StylizoTest} />,
+    <Route key={4} path="/Test/Stepizo" exact component={StepizoTest} />,
+    <Route key={5} path="/Test/Analytizo" exact component={AnalytizoTest} />,
+    <Route key={6} path="/Test/Flowizo" exact component={FlowizoTest} />,
   ];
 }
 
@@ -75,11 +75,11 @@ ReactDOM.render(
   <BrowserRouter>
     <Container>
       <Switch>
-        <Route path='/' exact component={Landing} />
-        <Route path='/Home' exact component={Home} />
-        <Route path='/Login' exact component={Login} />
-        <Route path='/Denied' exact component={Denied} />
-        <Route path='/System' exact component={System} />
+        <Route path="/" exact component={Landing} />
+        <Route path="/Home" exact component={Home} />
+        <Route path="/Login" exact component={Login} />
+        <Route path="/Denied" exact component={Denied} />
+        <Route path="/System" exact component={System} />
         {renderPages()}
         {renderTest()}
         <Route component={NoMatch} />

@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import { CSSProperties } from 'react';
-import { Typography } from '@material-ui/core';
-import { ColorX } from 'IZOArc/STATIC';
-import { ProjectName } from './Config';
-import { SITEBASE } from './Domain';
+import { CSSProperties } from "react";
+import { Typography } from "@material-ui/core";
+import { ColorX } from "IZOArc/STATIC";
+import { ProjectName } from "./Config";
+import { SITEBASE } from "./Domain";
 
 export const IZOFontFamily = "Palanquin";
 

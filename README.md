@@ -102,8 +102,39 @@ Modified `jsconfig.json`
 ```
 
 ### **Eslint Syntax Checking**
-
-## **Dockerize**
+```json
+"eslintConfig": {
+  "extends": "react-app",
+  "rules": {
+    "semi": [
+      "warn",
+      "always"
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "no-empty": [
+      "warn",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "no-console": "off",
+    "require-await": "off",
+    "no-use-before-define": "warn"    
+  }
+}
+```
+### **Dockerize**
 ```
 docker build --pull --rm -f "Dockerfile" -t qsk:latest "."
 ```
@@ -114,7 +145,7 @@ npm run envtemp ${env}
 npm run docker
 ```
 
-## **Azure Pipelines**
+### **Azure Pipelines**
 Generate Azure Pipelines Docs
 ```bash
 npm run genpipes ${ProjectID}

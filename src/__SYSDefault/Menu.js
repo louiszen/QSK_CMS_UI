@@ -1,5 +1,4 @@
 import { Dashboard } from "@material-ui/icons";
-import { Publish, Description } from "@mui/icons-material";
 import { LocaleX } from "IZOArc/STATIC";
 
 /**
@@ -23,18 +22,6 @@ export const MenuConfig = [
     link: "/Dashboard",
     faIcon: <Dashboard/>,
     auth: "Dashboard"
-  },
-  {
-    caption: () => LocaleX.Get("Menu.SubmitPermit"),
-    link: "/SubmitPermit",
-    faIcon: <Publish/>,
-    auth: "SubmitPermit"
-  },
-  {
-    caption: () => LocaleX.Get("Menu.Submission"),
-    link: "/Submission",
-    faIcon: <Description/>,
-    auth: "Submission"
   },
   {
     caption: () => LocaleX.Get("__IZO.MenuBar.System"),
