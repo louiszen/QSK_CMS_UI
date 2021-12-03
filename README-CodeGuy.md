@@ -90,7 +90,7 @@ export default Dashboard;
 In the script [src/index.js](./src/index.js), 
 add the import statement under comment `//pages` <br/>
 ```jsx
-import Dashboard from "src/Pages/Dashboard/Dashboard";
+import Dashboard from "Pages/Dashboard/Dashboard";
 ```
 
 add the following code in the block of array under `renderPages()`. <br/>
