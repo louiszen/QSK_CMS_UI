@@ -8,6 +8,7 @@ export const BnRBackup = "/CommonAPI/BnR/Backup";
 export const BnRDBInclude = "/CommonAPI/DBConfig/Include";
 export const BnRRestore = "/CommonAPI/BnR/Restore";
 export const BnRDelete = "/CommonAPI/BnR/Delete";
+export const RenewAuthority = "/CommonAPI/Restore/RenewAuthority";
 export const SysUserRequest = {
   DBInfo: "/CommonAPI/User/Info",
   List: "/CommonAPI/User/List",

@@ -14,7 +14,12 @@ export const IZOFontFamily = "Palanquin";
   homeBG: "aliceblue",
   menuBG: "black",
   menuFG: "greyOut",
-  btnHover: "grey"
+  popupBG: "aliceblue",
+  popupFG: "darkBox",
+  popupTitleBG: {r:0, g:0, b: 0, a: 0.07},
+  popupTitleFG: "dark",
+  popupBtnBG: {r:0, g:0, b: 0, a: 0.02},
+  btnHover: "grey",
 };
 
 /**
@@ -80,7 +85,7 @@ export const CompanyDis = {
   style: {
     width: 200,
     margin: 3,
-    left: 300,
+    left: 400,
     opacity: 0.7,
   },
   imgStyle: {
