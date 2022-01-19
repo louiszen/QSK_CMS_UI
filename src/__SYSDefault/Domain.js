@@ -6,7 +6,7 @@ import _ from "lodash";
  export const _domain = {
   local: "http://localhost:7654",
   test: "http://localhost:7777",
-  dev: "https://gptw-api-poc.dev.gammonconstruction.com"
+  dev: "https://gauthz-api-poc.dev.gammonconstruction.com"
 };
 
 /**

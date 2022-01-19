@@ -8,8 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //page
 import Container from "IZOArc/Container/Container";
-import Home from "Home/Home";
-import { Denied, NoMatch, Login, Landing, System } from "IZOArc/Fallback";
+import { Denied, NoMatch, Login, Landing, System, BugReport } from "IZOArc/Fallback";
 
 //css
 import "./index.css";
@@ -63,6 +62,15 @@ function renderTest() {
   ];
 }
 
+function renderIZOSystem(){
+  return [
+    <Route key={0} path="/Login" exact component={Login} />,
+    <Route key={1} path="/Denied" exact component={Denied} />,
+    <Route key={2} path="/BugReport" exact component={BugReport} />,
+    <Route key={3} path="/System" exact component={System} />
+  ];
+}
+
 STORE.isLoading(false);
 STORE.clearAsk();
 STORE.clearAlert();
@@ -76,10 +84,7 @@ ReactDOM.render(
     <Container>
       <Switch>
         <Route path="/" exact component={Landing} />
-        <Route path="/Home" exact component={Home} />
-        <Route path="/Login" exact component={Login} />
-        <Route path="/Denied" exact component={Denied} />
-        <Route path="/System" exact component={System} />
+        {renderIZOSystem()}
         {renderPages()}
         {renderTest()}
         <Route component={NoMatch} />

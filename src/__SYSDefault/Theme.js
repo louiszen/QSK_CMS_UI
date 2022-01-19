@@ -1,9 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import { CSSProperties } from "react";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
+
 import { ColorX } from "IZOArc/STATIC";
-import { ProjectName } from "./Config";
+import { HStack } from "IZOArc/LabIZO/Stackizo";
+
 import { SITEBASE } from "./Domain";
+import { SysConfig } from "./Config";
 
 export const IZOFontFamily = "Palanquin";
 
@@ -30,7 +33,7 @@ export const IZOFontFamily = "Palanquin";
     fontFamily: IZOFontFamily, 
     color: ColorX.GetColorCSS(IZOTheme.menuFG),
     }}>
-    {ProjectName}
+    {SysConfig.Project.Name}
   </Typography>
 );
   
@@ -44,11 +47,23 @@ export const IZOFontFamily = "Palanquin";
  * }}
  */
 export const GateDis = {
-  src: SITEBASE + "Images/QSK.png",
+  src: SITEBASE + "Images/Gammon_logo.png",
   style: {
-    height: "90%",
-    marginTop: "10%"
-  }
+    width: 200,
+    height: 200
+  },
+  postRender: 
+    <HStack>
+      <Typography style={{ 
+        fontFamily: IZOFontFamily, 
+        color: ColorX.GetColorCSS(IZOTheme.menuFG),
+        fontSize: 30,
+        fontWeight: "bold",
+        userSelect: "none"
+        }}>
+        {"Gammon AuthZ"}
+      </Typography>
+    </HStack>
 };
 
 /**
@@ -81,7 +96,7 @@ export const NavbarDis = {
  * }}
  */
 export const CompanyDis = {
-  src: SITEBASE + "Images/QSK.png",
+  src: SITEBASE + "Images/Gammon_logo.png",
   style: {
     width: 200,
     margin: 3,
@@ -99,6 +114,6 @@ export const CompanyDis = {
     fontWeight: "bold",
     userSelect: "none"
     }}>
-    {"QSK"}
+    {"GAuthZ"}
   </Typography>
 };
