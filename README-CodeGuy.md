@@ -320,7 +320,7 @@ class MItems extends Component {
   render(){
     let {addOns, onDataChange} = this.props;
     let {base, serverSidePagination, title} = this.state;
-    if(!AuthX.IsAccessibleQ("")) return <Denied/>;
+    if(!AuthX.Pass("")) return <Denied/>;
     return (
       <VStack>
         <Box padding={1} width="100%">
