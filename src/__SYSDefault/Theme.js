@@ -47,10 +47,12 @@ export const IZOFontFamily = "Palanquin";
  * }}
  */
 export const GateDis = {
-  src: SITEBASE + "Images/Gammon_logo.png",
+  src: SITEBASE + "Images/QSK.png",
   style: {
-    width: 200,
-    height: 200
+    width: 900,
+    height: 900,
+    marginLeft: -140,
+    marginTop: 100
   },
   postRender: 
     <HStack>
@@ -61,7 +63,7 @@ export const GateDis = {
         fontWeight: "bold",
         userSelect: "none"
         }}>
-        {"Gammon AuthZ"}
+        {""}
       </Typography>
     </HStack>
 };
@@ -96,7 +98,7 @@ export const NavbarDis = {
  * }}
  */
 export const CompanyDis = {
-  src: SITEBASE + "Images/Gammon_logo.png",
+  src: SITEBASE + "Images/QSK.png",
   style: {
     width: 200,
     margin: 3,
@@ -114,6 +116,6 @@ export const CompanyDis = {
     fontWeight: "bold",
     userSelect: "none"
     }}>
-    {"GAuthZ"}
+    {"QSK"}
   </Typography>
 };
