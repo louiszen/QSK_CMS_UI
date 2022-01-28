@@ -30,13 +30,13 @@ npm run docker --env=<env>
 
 
 ## **.vscode & .customtemplate**
-When you want to copy from IZOGears:
+When you want to copy from IZOArc:
 
 ```
   npm run cpfiles
 ```
 
-When you want to update IZOGears:
+When you want to update IZOArc:
 ```
   npm run updatecp
 ```
