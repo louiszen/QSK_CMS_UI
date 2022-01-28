@@ -39,6 +39,7 @@
     "react-json-view": "^1.21.3",
     "react-loading-spin": "^1.0.9",
     "react-markdown": "^7.1.2",
+    "react-qr-code": "^2.0.3",
     "react-refresh": "^0.11.0",
     "react-router-dom": "^5.3.0",
     "react-rte": "^0.16.3",
@@ -63,7 +64,11 @@
     "prd": "cross-env REACT_APP_STAGE=prd npm run build",
     "linux": "cross-env REACT_APP_STAGE=$npm_config_env npm run build",
     "docker": "docker build --pull --rm -f \"Dockerfile\" -t test:latest \".\" && docker rmi $(docker images -f \"dangling=true\" -q)",
-    "genpipes": "node src/IZOArc/__CodeGen/AzurePipelines.js"
+    "genpipes": "node src/IZOArc/__CodeGen/AzurePipelines.js",
+    "format": "prettier-eslint --eslint-config-path ./.eslintrc --write '**/*.js'",
+    "lint": "eslint . --ext .js",
+    "cpfiles": "node src/IZOArc/__CodeGen/CPFiles.js",
+    "updatecp": "node src/IZOArc/__CodeGen/UpdateCPFiles.js"
   },
   "eslintConfig": {
     "extends": "react-app",
