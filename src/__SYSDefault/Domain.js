@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 /**
- * @type {<Object.<string, String>}
+ * @type {Object.<string, String>}
  */
  export const _domain = {
   local: "http://localhost:7654",
@@ -18,7 +18,7 @@ export const DOMAIN = process.env.NODE_ENV === "production" ?
   : process.env.REACT_APP_DOMAIN) : _domain.test;
 
 /**
- * @type {<Object.<string, String>}
+ * @type {Object.<string, String>}
  */
  export const _sitebase = {
   local: "/",
