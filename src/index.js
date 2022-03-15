@@ -21,7 +21,7 @@ import * as serviceWorker from "./serviceWorker";
 import {
   FormizoTest,
   TablizoTest,
-  MsgizoTest,
+  ChatizoTest,
   StylizoTest, 
   StepizoTest,
   AnalytizoTest,
@@ -54,7 +54,7 @@ function renderTest() {
   return [
     <Route key={0} path="/Test/Formizo" exact component={FormizoTest} />,
     <Route key={1} path="/Test/Tablizo" exact component={TablizoTest} />,
-    <Route key={2} path="/Test/Msgizo" exact component={MsgizoTest} />,
+    <Route key={2} path="/Test/Msgizo" exact component={ChatizoTest} />,
     <Route key={3} path="/Test/Stylizo" exact component={StylizoTest} />,
     <Route key={4} path="/Test/Stepizo" exact component={StepizoTest} />,
     <Route key={5} path="/Test/Analytizo" exact component={AnalytizoTest} />,
