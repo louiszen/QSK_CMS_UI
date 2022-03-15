@@ -34,7 +34,7 @@ You can set the backend domain in the object `_domain` with `<env>` as the key.
 ### **SysAPI** 
 :warning: Edit only if not using IZO QSK backend
 
-Open [SysAPI.js](./src/__SYSDefault/SysAPI.js)
+Open [SysAPI.js](./src/IZOArc/API/SysAPI.js)
 
 ### **Menu Settings**
 Open [Menu.js](./src/__SYSDefault/Menu.js)
